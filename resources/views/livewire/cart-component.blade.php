@@ -7,13 +7,13 @@
 			<div class="wrap-breadcrumb">
 				<ul>
 					<li class="item-link"><a href="/" class="link">Inicio</a></li>
-					<li class="item-link"><span>login</span></li>
+					<li class="item-link"><span>Carrito</span></li>
 				</ul>
 			</div>
 			<div class=" main-content-area">
 
 				<div class="wrap-iten-in-cart">
-					<h3 class="box-title">Products Name</h3>
+					<h3 class="box-title">Nombre del producto</h3>
 					<ul class="products-cart">
 						<li class="pr-cart-item">
 							<div class="product-image">
@@ -66,26 +66,26 @@
 
 				<div class="summary">
 					<div class="order-summary">
-						<h4 class="title-box">Order Summary</h4>
+						<h4 class="title-box">Resumen del pedido</h4>
 						<p class="summary-info"><span class="title">Subtotal</span><b class="index">$512.00</b></p>
-						<p class="summary-info"><span class="title">Shipping</span><b class="index">Free Shipping</b></p>
+						<p class="summary-info"><span class="title">Envío</span><b class="index">Envío gratis</b></p>
 						<p class="summary-info total-info "><span class="title">Total</span><b class="index">$512.00</b></p>
 					</div>
 					<div class="checkout-info">
-						<label class="checkbox-field">
+						{{-- <label class="checkbox-field">
 							<input class="frm-input " name="have-code" id="have-code" value="" type="checkbox"><span>I have promo code</span>
-						</label>
-						<a class="btn btn-checkout" href="checkout.html">Check out</a>
-						<a class="link-to-shop" href="shop.html">Continue Shopping<i class="fa fa-arrow-circle-right" aria-hidden="true"></i></a>
+						</label> --}}
+						<a class="btn btn-checkout" href="/checkout">Ir a pagar</a>
+						<a class="link-to-shop" href="/shop">Continuar comprando<i class="fa fa-arrow-circle-right" aria-hidden="true"></i></a>
 					</div>
 					<div class="update-clear">
-						<a class="btn btn-clear" href="#">Clear Shopping Cart</a>
-						<a class="btn btn-update" href="#">Update Shopping Cart</a>
+						<a class="btn btn-clear" href="#">Borrar carrito de compras</a>
+						<a class="btn btn-update" href="#">Actualizar carrito de compra</a>
 					</div>
 				</div>
 
 				<div class="wrap-show-advance-info-box style-1 box-in-site">
-					<h3 class="title-box">Most Viewed Products</h3>
+					<h3 class="title-box">Productos más vistos</h3>
 					<div class="wrap-products">
 						<div class="products slide-carousel owl-carousel style-nav-1 equal-container" data-items="5" data-loop="false" data-nav="true" data-dots="false" data-responsive='{"0":{"items":"1"},"480":{"items":"2"},"768":{"items":"3"},"992":{"items":"3"},"1200":{"items":"5"}}' >
 
