@@ -143,7 +143,7 @@
 								<a href="#" class="link-direction">
 									<i class="fa fa-heart" aria-hidden="true"></i>
 									<div class="left-info">
-										<span class="index">0</span>
+										<span class="index">0 productos</span>
 										<span class="title">Lista de deseos</span>
 									</div>
 								</a>
@@ -153,7 +153,7 @@
 									<i class="fa fa-shopping-basket" aria-hidden="true"></i>
 									<div class="left-info">
 										@if (Cart::count() > 0)
-											<span class="index">{{ Cart::count() }}</span>
+											<span class="index">{{ Cart::count() }} productos</span>
 										@endif
 										<span class="title">Carrito</span>
 									</div>
