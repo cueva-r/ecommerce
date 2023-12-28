@@ -57,10 +57,13 @@
 												</a>
 												<ul class="submenu currency">
 													<li class="menu-item">
-														<a title="Dashboard" href="{{ route('admin.dashboard') }}">Dashboard</a>
+														<a title="Dashboard" href="{{ route('admin.dashboard') }}"><i class="fa-solid fa-gauge"></i> Dashboard</a>
 													</li>
 													<li class="menu-item">
-														<a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Cerrar sesión</a>
+														<a title="Categorías" href="{{ route('admin.categories') }}"><i class="fa-solid fa-tags"></i> Categorías</a>
+													</li>
+													<li class="menu-item">
+														<a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="fa-solid fa-right-from-bracket"></i> Cerrar sesión</a>
 													</li>
 													<form id="logout-form" method="POST" action="{{ route('logout') }}">
 														@csrf
@@ -74,10 +77,10 @@
 												</a>
 												<ul class="submenu currency">
 													<li class="menu-item">
-														<a title="Dashboard" href="{{ route('user.dashboard') }}">Dashboard</a>
+														<a title="Dashboard" href="{{ route('user.dashboard') }}"><i class="fa-solid fa-gauge"></i> Dashboard</a>
 													</li>
 													<li class="menu-item">
-														<a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Cerrar sesión</a>
+														<a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="fa-solid fa-right-from-bracket"></i> Cerrar sesión</a>
 													</li>
 													<form id="logout-form" method="POST" action="{{ route('logout') }}">
 														@csrf
