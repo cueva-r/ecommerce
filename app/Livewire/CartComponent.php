@@ -30,7 +30,7 @@ class CartComponent extends Component
     public function destroyAll()
 {
 	Cart::destroy();
-	session()->flash('success_message','Todos los priductos se han eliminado.');      
+	session()->flash('success_message','Todos los productos se han eliminado.');      
 }
 
     public function render()

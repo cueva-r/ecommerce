@@ -7,7 +7,8 @@
 			<div class="wrap-breadcrumb">
 				<ul>
 					<li class="item-link"><a href="/" class="link">Inicio</a></li>
-					<li class="item-link"><span>Tienda</span></li>
+					<li class="item-link"><span>Categorías</span></li>
+					<li class="item-link"><span>{{ $category_name }}</span></li>
 				</ul>
 			</div>
 			<div class="row">
@@ -22,11 +23,11 @@
 
 					<div class="wrap-shop-control">
 
-						<h1 class="shop-title">Tienda</h1>
+						<h1 class="shop-title">{{ $category_name }}</h1>
 
 						<div class="wrap-right">
 
-							{{-- <div class="sort-item orderby ">
+							<div class="sort-item orderby ">
 								<select name="orderby" class="use-chosen" wire:model="sorting">
 									<option value="default" selected="selected">Por defecto</option>                               
 									<option value="date">Ordenar por novedad</option>
@@ -45,11 +46,11 @@
 									<option value="30">30 por página</option>
 									<option value="32">32 por página</option>
 								</select>
-							</div> --}}
+							</div>
 
 							<div class="change-display-mode">
 								<a href="#" class="grid-mode display-mode active"><i class="fa fa-th"></i>Grid</a>
-								{{-- <a href="list.html" class="list-mode display-mode"><i class="fa fa-th-list"></i>List</a> --}}
+								<a href="list.html" class="list-mode display-mode"><i class="fa fa-th-list"></i>List</a>
 							</div>
 
 						</div>
