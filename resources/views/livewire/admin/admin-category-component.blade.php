@@ -12,7 +12,14 @@
             <div class="col-md-12">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        Todas las categorías
+                        <div class="row">
+                            <div class="col-md-6">
+                                Todas las categorías
+                            </div>
+                            <div class="col-md-6">
+                                <a href="{{ route('admin.addcategory') }}" class="btn btn-outline-success pull-right"><i class="fa-solid fa-plus"></i></a>
+                            </div>
+                        </div>
                     </div>
                     <div class="panel-body">
                         <table class="table table-striped">
