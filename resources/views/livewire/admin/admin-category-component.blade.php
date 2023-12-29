@@ -18,7 +18,7 @@
                                 Todas las categorías
                             </div>
                             <div class="col-md-6">
-                                <a href="{{ route('admin.addcategory') }}" class="btn btn-outline-success pull-right"><i
+                                <a href="{{ route('admin.addcategory') }}" class="btn btn-success pull-right"><i
                                         class="fa-solid fa-plus"></i></a>
                             </div>
                         </div>

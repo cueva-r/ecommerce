@@ -62,6 +62,13 @@
 													<li class="menu-item">
 														<a title="Categorías" href="{{ route('admin.categories') }}"><i class="fa-solid fa-tags"></i> Categorías</a>
 													</li>
+													<li class="menu-item" >
+														<a title="All Products" href="{{ route('admin.products') }}">
+															<i class="fas fa-box"></i>
+ 															Productos
+														</a>
+													</li>
+														
 													<li class="menu-item">
 														<a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="fa-solid fa-right-from-bracket"></i> Cerrar sesión</a>
 													</li>
