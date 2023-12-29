@@ -18,7 +18,7 @@
                                 Productos
                             </div>
                             <div class="col-md-6">
-                                <a href="#" class="btn btn-success pull-right"><i class="fa-solid fa-plus"></i></a>
+                                <a href="{{ route('admin.addproduct') }}" class="btn btn-success pull-right"><i class="fa-solid fa-plus"></i></a>
                             </div>
                         </div>
                     </div>
