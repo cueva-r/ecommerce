@@ -6,7 +6,7 @@
                     <div class="panel-heading">
                         <div class="row">
                             <div class="col-md-6">
-                                Agregar un nuevo producto
+                                Editar producto
                             </div>
                             <div>
                                 <a href="{{ route('admin.products') }}" class="btn btn-success pull-right">Productos</a>
@@ -18,7 +18,7 @@
                             <div class="alert alert-success" role="alert">{{ Session::get('message') }}</div>
                         @endif
                         <form action="" class="form-horizontal" enctype="multipart/form-data"
-                            wire:submit.prevent="addProduct">
+                            wire:submit.prevent="updateProduct">
                             <div class="form-group">
                                 <label class="col-md-4 control-label">Nombre</label>
                                 <div class="col-md-4">
@@ -94,9 +94,11 @@
                             <div class="form-group">
                                 <label class="col-md-4 control-label">Imágen del producto</label>
                                 <div class="col-md-4">
-                                    <input type="file" class="input-file" wire:model="image">
-                                    @if ($image)
+                                    <input type="file" class="input-file" wire:model="newimage">
+                                    @if ($newimage)
                                         <img src="{{ $image->temporaryUrl() }}" width="120" />
+                                    @else
+                                        <img src="{{ asset('assets/images/products') }}/{{ $image }}" width="120" />
                                     @endif
                                 </div>
                             </div>
@@ -114,7 +116,7 @@
                             <div class="form-group">
                                 <label class="col-md-4 control-label"></label>
                                 <div class="col-md-4">
-                                    <button type="submit" class="btn btn-primary">Guardar</button>
+                                    <button type="submit" class="btn btn-primary">Actualizar</button>
                                 </div>
                             </div>
                         </form>
