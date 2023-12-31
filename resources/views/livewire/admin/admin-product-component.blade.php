@@ -15,10 +15,11 @@
                     <div class="panel-heading">
                         <div class="row">
                             <div class="col-md-6">
-                                Productos
+                                Todos los productos
                             </div>
                             <div class="col-md-6">
-                                <a href="{{ route('admin.addproduct') }}" class="btn btn-success pull-right"><i class="fa-solid fa-plus"></i></a>
+                                <a href="{{ route('admin.addproduct') }}" class="btn btn-success pull-right"><i
+                                        class="fa-solid fa-plus"></i></a>
                             </div>
                         </div>
                     </div>
@@ -51,8 +52,13 @@
                                         <td>{{ $product->category->name }}</td>
                                         <td>{{ $product->created_at }}</td>
                                         <td>
-                                            <a href="{{ route('admin.editproduct', ['product_slug' => $product->slug]) }}">
-                                                <i class="fas fa-edit fa-2x text-info text-center"></i>
+                                            <a
+                                                href="{{ route('admin.editproduct', ['product_slug' => $product->slug]) }}">
+                                                <i class="fas fa-edit text-info text-center"></i>
+                                            </a>
+                                            <a href="#" style="margin-left: 10px"
+                                                wire:click.prevent="deleteProduct({{ $product->id }})">
+                                                <i class="fas fa-trash text-danger text-center"></i>
                                             </a>
                                         </td>
                                     </tr>

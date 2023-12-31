@@ -45,10 +45,10 @@
                                         <td>
                                             <a
                                                 href="{{ route('admin.editcategory', ['category_slug' => $category->slug]) }}">
-                                                <i class="fas fa-edit fa-2x text-primary"></i>
+                                                <i class="fas fa-edit text-primary"></i>
                                             </a>
                                             <a href="#" wire:click.prevent="deleteCategory({{ $category->id }})" style="margin-left: 10px">
-                                                <i class="fa fa-trash fa-2x text-danger"></i>
+                                                <i class="fas fa-trash text-danger"></i>
                                             </a>
                                         </td>
                                     </tr>
