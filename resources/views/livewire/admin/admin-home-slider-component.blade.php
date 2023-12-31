@@ -43,7 +43,7 @@
                                         <td>{{ $slider->subtitle }}</td>
                                         <td>{{ $slider->price }}</td>
                                         <td>{{ $slider->link }}</td>
-                                        <td>{{ $slider->status == 1 ? 'Actico' : 'Inactivo' }}</td>
+                                        <td>{{ $slider->status == 1 ? 'Activo' : 'Inactivo' }}</td>
                                         <td>{{ $slider->created_at }}</td>
                                         <td>
                                             <a href="{{ route('admin.edithomeslider', ['slide_id' => $slider->id]) }}">

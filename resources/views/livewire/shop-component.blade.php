@@ -33,9 +33,9 @@
 									<option value="price">Ordenar por precio: de menor a mayor</option>
 									<option value="price-desc">Ordenar por precio: de mayor a menor</option>
 								</select>
-							</div>
+							</div>--}}
 							
-							<div class="sort-item product-per-page">
+							{{-- <div class="sort-item product-per-page">
 								<select name="post-per-page" class="use-chosen" wire:model="pagesize" >
 									<option value="12" selected="selected">12 por página</option>
 									<option value="16">16 por página</option>
@@ -45,7 +45,7 @@
 									<option value="30">30 por página</option>
 									<option value="32">32 por página</option>
 								</select>
-							</div> --}}
+							</div>  --}}
 
 							{{-- <div class="change-display-mode">
 								<a href="#" class="grid-mode display-mode active"><i class="fa fa-th"></i>Grid</a>
