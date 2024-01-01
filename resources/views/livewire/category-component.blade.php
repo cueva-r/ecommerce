@@ -133,7 +133,8 @@
 								<button class="filter-submit">Filter</button>
 							</p>
 						</div>
-					</div><!-- Price-->
+					</div>
+					<!-- Price-->
 
 					{{-- <div class="widget mercado-widget filter-widget">
 						<h2 class="widget-title">Color</h2>
@@ -164,7 +165,7 @@
 						</div>
 					</div><!-- Size --> --}}
 
-					<div class="widget mercado-widget widget-product">
+					{{-- <div class="widget mercado-widget widget-product">
 						<h2 class="widget-title">Popular Products</h2>
 						<div class="widget-content">
 							<ul class="products">
@@ -226,7 +227,8 @@
 
 							</ul>
 						</div>
-					</div><!-- brand widget-->
+					</div> --}}
+					<!-- brand widget-->
 
 				</div><!--end sitebar-->
 
