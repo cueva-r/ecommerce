@@ -115,7 +115,7 @@
                                                         <i class="fa fa-heart fill-heart"></i>
                                                     </a>
                                                 @else
-                                                    <a href="#"
+                                                    <a href="#" 
                                                         wire:click.prevent="addToWishlist({{ $product->id }},'{{ $product->name }}',{{ $product->regular_price }})">
                                                         <i class="fa fa-heart"></i>
                                                     </a>
