@@ -10,6 +10,7 @@
                     <li class="item-link"><span>Tienda</span></li>
                 </ul>
             </div>
+
             <div class="row">
 
                 <div class="col-lg-9 col-md-8 col-sm-8 col-xs-12 main-content-area">
@@ -54,11 +55,41 @@
 
                         </div>
 
-                    </div><!--end wrap shop control-->
+                    </div>
+                    <!--end wrap shop control-->
+
+                    <style>
+                        .product_wish {
+                            position: absolute;
+                            top: 10%;
+                            left: 0;
+                            z-index: 99;
+                            right: 30px;
+                            text-align: right;
+                            padding-top: 0;
+                        }
+
+                        .product_wish .fa {
+                            color: grey;
+                            font-size: 32px;
+                        }
+
+                        .product_wish .fa:hover {
+                            color: #ff7007;
+                        }
+
+                        .fill-heart {
+                            color: #9fc00b !important;
+                        }
+                    </style>
 
                     <div class="row">
-
                         <ul class="product-list grid-products equal-container">
+                            @php
+                                $witems = Cart::instance('wishlist')
+                                    ->content()
+                                    ->pluck('id');
+                            @endphp
                             @foreach ($products as $product)
                                 <li class="col-lg-4 col-md-6 col-sm-6 col-xs-6 ">
                                     <div class="product product-style-3 equal-elem ">
@@ -78,6 +109,19 @@
                                             <a href="#" class="btn add-to-cart"
                                                 wire:click.prevent="store({{ $product->id }}, '{{ $product->name }}', {{ $product->regular_price }})">Agregar
                                                 al carrito</a>
+                                            <div class="product_wish">
+                                                @if ($witems->contains($product->id))
+                                                    <a href="#">
+                                                        <i class="fa fa-heart fill-heart"></i>
+                                                    </a>
+                                                @else
+                                                    <a href="#"
+                                                        wire:click.prevent="addToWishlist({{ $product->id }},'{{ $product->name }}',{{ $product->regular_price }})">
+                                                        <i class="fa fa-heart"></i>
+                                                    </a>
+                                                @endif
+
+                                            </div>
                                         </div>
                                     </div>
                                 </li>
@@ -131,12 +175,13 @@
 					</div><!-- brand widget--> --}}
 
                     <div class="widget mercado-widget filter-widget price-filter">
-                        <h2 class="widget-title">Precio <span class="text-info">S/- {{ $min_price }} - S/. {{ $max_price }}</span></h2>
+                        <h2 class="widget-title">Precio <span class="text-info">S/- {{ $min_price }} - S/.
+                                {{ $max_price }}</span></h2>
                         <div class="widget-content">
                             <div id="slider" wire:ignore></div>
                         </div>
                     </div>
-					<!-- Price-->
+                    <!-- Price-->
 
                     {{-- <div class="widget mercado-widget filter-widget">
 						<h2 class="widget-title">Color</h2>
@@ -242,7 +287,7 @@
                             </ul>
                         </div>
                     </div> --}}
-					<!-- brand widget-->
+                    <!-- brand widget-->
 
                 </div><!--end sitebar-->
 
