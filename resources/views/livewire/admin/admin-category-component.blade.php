@@ -47,7 +47,7 @@
                                                 href="{{ route('admin.editcategory', ['category_slug' => $category->slug]) }}">
                                                 <i class="fas fa-edit text-primary"></i>
                                             </a>
-                                            <a href="#" wire:click.prevent="deleteCategory({{ $category->id }})" style="margin-left: 10px">
+                                            <a href="#"  onclick="confirm('¿Estás seguro? ¿Quieres eliminar esta categoría?') || event.stopImmediatePropagation()" wire:click.prevent="deleteCategory({{ $category->id }})" style="margin-left: 10px">
                                                 <i class="fas fa-trash text-danger"></i>
                                             </a>
                                         </td>

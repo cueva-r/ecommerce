@@ -58,7 +58,7 @@
                                                 href="{{ route('admin.editproduct', ['product_slug' => $product->slug]) }}">
                                                 <i class="fas fa-edit text-info text-center"></i>
                                             </a>
-                                            <a href="#" style="margin-left: 10px"
+                                            <a href="#" onclick="confirm('¿Estás seguro de que deseas eliminar este producto?') || event.stopImmediatePropagation()" style="margin-left: 10px"
                                                 wire:click.prevent="deleteProduct({{ $product->id }})">
                                                 <i class="fas fa-trash text-danger text-center"></i>
                                             </a>

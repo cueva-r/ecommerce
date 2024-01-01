@@ -51,42 +51,59 @@ class AdminEditProductComponent extends Component
         $this->slug = Str::slug($this->name, '-');
     }
 
+    public function updated($fields)
+    {
+        $this->validateOnly($fields, [
+            'name' => 'required',
+            'slug' => 'required',
+            'short_description' => 'required',
+            'description' => 'required',
+            'regular_price' => 'required|numeric',
+            'sale_price' => 'numeric',
+            'SKU' => 'required',
+            'stock_status' => 'required',
+            'quantity' => 'required|numeric',
+            'category_id' => 'required'
+        ]);
+    }
+
     public function updateProduct()
     {
-        try {
-            $product = Product::find($this->product_id);
+        $this->validate([
+            'name' => 'required',
+            'slug' => 'required',
+            'short_description' => 'required',
+            'description' => 'required',
+            'regular_price' => 'required|numeric',
+            'sale_price' => 'required|numeric',
+            'SKU' => 'required',
+            'stock_status' => 'required',
+            'quantity' => 'required|numeric',
+            'category_id' => 'required'
+        ]);
 
-            if (!$product) {
-                session()->flash('error', '¡El producto no se encontró!');
-                return;
-            }
+        $product = Product::find($this->product_id);
+        $product->name = $this->name;
+        $product->slug = $this->slug;
+        $product->short_description = $this->short_description;
+        $product->description = $this->description;
+        $product->regular_price = $this->regular_price;
+        $product->sale_price = $this->sale_price;
+        $product->SKU = $this->SKU;
+        $product->stock_status = $this->stock_status;
+        $product->featured = $this->featured;
+        $product->quantity = $this->quantity;
 
-            $this->generateSlug();
-
-            $product->name = $this->name;
-            $product->slug = $this->slug;
-            $product->short_description = $this->short_description;
-            $product->description = $this->description;
-            $product->regular_price = $this->regular_price;
-            $product->sale_price = $this->sale_price;
-            $product->SKU = $this->SKU;
-            $product->stock_status = $this->stock_status;
-            $product->featured = $this->featured;
-            $product->quantity = $this->quantity;
-
-            if ($this->newimage) {
-                $imageName = Carbon::now()->timestamp . '.' . $this->newimage->extension();
-                $this->newimage->storeAs('products', $imageName);
-                $product->image = $imageName;
-            }
-
-            $product->category_id = $this->category_id;
-            $product->save();
-
-            session()->flash('message', '¡El producto ha sido actualizado exitosamente!');
-        } catch (\Exception $e) {
-            session()->flash('error', 'Error al actualizar el producto: ' . $e->getMessage());
+        if ($this->newimage) {
+            $imageName = Carbon::now()->timestamp . '.' . $this->newimage->extension();
+            $this->newimage->storeAs('products', $imageName);
+            $product->image = $imageName;
         }
+
+        $product->category_id = $this->category_id;
+        $product->save();
+
+        session()->flash('message', '¡El producto ha sido actualizado exitosamente!');
     }
 
 
