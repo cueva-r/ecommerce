@@ -104,18 +104,22 @@
                                         <div class="product-info">
                                             <a href="{{ route('product.details', ['slug' => $product->slug]) }}"
                                                 class="product-name"><span>{{ $product->name }}</span></a>
-                                            <div class="wrap-price"><span class="product-price">S/.
-                                                    {{ $product->regular_price }}</span></div>
+                                            <div class="wrap-price">
+                                                <span class="product-price">S/. {{ $product->regular_price }}</span>
+                                            </div>
                                             <a href="#" class="btn add-to-cart"
                                                 wire:click.prevent="store({{ $product->id }}, '{{ $product->name }}', {{ $product->regular_price }})">Agregar
                                                 al carrito</a>
                                             <div class="product_wish">
                                                 @if ($witems->contains($product->id))
-                                                    <a href="#">
-                                                        <i class="fa fa-heart fill-heart"></i>
+                                                    <a href="#"
+                                                        wire:click.prevent="removeFromWishlist({{ $product->id }})">
+                                                        <i
+                                                            class="fa
+                                                        fa-heart fill-heart"></i>
                                                     </a>
                                                 @else
-                                                    <a href="#" 
+                                                    <a href="#"
                                                         wire:click.prevent="addToWishlist({{ $product->id }},'{{ $product->name }}',{{ $product->regular_price }})">
                                                         <i class="fa fa-heart"></i>
                                                     </a>

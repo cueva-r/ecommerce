@@ -20,6 +20,7 @@ use App\Livewire\HomeComponent;
 use App\Livewire\SearchComponent;
 use App\Livewire\ShopComponent;
 use App\Livewire\User\UserDashboardComponent;
+use App\Livewire\WishlistComponent;
 use Illuminate\Support\Facades\Route;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
@@ -52,6 +53,8 @@ Route::get('/product-category/{category_slug}', CategoryComponent::class)->name(
 
 Route::get('/search', SearchComponent::class)->name('product.search');
 
+Route::get('/wishlist', WishlistComponent::class)->name('product.wishlist');
+
 // Route::middleware([
 //     'auth:sanctum',
 //     config('jetstream.auth_session'),
@@ -82,5 +85,5 @@ Route::middleware(['auth:sanctum', 'verified', 'authadmin'])->group(function () 
     Route::get('/admin/slider/edit/{slide_id}', AdminEditHomeSliderComponent::class)->name('admin.edithomeslider');
 
     Route::get('/admin/home-categories', AdminHomeCategoryComponent::class)->name('admin.homecategories');
-    Route::Get('/admin/sale',AdminSaleComponent::class)->name('admin.sale');
+    Route::Get('/admin/sale', AdminSaleComponent::class)->name('admin.sale');
 });
