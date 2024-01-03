@@ -30,6 +30,10 @@ return [
 
         'table' => 'shoppingcart',
 
+        'decimal_point' => '.',
+
+        'thounsad_separator' => ''
+
     ],
 
     /*

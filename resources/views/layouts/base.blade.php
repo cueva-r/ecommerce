@@ -110,6 +110,13 @@ const subtitle = 'ecommerce';
                                                         </a>
                                                     </li>
                                                     <li class="menu-item">
+                                                        <a title="Administrar cupones"
+                                                            href="{{ route('admin.coupons') }}">
+                                                            <i class="fas fa-ticket"></i>
+                                                            Administrar cupones
+                                                        </a>
+                                                    </li>
+                                                    <li class="menu-item">
                                                         <a href="{{ route('logout') }}"
                                                             onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i
                                                                 class="fa-solid fa-right-from-bracket"></i> Cerrar

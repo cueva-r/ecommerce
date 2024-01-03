@@ -36,6 +36,7 @@
 											<a class="btn btn-increase" href="#" wire:click.prevent="increaseQuantity('{{$item->rowId}}')"></a>
 											<a class="btn btn-reduce" href="#" wire:click.prevent="decreaseQuantity('{{$item->rowId}}')"></a>
 										</div>
+										<p class="text-center"><a href="#" wire:click.prevent="switchToSaveForLater('{{$item->rowId}}')">Guardar para después</a></p>
 									</div>
 									<div class="price-field sub-total"><p class="price">S/. {{ $item->subtotal }}</p></div>
 									<div class="delete">
@@ -55,22 +56,109 @@
 				<div class="summary">
 					<div class="order-summary">
 						<h4 class="title-box">Resumen del pedido</h4>
-						<p class="summary-info"><span class="title">Subtotal</span><b class="index">S/. {{ Cart::instance('cart')->subtotal() }}</b></p>
-						<p class="summary-info"><span class="title">Impuesto</span><b class="index">S/. {{ Cart::instance('cart')->tax() }}</b></p>
-						<p class="summary-info"><span class="title">Envío</span><b class="index">Envío gratis</b></p>
-						<p class="summary-info total-info "><span class="title">Total</span><b class="index">S/. {{ Cart::instance('cart')->total() }}</b></p>
+						<p class="summary-info">
+							<span class="title">Subtotal</span>
+							<b class="index">S/. {{ Cart::instance('cart')->subtotal() }}</b>
+						</p>
+						@if (Session::has('coupon'))
+							<p class="summary-info">
+								<span class="title">Descuento ({{ Session::get('coupon')['code'] }})</span>
+								<b class="index">S/. {{ $discount }}</b>
+							</p>
+							<p class="summary-info">
+								<span class="title">Subtotal con descuento</span>
+								<b class="index">S/. {{ $subtotalAfterDiscount }} </b>
+							</p>
+							<p class="summary-info">
+								<span class="title">Impuesto ({{ config('cart.tax') }}%)</span>
+								<b class="index">S/. {{ $taxAfterDiscount }} </b>
+							</p>
+							<p class="summary-info">
+								<span class="title">Total</span>
+								<b class="index">S/. {{ $totalAfterDiscount }}</b>
+							</p>
+						@else
+							<p class="summary-info">
+								<span class="title">Impuesto</span>
+								<b class="index">S/. {{ Cart::instance('cart')->tax() }}</b>
+							</p>
+							<p class="summary-info">
+								<span class="title">Envío</span>
+								<b class="index">Envío gratis</b>
+							</p>
+							<p class="summary-info total-info ">
+								<span class="title">Total</span>
+								<b class="index">S/. {{ Cart::instance('cart')->total() }}</b>
+							</p>
+						@endif
 					</div>
 					<div class="checkout-info">
-						{{-- <label class="checkbox-field">
-							<input class="frm-input " name="have-code" id="have-code" value="" type="checkbox"><span>I have promo code</span>
-						</label> --}}
-						<a class="btn btn-checkout" href="/checkout">Ir a pagar</a>
+						@if(!Session::has('coupon'))  
+							<label class="checkbox-field">
+								<input class="frm-input " name="have-code" id="have-code" value="1" type="checkbox" wire:model="haveCouponCode"><span>Tengo un código de cupón</span>
+							</label>
+							@if($haveCouponCode == 1)
+								<div class="summary-item">
+									<form wire:submit.prevent="applyCouponCode">
+										<h4 class="title-box">Código de cupón</h4>
+										@if(Session::has('coupon_message'))
+											<div class="alert alert-danger" role="danger">{{Session::get('coupon_message')}}</div>
+										@endif
+										<p class="row-in-form">
+											<label for="coupon-code">Ingresa tu código de cupón:</label>
+											<input type="text" name="coupon-code" wire:model="couponCode" />
+										</p>
+										<button type="submit" class="btn btn-small">Aplicar</button>
+									</form>
+								</div>
+							@endif
+						@endif
+						<a class="btn btn-checkout" href="#" wire:click.prevent="checkout">Check out</a>                    
 						<a class="link-to-shop" href="/shop">Continuar comprando<i class="fa fa-arrow-circle-right" aria-hidden="true"></i></a>
 					</div>
 					<div class="update-clear">
 						<a class="btn btn-clear" href="#" wire:click.prevent="destroyAll()">Borrar carrito de compras</a>
 						<a class="btn btn-update" href="#">Actualizar carrito de compra</a>
 					</div>
+				</div>
+
+				<div class="wrap-iten-in-cart">
+					<h3 class="title-box" style="border-bottom: 1px solid; padding-bottom:15px;">{{Cart::instance('saveForLater')->count()}} producto(s) guardado para más tarde</h3>
+					@if (Session::has('s_success_message'))
+						<div class="alert alert-success">
+							<strong>Success</strong> {{Session::get('s_success_message')}}
+						</div>
+					@endif
+					@if (Cart::instance('saveForLater')->count() > 0)
+						<h3 class="box-title">Nombre del producto</h3>
+						<ul class="products-cart">
+							@foreach (Cart::instance('saveForLater')->content() as $item)
+								<li class="pr-cart-item">
+									<div class="product-image">
+										<figure><img src="{{ asset('assets/images/products') }}/{{$item->model->image}}" alt="{{ $item->model->name }}"></figure>
+									</div>
+									<div class="product-name">
+										<a class="link-to-product" href="{{ route('product.details', ['slug' => $item->model->slug]) }}">{{ $item->model->name }}</a>
+									</div>
+									<div class="price-field produtc-price"><p class="price">S/. {{ $item->model->regular_price }}</p></div>
+									<div class="quantity">
+										<div class="quantity-input">
+											<p class="text-center"><a href="#" wire:click.prevent="moveToCart('{{$item->rowId}}')">Mover al carrito</a></p>
+										</div>
+										
+									</div>
+									<div class="delete">
+										<a href="#" class="btn btn-delete" title="" wire:click.prevent="deleteFromSaveForLater('{{$item->rowId}}')"">
+											<span>Eliminar de tu guardar para más tarde</span>
+											<i class="fa fa-times-circle" aria-hidden="true"></i>
+										</a>
+									</div>
+								</li>
+							@endforeach																
+						</ul>
+					@else
+						<p>No hay ningún producto para después</p>
+					@endif
 				</div>
 
 				<div class="wrap-show-advance-info-box style-1 box-in-site">
