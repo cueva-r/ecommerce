@@ -3,6 +3,7 @@
 namespace App\Livewire;
 
 use App\Models\Coupon;
+use Carbon\Carbon;
 use Livewire\Component;
 use Cart;
 
@@ -73,7 +74,7 @@ class CartComponent extends Component
 
     public function applyCouponCode()
     {
-        $coupon = Coupon::where('code', $this->couponCode)->where('cart_value', '<=', Cart::instance('cart')->subtotal())->first();
+        $coupon = Coupon::where('code', $this->couponCode)->where('expity_date', '>=', Carbon::today())->where('cart_value', '<=', Cart::instance('cart')->subtotal())->first();
         if (!$coupon) {
             session()->flash('coupon_message', 'El cupón es inválido');
             return;
@@ -90,7 +91,7 @@ class CartComponent extends Component
     public function calculateDiscounts()
     {
         if (session()->has('coupon')) {
-            if (session()->get('coupon')['type'] == 'Fijado') {
+            if (session()->get('coupon')['type'] == 'fijado') {
                 $this->discount = session()->get('coupon')['value'];
             } else {
                 $this->discount = (Cart::instance('cart')->subtotal() * session()->get('coupon')['value']) / 100;
@@ -99,6 +100,11 @@ class CartComponent extends Component
             $this->taxAfterDiscount = ($this->subtotalAfterDiscount * config('cart.tax')) / 100;
             $this->totalAfterDiscount = $this->subtotalAfterDiscount + $this->taxAfterDiscount;
         }
+    }
+
+    public function removeCoupon()
+    {
+        session()->forget('coupon');
     }
 
     public function render()

@@ -30,8 +30,8 @@
                                 <div class="col-md-4">
                                     <select class="form-control" wire:model="type">
                                         <option value="">Seleccionar</option>
-                                        <option value="Fijado">Fijado</option>
-                                        <option value="Porcentaje">Porcentaje</option>
+                                        <option value="fijado">Fijado</option>
+                                        <option value="porcentaje">Porcentaje</option>
                                     </select>
                                     @error('type')  <p class="text-danger">{{$message}}</p> @enderror
                                 </div>
@@ -51,7 +51,15 @@
                                     <input type="text" placeholder="Valor de carrito" class="form-control input-md" wire:model="cart_value" />                                    
                                     @error('cart_value')  <p class="text-danger">{{$message}}</p> @enderror
                                 </div>
-                            </div>       
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="col-md-4 control-label">Fecha de expiración</label>
+                                <div class="col-md-4" wire:ignore>
+                                    <input type="text" id="expity-date" placeholder="Fecha de expiración" class="form-control input-md" wire:model="expity_date" />                                    
+                                    @error('expity_date')  <p class="text-danger">{{$message}}</p> @enderror
+                                </div>
+                            </div>
 							
                             <div class="form-group">
                                 <label class="col-md-4 control-label"></label>
@@ -66,3 +74,17 @@
         </div>
     </div>
 </div>
+
+@push('scripts')
+    <script>
+        $(function(){
+            $('#expity-date').datetimepicker({
+                format: 'Y-MM-DD'
+            })
+            .on('dp.change', function(ev){
+                var data = ('#expity-date').val()
+                @this.set('expity-date', data)
+            })
+        })
+    </script>
+@endpush

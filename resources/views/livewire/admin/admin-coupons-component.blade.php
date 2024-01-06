@@ -25,6 +25,7 @@
                                     <th>Tipo de cupón</th>
                                     <th>Valor del cupón</th>
                                     <th>Valor del carrito</th>   
+                                    <th>Fecha de expiración</th>   
                                     <th>Acción</th>
                                 </tr>
                             </thead>
@@ -34,12 +35,13 @@
                                         <td>{{$coupon->id}}</td>
                                         <td>{{$coupon->code}}</td>
                                         <td>{{$coupon->type}}</td>
-                                        @if($coupon->type == 'Fijado')                                        
+                                        @if($coupon->type == 'fijado')                                        
                                             <td>S/. {{$coupon->value}}</td>
                                         @else
                                             <td>{{$coupon->value}} %</td>
                                         @endif
                                         <td>S/. {{$coupon->cart_value}}</td>
+                                        <td>{{ $coupon->expity_date }}</td>
                                         <td>
                                             <a href="{{route('admin.editcoupon',['coupon_id'=>$coupon->id])}}">
                                                 <i class="fas fa-edit"></i>

@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
@@ -11,13 +12,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('coupons', function (Blueprint $table) {
-            $table->id();
-            $table->string('code')->unique();
-            $table->enum('type',['Fijado','Porcentaje']);
-            $table->decimal('value');
-            $table->decimal('cart_value');
-            $table->timestamps();
+        Schema::table('coupons', function (Blueprint $table) {
+            $table->date('expity_date')->default(DB::raw('CURRENT_DATE'));
         });
     }
 
@@ -26,6 +22,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('coupons');
+        Schema::table('coupons', function (Blueprint $table) {
+            $table->date('expity_date')->default(DB::raw('CURRENT_DATE'));
+        });
     }
 };

@@ -12,6 +12,7 @@ class AdminEditCouponComponent extends Component
     public $value;
     public $cart_value;
     public $coupon_id;    
+    public $expity_date;
 
     public function mount($coupon_id)
     {
@@ -20,7 +21,8 @@ class AdminEditCouponComponent extends Component
         $this->type = $coupon->type;
         $this->value = $coupon->value;
         $this->cart_value = $coupon->cart_value;
-        $this->coupon_id = $coupon->id;        
+        $this->coupon_id = $coupon->id;  
+        $this->expity_date = $coupon->expity_date;      
     }
 
     public function updated($fields)
@@ -30,7 +32,7 @@ class AdminEditCouponComponent extends Component
             'type' => 'required',
             'value' => 'required|numeric',
             'cart_value' => 'required|numeric',
-            
+            'expity_date' => 'required'  
         ]);
     }
 
@@ -40,13 +42,15 @@ class AdminEditCouponComponent extends Component
             'code' => 'required',
             'type' => 'required',
             'value' => 'required|numeric',
-            'cart_value' => 'required|numeric'            
+            'cart_value' => 'required|numeric',
+            'expity_date' => 'required'        
         ]);
         $coupon = Coupon::find($this->coupon_id);
         $coupon->code = $this->code;
         $coupon->type = $this->type;
         $coupon->value = $this->value;
-        $coupon->cart_value = $this->cart_value;        
+        $coupon->cart_value = $this->cart_value;   
+        $coupon->expity_date = $this->expity_date;     
         $coupon->save();
         session()->flash('message','¡El cupón se ha actualizado correctamente!');
     }
