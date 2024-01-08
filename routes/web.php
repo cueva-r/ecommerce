@@ -22,6 +22,7 @@ use App\Livewire\DetailsComponent;
 use App\Livewire\HomeComponent;
 use App\Livewire\SearchComponent;
 use App\Livewire\ShopComponent;
+use App\Livewire\ThankyouComponnent;
 use App\Livewire\User\UserDashboardComponent;
 use App\Livewire\WishlistComponent;
 use Illuminate\Support\Facades\Route;
@@ -57,6 +58,8 @@ Route::get('/product-category/{category_slug}', CategoryComponent::class)->name(
 Route::get('/search', SearchComponent::class)->name('product.search');
 
 Route::get('/wishlist', WishlistComponent::class)->name('product.wishlist');
+
+Route::get('/thank-you', ThankyouComponnent::class)->name('thankyou');
 
 // Route::middleware([
 //     'auth:sanctum',
