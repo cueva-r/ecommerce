@@ -119,15 +119,15 @@
     <!-- Sidebar -->
     <div class="sidebar">
         <!-- Sidebar user panel (optional) -->
-        {{-- <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+        <div class="user-panel mt-3 pb-3 mb-3 d-flex">
             <div class="image">
-                <img src="{{ url('public/assets/dist/img/avatar5.png') }}" class="img-circle elevation-2"
+                <img src="{{ url('public/assets/dist/img/hannah_owo.jpg') }}" class="img-circle elevation-2"
                     alt="User Image">
             </div>
             <div class="info">
-                <a href="#" class="d-block">Alexander Pierce</a>
+                <a href="#" class="d-block">{{ Auth::user()->name }}</a>
             </div>
-        </div> --}}
+        </div>
 
         <!-- Sidebar Menu -->
         <nav class="mt-2">
@@ -148,6 +148,24 @@
                         <i class="nav-icon fas fa-user"></i>
                         <p>
                             Admin
+                        </p>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="{{ url('admin/categorias/listar') }}" class="nav-link @if (Request::segment(2) == 'categorias') active @endif"">
+                        <i class="nav-icon fas fa-tags"></i>
+                        <p>
+                            Categorías
+                        </p>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="{{ url('admin/subategorias/listar') }}" class="nav-link @if (Request::segment(2) == 'subategorias') active @endif"">
+                        <i class="nav-icon fas fa-folder"></i>
+                        <p>
+                            Subategorías
                         </p>
                     </a>
                 </li>

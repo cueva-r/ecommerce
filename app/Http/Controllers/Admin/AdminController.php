@@ -18,12 +18,16 @@ class AdminController extends Controller
 
     public function agregar()
     {
-        $data['header_title'] = 'Agregar';
+        $data['header_title'] = 'Agregar administrador';
         return view('admin.admin.agregar', $data);
     }
 
     public function insertar(Request $request)
     {
+        request()->validate([
+            'email' => 'required|email|unique:users'
+        ]);
+
         $usuario = new User;
         $usuario->name = $request->nombre;
         $usuario->email = $request->email;
@@ -38,12 +42,16 @@ class AdminController extends Controller
     public function editar($id)
     {
         $data['getRecord'] = User::getSingle($id);
-        $data['header_title'] = 'Editar';
+        $data['header_title'] = 'Editar administrador';
         return view('admin.admin.editar', $data);
     }
 
     public function actualizar($id, Request $request)
     {
+        request()->validate([
+            'email' => 'required|email|unique:users,email,' . $id
+        ]);
+
         $usuario = User::getSingle($id);
         $usuario->name = $request->nombre;
         $usuario->email = $request->email;

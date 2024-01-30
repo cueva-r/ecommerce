@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\CategoriaController;
 use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 
@@ -26,7 +27,7 @@ Route::get('admin/cerrar-sesion', [AuthController::class, 'cerrar_sesion_admin']
 
 Route::group(['middleware' => 'admin'], function () {
 
-    // RUTAS DE LOS ADMINS :'v
+    // RUTAS DE LOS ADMINS
     Route::get('admin/dashboard', [DashboardController::class, 'dashboard']);
     Route::get('admin/admin/listar', [AdminController::class, 'listar']);
     Route::get('admin/admin/agregar', [AdminController::class, 'agregar']);
@@ -35,6 +36,15 @@ Route::group(['middleware' => 'admin'], function () {
     Route::get('admin/admin/editar/{id}', [AdminController::class, 'editar']);
     Route::post('admin/admin/editar/{id}', [AdminController::class, 'actualizar']);
     Route::get('admin/admin/eliminar/{id}', [AdminController::class, 'eliminar']);
+
+    //Ruta de las categorías
+    Route::get('admin/categorias/listar', [CategoriaController::class, 'listar']);
+    Route::get('admin/categorias/agregar', [CategoriaController::class, 'agregar']);
+    Route::post('admin/categorias/agregar', [CategoriaController::class, 'insertar']);
+
+    Route::get('admin/categorias/editar/{id}', [CategoriaController::class, 'editar']);
+    Route::post('admin/categorias/editar/{id}', [CategoriaController::class, 'actualizar']);
+    Route::get('admin/categorias/eliminar/{id}', [CategoriaController::class, 'eliminar']);
 });
 
 Route::get('/', function () {

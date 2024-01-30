@@ -9,10 +9,10 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>Agregar un nuevo administrador</h1>
+                        <h1>Agregar una nueva categoría</h1>
                     </div>
                     <div class="col-sm-6" style="text-align: right">
-                        <a href="{{ url('admin/admin/listar') }}" class="btn btn-primary">
+                        <a href="{{ url('admin/categorias/listar') }}" class="btn btn-primary">
                             <i class="fa-solid fa-arrow-left"></i>
                         </a>
                     </div>
@@ -29,26 +29,42 @@
                                 {{ csrf_field() }}
                                 <div class="card-body">
                                     <div class="form-group">
-                                        <label>Nombre</label>
+                                        <label>Nombre <span style="color: red">*</span></label>
                                         <input type="text" class="form-control" value="{{old('nombre')}}" required name="nombre"
-                                            placeholder="Ingrese el nombre">
+                                            placeholder="Nombre de la categoría">
                                     </div>
                                     <div class="form-group">
-                                        <label ">Email</label>
-                                        <input type="email" class="form-control" value="{{old('email')}}" required name="email" placeholder="Ingrese el email">
-                                        <div style="color: red">{{$errors->first('email')}}</div>
+                                        <label>Slug <span style="color: red">*</span></label>
+                                        <input type="text" class="form-control" value="{{old('slug')}}" required name="slug"
+                                            placeholder="Slug exp. URL">
+                                        <div style="color: red">{{$errors->first('slug')}}</div>
                                     </div>
                                     <div class="form-group">
-                                        <label>Clave</label>
-                                        <input type="password" class="form-control" required name="password" placeholder="Ingrese la clave">
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Estado</label>
+                                        <label>Estado  <span style="color: red">*</span></label>
                                         <select class="form-control" required name="estado">
                                             <option {{(old('estado') == 0) ? 'selected' : ''}} value="0">Activo</option>
                                             <option {{(old('estado') == 1) ? 'selected' : ''}} value="1">Inactivo</option>
                                         </select>
                                     </div>
+                                    <hr>
+
+                                    <div class="form-group">
+                                        <label>Meta título  <span style="color: red">*</span></label>
+                                        <input type="text" class="form-control" value="{{old('meta_titulo')}}" required name="meta_titulo"
+                                            placeholder="Meta título">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>Meta descripción</label>
+                                        <textarea name="meta_descripcion" class="form-control" placeholder="Meta descripción">{{ old('meta_descripcion') }}</textarea>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>Meta palabras clave</label>
+                                        <input type="text" class="form-control" value="{{old('meta_p_clave')}}"  name="meta_p_clave"
+                                            placeholder="Meta palabras clave">
+                                    </div>
+
                                 </div>
                                     
                                 <div class="card-footer">
