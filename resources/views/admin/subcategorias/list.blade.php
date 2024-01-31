@@ -13,7 +13,7 @@
                         <h1>Lista de administración</h1>
                     </div>
                     <div class="col-sm-6" style="text-align: right">
-                        <a href="{{ url('admin/categorias/agregar') }}" class="btn btn-primary">
+                        <a href="{{ url('admin/subcategorias/agregar') }}" class="btn btn-primary">
                             <i class="fa-solid fa-plus"></i>
                         </a>
                     </div>
@@ -28,14 +28,15 @@
                         @include('admin.layouts._message')
                         <div class="card">
                             <div class="card-header">
-                                <h3 class="card-title">Lista de categorías</h3>
+                                <h3 class="card-title">Lista de sub categorías</h3>
                             </div>
                             <div class="card-body p-0">
                                 <table class="table table-striped">
                                     <thead>
                                         <tr>
                                             <th>#</th>
-                                            <th>Nombre</th>
+                                            <th>Nombre categoría</th>
+                                            <th>Nombre subcategoría</th>
                                             <th>Slug</th>
                                             <th>Meta título</th>
                                             <th>Meta descripción</th>
@@ -50,6 +51,7 @@
                                         @foreach ($getRecord as $valor)
                                             <tr>
                                                 <td>{{ $valor->id }}</td>
+                                                <td>{{ $valor->category_nombre }}</td>
                                                 <td>{{ $valor->nombre }}</td>
                                                 <td>{{ $valor->slug }}</td>
                                                 <td>{{ $valor->meta_titulo }}</td>
@@ -59,11 +61,11 @@
                                                 <td>{{ $valor->estado == 0 ? 'Activo' : 'Inactivo' }}</td>
                                                 <td>{{ date('d-m-Y', strtotime($valor->created_at)) }}</td>
                                                 <td>
-                                                    <a href="{{ url('admin/categorias/editar/' . $valor->id) }}"
+                                                    <a href="{{ url('admin/subcategorias/editar/' . $valor->id) }}"
                                                         class="btn btn-outline-primary">
                                                         <i class="fa-solid fa-pen-to-square"></i>
                                                     </a>
-                                                    <a href="{{ url('admin/categorias/eliminar/' . $valor->id) }}"
+                                                    <a href="{{ url('admin/subcategorias/eliminar/' . $valor->id) }}"
                                                         class="btn btn-outline-danger">
                                                         <i class="fa-solid fa-trash"></i>
                                                     </a>
@@ -74,10 +76,9 @@
                                 </table>
 
                                 <div style="padding: 10px; float: right;">
-                                    {!! $getRecord->appends(Illuminate\Support\Facades\Request::except('page'))->
-                                    links() !!}
+                                    {!! $getRecord->appends(Illuminate\Support\Facades\Request::except('page'))->links() !!}
                                 </div>
-                                
+
                             </div>
                         </div>
 

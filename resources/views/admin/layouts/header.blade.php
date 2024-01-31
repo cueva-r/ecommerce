@@ -162,7 +162,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a href="{{ url('admin/subategorias/listar') }}" class="nav-link @if (Request::segment(2) == 'subategorias') active @endif"">
+                    <a href="{{ url('admin/subcategorias/listar') }}" class="nav-link @if (Request::segment(2) == 'subategorias') active @endif"">
                         <i class="nav-icon fas fa-folder"></i>
                         <p>
                             Subategorías

@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\CategoriaController;
+use App\Http\Controllers\Admin\SubCategoriaController;
 use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 
@@ -45,6 +46,15 @@ Route::group(['middleware' => 'admin'], function () {
     Route::get('admin/categorias/editar/{id}', [CategoriaController::class, 'editar']);
     Route::post('admin/categorias/editar/{id}', [CategoriaController::class, 'actualizar']);
     Route::get('admin/categorias/eliminar/{id}', [CategoriaController::class, 'eliminar']);
+
+    //Ruta de las subcategorías
+    Route::get('admin/subcategorias/listar', [SubCategoriaController::class, 'listar']);
+    Route::get('admin/subcategorias/agregar', [SubCategoriaController::class, 'agregar']);
+    Route::post('admin/subcategorias/agregar', [SubCategoriaController::class, 'insertar']);
+
+    Route::get('admin/subcategorias/editar/{id}', [SubCategoriaController::class, 'editar']);
+    Route::post('admin/subcategorias/editar/{id}', [SubCategoriaController::class, 'actualizar']);
+    Route::get('admin/subcategorias/eliminar/{id}', [SubCategoriaController::class, 'eliminar']);
 });
 
 Route::get('/', function () {

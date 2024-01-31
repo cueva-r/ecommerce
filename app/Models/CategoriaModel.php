@@ -22,6 +22,6 @@ class CategoriaModel extends Model
         ->join('users', 'users.id', '=', 'categorias.created_by')
         ->where('categorias.esta_eliminado', '=', 0)
         ->orderBy('categorias.id', 'desc')
-        ->get();
+        ->paginate(20);
     }
 }
