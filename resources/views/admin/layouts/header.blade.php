@@ -144,7 +144,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a href="{{ url('admin/admin/listar') }}" class="nav-link @if (Request::segment(2) == 'admin') active @endif"">
+                    <a href="{{ url('admin/admin/listar') }}" class="nav-link @if (Request::segment(2) == 'admin') active @endif">
                         <i class="nav-icon fas fa-user"></i>
                         <p>
                             Admin
@@ -162,7 +162,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a href="{{ url('admin/subcategorias/listar') }}" class="nav-link @if (Request::segment(2) == 'subategorias') active @endif"">
+                    <a href="{{ url('admin/subcategorias/listar') }}" class="nav-link @if (Request::segment(2) == 'subategorias') active @endif">
                         <i class="nav-icon fas fa-folder"></i>
                         <p>
                             Subategorías
@@ -171,10 +171,19 @@
                 </li>
 
                 <li class="nav-item">
-                    <a href="{{ url('admin/productos/listar') }}" class="nav-link @if (Request::segment(2) == 'productos') active @endif"">
+                    <a href="{{ url('admin/productos/listar') }}" class="nav-link @if (Request::segment(2) == 'productos') active @endif">
                         <i class="nav-icon fas fa-box"></i>
                         <p>
                             Productos
+                        </p>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="{{ url('admin/marcas/listar') }}" class="nav-link @if (Request::segment(2) == 'marcas') active @endif">
+                        <i class="nav-icon fas fa-trademark"></i>
+                        <p>
+                            Marcas
                         </p>
                     </a>
                 </li>

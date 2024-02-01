@@ -9,10 +9,10 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>Agregar una nueva sub categoría</h1>
+                        <h1>Agregar una nueva marca</h1>
                     </div>
                     <div class="col-sm-6" style="text-align: right">
-                        <a href="{{ url('admin/subcategorias/listar') }}" class="btn btn-primary">
+                        <a href="{{ url('admin/marcas/listar') }}" class="btn btn-primary">
                             <i class="fa-solid fa-arrow-left"></i>
                         </a>
                     </div>
@@ -29,18 +29,9 @@
                                 {{ csrf_field() }}
                                 <div class="card-body">
                                     <div class="form-group">
-                                        <label>Elegir categoría <span style="color: red">*</span></label>
-                                        <select class="form-control" name="categoria_id">
-                                            <option value="">Seleccionar</option>
-                                            @foreach ($getCategorias as $valor)
-                                                <option value="{{ $valor->id }}">{{ $valor->nombre }}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Nombre de la sub categoría <span style="color: red">*</span></label>
+                                        <label>Nombre <span style="color: red">*</span></label>
                                         <input type="text" class="form-control" value="{{old('nombre')}}" required name="nombre"
-                                            placeholder="Nombre sub categoría">
+                                            placeholder="Nombre de la marca">
                                     </div>
                                     <div class="form-group">
                                         <label>Slug <span style="color: red">*</span></label>
