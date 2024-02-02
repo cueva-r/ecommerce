@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\CategoriaController;
+use App\Http\Controllers\Admin\ColorController;
 use App\Http\Controllers\Admin\MarcaController;
 use App\Http\Controllers\Admin\SubCategoriaController;
 use App\Http\Controllers\Admin\ProductoController;
@@ -69,6 +70,14 @@ Route::group(['middleware' => 'admin'], function () {
     Route::get('admin/marcas/editar/{id}', [MarcaController::class, 'editar']);
     Route::post('admin/marcas/editar/{id}', [MarcaController::class, 'actualizar']);
     Route::get('admin/marcas/eliminar/{id}', [MarcaController::class, 'eliminar']);
+
+    //Ruta para los colores
+    Route::get('admin/colores/listar', [ColorController::class, 'listar']);
+    Route::get('admin/colores/agregar', [ColorController::class, 'agregar']);
+    Route::post('admin/colores/agregar', [ColorController::class, 'insertar']);
+    Route::get('admin/colores/editar/{id}', [ColorController::class, 'editar']);
+    Route::post('admin/colores/editar/{id}', [ColorController::class, 'actualizar']);
+    Route::get('admin/colores/eliminar/{id}', [ColorController::class, 'eliminar']);
 });
 
 Route::get('/', function () {

@@ -162,7 +162,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a href="{{ url('admin/subcategorias/listar') }}" class="nav-link @if (Request::segment(2) == 'subategorias') active @endif">
+                    <a href="{{ url('admin/subcategorias/listar') }}" class="nav-link @if (Request::segment(2) == 'subcategorias') active @endif">
                         <i class="nav-icon fas fa-folder"></i>
                         <p>
                             Subategorías
@@ -184,6 +184,15 @@
                         <i class="nav-icon fas fa-trademark"></i>
                         <p>
                             Marcas
+                        </p>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="{{ url('admin/colores/listar') }}" class="nav-link @if (Request::segment(2) == 'colores') active @endif">
+                        <i class="nav-icon fas fa-palette"></i>
+                        <p>
+                            Colores
                         </p>
                     </a>
                 </li>
