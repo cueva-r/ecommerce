@@ -6,7 +6,9 @@ use App\Http\Controllers\Controller;
 use App\Models\CategoriaModel;
 use App\Models\ColorModel;
 use App\Models\MarcaModel;
+use App\Models\ProductoColorModel;
 use App\Models\ProductoModel;
+use App\Models\SubCategoriaModel;
 use Illuminate\Http\Request;
 
 use Str;
@@ -57,8 +59,48 @@ class ProductoController extends Controller
             $data['getMarcas'] = MarcaModel::getRecordActive();
             $data['getColores'] = ColorModel::getRecordActive();
             $data['productos'] = $productos;
+
+            $data['get_subcategorias'] = SubCategoriaModel::getRecordSubCategoria($productos->categoria_id);
+
             $data['header_title'] = 'Editar productos';
             return view('admin.productos.editar', $data);
+        }
+    }
+
+    public function actualizar($producto_id, Request $request)
+    {
+        $productos = ProductoModel::getSingle($producto_id);
+        if (!empty($productos)) {
+            $productos->titulo = trim($request->titulo);
+            $productos->sku = trim($request->sku);
+            $productos->categoria_id = trim($request->categoria_id);
+            $productos->subcategoria_id = trim($request->subcategoria_id);
+            $productos->marca_id = trim($request->marca_id);
+            $productos->precio = trim($request->precio);
+            $productos->precio_anterior = trim($request->precio_anterior);
+            $productos->descripcion_corta = trim($request->descripcion_corta);
+            $productos->descripcion = trim($request->descripcion);
+            $productos->informacion_adicional = trim($request->informacion_adicional);
+            $productos->envios_devoluciones = trim($request->envios_devoluciones);
+            $productos->estado = trim($request->estado);
+            $productos->save();
+
+            ProductoColorModel::deleteRecord($productos->id);
+
+            if(!empty($request->color_id))
+            {
+                foreach ($request->color_id as $color_id) 
+                {
+                    $color = new ProductoColorModel;
+                    $color->color_id = $color_id;
+                    $color->producto_id = $productos->id;
+                    $color->save();
+                }
+            }
+
+            return redirect()->back()->with("success", "Producto editado exitosamente");
+        } else {
+            abort(404);
         }
     }
 }

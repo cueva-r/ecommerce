@@ -26,6 +26,9 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-12">
+
+                        @include('admin.layouts._message')
+
                         <div class="card card-primary">
                             <form action="" method="POST">
                                 {{ csrf_field() }}
@@ -45,7 +48,7 @@
                                             <div class="form-group">
                                                 <label>SKU <span style="color: red">*</span></label>
                                                 <input type="text" class="form-control"
-                                                    value="{{ old('sku', $productos->sku) }}" required name="titulo"
+                                                    value="{{ old('sku', $productos->sku) }}" required name="sku"
                                                     placeholder="SKU del producto">
                                             </div>
                                         </div>
@@ -53,10 +56,11 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>Categoría <span style="color: red">*</span></label>
-                                                <select name="categoria_id" id="changeCategoria" class="form-control">
+                                                <select name="categoria_id" required id="changeCategoria" class="form-control">
                                                     <option value="">Seleccionar</option>
                                                     @foreach ($getCategorias as $categorias)
-                                                        <option value="{{ $categorias->id }}">{{ $categorias->nombre }}
+                                                        <option {{ ($productos->categoria_id == $categorias->id) ? 'selected' : '' }} value="{{ $categorias->id }}">
+                                                            {{ $categorias->nombre }}
                                                         </option>
                                                     @endforeach
                                                 </select>
@@ -66,8 +70,13 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>Sub categoría <span style="color: red">*</span></label>
-                                                <select name="subcategoria_id" id="getSubcategoria" class="form-control">
+                                                <select name="subcategoria_id" required id="getSubcategoria" class="form-control">
                                                     <option value="">Seleccionar</option>
+                                                    @foreach ($get_subcategorias as $subCategorias)
+                                                        <option {{ ($productos->subcategoria_id == $subCategorias->id) ? 'selected' : '' }} value="{{ $subCategorias->id }}">
+                                                            {{ $subCategorias->nombre }}
+                                                        </option>
+                                                    @endforeach
                                                 </select>
                                             </div>
                                         </div>
@@ -78,7 +87,7 @@
                                                 <select name="marca_id" class="form-control">
                                                     <option value="">Seleccionar</option>
                                                     @foreach ($getMarcas as $marcas)
-                                                        <option value="{{ $marcas->id }}">{{ $marcas->nombre }}</option>
+                                                        <option {{ ($productos->marca_id == $marcas->id) ? 'selected' : '' }} value="{{ $marcas->id }}">{{ $marcas->nombre }}</option>
                                                     @endforeach
                                                 </select>
                                             </div>
@@ -88,9 +97,9 @@
                                             <div class="form-group">
                                                 <label>Estado <span style="color: red">*</span></label>
                                                 <select class="form-control" required name="estado">
-                                                    <option {{ old('estado') == 0 ? 'selected' : '' }} value="0">
+                                                    <option {{ ($productos->estado == 0) ? 'selected' : '' }} value="0">
                                                         Activo</option>
-                                                    <option {{ old('estado') == 1 ? 'selected' : '' }} value="1">
+                                                    <option {{ ($productos->estado == 1) ? 'selected' : '' }} value="1">
                                                         Inactivo</option>
                                                 </select>
                                             </div>
@@ -104,9 +113,20 @@
                                             <div class="form-group">
                                                 <label>Color <span style="color: red">*</span></label>
                                                 @foreach ($getColores as $colores)
+                                                    @php
+                                                        $checked = '';
+                                                    @endphp
+
+                                                    @foreach ($productos->getColor as $pcolor)
+                                                        @if ($pcolor->color_id == $colores->id)
+                                                        @php
+                                                            $checked = 'checked';
+                                                        @endphp
+                                                        @endif
+                                                    @endforeach
                                                     <div>
                                                         <label>
-                                                            <input type="checkbox" name="color_id[]" value="{{$colores->id}}"> {{$colores->nombre}}
+                                                            <input {{ $checked }} type="checkbox" name="color_id[]" value="{{ $colores->id }}"> {{ $colores->nombre }}
                                                         </label>
                                                     </div>
                                                 @endforeach
@@ -156,7 +176,7 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>Precio (S/.) <span style="color: red">*</span></label>
-                                                <input type="text" class="form-control" value="" required
+                                                <input type="text" class="form-control" value="{{ $productos->precio }}" required
                                                     name="precio" placeholder="Precio del producto">
                                             </div>
                                         </div>
@@ -164,8 +184,8 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>Precio anterior (S/.) <span style="color: red">*</span></label>
-                                                <input type="text" class="form-control" value="" required
-                                                    name="precio" placeholder="Precio anterior del producto">
+                                                <input type="text" class="form-control" value="{{ $productos->precio_anterior }}" required
+                                                    name="precio_anterior" placeholder="Precio anterior del producto">
                                             </div>
                                         </div>
                                     </div>
@@ -174,7 +194,7 @@
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label>Descripción corta <span style="color: red">*</span></label>
-                                                <textarea name="descipcion_corta" class="form-control editor" placeholder="Descripción corta del producto"></textarea>
+                                                <textarea name="descripcion_corta" class="form-control editor" placeholder="Descripción corta del producto">{{ $productos->descripcion_corta }}</textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -183,7 +203,7 @@
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label>Descripción <span style="color: red">*</span></label>
-                                                <textarea name="descipcion" class="form-control editor" placeholder="Descripción del producto"></textarea>
+                                                <textarea name="descripcion" class="form-control editor" placeholder="Descripción del producto">{{ $productos->descripcion }}</textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -192,7 +212,7 @@
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label>Información adicional <span style="color: red">*</span></label>
-                                                <textarea name="informacion_adicional" class="form-control editor" placeholder="Información adicional del producto"></textarea>
+                                                <textarea name="informacion_adicional" class="form-control editor" placeholder="Información adicional del producto">{{ $productos->informacion_adicional }}</textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -201,7 +221,7 @@
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label>Envíos y devoluciones <span style="color: red">*</span></label>
-                                                <textarea name="envios_devoluciones" class="form-control editor" placeholder="Envíos y devoluciones del producto"></textarea>
+                                                <textarea name="envios_devoluciones" class="form-control editor" placeholder="Envíos y devoluciones del producto">{{ $productos->envios_devoluciones }}</textarea>
                                             </div>
                                         </div>
                                     </div>
