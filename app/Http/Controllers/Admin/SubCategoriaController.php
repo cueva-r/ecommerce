@@ -13,7 +13,7 @@ class SubCategoriaController extends Controller
     public function listar()
     {
         $data['getRecord'] = SubCategoriaModel::getRecord();
-        $data['header_title'] = 'Subategorías';
+        $data['header_title'] = 'Subcategorías';
         return view('admin.subcategorias.list', $data);
     }
 
@@ -78,5 +78,19 @@ class SubCategoriaController extends Controller
         $categoria->save();
 
         return redirect()->back()->with('success', 'Sub categoría eliminada exitosamente');
+    }
+
+    public function get_subcategorias(Request $request)
+    {
+        $categoria_id = $request->id;
+        $get_subcategorias = SubCategoriaModel::getRecordSubCategoria($categoria_id);
+        $html = '';
+        $html .= '<option value="">Seleccionar</option>';
+        foreach ($get_subcategorias as $valor) {
+            $html .= '<option value="' . $valor->id . '">' . $valor->nombre . '</option>';
+        }
+
+        $json['html'] = $html;
+        echo json_encode($json);
     }
 }

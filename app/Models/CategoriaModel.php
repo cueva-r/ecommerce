@@ -24,4 +24,14 @@ class CategoriaModel extends Model
         ->orderBy('categorias.id', 'desc')
         ->paginate(20);
     }
+
+    static function getRecordActive()
+    {
+        return self::select('categorias.*')
+        ->join('users', 'users.id', '=', 'categorias.created_by')
+        ->where('categorias.esta_eliminado', '=', 0)
+        ->where('categorias.estado', '=', 0)
+        ->orderBy('categorias.nombre', 'asc')
+        ->get();
+    }
 }

@@ -57,6 +57,8 @@ Route::group(['middleware' => 'admin'], function () {
     Route::post('admin/subcategorias/editar/{id}', [SubCategoriaController::class, 'actualizar']);
     Route::get('admin/subcategorias/eliminar/{id}', [SubCategoriaController::class, 'eliminar']);
 
+    Route::post('admin/get_subcategorias', [SubCategoriaController::class, 'get_subcategorias']);
+
     // Ruta para los productos
     Route::get('admin/productos/listar', [ProductoController::class, 'listar']);
     Route::get('admin/productos/agregar', [ProductoController::class, 'agregar']);

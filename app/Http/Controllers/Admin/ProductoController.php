@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\CategoriaModel;
+use App\Models\ColorModel;
+use App\Models\MarcaModel;
 use App\Models\ProductoModel;
 use Illuminate\Http\Request;
 
@@ -14,6 +16,7 @@ class ProductoController extends Controller
 {
     public function listar()
     {
+        $data['getRecord'] = ProductoModel::getRecord();
         $data['header_title'] = 'Productos';
         return view('admin.productos.list', $data);
     }
@@ -43,13 +46,16 @@ class ProductoController extends Controller
             $productos->save();
         }
 
-        return redirect('admin/productos/editar' . $productos->id);
+        return redirect('admin/productos/editar/' . $productos->id);
     }
 
     public function editar($producto_id)
     {
         $productos = ProductoModel::getSingle($producto_id);
         if (!empty($productos)) {
+            $data['getCategorias'] = CategoriaModel::getRecordActive();
+            $data['getMarcas'] = MarcaModel::getRecordActive();
+            $data['getColores'] = ColorModel::getRecordActive();
             $data['productos'] = $productos;
             $data['header_title'] = 'Editar productos';
             return view('admin.productos.editar', $data);

@@ -5,7 +5,6 @@
 
 @section('content')
     <div class="content-wrapper">
-
         <section class="content-header">
             <div class="container-fluid">
                 <div class="row mb-2">
@@ -37,9 +36,6 @@
                                             <th>#</th>
                                             <th>Nombre</th>
                                             <th>Slug</th>
-                                            <th>Meta título</th>
-                                            <th>Meta descripción</th>
-                                            <th>Meta palabras clave</th>
                                             <th>Creado por</th>
                                             <th>Estado</th>
                                             <th>Fecha creación</th>
@@ -47,14 +43,33 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        
+                                        @foreach ($getRecord as $valor)
+                                            <tr>
+                                                <td>{{ $valor->id }}</td>
+                                                <td>{{ $valor->titulo }}</td>
+                                                <td>{{ $valor->slug }}</td>
+                                                <td>{{ $valor->creado_por_nombre }}</td>
+                                                <td>{{ $valor->estado == 0 ? 'Activo' : 'Inactivo' }}</td>
+                                                <td>{{ date('d-m-Y', strtotime($valor->created_at)) }}</td>
+                                                <td>
+                                                    <a href="{{ url('admin/productos/editar/' . $valor->id) }}"
+                                                        class="btn btn-outline-primary">
+                                                        <i class="fa-solid fa-pen-to-square"></i>
+                                                    </a>
+                                                    <a href="{{ url('admin/productos/eliminar/' . $valor->id) }}"
+                                                        class="btn btn-outline-danger">
+                                                        <i class="fa-solid fa-trash"></i>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        @endforeach
                                     </tbody>
                                 </table>
 
-                                {{-- <div style="padding: 10px; float: right;">
+                                <div style="padding: 10px; float: right;">
                                     {!! $getRecord->appends(Illuminate\Support\Facades\Request::except('page'))->
                                     links() !!}
-                                </div> --}}
+                                </div>
                                 
                             </div>
                         </div>
