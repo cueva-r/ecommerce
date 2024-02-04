@@ -65,6 +65,9 @@ Route::group(['middleware' => 'admin'], function () {
     Route::post('admin/productos/agregar', [ProductoController::class, 'insertar']);
     Route::get('admin/productos/editar/{id}', [ProductoController::class, 'editar']);
     Route::post('admin/productos/editar/{id}', [ProductoController::class, 'actualizar']);
+    Route::get('admin/productos/eliminar_imagen/{id}', [ProductoController::class, 'eliminar_imagen']);
+
+    Route::post('admin/producto_imagen_sortable', [ProductoController::class, 'producto_imagen_sortable']);
 
     //Ruta para las marcas
     Route::get('admin/marcas/listar', [MarcaController::class, 'listar']);

@@ -134,4 +134,33 @@ class ProductoController extends Controller
             abort(404);
         }
     }
+
+    public function eliminar_imagen($id)
+    {
+        $imagen = ProductoImagenModel::getSingle($id);
+        if (!empty($imagen->getLogo())) {
+            unlink('upload/productos/' . $imagen->nombre_imagen);
+        }
+
+        $imagen->delete();
+
+        return redirect()->back()->with("success", "Imágen del producto eliminado exitosamente");
+    }
+
+    public function producto_imagen_sortable(Request $request)
+    {
+        if (!empty($request->imagen_id)) {
+            $i = 1;
+            foreach ($request->imagen_id as $imagen_id) {
+                $imagen = ProductoImagenModel::getSingle($imagen_id);
+                $imagen->ordenar_por = $i;
+                $imagen->save();
+
+                $i++;
+            }
+        }
+
+        $json['success'] = true;
+        echo json_encode($json);
+    }
 }

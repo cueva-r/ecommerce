@@ -3,6 +3,39 @@
 @section('style')
     <!-- summernote -->
     <link rel="stylesheet" href="{{ url('public/assets/plugins/summernote/summernote-bs4.min.css') }}">
+
+    <style>
+        .image-container {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .blur-image {
+            filter: blur(0);
+            /* Ajustar el desenfoque inicial */
+            transition: filter 0.3s ease;
+            /* Agregar transición para el efecto de desenfoque */
+        }
+
+        .image-container:hover .blur-image {
+            filter: blur(5px);
+            /* Aplicar desenfoque a la imagen cuando el cursor esté sobre ella */
+        }
+
+        .trash-btn {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: none;
+            /* Ocultar el botón por defecto */
+        }
+
+        .image-container:hover .trash-btn {
+            display: inline-block;
+            /* Mostrar el botón cuando el cursor esté sobre la imagen */
+        }
+    </style>
 @endsection
 
 @section('content')
@@ -93,8 +126,7 @@
                                                 <select name="marca_id" class="form-control">
                                                     <option value="">Seleccionar</option>
                                                     @foreach ($getMarcas as $marcas)
-                                                        <option
-                                                            {{ $productos->marca_id == $marcas->id ? 'selected' : '' }}
+                                                        <option {{ $productos->marca_id == $marcas->id ? 'selected' : '' }}
                                                             value="{{ $marcas->id }}">{{ $marcas->nombre }}</option>
                                                     @endforeach
                                                 </select>
@@ -105,11 +137,9 @@
                                             <div class="form-group">
                                                 <label>Estado <span style="color: red">*</span></label>
                                                 <select class="form-control" required name="estado">
-                                                    <option {{ $productos->estado == 0 ? 'selected' : '' }}
-                                                        value="0">
+                                                    <option {{ $productos->estado == 0 ? 'selected' : '' }} value="0">
                                                         Activo</option>
-                                                    <option {{ $productos->estado == 1 ? 'selected' : '' }}
-                                                        value="1">
+                                                    <option {{ $productos->estado == 1 ? 'selected' : '' }} value="1">
                                                         Inactivo</option>
                                                 </select>
                                             </div>
@@ -245,6 +275,26 @@
                                         </div>
                                     </div>
 
+                                    @if (!empty($productos->getImagen->count()))
+                                        <div class="row" id="sortable">
+                                            @foreach ($productos->getImagen as $imagen)
+                                                @if (!empty($imagen->getLogo()))
+                                                    <div class="col-md-1 sortable_imagen" id="{{ $imagen->id }}">
+                                                        <div class="image-container">
+                                                            <img style="width: 100%; height: 100px;"
+                                                                src="{{ $imagen->getLogo() }}" class="blur-image">
+                                                            <a onclick="return confirm('Estás seguro de elimianr?')"
+                                                                href="{{ url('admin/productos/eliminar_imagen/' . $imagen->id) }}"
+                                                                class="btn btn-outline-danger btn-sm trash-btn">
+                                                                <i class="fas fa-trash"></i>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                @endif
+                                            @endforeach
+                                        </div>
+                                    @endif
+
                                     <hr>
 
                                     <div class="row">
@@ -300,8 +350,35 @@
 @section('script')
     <!-- Summernote -->
     <script src="{{ url('public/assets/plugins/summernote/summernote-bs4.min.js') }}"></script>
+    <script src="{{ url('public/sortable/jquery-ui.js') }}"></script>
 
     <script>
+        $(document).ready(function() {
+            $("#sortable").sortable({
+                update: function(event, ui) {
+                    var imagen_id = new Array();
+                    $('.sortable_imagen').each(function() {
+                        var id = $(this).attr('id');
+                        imagen_id.push(id);
+                    });
+
+                    $.ajax({
+                        type: "POST",
+                        url: "{{ url('admin/producto_imagen_sortable') }}",
+                        data: {
+                            "imagen_id": imagen_id,
+                            "_token": "{{ csrf_token() }}"
+                        },
+                        dataType: "json",
+                        success: function(data) {
+                            
+                        },
+                        error: function(data) {}
+                    });
+                }
+            });
+        });
+
         // Summernote
         $('.editor').summernote({
             height: 200
@@ -311,18 +388,18 @@
 
         $('body').delegate(".agregarTamano", "click", function() {
             var html = '<tr id="eliminarTamano' + i + '">\n\
-                    <td>\n\
-                        <input type="text" name="tamano[' + i + '][nombre]" placeholder="Nombre" class="form-control">\n\
-                    </td>\n\
-                    <td>\n\
-                        <input type="text" name="tamano[' + i + '][precio]" placeholder="Precio" class="form-control">\n\
-                    </td>\n\
-                    <td>\n\
-                        <button type="button" id="' + i + '" class="btn btn-outline-danger eliminarTamano">\n\
-                            <i class="fa-solid fa-trash"></i>\n\
-                        </button>\n\
-                    </td>\n\
-                </tr>';
+                                    <td>\n\
+                                        <input type="text" name="tamano[' + i + '][nombre]" placeholder="Nombre" class="form-control">\n\
+                                    </td>\n\
+                                    <td>\n\
+                                        <input type="text" name="tamano[' + i + '][precio]" placeholder="Precio" class="form-control">\n\
+                                    </td>\n\
+                                    <td>\n\
+                                        <button type="button" id="' + i + '" class="btn btn-outline-danger eliminarTamano">\n\
+                                            <i class="fa-solid fa-trash"></i>\n\
+                                        </button>\n\
+                                    </td>\n\
+                                </tr>';
             i++;
 
             $('#appendTamano').append(html);
@@ -347,6 +424,15 @@
                     $('#getSubcategoria').html(data.html);
                 },
                 error: function(data) {}
+            });
+        });
+
+        // Si estás utilizando jQuery, puedes hacer lo siguiente para mostrar el botón al pasar el cursor sobre la imagen:
+        $(document).ready(function() {
+            $('.image-container').hover(function() {
+                $(this).find('.trash-btn').show();
+            }, function() {
+                $(this).find('.trash-btn').hide();
             });
         });
     </script>

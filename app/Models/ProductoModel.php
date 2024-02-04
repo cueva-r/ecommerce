@@ -39,4 +39,9 @@ class ProductoModel extends Model
     {
         return $this->hasMany(ProductoTamanoModel::class, "producto_id");
     }
+
+    public function getImagen()
+    {
+        return $this->hasMany(ProductoImagenModel::class, "producto_id")->orderBy('ordenar_por', 'asc');
+    }
 }
