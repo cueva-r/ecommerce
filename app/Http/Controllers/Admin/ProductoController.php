@@ -7,7 +7,9 @@ use App\Models\CategoriaModel;
 use App\Models\ColorModel;
 use App\Models\MarcaModel;
 use App\Models\ProductoColorModel;
+use App\Models\ProductoImagenModel;
 use App\Models\ProductoModel;
+use App\Models\ProductoTamanoModel;
 use App\Models\SubCategoriaModel;
 use Illuminate\Http\Request;
 
@@ -87,14 +89,43 @@ class ProductoController extends Controller
 
             ProductoColorModel::deleteRecord($productos->id);
 
-            if(!empty($request->color_id))
-            {
-                foreach ($request->color_id as $color_id) 
-                {
+            if (!empty($request->color_id)) {
+                foreach ($request->color_id as $color_id) {
                     $color = new ProductoColorModel;
                     $color->color_id = $color_id;
                     $color->producto_id = $productos->id;
                     $color->save();
+                }
+            }
+
+            ProductoTamanoModel::deleteRecord($productos->id);
+
+            if (!empty($request->tamano)) {
+                foreach ($request->tamano as $tamano) {
+                    if (!empty($tamano['nombre'])) {
+                        $guardarTamano = new ProductoTamanoModel;
+                        $guardarTamano->nombre = $tamano['nombre'];
+                        $guardarTamano->precio = !empty($tamano['precio']) ? $tamano['precio'] : 0;
+                        $guardarTamano->producto_id = $productos->id;
+                        $guardarTamano->save();
+                    }
+                }
+            }
+
+            if ($request->file('imagen')) {
+                foreach ($request->file('imagen') as $valor) {
+                    if ($valor->isValid()) {
+                        $ext = $valor->getClientOriginalExtension();
+                        $randomStr = $productos->id . Str::random(20);
+                        $filename = strtolower($randomStr) . '.' . $ext;
+                        $valor->move('upload/productos/', $filename);
+
+                        $imagenupload = new ProductoImagenModel;
+                        $imagenupload->nombre_imagen = $filename;
+                        $imagenupload->imagen_extension = $ext;
+                        $imagenupload->producto_id = $productos->id;
+                        $imagenupload->save();
+                    }
                 }
             }
 

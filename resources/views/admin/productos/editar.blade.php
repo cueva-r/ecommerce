@@ -1,8 +1,8 @@
 @extends('admin.layouts.app')
 
 @section('style')
-<!-- summernote -->
-<link rel="stylesheet" href="{{url('public/assets/plugins/summernote/summernote-bs4.min.css')}}">
+    <!-- summernote -->
+    <link rel="stylesheet" href="{{ url('public/assets/plugins/summernote/summernote-bs4.min.css') }}">
 @endsection
 
 @section('content')
@@ -30,7 +30,7 @@
                         @include('admin.layouts._message')
 
                         <div class="card card-primary">
-                            <form action="" method="POST">
+                            <form action="" method="POST" enctype="multipart/form-data">
                                 {{ csrf_field() }}
                                 <div class="card-body">
                                     <div class="row">
@@ -56,10 +56,13 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>Categoría <span style="color: red">*</span></label>
-                                                <select name="categoria_id" required id="changeCategoria" class="form-control">
+                                                <select name="categoria_id" required id="changeCategoria"
+                                                    class="form-control">
                                                     <option value="">Seleccionar</option>
                                                     @foreach ($getCategorias as $categorias)
-                                                        <option {{ ($productos->categoria_id == $categorias->id) ? 'selected' : '' }} value="{{ $categorias->id }}">
+                                                        <option
+                                                            {{ $productos->categoria_id == $categorias->id ? 'selected' : '' }}
+                                                            value="{{ $categorias->id }}">
                                                             {{ $categorias->nombre }}
                                                         </option>
                                                     @endforeach
@@ -70,10 +73,13 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>Sub categoría <span style="color: red">*</span></label>
-                                                <select name="subcategoria_id" required id="getSubcategoria" class="form-control">
+                                                <select name="subcategoria_id" required id="getSubcategoria"
+                                                    class="form-control">
                                                     <option value="">Seleccionar</option>
                                                     @foreach ($get_subcategorias as $subCategorias)
-                                                        <option {{ ($productos->subcategoria_id == $subCategorias->id) ? 'selected' : '' }} value="{{ $subCategorias->id }}">
+                                                        <option
+                                                            {{ $productos->subcategoria_id == $subCategorias->id ? 'selected' : '' }}
+                                                            value="{{ $subCategorias->id }}">
                                                             {{ $subCategorias->nombre }}
                                                         </option>
                                                     @endforeach
@@ -87,7 +93,9 @@
                                                 <select name="marca_id" class="form-control">
                                                     <option value="">Seleccionar</option>
                                                     @foreach ($getMarcas as $marcas)
-                                                        <option {{ ($productos->marca_id == $marcas->id) ? 'selected' : '' }} value="{{ $marcas->id }}">{{ $marcas->nombre }}</option>
+                                                        <option
+                                                            {{ $productos->marca_id == $marcas->id ? 'selected' : '' }}
+                                                            value="{{ $marcas->id }}">{{ $marcas->nombre }}</option>
                                                     @endforeach
                                                 </select>
                                             </div>
@@ -97,9 +105,11 @@
                                             <div class="form-group">
                                                 <label>Estado <span style="color: red">*</span></label>
                                                 <select class="form-control" required name="estado">
-                                                    <option {{ ($productos->estado == 0) ? 'selected' : '' }} value="0">
+                                                    <option {{ $productos->estado == 0 ? 'selected' : '' }}
+                                                        value="0">
                                                         Activo</option>
-                                                    <option {{ ($productos->estado == 1) ? 'selected' : '' }} value="1">
+                                                    <option {{ $productos->estado == 1 ? 'selected' : '' }}
+                                                        value="1">
                                                         Inactivo</option>
                                                 </select>
                                             </div>
@@ -119,14 +129,15 @@
 
                                                     @foreach ($productos->getColor as $pcolor)
                                                         @if ($pcolor->color_id == $colores->id)
-                                                        @php
-                                                            $checked = 'checked';
-                                                        @endphp
+                                                            @php
+                                                                $checked = 'checked';
+                                                            @endphp
                                                         @endif
                                                     @endforeach
                                                     <div>
                                                         <label>
-                                                            <input {{ $checked }} type="checkbox" name="color_id[]" value="{{ $colores->id }}"> {{ $colores->nombre }}
+                                                            <input {{ $checked }} type="checkbox" name="color_id[]"
+                                                                value="{{ $colores->id }}"> {{ $colores->nombre }}
                                                         </label>
                                                     </div>
                                                 @endforeach
@@ -139,7 +150,7 @@
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="form-group">
-                                                <label>Magnitud <span style="color: red">*</span></label>
+                                                <label>Tamaño <span style="color: red">*</span></label>
                                                 <div>
                                                     <table class="table table-striped">
                                                         <thead>
@@ -149,16 +160,45 @@
                                                                 <th>Acción</th>
                                                             </tr>
                                                         </thead>
-                                                        <tbody id="appendMagnitud">
+                                                        <tbody id="appendTamano">
+                                                            @php
+                                                                $i_t = 1;
+                                                            @endphp
+                                                            @foreach ($productos->getTamano as $tamano)
+                                                                <tr id="eliminarTamano{{ $i_t }}">
+                                                                    <td>
+                                                                        <input type="text" value="{{ $tamano->nombre }}"
+                                                                            name="tamano[{{ $i_t }}][nombre]"
+                                                                            placeholder="Nombre" class="form-control">
+                                                                    </td>
+                                                                    <td>
+                                                                        <input type="text" value="{{ $tamano->precio }}"
+                                                                            name="tamano[{{ $i_t }}][precio]"
+                                                                            placeholder="Precio" class="form-control">
+                                                                    </td>
+                                                                    <td style="width: 100px">
+                                                                        <button type="button" id="{{ $i_t }}"
+                                                                            class="btn btn-outline-danger eliminarTamano">
+                                                                            <i class="fa-solid fa-trash"></i>
+                                                                        </button>
+                                                                    </td>
+                                                                </tr>
+                                                                @php
+                                                                    $i_t++;
+                                                                @endphp
+                                                            @endforeach
                                                             <tr>
                                                                 <td>
-                                                                    <input type="text" placeholder="Nombre" name="" class="form-control">
+                                                                    <input type="text" name="tamano[100][nombre]"
+                                                                        placeholder="Nombre" class="form-control">
                                                                 </td>
                                                                 <td>
-                                                                    <input type="text" name="" placeholder="Precio" class="form-control">
+                                                                    <input type="text" name="tamano[100][precio]"
+                                                                        placeholder="Precio" class="form-control">
                                                                 </td>
                                                                 <td style="width: 100px">
-                                                                    <button type="button" class="btn btn-outline-success agregarMagnitud">
+                                                                    <button type="button"
+                                                                        class="btn btn-outline-success agregarTamano">
                                                                         <i class="fa-solid fa-plus"></i>
                                                                     </button>
                                                                 </td>
@@ -176,19 +216,36 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>Precio (S/.) <span style="color: red">*</span></label>
-                                                <input type="text" class="form-control" value="{{ $productos->precio }}" required
-                                                    name="precio" placeholder="Precio del producto">
+                                                <input type="text" class="form-control"
+                                                    value="{{ !empty($productos->precio) ? $productos->precio : '' }}"
+                                                    required name="precio" placeholder="Precio del producto">
                                             </div>
                                         </div>
 
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>Precio anterior (S/.) <span style="color: red">*</span></label>
-                                                <input type="text" class="form-control" value="{{ $productos->precio_anterior }}" required
-                                                    name="precio_anterior" placeholder="Precio anterior del producto">
+                                                <input type="text" class="form-control"
+                                                    value="{{ !empty($productos->precio_anterior) ? $productos->precio_anterior : '' }}"
+                                                    required name="precio_anterior"
+                                                    placeholder="Precio anterior del producto">
                                             </div>
                                         </div>
                                     </div>
+
+                                    <hr>
+
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label>Imágen <span style="color: red">*</span></label>
+                                                <input type="file" class="form-control" style="padding: 5px"
+                                                    name="imagen[]" id="" multiple accept="image/*">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <hr>
 
                                     <div class="row">
                                         <div class="col-md-12">
@@ -241,41 +298,39 @@
 @endsection
 
 @section('script')
-
     <!-- Summernote -->
-    <script src="{{url('public/assets/plugins/summernote/summernote-bs4.min.js')}}"></script>
+    <script src="{{ url('public/assets/plugins/summernote/summernote-bs4.min.js') }}"></script>
 
     <script>
-
         // Summernote
         $('.editor').summernote({
             height: 200
         });
 
-        var i = 1000;
+        var i = 101;
 
-        $('body').delegate(".agregarMagnitud", "click", function(){
-            var html = '<tr id="eliminarMagnitud'+i+'">\n\
-                <td>\n\
-                    <input type="text" name="" placeholder="Nombre" class="form-control">\n\
-                </td>\n\
-                <td>\n\
-                    <input type="text" name="" placeholder="Precio" class="form-control">\n\
-                </td>\n\
-                <td>\n\
-                    <button type="button" id="'+i+'" class="btn btn-outline-danger eliminarMagnitud">\n\
-                        <i class="fa-solid fa-trash"></i>\n\
-                    </button>\n\
-                </td>\n\
-            </tr>';
+        $('body').delegate(".agregarTamano", "click", function() {
+            var html = '<tr id="eliminarTamano' + i + '">\n\
+                    <td>\n\
+                        <input type="text" name="tamano[' + i + '][nombre]" placeholder="Nombre" class="form-control">\n\
+                    </td>\n\
+                    <td>\n\
+                        <input type="text" name="tamano[' + i + '][precio]" placeholder="Precio" class="form-control">\n\
+                    </td>\n\
+                    <td>\n\
+                        <button type="button" id="' + i + '" class="btn btn-outline-danger eliminarTamano">\n\
+                            <i class="fa-solid fa-trash"></i>\n\
+                        </button>\n\
+                    </td>\n\
+                </tr>';
             i++;
 
-            $('#appendMagnitud').append(html);
+            $('#appendTamano').append(html);
         });
 
-        $('body').delegate('.eliminarMagnitud', 'click', function(){
+        $('body').delegate('.eliminarTamano', 'click', function() {
             var id = $(this).attr('id');
-            $('#eliminarMagnitud' + id).remove();
+            $('#eliminarTamano' + id).remove();
         });
 
         $('body').delegate('#changeCategoria', 'change', function(e) {

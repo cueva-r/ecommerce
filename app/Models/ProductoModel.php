@@ -34,4 +34,9 @@ class ProductoModel extends Model
     {
         return $this->hasMany(ProductoColorModel::class, "producto_id");
     }
+
+    public function getTamano()
+    {
+        return $this->hasMany(ProductoTamanoModel::class, "producto_id");
+    }
 }
