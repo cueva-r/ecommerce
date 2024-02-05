@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\MarcaController;
 use App\Http\Controllers\Admin\SubCategoriaController;
 use App\Http\Controllers\Admin\ProductoController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\InicioController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -86,6 +87,8 @@ Route::group(['middleware' => 'admin'], function () {
     Route::get('admin/colores/eliminar/{id}', [ColorController::class, 'eliminar']);
 });
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [InicioController::class, 'inicio']);
+
+// Route::get('/', function () {
+//     return view('welcome');
+// });
