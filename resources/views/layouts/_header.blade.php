@@ -62,18 +62,21 @@
                                     <div class="col-md-12">
                                         <div class="menu-col">
                                             <div class="row">
-                                                @for ($i=1;$i<=5;$i++)
-                                                    <div class="col-md-4" style="margin-bottom: 20px;">
-                                                        <a href="" class="menu-title">Shop with sidebar</a>
-                                                        <ul>
-                                                            <li><a href="category-list.html">Shop List</a></li>
-                                                            <li><a href="category-2cols.html">Shop Grid 2 Columns</a></li>
-                                                            <li><a href="category.html">Shop Grid 3 Columns</a></li>
-                                                            <li><a href="category-4cols.html">Shop Grid 4 Columns</a></li>
-                                                            <li><a href="category-market.html"><span>Shop Market<span class="tip tip-new">New</span></span></a></li>
-                                                        </ul>
-                                                    </div>
-                                                @endfor
+                                                @php
+                                                    $getCategoriasHeader = App\Models\CategoriaModel::getRecordMenu();
+                                                @endphp
+                                                @foreach ($getCategoriasHeader as $valor_h_c)
+                                                    @if (!empty($valor_h_c->getSubcategoria->count()))
+                                                        <div class="col-md-4" style="margin-bottom: 20px;">
+                                                            <a href="{{ url($valor_h_c->slug) }}" class="menu-title">{{ $valor_h_c->nombre }}</a>
+                                                            <ul>
+                                                                @foreach ($valor_h_c->getSubcategoria as $valor_h_sub)
+                                                                    <li><a href="{{ url($valor_h_c->slug . '/' . $valor_h_sub->slug) }}">{{ $valor_h_sub->nombre }}</a></li>
+                                                                @endforeach
+                                                            </ul>
+                                                        </div>
+                                                    @endif
+                                                @endforeach
                                             </div>
                                         </div>
                                     </div>
@@ -89,7 +92,7 @@
                     <a href="#" class="search-toggle" role="button" title="Search"><i class="icon-search"></i></a>
                     <form action="{{ url('buscar') }}" method="get">
                         <div class="header-search-wrapper">
-                            <label for="q" class="sr-only">Search</label>
+                            <label for="q" class="sr-only">Buscar</label>
                             <input type="search" class="form-control" name="q" id="q" placeholder="Buscar aquí..." required>
                         </div>
                     </form>

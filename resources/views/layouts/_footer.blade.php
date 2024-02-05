@@ -17,10 +17,10 @@
                             <a href="https://www.instagram.com/a.rico_20/" class="social-icon" title="Instagram" target="_blank">
                                 <i class="icon-instagram"></i>
                             </a>
-                            <a href="https://github.com/cueva-r" class="social-icon" title="Youtube" target="_blank">
+                            <a href="https://github.com/cueva-r" class="social-icon" title="GitHub" target="_blank">
                                 <i class="icon-github"></i>
                             </a>
-                            <a href="https://www.linkedin.com/in/abrahamrico/" class="social-icon" title="Pinterest" target="_blank">
+                            <a href="https://www.linkedin.com/in/abrahamrico/" class="social-icon" title="Linkedin" target="_blank">
                                 <i class="icon-linkedin"></i>
                             </a>
                         </div>

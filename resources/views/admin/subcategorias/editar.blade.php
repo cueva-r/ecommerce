@@ -34,7 +34,7 @@
                                         <select class="form-control" name="categoria_id">
                                             <option value="">Seleccionar</option>
                                             @foreach ($getCategorias as $valor)
-                                                <option {{ ($valor->id = $getRecord->categoria_id) ? 'selected' : '' }} value="{{ $valor->id }}">{{ $valor->nombre }}</option>
+                                                <option {{ ($valor->id == $getRecord->categoria_id) ? 'selected' : '' }} value="{{ $valor->id }}">{{ $valor->nombre }}</option>
                                             @endforeach
                                         </select>
                                     </div>

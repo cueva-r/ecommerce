@@ -34,4 +34,20 @@ class CategoriaModel extends Model
         ->orderBy('categorias.nombre', 'asc')
         ->get();
     }
+
+    static function getRecordMenu()
+    {
+        return self::select('categorias.*')
+        ->join('users', 'users.id', '=', 'categorias.created_by')
+        ->where('categorias.esta_eliminado', '=', 0)
+        ->where('categorias.estado', '=', 0)
+        ->get();
+    }
+
+    public function getSubcategoria()
+    {
+        return $this->hasMany(SubCategoriaModel::class, "categoria_id")
+        ->where('subcategorias.estado', '=', 0)
+        ->where('subcategorias.esta_eliminado', '=', 0);
+    }
 }
