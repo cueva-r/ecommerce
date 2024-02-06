@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\ProductoController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\InicioController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProductoController as ProductoFront;
 
 /*
 |--------------------------------------------------------------------------
@@ -88,6 +89,7 @@ Route::group(['middleware' => 'admin'], function () {
 });
 
 Route::get('/', [InicioController::class, 'inicio']);
+Route::get('{categoria?}/{subcategoria?}', [ProductoFront::class, 'getCategoria']);
 
 // Route::get('/', function () {
 //     return view('welcome');

@@ -16,6 +16,14 @@ class CategoriaModel extends Model
         return self::find($id);
     }
 
+    static function getSingleSlug($slug)
+    {
+        return self::where('slug', '=', $slug)
+        ->where('categorias.esta_eliminado', '=', 0)
+        ->where('categorias.estado', '=', 0)
+        ->first();
+    }
+
     static function getRecord()
     {
         return self::select('categorias.*', 'users.name as created_by_name')

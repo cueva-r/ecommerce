@@ -8,6 +8,10 @@ class InicioController extends Controller
 {
     public function inicio()
     {
-        return view('inicio');
+        $data['meta_titulo'] = 'E-commerce';
+        $data['meta_descripcion'] = '';
+        $data['meta_p_clave'] = '';
+
+        return view('inicio', $data);
     }
 }

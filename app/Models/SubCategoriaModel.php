@@ -16,6 +16,14 @@ class SubCategoriaModel extends Model
         return self::find($id);
     }
 
+    static function getSingleSlug($slug)
+    {
+        return self::where('slug', '=', $slug)
+        ->where('subcategorias.esta_eliminado', '=', 0)
+        ->where('subcategorias.estado', '=', 0)
+        ->first();
+    }
+
     static function getRecord()
     {
         return self::select('subcategorias.*', 'users.name as created_by_name', 'categorias.nombre as category_nombre')

@@ -5,12 +5,18 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Ecommerce</title>
-    <meta name="keywords" content="">
-    <meta name="description" content="">
+    <title>{{ !empty($meta_titulo) ? $meta_titulo : '' }}</title>
+
+    @if (!empty($meta_p_clave))
+        <meta name="keywords" content="{{ $meta_p_clave }}">
+    @endif
+
+    @if (!empty($meta_descripcion))
+        <meta name="description" content="{{ $meta_descripcion }}">
+    @endif
 
     <!-- Favicon -->
-    <link rel="shortcut icon" href="assets/images/favicon.ico">
+    <link rel="shortcut icon" href="{{ url('assets/images/favicon.ico') }}">
 
     <!-- Plugins CSS File -->
     <link rel="stylesheet" href="{{ url('assets/css/bootstrap.min.css') }}">
