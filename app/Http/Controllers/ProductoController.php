@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\CategoriaModel;
+use App\Models\ProductoModel;
 use App\Models\SubCategoriaModel;
 use Illuminate\Http\Request;
 
@@ -20,6 +21,9 @@ class ProductoController extends Controller
 
             $data['getSubCategoria'] = $getSubCategoria;
             $data['getCategoria'] = $getCategoria;
+
+            $data['getProducto'] = ProductoModel::getProducto($getCategoria->id, $getSubCategoria->id);
+
             return view('productos.listar', $data);
         } else if (!empty($getCategoria)) {
             $data['meta_titulo'] = $getCategoria->meta_titulo;
@@ -27,6 +31,9 @@ class ProductoController extends Controller
             $data['meta_p_clave'] = $getCategoria->meta_p_clave;
 
             $data['getCategoria'] = $getCategoria;
+
+            $data['getProducto'] = ProductoModel::getProducto($getCategoria->id);
+
             return view('productos.listar', $data);
         } else {
             abort(404);
