@@ -4,6 +4,12 @@
     <link rel="stylesheet" href="{{ url('assets/css/plugins/owl-carousel/owl.carousel.css') }}">
     <link rel="stylesheet" href="{{ url('assets/css/plugins/magnific-popup/magnific-popup.css') }}">
     <link rel="stylesheet" href="{{ url('assets/css/plugins/nouislider/nouislider.css') }}">
+
+    <style>
+        .active-color{
+            border: 3px solid #000 !important;
+        }
+    </style>
 @endsection
 
 @section('content')
@@ -49,8 +55,9 @@
                                 <div class="toolbox-sort">
                                     <label for="sortby">Mostrar por:</label>
                                     <div class="select-custom">
-                                        <select name="sortby" id="sortby" class="form-control">
-                                            <option value="popularity" selected="selected">Más popular</option>
+                                        <select name="sortby" id="sortby" class="form-control changeSortBy">
+                                            <option value="">Seleccionar</option>
+                                            <option value="popularity">Más popular</option>
                                             <option value="rating">Más valorado</option>
                                             <option value="date">Fecha</option>
                                         </select>
@@ -121,6 +128,12 @@
                     </div>
 
                     <aside class="col-lg-3 order-lg-first">
+                        <form action="" id="filtroForm" method="POST">
+                            <input type="text" name="sub_categoria_id" id="get_sub_categoria_id">
+                            <input type="text" name="marca_id" id="get_marca_id">
+                            <input type="text" name="color_id" id="get_color_id">
+                            <input type="text" name="sort_by_id" id="get_sort_by_id">
+                        </form>
                         <div class="sidebar sidebar-shop">
                             <div class="widget widget-clean">
                                 <label>Filtros:</label>
@@ -141,7 +154,7 @@
                                             @foreach ($getSubcategoriaFiltro as $f_categoria)
                                                 <div class="filter-item">
                                                     <div class="custom-control custom-checkbox">
-                                                        <input type="checkbox" class="custom-control-input" id="cat-{{ $f_categoria->id }}">
+                                                        <input type="checkbox" class="custom-control-input changeCategoria" value="{{ $f_categoria->id }}" id="cat-{{ $f_categoria->id }}">
                                                         <label class="custom-control-label" for="cat-{{ $f_categoria->id }}">{{ $f_categoria->nombre }}</label>
                                                     </div>
                                                     <span class="item-count">{{ $f_categoria->totalProductos() }}</span>
@@ -152,11 +165,11 @@
                                 </div>
                             </div>
 
-                            <div class="widget widget-collapsible">
+                            {{-- <div class="widget widget-collapsible">
                                 <h3 class="widget-title">
                                     <a data-toggle="collapse" href="#widget-2" role="button" aria-expanded="true"
                                         aria-controls="widget-2">
-                                        Size
+                                        Tamaño
                                     </a>
                                 </h3>
 
@@ -209,7 +222,7 @@
                                         </div><!-- End .filter-items -->
                                     </div><!-- End .widget-body -->
                                 </div><!-- End .collapse -->
-                            </div>
+                            </div> --}}
 
                             <div class="widget widget-collapsible">
                                 <h3 class="widget-title">
@@ -223,7 +236,7 @@
                                     <div class="widget-body">
                                         <div class="filter-colors">
                                             @foreach ($getColor as $f_color)
-                                                <a href="javascript:;" style="background: {{ $f_color->codigo }};">
+                                                <a href="javascript:;" id="{{ $f_color->id }}" data-val="0" class="changeColor" style="background: {{ $f_color->codigo }};">
                                                     <span class="sr-only">{{ $f_color->nombre }}</span>
                                                 </a>
                                             @endforeach
@@ -246,7 +259,7 @@
                                             @foreach ($getMarca as $f_marca)
                                                 <div class="filter-item">
                                                     <div class="custom-control custom-checkbox">
-                                                        <input type="checkbox" class="custom-control-input" id="brand-{{ $f_marca->id }}">
+                                                        <input type="checkbox" class="custom-control-input changeMarca" value="{{ $f_marca->id }}" id="brand-{{ $f_marca->id }}">
                                                         <label class="custom-control-label" for="brand-{{ $f_marca->id }}">{{ $f_marca->nombre }}</label>
                                                     </div>
                                                 </div>
@@ -289,4 +302,58 @@
     <script src="{{ url('assets/js/wNumb.js') }}"></script>
     <script src="{{ url('assets/js/bootstrap-input-spinner.js') }}"></script>
     <script src="{{ url('assets/js/nouislider.min.js') }}"></script>
+
+    <script>
+        $('.changeSortBy').change(function(){
+            var id = $(this).val();
+            $('#get_sort_by_id').val(id);
+        });
+
+        $('.changeCategoria').change(function(){
+            var ids = '';
+            $('.changeCategoria').each(function(){
+                if (this.checked) {
+                    var id = $(this).val();
+                    ids += id + ',';
+                }
+            });
+            
+            $('#get_sub_categoria_id').val(ids);
+        });
+
+        $('.changeMarca').change(function(){
+            var ids = '';
+            $('.changeMarca').each(function(){
+                if (this.checked) {
+                    var id = $(this).val();
+                    ids += id + ',';
+                }
+            });
+            
+            $('#get_marca_id').val(ids);
+        });
+
+        $('.changeColor').click(function(){
+            var id = $(this).attr('id');
+            var estado = $(this).attr('data-val');
+            if (estado == 0) {
+                $(this).attr('data-val', 1);
+                $(this).addClass('active-color');
+            }else{
+                $(this).attr('data-val', 0);
+                $(this).removeClass('active-color');
+            }
+
+            var ids = '';
+            $('.changeColor').each(function(){
+                var estado = $(this).attr('data-val');
+                if (estado == 1) {
+                    var id = $(this).attr('id');
+                    ids += id + ',';
+                }
+            });
+
+            $('#get_color_id').val(ids);
+        });
+    </script>
 @endsection
