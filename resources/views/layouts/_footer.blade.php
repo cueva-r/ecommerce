@@ -36,13 +36,13 @@
                             <li><a href="#">FAQ</a></li>
                             <li><a href="{{ url('contactenos') }}">Contáctenos</a></li>
                             <li><a href="#signin-modal" data-toggle="modal">Iniciar sesión</a></li>
-                        </ul><!-- End .widget-list -->
-                    </div><!-- End .widget -->
-                </div><!-- End .col-sm-6 col-lg-3 -->
+                        </ul>
+                    </div>
+                </div>
 
                 <div class="col-sm-6 col-lg-3">
                     <div class="widget">
-                        <h4 class="widget-title">Servicio al Cliente</h4><!-- End .widget-title -->
+                        <h4 class="widget-title">Servicio al Cliente</h4>
 
                         <ul class="widget-list">
                             <li><a href="#">Métodos de pago</a></li>
@@ -51,13 +51,13 @@
                             <li><a href="#">Envíos</a></li>
                             <li><a href="#">Terminos y condiciones</a></li>
                             <li><a href="#">Política y privacidad</a></li>
-                        </ul><!-- End .widget-list -->
-                    </div><!-- End .widget -->
-                </div><!-- End .col-sm-6 col-lg-3 -->
+                        </ul>
+                    </div>
+                </div>
 
                 <div class="col-sm-6 col-lg-3">
                     <div class="widget">
-                        <h4 class="widget-title">Mi cuenta</h4><!-- End .widget-title -->
+                        <h4 class="widget-title">Mi cuenta</h4>
 
                         <ul class="widget-list">
                             <li><a href="#signin-modal" data-toggle="modal">Iniciar sesión</a></li>
@@ -65,19 +65,19 @@
                             <li><a href="#">Mi lista de deseos</a></li>
                             <li><a href="#">Seguimiento de mi pedido</a></li>
                             <li><a href="#">¡Ayuda!</a></li>
-                        </ul><!-- End .widget-list -->
-                    </div><!-- End .widget -->
-                </div><!-- End .col-sm-6 col-lg-3 -->
-            </div><!-- End .row -->
-        </div><!-- End .container -->
-    </div><!-- End .footer-middle -->
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <div class="footer-bottom">
         <div class="container">
             <p class="footer-copyright">Copyright © <?php echo date('Y') ?> rico's. Todos los derechos reservados.</p><!-- End .footer-copyright -->
             <figure class="footer-payments">
                 <img src="{{ url('assets/images/payments.png') }}" alt="Payment methods" width="272" height="20">
-            </figure><!-- End .footer-payments -->
-        </div><!-- End .container -->
-    </div><!-- End .footer-bottom -->
-</footer><!-- End .footer -->
+            </figure>
+        </div>
+    </div>
+</footer>

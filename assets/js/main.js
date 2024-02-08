@@ -181,7 +181,7 @@ $(document).ready(function () {
 			tooltips: true,
 			format: wNumb({
 		        decimals: 0,
-		        prefix: '$'
+		        prefix: 'S/. '
 		    })
 		});
 
