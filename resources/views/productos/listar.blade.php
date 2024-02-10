@@ -66,73 +66,20 @@
                             </div>
                         </div>
 
-                        <div class="products mb-3">
-                            <div class="row justify-content-center">
-                                @foreach ($getProducto as $valor)
-                                    <div class="col-12 col-md-4 col-lg-4">
-                                        <div class="product product-7 text-center">
-                                            @php
-                                                $getProductoImagen = $valor->getImagenSingle($valor->id);
-                                            @endphp
-                                            <figure class="product-media">
-                                                <a href="{{ url($valor->slug) }}">
-                                                    @if (!empty($getProductoImagen) && !empty($getProductoImagen->getLogo()))
-                                                        <img style="height: 280px; width: 100%; object-fit: cover"
-                                                            src="{{ $getProductoImagen->getLogo() }}"
-                                                            alt="{{ $valor->titulo }}" class="product-image">
-                                                    @endif
-                                                </a>
-
-                                                <div class="product-action-vertical">
-                                                    <a href="#"
-                                                        class="btn-product-icon btn-wishlist btn-expandable"><span>Agregar a
-                                                            la lista de desos</span></a>
-                                                    {{-- <a href="popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Ver</span></a>
-                                            <a href="#" class="btn-product-icon btn-compare" title="Compare"><span>Comparar</span></a> --}}
-                                                </div><!-- End .product-action-vertical -->
-
-                                                {{-- <div class="product-action">
-                                            <a href="#" class="btn-product btn-cart"><span>Agregar al carrito</span></a>
-                                        </div> --}}
-                                            </figure>
-
-                                            <div class="product-body">
-                                                <div class="product-cat">
-                                                    <a
-                                                        href="{{ url($valor->categoria_slug . '/' . $valor->subcategoria_slug) }}">{{ $valor->subcategoria_nombre }}</a>
-                                                </div>
-                                                <h3 class="product-title"><a
-                                                        href="{{ url($valor->slug) }}">{{ $valor->titulo }}</a></h3>
-                                                <div class="product-price">
-                                                    S/. {{ number_format($valor->precio, 2) }}
-                                                </div>
-                                                <div class="ratings-container">
-                                                    <div class="ratings">
-                                                        <div class="ratings-val" style="width: 20%;"></div>
-                                                    </div>
-                                                    <span class="ratings-text">( 2 Reseñas )</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                @endforeach
-
-                            </div>
+                        <div id="getProductoAjax">
+                            @include('productos._listar')
                         </div>
-
-                        <nav aria-label="Page navigation">
-                            <ul class="pagination justify-content-center">
-                                {!! $getProducto->appends(Illuminate\Support\Facades\Request::except('page'))->links() !!}
-                            </ul>
-                        </nav>
                     </div>
 
                     <aside class="col-lg-3 order-lg-first">
                         <form action="" id="filtroForm" method="POST">
-                            <input type="text" name="sub_categoria_id" id="get_sub_categoria_id">
-                            <input type="text" name="marca_id" id="get_marca_id">
-                            <input type="text" name="color_id" id="get_color_id">
-                            <input type="text" name="sort_by_id" id="get_sort_by_id">
+                            {{ csrf_field() }}
+                            <input type="hidden" name="sub_categoria_id" id="get_sub_categoria_id">
+                            <input type="hidden" name="marca_id" id="get_marca_id">
+                            <input type="hidden" name="color_id" id="get_color_id">
+                            <input type="hidden" name="sort_by_id" id="get_sort_by_id">
+                            <input type="hidden" name="inicio_precio" id="get_inicio_precio">
+                            <input type="hidden" name="fin_precio" id="get_fin_precio">
                         </form>
                         <div class="sidebar sidebar-shop">
                             <div class="widget widget-clean">
@@ -307,6 +254,7 @@
         $('.changeSortBy').change(function(){
             var id = $(this).val();
             $('#get_sort_by_id').val(id);
+            filtroForm();
         });
 
         $('.changeCategoria').change(function(){
@@ -319,6 +267,7 @@
             });
             
             $('#get_sub_categoria_id').val(ids);
+            filtroForm();
         });
 
         $('.changeMarca').change(function(){
@@ -331,6 +280,7 @@
             });
             
             $('#get_marca_id').val(ids);
+            filtroForm();
         });
 
         $('.changeColor').click(function(){
@@ -354,6 +304,49 @@
             });
 
             $('#get_color_id').val(ids);
+            filtroForm();
         });
+
+        function filtroForm() {
+            $.ajax({
+                type: "POST",
+                url: "{{ url('get_filtro_producto_ajax') }}",
+                data: $('#filtroForm').serialize(),
+                dataType: "json",
+                success: function(data){
+                    $('#getProductoAjax').html(data.success)
+                },
+                error: function(data){}
+            });
+        }
+
+        if ( typeof noUiSlider === 'object' ) {
+		var priceSlider  = document.getElementById('price-slider');
+
+		noUiSlider.create(priceSlider, {
+			start: [ 0, 1000 ],
+			connect: true,
+			step: 1,
+			margin: 1,
+			range: {
+				'min': 0,
+				'max': 1000
+			},
+			tooltips: true,
+			format: wNumb({
+		        decimals: 0,
+		        prefix: 'S/. '
+		    })
+		});
+
+		priceSlider.noUiSlider.on('update', function( values, handle ){
+            var inicio_precio = values[0];
+            var fin_precio = values[1];
+            $('#get_inicio_precio').val(inicio_precio);
+            $('#get_fin_precio').val(fin_precio);
+			$('#filter-price-range').text(values.join(' - '));
+            filtroForm();
+		});
+	}
     </script>
 @endsection

@@ -162,34 +162,34 @@ $(document).ready(function () {
     }
 
     // Slider For category pages / filter price
-    if ( typeof noUiSlider === 'object' ) {
-		var priceSlider  = document.getElementById('price-slider');
+    // if ( typeof noUiSlider === 'object' ) {
+	// 	var priceSlider  = document.getElementById('price-slider');
 
-		// Check if #price-slider elem is exists if not return
-		// to prevent error logs
-		if (priceSlider == null) return;
+	// 	// Check if #price-slider elem is exists if not return
+	// 	// to prevent error logs
+	// 	if (priceSlider == null) return;
 
-		noUiSlider.create(priceSlider, {
-			start: [ 0, 750 ],
-			connect: true,
-			step: 50,
-			margin: 200,
-			range: {
-				'min': 0,
-				'max': 1000
-			},
-			tooltips: true,
-			format: wNumb({
-		        decimals: 0,
-		        prefix: 'S/. '
-		    })
-		});
+	// 	noUiSlider.create(priceSlider, {
+	// 		start: [ 0, 750 ],
+	// 		connect: true,
+	// 		step: 50,
+	// 		margin: 200,
+	// 		range: {
+	// 			'min': 0,
+	// 			'max': 1000
+	// 		},
+	// 		tooltips: true,
+	// 		format: wNumb({
+	// 	        decimals: 0,
+	// 	        prefix: 'S/. '
+	// 	    })
+	// 	});
 
-		// Update Price Range
-		priceSlider.noUiSlider.on('update', function( values, handle ){
-			$('#filter-price-range').text(values.join(' - '));
-		});
-	}
+	// 	// Update Price Range
+	// 	priceSlider.noUiSlider.on('update', function( values, handle ){
+	// 		$('#filter-price-range').text(values.join(' - '));
+	// 	});
+	// }
 
 	// Product countdown
 	if ( $.fn.countdown ) {

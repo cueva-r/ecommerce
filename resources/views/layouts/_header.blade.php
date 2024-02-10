@@ -26,7 +26,7 @@
                     <li>
                         <a href="#">Links</a>
                         <ul>
-                            <li><a href="tel:#"><i class="icon-phone"></i>Llamar: +051 924 575 577</a></li>
+                            <li><a href="tel:#"><i class="icon-phone"></i>Llamar: +51 924 575 577</a></li>
                             <li><a href="{{ url('lista-deseos') }}"><i class="icon-heart-o"></i>Lista de deseos <span>(3)</span></a></li>
                             <li><a href="{{ url('sobre-nosotros') }}">Sobre nosotros</a></li>
                             <li><a href="{{ url('contactenos') }}">Contáctenos</a></li>

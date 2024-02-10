@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Request;
 
 class ProductoModel extends Model
 {
@@ -40,9 +41,39 @@ class ProductoModel extends Model
             $return = $return->where('productos.subcategoria_id', '=', $subcategoria_id);
         }
 
-        $return = $return->where('productos.esta_eliminado', '=', 0)
+        if (!empty(Request::get('sub_categoria_id'))) {
 
+            $sub_categoria_id = rtrim(Request::get('sub_categoria_id'), ',');
+            $sub_categoria_id_array = explode(",", $sub_categoria_id);
+            $return = $return->whereIn('productos.subcategoria_id', $sub_categoria_id_array);
+        }
+
+        if (!empty(Request::get('color_id'))) {
+
+            $color_id = rtrim(Request::get('color_id'), ',');
+            $color_id_array = explode(",", $color_id);
+            $return = $return->join('productos_colores', 'productos_colores.producto_id', '=', 'productos.id');
+            $return = $return->whereIn('productos_colores.color_id', $color_id_array);
+        }
+
+        if (!empty(Request::get('marca_id'))) {
+
+            $marca_id = rtrim(Request::get('marca_id'), ',');
+            $marca_id_array = explode(",", $marca_id);
+            $return = $return->whereIn('productos.marca_id', $marca_id_array);
+        }
+
+        if (!empty(Request::get('inicio_precio') && !empty(Request::get('fin_precio')))) {
+            $inicio_precio = str_replace('S/.', '', Request::get('inicio_precio'));
+            $fin_precio = str_replace('S/.', '', Request::get('fin_precio'));
+
+            $return = $return->where('productos.precio', '>=', $inicio_precio);
+            $return = $return->where('productos.precio', '<=', $fin_precio);
+        }
+
+        $return = $return->where('productos.esta_eliminado', '=', 0)
             ->where('productos.estado', '=', 0)
+            ->groupBy('productos.id')
             ->orderBy('productos.id', 'desc')
             ->paginate(20);
 
@@ -52,8 +83,8 @@ class ProductoModel extends Model
     static public function getImagenSingle($producto_id)
     {
         return ProductoImagenModel::where('producto_id', '=', $producto_id)
-        ->orderBy('ordenar_por', 'asc')
-        ->first();
+            ->orderBy('ordenar_por', 'asc')
+            ->first();
     }
 
     static function checkSlug($slug)

@@ -48,4 +48,13 @@ class ProductoController extends Controller
             abort(404);
         }
     }
+
+    public function getFiltroProductoAjax(Request $request)
+    {
+        $getProducto = ProductoModel::getProducto();
+        return response()->json([
+            "estado" => true,
+            "success" => view("productos._listar", ["getProducto" => $getProducto])->render(),
+        ], 200);
+    }
 }
