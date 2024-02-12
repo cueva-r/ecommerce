@@ -74,6 +74,9 @@
                     <aside class="col-lg-3 order-lg-first">
                         <form action="" id="filtroForm" method="POST">
                             {{ csrf_field() }}
+                            <input type="hidden" name="old_sub_categoria_id" value="{{ !empty($getSubCategoria) ? $getSubCategoria->id : '' }}">
+                            <input type="hidden" name="old_categoria_id" value="{{ !empty($getCategoria) ? $getCategoria->id : '' }}">
+
                             <input type="hidden" name="sub_categoria_id" id="get_sub_categoria_id">
                             <input type="hidden" name="marca_id" id="get_marca_id">
                             <input type="hidden" name="color_id" id="get_color_id">
@@ -307,8 +310,14 @@
             filtroForm();
         });
 
+        var xhr;
+
         function filtroForm() {
-            $.ajax({
+            if (xhr && xhr.readyState != 4) {
+                xhr.abort();
+            }
+
+            xhr = $.ajax({
                 type: "POST",
                 url: "{{ url('get_filtro_producto_ajax') }}",
                 data: $('#filtroForm').serialize(),
@@ -319,6 +328,8 @@
                 error: function(data){}
             });
         }
+
+        var i = 0;
 
         if ( typeof noUiSlider === 'object' ) {
 		var priceSlider  = document.getElementById('price-slider');
@@ -345,7 +356,12 @@
             $('#get_inicio_precio').val(inicio_precio);
             $('#get_fin_precio').val(fin_precio);
 			$('#filter-price-range').text(values.join(' - '));
-            filtroForm();
+
+            if (i == 0 || i == 1) {
+                i++;
+            }else{
+                filtroForm();
+            }
 		});
 	}
     </script>

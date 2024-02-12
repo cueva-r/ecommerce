@@ -46,6 +46,14 @@ class ProductoModel extends Model
             $sub_categoria_id = rtrim(Request::get('sub_categoria_id'), ',');
             $sub_categoria_id_array = explode(",", $sub_categoria_id);
             $return = $return->whereIn('productos.subcategoria_id', $sub_categoria_id_array);
+        } else {
+            if (!empty(Request::get('old_categoria_id'))) {
+                $return = $return->where('productos.categoria_id', '=', Request::get('old_categoria_id'));
+            }
+
+            if (!empty(Request::get('old_sub_categoria_id'))) {
+                $return = $return->where('productos.subcategoria_id', '=', Request::get('old_sub_categoria_id'));
+            }
         }
 
         if (!empty(Request::get('color_id'))) {
