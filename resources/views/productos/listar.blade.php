@@ -335,13 +335,13 @@
 		var priceSlider  = document.getElementById('price-slider');
 
 		noUiSlider.create(priceSlider, {
-			start: [ 0, 1000 ],
+			start: [ 0, 10000 ],
 			connect: true,
 			step: 1,
 			margin: 1,
 			range: {
 				'min': 0,
-				'max': 1000
+				'max': 10000
 			},
 			tooltips: true,
 			format: wNumb({
