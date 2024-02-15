@@ -49,9 +49,3 @@
 
     </div>
 </div>
-
-<nav aria-label="Page navigation">
-    <ul class="pagination justify-content-center">
-        {!! $getProducto->appends(Illuminate\Support\Facades\Request::except('page'))->links() !!}
-    </ul>
-</nav>

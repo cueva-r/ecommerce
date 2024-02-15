@@ -27,7 +27,19 @@ class ProductoController extends Controller
             $data['getSubCategoria'] = $getSubCategoria;
             $data['getCategoria'] = $getCategoria;
 
-            $data['getProducto'] = ProductoModel::getProducto($getCategoria->id, $getSubCategoria->id);
+            $getProducto = ProductoModel::getProducto($getCategoria->id, $getSubCategoria->id);
+
+            $page = 0;
+            if (!empty($getProducto->nextPageUrl())) {
+                $parse_url = parse_url($getProducto->nextPageUrl());
+                if (!empty($parse_url['query'])) {
+                    parse_str($parse_url['query'], $get_array);
+                    $page = !empty($get_array['page']) ? $get_array['page'] : 0;
+                }
+            }
+            $data['page'] = $page;
+
+            $data['getProducto'] = $getProducto;
 
             $data['getSubcategoriaFiltro'] = SubCategoriaModel::getRecordSubCategoria($getCategoria->id);
 
@@ -35,13 +47,25 @@ class ProductoController extends Controller
         } else if (!empty($getCategoria)) {
             $data['getSubcategoriaFiltro'] = SubCategoriaModel::getRecordSubCategoria($getCategoria->id);
 
+            $data['getCategoria'] = $getCategoria;
+
             $data['meta_titulo'] = $getCategoria->meta_titulo;
             $data['meta_descripcion'] = $getCategoria->meta_descripcion;
             $data['meta_p_clave'] = $getCategoria->meta_p_clave;
 
-            $data['getCategoria'] = $getCategoria;
+            $getProducto = ProductoModel::getProducto($getCategoria->id);
 
-            $data['getProducto'] = ProductoModel::getProducto($getCategoria->id);
+            $page = 0;
+            if (!empty($getProducto->nextPageUrl())) {
+                $parse_url = parse_url($getProducto->nextPageUrl());
+                if (!empty($parse_url['query'])) {
+                    parse_str($parse_url['query'], $get_array);
+                    $page = !empty($get_array['page']) ? $get_array['page'] : 0;
+                }
+            }
+            $data['page'] = $page;
+
+            $data['getProducto'] = $getProducto;
 
             return view('productos.listar', $data);
         } else {
@@ -52,8 +76,19 @@ class ProductoController extends Controller
     public function getFiltroProductoAjax(Request $request)
     {
         $getProducto = ProductoModel::getProducto();
+
+        $page = 0;
+        if (!empty($getProducto->nextPageUrl())) {
+            $parse_url = parse_url($getProducto->nextPageUrl());
+            if (!empty($parse_url['query'])) {
+                parse_str($parse_url['query'], $get_array);
+                $page = !empty($get_array['page']) ? $get_array['page'] : 0;
+            }
+        }
+
         return response()->json([
             "estado" => true,
+            "page" => $page,
             "success" => view("productos._listar", ["getProducto" => $getProducto])->render(),
         ], 200);
     }

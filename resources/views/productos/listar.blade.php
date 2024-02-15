@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="{{ url('assets/css/plugins/nouislider/nouislider.css') }}">
 
     <style>
-        .active-color{
+        .active-color {
             border: 3px solid #000 !important;
         }
     </style>
@@ -47,7 +47,7 @@
                         <div class="toolbox">
                             <div class="toolbox-left">
                                 <div class="toolbox-info">
-                                    Mostrando <span>9 de 56</span> Productos
+                                    Mostrando <span>{{ $getProducto->perPage() }} de {{ $getProducto->total() }}</span> Productos
                                 </div>
                             </div>
 
@@ -69,13 +69,19 @@
                         <div id="getProductoAjax">
                             @include('productos._listar')
                         </div>
+                        <div style="text-align: center">
+                            <a href="javascript:;" @if (empty($page)) style="display: none" @endif
+                                data-page="{{ $page }}" class="btn btn-primary verMas">Ver más...</a>
+                        </div>
                     </div>
 
                     <aside class="col-lg-3 order-lg-first">
                         <form action="" id="filtroForm" method="POST">
                             {{ csrf_field() }}
-                            <input type="hidden" name="old_sub_categoria_id" value="{{ !empty($getSubCategoria) ? $getSubCategoria->id : '' }}">
-                            <input type="hidden" name="old_categoria_id" value="{{ !empty($getCategoria) ? $getCategoria->id : '' }}">
+                            <input type="hidden" name="old_sub_categoria_id"
+                                value="{{ !empty($getSubCategoria) ? $getSubCategoria->id : '' }}">
+                            <input type="hidden" name="old_categoria_id"
+                                value="{{ !empty($getCategoria) ? $getCategoria->id : '' }}">
 
                             <input type="hidden" name="sub_categoria_id" id="get_sub_categoria_id">
                             <input type="hidden" name="marca_id" id="get_marca_id">
@@ -104,8 +110,11 @@
                                             @foreach ($getSubcategoriaFiltro as $f_categoria)
                                                 <div class="filter-item">
                                                     <div class="custom-control custom-checkbox">
-                                                        <input type="checkbox" class="custom-control-input changeCategoria" value="{{ $f_categoria->id }}" id="cat-{{ $f_categoria->id }}">
-                                                        <label class="custom-control-label" for="cat-{{ $f_categoria->id }}">{{ $f_categoria->nombre }}</label>
+                                                        <input type="checkbox" class="custom-control-input changeCategoria"
+                                                            value="{{ $f_categoria->id }}"
+                                                            id="cat-{{ $f_categoria->id }}">
+                                                        <label class="custom-control-label"
+                                                            for="cat-{{ $f_categoria->id }}">{{ $f_categoria->nombre }}</label>
                                                     </div>
                                                     <span class="item-count">{{ $f_categoria->totalProductos() }}</span>
                                                 </div>
@@ -186,7 +195,8 @@
                                     <div class="widget-body">
                                         <div class="filter-colors">
                                             @foreach ($getColor as $f_color)
-                                                <a href="javascript:;" id="{{ $f_color->id }}" data-val="0" class="changeColor" style="background: {{ $f_color->codigo }};">
+                                                <a href="javascript:;" id="{{ $f_color->id }}" data-val="0"
+                                                    class="changeColor" style="background: {{ $f_color->codigo }};">
                                                     <span class="sr-only">{{ $f_color->nombre }}</span>
                                                 </a>
                                             @endforeach
@@ -209,8 +219,10 @@
                                             @foreach ($getMarca as $f_marca)
                                                 <div class="filter-item">
                                                     <div class="custom-control custom-checkbox">
-                                                        <input type="checkbox" class="custom-control-input changeMarca" value="{{ $f_marca->id }}" id="brand-{{ $f_marca->id }}">
-                                                        <label class="custom-control-label" for="brand-{{ $f_marca->id }}">{{ $f_marca->nombre }}</label>
+                                                        <input type="checkbox" class="custom-control-input changeMarca"
+                                                            value="{{ $f_marca->id }}" id="brand-{{ $f_marca->id }}">
+                                                        <label class="custom-control-label"
+                                                            for="brand-{{ $f_marca->id }}">{{ $f_marca->nombre }}</label>
                                                     </div>
                                                 </div>
                                             @endforeach
@@ -254,51 +266,51 @@
     <script src="{{ url('assets/js/nouislider.min.js') }}"></script>
 
     <script>
-        $('.changeSortBy').change(function(){
+        $('.changeSortBy').change(function() {
             var id = $(this).val();
             $('#get_sort_by_id').val(id);
             filtroForm();
         });
 
-        $('.changeCategoria').change(function(){
+        $('.changeCategoria').change(function() {
             var ids = '';
-            $('.changeCategoria').each(function(){
+            $('.changeCategoria').each(function() {
                 if (this.checked) {
                     var id = $(this).val();
                     ids += id + ',';
                 }
             });
-            
+
             $('#get_sub_categoria_id').val(ids);
             filtroForm();
         });
 
-        $('.changeMarca').change(function(){
+        $('.changeMarca').change(function() {
             var ids = '';
-            $('.changeMarca').each(function(){
+            $('.changeMarca').each(function() {
                 if (this.checked) {
                     var id = $(this).val();
                     ids += id + ',';
                 }
             });
-            
+
             $('#get_marca_id').val(ids);
             filtroForm();
         });
 
-        $('.changeColor').click(function(){
+        $('.changeColor').click(function() {
             var id = $(this).attr('id');
             var estado = $(this).attr('data-val');
             if (estado == 0) {
                 $(this).attr('data-val', 1);
                 $(this).addClass('active-color');
-            }else{
+            } else {
                 $(this).attr('data-val', 0);
                 $(this).removeClass('active-color');
             }
 
             var ids = '';
-            $('.changeColor').each(function(){
+            $('.changeColor').each(function() {
                 var estado = $(this).attr('data-val');
                 if (estado == 1) {
                     var id = $(this).attr('id');
@@ -322,47 +334,82 @@
                 url: "{{ url('get_filtro_producto_ajax') }}",
                 data: $('#filtroForm').serialize(),
                 dataType: "json",
-                success: function(data){
-                    $('#getProductoAjax').html(data.success)
+                success: function(data) {
+                    $('#getProductoAjax').html(data.success);
+
+                    if (data.page == 0) {
+                        $('.verMas').hide();
+                    } else {
+                        $('.verMas').show();
+                    }
                 },
-                error: function(data){}
+                error: function(data) {}
             });
         }
 
+        $('body').delegate('.verMas', 'click', function() {
+            var page = $(this).attr('data-page');
+
+            $('.verMas').html('Cargando...');
+
+            if (xhr && xhr.readyState != 4) {
+                xhr.abort();
+            }
+
+            xhr = $.ajax({
+                type: "POST",
+                url: "{{ url('get_filtro_producto_ajax') }}?page="+page,
+                data: $('#filtroForm').serialize(),
+                dataType: "json",
+                success: function(data) {
+                    $('#getProductoAjax').append(data.success);
+                    $('.verMas').attr('data-page', data.page);
+                    $('.verMas').html('Ver más...');
+
+                    if (data.page == 0) {
+                        $('.verMas').hide();
+                    } else {
+                        $('.verMas').show();
+                    }
+                },
+                error: function(data) {}
+            });
+        });
+
         var i = 0;
 
-        if ( typeof noUiSlider === 'object' ) {
-		var priceSlider  = document.getElementById('price-slider');
+        if (typeof noUiSlider === 'object') {
+            var priceSlider = document.getElementById('price-slider');
 
-		noUiSlider.create(priceSlider, {
-			start: [ 0, 10000 ],
-			connect: true,
-			step: 1,
-			margin: 1,
-			range: {
-				'min': 0,
-				'max': 10000
-			},
-			tooltips: true,
-			format: wNumb({
-		        decimals: 0,
-		        prefix: 'S/. '
-		    })
-		});
+            noUiSlider.create(priceSlider, {
+                start: [0, 10000],
+                connect: true,
+                step: 1,
+                margin: 1,
+                range: {
+                    'min': 0,
+                    'max': 10000
+                },
+                tooltips: true,
+                format: wNumb({
+                    decimals: 0,
+                    prefix: 'S/. '
+                })
+            });
 
-		priceSlider.noUiSlider.on('update', function( values, handle ){
-            var inicio_precio = values[0];
-            var fin_precio = values[1];
-            $('#get_inicio_precio').val(inicio_precio);
-            $('#get_fin_precio').val(fin_precio);
-			$('#filter-price-range').text(values.join(' - '));
+            priceSlider.noUiSlider.on('update', function(values, handle) {
+                var inicio_precio = values[0];
+                var fin_precio = values[1];
+                $('#get_inicio_precio').val(inicio_precio);
+                $('#get_fin_precio').val(fin_precio);
+                $('#filter-price-range').text(values.join(' - '));
 
-            if (i == 0 || i == 1) {
-                i++;
-            }else{
-                filtroForm();
-            }
-		});
-	}
+                if (i == 0 || i == 1) {
+                    i++;
+                } else {
+                    filtroForm();
+                }
+            });
+        }
     </script>
 @endsection

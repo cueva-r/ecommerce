@@ -83,7 +83,7 @@ class ProductoModel extends Model
             ->where('productos.estado', '=', 0)
             ->groupBy('productos.id')
             ->orderBy('productos.id', 'desc')
-            ->paginate(20);
+            ->paginate(3);
 
         return $return;
     }
