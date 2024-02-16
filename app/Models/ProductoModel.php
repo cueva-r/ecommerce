@@ -95,6 +95,14 @@ class ProductoModel extends Model
             ->first();
     }
 
+    static function getSingleSlug($slug)
+    {
+        return self::where('slug', '=', $slug)
+        ->where('productos.esta_eliminado', '=', 0)
+        ->where('productos.estado', '=', 0)
+        ->first();
+    }
+
     static function checkSlug($slug)
     {
         return self::where('slug', '=', $slug)->count();

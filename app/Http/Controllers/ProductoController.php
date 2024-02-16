@@ -13,13 +13,21 @@ class ProductoController extends Controller
 {
     public function getCategoria($slug, $subslug = '')
     {
+        $getProductoSingle = ProductoModel::getSingleSlug($slug);
+
         $getCategoria = CategoriaModel::getSingleSlug($slug);
         $getSubCategoria = SubCategoriaModel::getSingleSlug($subslug);
 
         $data['getColor'] = ColorModel::getRecordActive();
         $data['getMarca'] = MarcaModel::getRecordActive();
 
-        if (!empty($getCategoria) && !empty($getSubCategoria)) {
+        if (!empty($getProductoSingle)) {
+            $data['meta_titulo'] = $getProductoSingle->titulo;
+            $data['meta_descripcion'] = $getProductoSingle->descripcion_corta;
+            $data['getProducto'] = $getProductoSingle;
+
+            return view('productos.detalle', $data);
+        } else if (!empty($getCategoria) && !empty($getSubCategoria)) {
             $data['meta_titulo'] = $getSubCategoria->meta_titulo;
             $data['meta_descripcion'] = $getSubCategoria->meta_descripcion;
             $data['meta_p_clave'] = $getSubCategoria->meta_p_clave;
