@@ -122,4 +122,14 @@ class ProductoModel extends Model
     {
         return $this->hasMany(ProductoImagenModel::class, "producto_id")->orderBy('ordenar_por', 'asc');
     }
+
+    public function getCategoria()
+    {
+        return $this->belongsTo(CategoriaModel::class, 'categoria_id');
+    }
+
+    public function getSubCategoria()
+    {
+        return $this->belongsTo(SubCategoriaModel::class, 'subcategoria_id');
+    }
 }
