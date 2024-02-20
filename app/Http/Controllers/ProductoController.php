@@ -26,6 +26,8 @@ class ProductoController extends Controller
             $data['meta_descripcion'] = $getProductoSingle->descripcion_corta;
             $data['getProducto'] = $getProductoSingle;
 
+            $data['getRelatedProducto'] = ProductoModel::getRelatedProducto($getProductoSingle->id, $getProductoSingle->subcategoria_id);
+
             return view('productos.detalle', $data);
         } else if (!empty($getCategoria) && !empty($getSubCategoria)) {
             $data['meta_titulo'] = $getSubCategoria->meta_titulo;
