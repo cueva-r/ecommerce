@@ -11,6 +11,30 @@ use Illuminate\Http\Request;
 
 class ProductoController extends Controller
 {
+    public function getProductoBuscar(Request $request)
+    {
+        $data['meta_titulo'] = 'Buscar';
+        $data['meta_descripcion'] = '';
+        $data['meta_p_clave'] = '';
+
+        $getProducto = ProductoModel::getProducto();
+
+        $page = 0;
+        if (!empty($getProducto->nextPageUrl())) {
+            $parse_url = parse_url($getProducto->nextPageUrl());
+            if (!empty($parse_url['query'])) {
+                parse_str($parse_url['query'], $get_array);
+                $page = !empty($get_array['page']) ? $get_array['page'] : 0;
+            }
+        }
+        $data['page'] = $page;
+        $data['getProducto'] = $getProducto;
+        
+        $data['getColor'] = ColorModel::getRecordActive();
+        $data['getMarca'] = MarcaModel::getRecordActive();
+        return view('productos.listar', $data);
+    }
+
     public function getCategoria($slug, $subslug = '')
     {
         $getProductoSingle = ProductoModel::getSingleSlug($slug);

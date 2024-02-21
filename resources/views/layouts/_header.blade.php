@@ -27,10 +27,12 @@
                         <a href="#">Links</a>
                         <ul>
                             <li><a href="tel:#"><i class="icon-phone"></i>Llamar: +51 924 575 577</a></li>
-                            <li><a href="{{ url('lista-deseos') }}"><i class="icon-heart-o"></i>Lista de deseos <span>(3)</span></a></li>
+                            <li><a href="{{ url('lista-deseos') }}"><i class="icon-heart-o"></i>Lista de deseos
+                                    <span>(3)</span></a></li>
                             <li><a href="{{ url('sobre-nosotros') }}">Sobre nosotros</a></li>
                             <li><a href="{{ url('contactenos') }}">Contáctenos</a></li>
-                            <li><a href="#signin-modal" data-toggle="modal"><i class="icon-user"></i>Iniciar sesión</a></li>
+                            <li><a href="#signin-modal" data-toggle="modal"><i class="icon-user"></i>Iniciar sesión</a>
+                            </li>
                         </ul>
                     </li>
                 </ul>
@@ -68,10 +70,13 @@
                                                 @foreach ($getCategoriasHeader as $valor_h_c)
                                                     @if (!empty($valor_h_c->getSubcategoria->count()))
                                                         <div class="col-md-4" style="margin-bottom: 20px;">
-                                                            <a href="{{ url($valor_h_c->slug) }}" class="menu-title">{{ $valor_h_c->nombre }}</a>
+                                                            <a href="{{ url($valor_h_c->slug) }}"
+                                                                class="menu-title">{{ $valor_h_c->nombre }}</a>
                                                             <ul>
                                                                 @foreach ($valor_h_c->getSubcategoria as $valor_h_sub)
-                                                                    <li><a href="{{ url($valor_h_c->slug . '/' . $valor_h_sub->slug) }}">{{ $valor_h_sub->nombre }}</a></li>
+                                                                    <li><a
+                                                                            href="{{ url($valor_h_c->slug . '/' . $valor_h_sub->slug) }}">{{ $valor_h_sub->nombre }}</a>
+                                                                    </li>
                                                                 @endforeach
                                                             </ul>
                                                         </div>
@@ -89,17 +94,21 @@
 
             <div class="header-right">
                 <div class="header-search">
-                    <a href="#" class="search-toggle" role="button" title="Search"><i class="icon-search"></i></a>
+                    <a href="#" class="search-toggle" role="button" title="Search"><i
+                            class="icon-search"></i></a>
                     <form action="{{ url('buscar') }}" method="get">
                         <div class="header-search-wrapper">
                             <label for="q" class="sr-only">Buscar</label>
-                            <input type="search" class="form-control" name="q" id="q" placeholder="Buscar aquí..." required>
+                            <input type="search" class="form-control" name="q"
+                                value="{{ !empty(Request::get('q')) ? Request::get('q') : '' }}" id="q"
+                                placeholder="Buscar aquí..." required>
                         </div>
                     </form>
                 </div>
 
                 <div class="dropdown cart-dropdown">
-                    <a href="#" class="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-display="static">
+                    <a href="#" class="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="false" data-display="static">
                         <i class="icon-shopping-cart"></i>
                         <span class="cart-count">2</span>
                     </a>
@@ -123,7 +132,8 @@
                                         <img src="assets/images/products/cart/product-1.jpg" alt="product">
                                     </a>
                                 </figure>
-                                <a href="#" class="btn-remove" title="Remove Product"><i class="icon-close"></i></a>
+                                <a href="#" class="btn-remove" title="Remove Product"><i
+                                        class="icon-close"></i></a>
                             </div>
 
                             <div class="product">
@@ -143,7 +153,8 @@
                                         <img src="assets/images/products/cart/product-2.jpg" alt="product">
                                     </a>
                                 </figure>
-                                <a href="#" class="btn-remove" title="Remove Product"><i class="icon-close"></i></a>
+                                <a href="#" class="btn-remove" title="Remove Product"><i
+                                        class="icon-close"></i></a>
                             </div>
                         </div>
 
@@ -155,7 +166,8 @@
 
                         <div class="dropdown-cart-action">
                             <a href="cart.html" class="btn btn-primary">Ver carrito</a>
-                            <a href="checkout.html" class="btn btn-outline-primary-2"><span>Pagar</span><i class="icon-long-arrow-right"></i></a>
+                            <a href="checkout.html" class="btn btn-outline-primary-2"><span>Pagar</span><i
+                                    class="icon-long-arrow-right"></i></a>
                         </div>
                     </div>
                 </div>

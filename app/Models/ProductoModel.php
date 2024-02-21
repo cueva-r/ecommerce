@@ -79,6 +79,10 @@ class ProductoModel extends Model
             $return = $return->where('productos.precio', '<=', $fin_precio);
         }
 
+        if (!empty(Request::get('q'))) {
+            $return = $return->where('productos.titulo', 'like', '%' . Request::get('q') . '%');
+        }
+
         $return = $return->where('productos.esta_eliminado', '=', 0)
             ->where('productos.estado', '=', 0)
             ->groupBy('productos.id')

@@ -18,8 +18,10 @@
             <div class="container">
                 @if (!empty($getSubCategoria))
                     <h1 class="page-title">{{ $getSubCategoria->nombre }}<span></span></h1>
-                @else
+                @elseif (!empty($getCategoria))
                     <h1 class="page-title">{{ $getCategoria->nombre }}<span></span></h1>
+                @else
+                    <h3 class="page-title">Resultados de: {{ Request::get('q') }}<span></span></h3>
                 @endif
             </div>
         </div>
@@ -33,7 +35,7 @@
                                 href="{{ $getCategoria->slug }}">{{ $getCategoria->nombre }}</a></li>
                         <li class="breadcrumb-item active" aria-current="page"><a
                                 href="{{ $getSubCategoria->slug }}">{{ $getSubCategoria->nombre }}</a></li>
-                    @else
+                    @elseif(!empty($getCategoria))
                         <li class="breadcrumb-item active" aria-current="page">{{ $getCategoria->nombre }}</li>
                     @endif
                 </ol>
@@ -79,6 +81,8 @@
                         <form action="" id="filtroForm" method="POST">
                             {{ csrf_field() }}
                             <input type="hidden" name="old_sub_categoria_id"
+                                value="{{ !empty(Request::get('q')) ? Request::get('q') : '' }}">
+                            <input type="hidden" name="old_sub_categoria_id"
                                 value="{{ !empty($getSubCategoria) ? $getSubCategoria->id : '' }}">
                             <input type="hidden" name="old_categoria_id"
                                 value="{{ !empty($getCategoria) ? $getCategoria->id : '' }}">
@@ -96,33 +100,35 @@
                                 {{-- <a href="#" class="sidebar-filter-clear">Clean All</a> --}}
                             </div>
 
-                            <div class="widget widget-collapsible">
-                                <h3 class="widget-title">
-                                    <a data-toggle="collapse" href="#widget-1" role="button" aria-expanded="true"
-                                        aria-controls="widget-1">
-                                        Categorías
-                                    </a>
-                                </h3>
+                            @if (!empty($getSubcategoriaFiltro))
+                                <div class="widget widget-collapsible">
+                                    <h3 class="widget-title">
+                                        <a data-toggle="collapse" href="#widget-1" role="button" aria-expanded="true"
+                                            aria-controls="widget-1">
+                                            Categorías
+                                        </a>
+                                    </h3>
 
-                                <div class="collapse show" id="widget-1">
-                                    <div class="widget-body">
-                                        <div class="filter-items filter-items-count">
-                                            @foreach ($getSubcategoriaFiltro as $f_categoria)
-                                                <div class="filter-item">
-                                                    <div class="custom-control custom-checkbox">
-                                                        <input type="checkbox" class="custom-control-input changeCategoria"
-                                                            value="{{ $f_categoria->id }}"
-                                                            id="cat-{{ $f_categoria->id }}">
-                                                        <label class="custom-control-label"
-                                                            for="cat-{{ $f_categoria->id }}">{{ $f_categoria->nombre }}</label>
+                                    <div class="collapse show" id="widget-1">
+                                        <div class="widget-body">
+                                            <div class="filter-items filter-items-count">
+                                                @foreach ($getSubcategoriaFiltro as $f_categoria)
+                                                    <div class="filter-item">
+                                                        <div class="custom-control custom-checkbox">
+                                                            <input type="checkbox" class="custom-control-input changeCategoria"
+                                                                value="{{ $f_categoria->id }}"
+                                                                id="cat-{{ $f_categoria->id }}">
+                                                            <label class="custom-control-label"
+                                                                for="cat-{{ $f_categoria->id }}">{{ $f_categoria->nombre }}</label>
+                                                        </div>
+                                                        <span class="item-count">{{ $f_categoria->totalProductos() }}</span>
                                                     </div>
-                                                    <span class="item-count">{{ $f_categoria->totalProductos() }}</span>
-                                                </div>
-                                            @endforeach
+                                                @endforeach
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            @endif
 
                             {{-- <div class="widget widget-collapsible">
                                 <h3 class="widget-title">

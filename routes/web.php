@@ -90,6 +90,7 @@ Route::group(['middleware' => 'admin'], function () {
 
 Route::get('/', [InicioController::class, 'inicio']);
 
+Route::get('buscar', [ProductoFront::class, 'getProductoBuscar']);
 Route::post('get_filtro_producto_ajax', [ProductoFront::class, 'getFiltroProductoAjax']);
 Route::get('{categoria?}/{subcategoria?}', [ProductoFront::class, 'getCategoria']);
 
