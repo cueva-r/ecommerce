@@ -65,7 +65,7 @@
                                 </div>
 
                                 <div class="product-price mb-4">
-                                    S/. {{ number_format($getProducto->precio, 2) }}
+                                    S/. <span id="getTotalPrecio">{{ number_format($getProducto->precio, 2) }}</span>
                                 </div>
 
                                 <div class="product-content">
@@ -91,10 +91,12 @@
                                     <div class="details-filter-row details-row-size">
                                         <label for="size">Tanaño:</label>
                                         <div class="select-custom">
-                                            <select name="size" id="size" class="form-control">
-                                                <option value="">Selecciona un tamaño</option>
+                                            <select name="size" id="size" class="form-control getTamanoPrecio">
+                                                <option data-price="0" value="">Selecciona un tamaño</option>
                                                 @foreach ($getProducto->getTamano as $tamano)
-                                                    <option value="{{ $tamano->id }}">{{ $tamano->nombre }} @if (!empty($tamano->precio))
+                                                    <option
+                                                        data-price="{{ !empty($tamano->precio) ? $tamano->precio : 0 }}"
+                                                        value="{{ $tamano->id }}">{{ $tamano->nombre }} @if (!empty($tamano->precio))
                                                             (s/. {{ number_format($tamano->precio, 2) }})
                                                         @endif
                                                     </option>
@@ -349,4 +351,13 @@
     <script src="{{ url('assets/js/bootstrap-input-spinner.js') }}"></script>
     <script src="{{ url('assets/js/jquery.elevateZoom.min.js') }}"></script>
     <script src="{{ url('assets/js/bootstrap-input-spinner.js') }}"></script>
+
+    <script>
+        $('.getTamanoPrecio').change(function(){
+            var precioProducto = '{{ $getProducto->precio }}'
+            var precio = $('option:selected', this).attr('data-price')
+            var total = parseFloat(precioProducto) + parseFloat(precio)
+            $('#getTotalPrecio').html(total.toFixed(2))
+        })
+    </script>
 @endsection
