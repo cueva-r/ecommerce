@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\SubCategoriaController;
 use App\Http\Controllers\Admin\ProductoController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\InicioController;
+use App\Http\Controllers\PagoController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductoController as ProductoFront;
 
@@ -89,6 +90,9 @@ Route::group(['middleware' => 'admin'], function () {
 });
 
 Route::get('/', [InicioController::class, 'inicio']);
+
+Route::get('carrito', [PagoController::class, 'carrito']);
+Route::post('producto/agregar-al-carrito', [PagoController::class, 'agregar_al_carrito']);
 
 Route::get('buscar', [ProductoFront::class, 'getProductoBuscar']);
 Route::post('get_filtro_producto_ajax', [ProductoFront::class, 'getFiltroProductoAjax']);

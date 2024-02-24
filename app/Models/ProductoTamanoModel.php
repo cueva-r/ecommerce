@@ -11,6 +11,11 @@ class ProductoTamanoModel extends Model
 
     protected $table = "producto_tamano";
 
+    static function getSingle($id)
+    {
+        return self::find($id);
+    }
+
     static function deleteRecord($producto_id)
     {
         self::where('producto_id', '=', $producto_id)

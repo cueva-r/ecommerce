@@ -72,59 +72,67 @@
                                     <p>{!! $getProducto->descripcion_corta !!}</p>
                                 </div>
 
-                                @if (!empty($getProducto->getColor->count()))
+                                <form action="{{ url('producto/agregar-al-carrito') }}" method="POST">
+                                    {{ csrf_field() }}
+                                    <input type="hidden" name="producto_id" value="{{ $getProducto->id }}">
+                                    @if (!empty($getProducto->getColor->count()))
+                                        <div class="details-filter-row details-row-size">
+                                            <label for="size">Color:</label>
+                                            <div class="select-custom">
+                                                <select name="color_id" id="color_id" class="form-control" required>
+                                                    <option value="">Selecciona un color</option>
+                                                    @foreach ($getProducto->getColor as $color)
+                                                        <option value="{{ $color->getColor->id }}">
+                                                            {{ $color->getColor->nombre }}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                        </div>
+                                    @endif
+
+                                    @if (!empty($getProducto->getTamano->count()))
+                                        <div class="details-filter-row details-row-size">
+                                            <label for="size">Tanaño:</label>
+                                            <div class="select-custom">
+                                                <select name="size_id" id="size" required
+                                                    class="form-control getTamanoPrecio">
+                                                    <option data-price="0" value="">Selecciona un tamaño</option>
+                                                    @foreach ($getProducto->getTamano as $tamano)
+                                                        <option
+                                                            data-price="{{ !empty($tamano->precio) ? $tamano->precio : 0 }}"
+                                                            value="{{ $tamano->id }}">{{ $tamano->nombre }} @if (!empty($tamano->precio))
+                                                                (s/. {{ number_format($tamano->precio, 2) }})
+                                                            @endif
+                                                        </option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                        </div>
+                                    @endif
+
                                     <div class="details-filter-row details-row-size">
-                                        <label for="size">Color:</label>
-                                        <div class="select-custom">
-                                            <select name="size" id="size" class="form-control">
-                                                <option value="">Selecciona un color</option>
-                                                @foreach ($getProducto->getColor as $color)
-                                                    <option value="{{ $color->getColor->id }}">
-                                                        {{ $color->getColor->nombre }}</option>
-                                                @endforeach
-                                            </select>
+                                        <label for="qty">Cantidad:</label>
+                                        <div class="product-details-quantity">
+                                            <input type="number" id="qty" class="form-control" value="1"
+                                                min="1" max="100" name="qty" required step="1"
+                                                data-decimals="0" required>
                                         </div>
                                     </div>
-                                @endif
 
-                                @if (!empty($getProducto->getTamano->count()))
-                                    <div class="details-filter-row details-row-size">
-                                        <label for="size">Tanaño:</label>
-                                        <div class="select-custom">
-                                            <select name="size" id="size" class="form-control getTamanoPrecio">
-                                                <option data-price="0" value="">Selecciona un tamaño</option>
-                                                @foreach ($getProducto->getTamano as $tamano)
-                                                    <option
-                                                        data-price="{{ !empty($tamano->precio) ? $tamano->precio : 0 }}"
-                                                        value="{{ $tamano->id }}">{{ $tamano->nombre }} @if (!empty($tamano->precio))
-                                                            (s/. {{ number_format($tamano->precio, 2) }})
-                                                        @endif
-                                                    </option>
-                                                @endforeach
-                                            </select>
-                                        </div>
-                                    </div>
-                                @endif
+                                    <div class="product-details-action">
+                                        <button style="background: #fff; color: #c96;" type="submit"
+                                            class="btn-product btn-cart"><span>Añadir al carrito</span></button>
 
-                                <div class="details-filter-row details-row-size">
-                                    <label for="qty">Cantidad:</label>
-                                    <div class="product-details-quantity">
-                                        <input type="number" id="qty" class="form-control" value="1"
-                                            min="1" max="10" step="1" data-decimals="0" required>
-                                    </div>
-                                </div>
-
-                                <div class="product-details-action">
-                                    <a href="#" class="btn-product btn-cart"><span>Añadir al carrito</span></a>
-
-                                    <div class="details-action-wrapper">
-                                        <a href="#" class="btn-product btn-wishlist" title="Wishlist"><span>Añadir a
-                                                la
-                                                lista de deseos</span></a>
-                                        {{-- <a href="#" class="btn-product btn-compare"
+                                        <div class="details-action-wrapper">
+                                            <a href="#" class="btn-product btn-wishlist" title="Wishlist"><span>Añadir
+                                                    a
+                                                    la
+                                                    lista de deseos</span></a>
+                                            {{-- <a href="#" class="btn-product btn-compare"
                                             title="Compare"><span>Comparar</span></a> --}}
+                                        </div>
                                     </div>
-                                </div>
+                                </form>
 
                                 <div class="product-details-footer">
                                     <div class="product-cat">
@@ -202,6 +210,7 @@
                             </div>
                         </div>
                     </div>
+
                     <div class="tab-pane fade" id="product-review-tab" role="tabpanel"
                         aria-labelledby="product-review-link">
                         <div class="reviews">
@@ -256,17 +265,17 @@
                                                 <p>Sed, molestias, tempore? Ex dolor esse iure hic veniam laborum blanditiis
                                                     laudantium iste amet. Cum non voluptate eos enim, ab cumque nam, modi,
                                                     quas iure illum repellendus, blanditiis perspiciatis beatae!</p>
-                                            </div><!-- End .review-content -->
+                                            </div>
 
                                             <div class="review-action">
                                                 <a href="#"><i class="icon-thumbs-up"></i>Helpful (0)</a>
                                                 <a href="#"><i class="icon-thumbs-down"></i>Unhelpful (0)</a>
-                                            </div><!-- End .review-action -->
-                                        </div><!-- End .col-auto -->
-                                    </div><!-- End .row -->
-                                </div><!-- End .review -->
-                            </div><!-- End .container -->
-                        </div><!-- End .reviews -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -353,7 +362,7 @@
     <script src="{{ url('assets/js/bootstrap-input-spinner.js') }}"></script>
 
     <script>
-        $('.getTamanoPrecio').change(function(){
+        $('.getTamanoPrecio').change(function() {
             var precioProducto = '{{ $getProducto->precio }}'
             var precio = $('option:selected', this).attr('data-price')
             var total = parseFloat(precioProducto) + parseFloat(precio)
