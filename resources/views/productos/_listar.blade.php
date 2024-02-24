@@ -23,8 +23,8 @@
                         </div>
 
                         {{-- <div class="product-action">
-                        <a href="#" class="btn-product btn-cart"><span>Agregar al carrito</span></a>
-                    </div> --}}
+                            <a href="#" class="btn-product btn-cart"><span>Agregar al carrito</span></a>
+                        </div> --}}
                     </figure>
 
                     <div class="product-body">
