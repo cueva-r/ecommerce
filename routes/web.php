@@ -92,6 +92,8 @@ Route::group(['middleware' => 'admin'], function () {
 Route::get('/', [InicioController::class, 'inicio']);
 
 Route::get('carrito', [PagoController::class, 'carrito']);
+Route::get('carrito/eliminar/{id}', [PagoController::class, 'eliminar_carrito']);
+
 Route::post('producto/agregar-al-carrito', [PagoController::class, 'agregar_al_carrito']);
 
 Route::get('buscar', [ProductoFront::class, 'getProductoBuscar']);

@@ -2,6 +2,25 @@
 
 @section('style')
     <link rel="stylesheet" href="{{ url('assets/css/plugins/nouislider/nouislider.css') }}">
+
+    <style>
+        .btn-product.btn-cart {
+            background: #fff;
+            color: #c96;
+            border: 1px solid #c96;
+            /* Borde inicial */
+            transition: background 0.3s, border-color 0.3s, color 0.3s;
+            /* Agregamos una transición suave */
+        }
+
+        .btn-product.btn-cart:hover {
+            background: #c96 !important;
+            border-color: #c96 !important;
+            /* Cambiamos el color del borde al color deseado */
+            color: #fff !important;
+            /* Cambiamos el color del texto a blanco */
+        }
+    </style>
 @endsection
 
 @section('content')

@@ -143,7 +143,7 @@
                                                     <img src="{{ $getProductoImagen->getLogo() }}" alt="product">
                                                 </a>
                                             </figure>
-                                            <a href="#" class="btn-remove" title="Quitar producto"><i
+                                            <a href="{{ url('carrito/eliminar/' . $header_carrito->id) }}" class="btn-remove" title="Quitar producto"><i
                                                     class="icon-close"></i></a>
                                         </div>
                                     @endif
@@ -153,7 +153,7 @@
                             <div class="dropdown-cart-total">
                                 <span>Total</span>
 
-                                <span class="cart-total-price">s/. {{ number_format(Cart::getSubtotal(), 2) }}</span>
+                                <span class="cart-total-price">S/. {{ number_format(Cart::getSubtotal(), 2) }}</span>
                             </div>
 
                             <div class="dropdown-cart-action">

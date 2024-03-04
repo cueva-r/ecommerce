@@ -11,7 +11,18 @@ class PagoController extends Controller
 {
     public function carrito(Request $request)
     {
-        dd(Cart::getContent());
+        $data['meta_titulo'] = 'Carrito de compras';
+        $data['meta_descripcion'] = '';
+        $data['meta_p_clave'] = '';
+
+        return view('pagos.carrito', $data);
+    }
+
+    public function eliminar_carrito($id)
+    {
+        Cart::remove($id);
+
+        return redirect()->back();
     }
 
     public function agregar_al_carrito(Request $request)
