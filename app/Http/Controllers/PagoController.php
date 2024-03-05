@@ -54,4 +54,18 @@ class PagoController extends Controller
 
         return redirect()->back();
     }
+
+    public function actualizar_carrito(Request $request)
+    {
+        foreach ($request->carrito as $carrito) {
+            Cart::update($carrito['id'], array(
+                'quantity' => array(
+                    'relative' => false,
+                    'value' => $carrito['qty']
+                )
+            ));
+        }
+
+        return redirect()->back();
+    }
 }

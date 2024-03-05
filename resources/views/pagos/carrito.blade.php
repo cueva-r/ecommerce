@@ -11,7 +11,7 @@
             /* Esto centra verticalmente en la ventana */
         }
 
-        .xd2{
+        .xd2 {
             margin-top: -400px;
         }
 
@@ -46,82 +46,90 @@
                     @if (!empty(Cart::getContent()->count()))
                         <div class="row">
                             <div class="col-lg-9">
-                                <table class="table table-cart table-mobile">
-                                    <thead>
-                                        <tr>
-                                            <th>Producto</th>
-                                            <th>Precio</th>
-                                            <th>Cantidad</th>
-                                            <th>Total</th>
-                                            <th></th>
-                                        </tr>
-                                    </thead>
+                                <form action="{{ url('actualizar_carrito') }}" method="POST">
+                                    {{ csrf_field() }}
+                                    <table class="table table-cart table-mobile">
+                                        <thead>
+                                            <tr>
+                                                <th>Producto</th>
+                                                <th>Precio</th>
+                                                <th>Cantidad</th>
+                                                <th>Total</th>
+                                                <th></th>
+                                            </tr>
+                                        </thead>
 
-                                    <tbody>
-                                        @foreach (Cart::getContent() as $carrito)
-                                            @php
-                                                $getCarritoProducto = App\Models\ProductoModel::getSingle($carrito->id);
-                                            @endphp
-
-                                            @if (!empty($getCarritoProducto))
+                                        <tbody>
+                                            @foreach (Cart::getContent() as $key => $carrito)
                                                 @php
-                                                    $getProductoImagen = $getCarritoProducto->getImagenSingle(
-                                                        $getCarritoProducto->id,
+                                                    $getCarritoProducto = App\Models\ProductoModel::getSingle(
+                                                        $carrito->id,
                                                     );
                                                 @endphp
 
-                                                <tr>
-                                                    <td class="product-col">
-                                                        <div class="product">
-                                                            <figure class="product-media">
-                                                                <a href="{{ url($getCarritoProducto->slug) }}">
-                                                                    <img src="{{ $getProductoImagen->getLogo() }}"
-                                                                        alt="Product image">
-                                                                </a>
-                                                            </figure>
+                                                @if (!empty($getCarritoProducto))
+                                                    @php
+                                                        $getProductoImagen = $getCarritoProducto->getImagenSingle(
+                                                            $getCarritoProducto->id,
+                                                        );
+                                                    @endphp
 
-                                                            <h3 class="product-title">
-                                                                <a
-                                                                    href="{{ url($getCarritoProducto->slug) }}">{{ $getCarritoProducto->titulo }}</a>
-                                                            </h3>
-                                                        </div>
-                                                    </td>
-                                                    <td class="price-col">S/. {{ number_format($carrito->price, 2) }}</td>
-                                                    <td class="quantity-col">
-                                                        <div class="cart-product-quantity">
-                                                            <input type="number" class="form-control"
-                                                                value="{{ $carrito->quantity }}" min="1"
-                                                                max="10" step="1" data-decimals="0" required>
-                                                        </div>
-                                                    </td>
-                                                    <td class="total-col">
-                                                        S/.{{ number_format($carrito->price * $carrito->quantity, 2) }}</td>
-                                                    <td class="remove-col"><a
-                                                            href="{{ url('carrito/eliminar/' . $carrito->id) }}"
-                                                            class="btn-remove"><i class="icon-close"></i></a></td>
-                                                </tr>
-                                            @endif
-                                        @endforeach
-                                    </tbody>
-                                </table>
+                                                    <tr>
+                                                        <td class="product-col">
+                                                            <div class="product">
+                                                                <figure class="product-media">
+                                                                    <a href="{{ url($getCarritoProducto->slug) }}">
+                                                                        <img src="{{ $getProductoImagen->getLogo() }}"
+                                                                            alt="Product image">
+                                                                    </a>
+                                                                </figure>
 
-                                <div class="cart-bottom">
-                                    <div class="cart-discount">
-                                        <form action="#">
+                                                                <h3 class="product-title">
+                                                                    <a
+                                                                        href="{{ url($getCarritoProducto->slug) }}">{{ $getCarritoProducto->titulo }}</a>
+                                                                </h3>
+                                                            </div>
+                                                        </td>
+                                                        <td class="price-col">S/. {{ number_format($carrito->price, 2) }}
+                                                        </td>
+                                                        <td class="quantity-col">
+                                                            <div class="cart-product-quantity">
+                                                                <input type="number" class="form-control"
+                                                                    value="{{ $carrito->quantity }}" min="1"
+                                                                    name="carrito[{{ $key }}][qty]" max="100"
+                                                                    step="1" data-decimals="0" required>
+                                                            </div>
+
+                                                            <input type="hidden" value="{{ $carrito->id }}"
+                                                                name="carrito[{{ $key }}][id]">
+                                                        </td>
+                                                        <td class="total-col">
+                                                            S/.{{ number_format($carrito->price * $carrito->quantity, 2) }}
+                                                        </td>
+                                                        <td class="remove-col"><a
+                                                                href="{{ url('carrito/eliminar/' . $carrito->id) }}"
+                                                                class="btn-remove"><i class="icon-close"></i></a></td>
+                                                    </tr>
+                                                @endif
+                                            @endforeach
+                                        </tbody>
+                                    </table>
+
+                                    <div class="cart-bottom">
+                                        <div class="cart-discount">
                                             <div class="input-group">
-                                                <input type="text" class="form-control" required
-                                                    placeholder="Código de cupón">
+                                                <input type="text" class="form-control" placeholder="Código de cupón">
                                                 <div class="input-group-append">
-                                                    <button class="btn btn-outline-primary-2" type="submit"><i
-                                                            class="icon-long-arrow-right"></i></button>
+                                                    <button type="button" class="btn btn-outline-primary-2"
+                                                        type="submit"><i class="icon-long-arrow-right"></i></button>
                                                 </div>
                                             </div>
-                                        </form>
-                                    </div>
+                                        </div>
 
-                                    <a href="#" class="btn btn-outline-dark-2"><span>ACTUALIZAR CARRITO</span><i
-                                            class="icon-refresh"></i></a>
-                                </div>
+                                        <button type="submit" class="btn btn-outline-dark-2"><span>ACTUALIZAR
+                                                CARRITO</span><i class="icon-refresh"></i></a>
+                                    </div>
+                                </form>
                             </div>
                             <aside class="col-lg-3">
                                 <div class="summary summary-cart">
