@@ -12,7 +12,7 @@
         }
 
         .xd2 {
-            margin-top: -400px;
+            margin-top: -200px;
         }
 
         .xd3 {
@@ -116,16 +116,6 @@
                                     </table>
 
                                     <div class="cart-bottom">
-                                        <div class="cart-discount">
-                                            <div class="input-group">
-                                                <input type="text" class="form-control" placeholder="Código de cupón">
-                                                <div class="input-group-append">
-                                                    <button type="button" class="btn btn-outline-primary-2"
-                                                        type="submit"><i class="icon-long-arrow-right"></i></button>
-                                                </div>
-                                            </div>
-                                        </div>
-
                                         <button type="submit" class="btn btn-outline-dark-2"><span>ACTUALIZAR
                                                 CARRITO</span><i class="icon-refresh"></i></a>
                                     </div>
@@ -140,46 +130,6 @@
                                             <tr class="summary-subtotal">
                                                 <td>Subtotal:</td>
                                                 <td>S/.{{ number_format(Cart::getSubtotal(), 2) }}</td>
-                                            </tr>
-                                            <tr class="summary-shipping">
-                                                <td>Envíos:</td>
-                                                <td>&nbsp;</td>
-                                            </tr>
-
-                                            <tr class="summary-shipping-row">
-                                                <td>
-                                                    <div class="custom-control custom-radio">
-                                                        <input type="radio" id="free-shipping" name="shipping"
-                                                            class="custom-control-input">
-                                                        <label class="custom-control-label" for="free-shipping">Envíos
-                                                            gratis</label>
-                                                    </div>
-                                                </td>
-                                                <td>S/.0.00</td>
-                                            </tr>
-
-                                            <tr class="summary-shipping-row">
-                                                <td>
-                                                    <div class="custom-control custom-radio">
-                                                        <input type="radio" id="standart-shipping" name="shipping"
-                                                            class="custom-control-input">
-                                                        <label class="custom-control-label"
-                                                            for="standart-shipping">Estándar:</label>
-                                                    </div>
-                                                </td>
-                                                <td>S/.0.00</td>
-                                            </tr>
-
-                                            <tr class="summary-shipping-row">
-                                                <td>
-                                                    <div class="custom-control custom-radio">
-                                                        <input type="radio" id="express-shipping" name="shipping"
-                                                            class="custom-control-input">
-                                                        <label class="custom-control-label"
-                                                            for="express-shipping">Express:</label>
-                                                    </div>
-                                                </td>
-                                                <td>S/.0.00</td>
                                             </tr>
 
                                             <tr class="summary-total">

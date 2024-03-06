@@ -9,6 +9,15 @@ use Cart;
 
 class PagoController extends Controller
 {
+    public function pagar(Request $request)
+    {
+        $data['meta_titulo'] = 'Pagar';
+        $data['meta_descripcion'] = '';
+        $data['meta_p_clave'] = '';
+
+        return view('pagos.pagar', $data);
+    }
+
     public function carrito(Request $request)
     {
         $data['meta_titulo'] = 'Carrito de compras';
