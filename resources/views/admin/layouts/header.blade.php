@@ -198,6 +198,15 @@
                 </li>
 
                 <li class="nav-item">
+                    <a href="{{ url('admin/codigo_descuento/listar') }}" class="nav-link @if (Request::segment(2) == 'codigo_descuento') active @endif">
+                        <i class="nav-icon fas fa-ticket-alt"></i>
+                        <p>
+                            Código de descuento
+                        </p>
+                    </a>
+                </li>
+
+                <li class="nav-item">
                     <a href="{{ url('admin/cerrar-sesion') }}" class="nav-link">
                         <i class="nav-icon fa-solid fa-right-from-bracket"></i>
                         <p>

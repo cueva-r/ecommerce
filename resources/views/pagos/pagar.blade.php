@@ -128,7 +128,7 @@
                                                     <div class="cart-discount">
                                                         <div class="input-group">
                                                             <input type="text" class="form-control" required
-                                                                placeholder="Código de cupón">
+                                                                placeholder="Código de descuento">
                                                             <div class="input-group-append">
                                                                 <button style="height: 38px" type="button" class="btn btn-outline-primary-2"
                                                                     type="submit"><i

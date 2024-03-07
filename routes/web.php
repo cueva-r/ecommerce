@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\CategoriaController;
+use App\Http\Controllers\Admin\CodigoDescuentoController;
 use App\Http\Controllers\Admin\ColorController;
 use App\Http\Controllers\Admin\MarcaController;
 use App\Http\Controllers\Admin\SubCategoriaController;
@@ -87,6 +88,14 @@ Route::group(['middleware' => 'admin'], function () {
     Route::get('admin/colores/editar/{id}', [ColorController::class, 'editar']);
     Route::post('admin/colores/editar/{id}', [ColorController::class, 'actualizar']);
     Route::get('admin/colores/eliminar/{id}', [ColorController::class, 'eliminar']);
+
+    //Ruta para el codigo de descuento
+    Route::get('admin/codigo_descuento/listar', [CodigoDescuentoController::class, 'listar']);
+    Route::get('admin/codigo_descuento/agregar', [CodigoDescuentoController::class, 'agregar']);
+    Route::post('admin/codigo_descuento/agregar', [CodigoDescuentoController::class, 'insertar']);
+    Route::get('admin/codigo_descuento/editar/{id}', [CodigoDescuentoController::class, 'editar']);
+    Route::post('admin/codigo_descuento/editar/{id}', [CodigoDescuentoController::class, 'actualizar']);
+    Route::get('admin/codigo_descuento/eliminar/{id}', [CodigoDescuentoController::class, 'eliminar']);
 });
 
 Route::get('/', [InicioController::class, 'inicio']);
