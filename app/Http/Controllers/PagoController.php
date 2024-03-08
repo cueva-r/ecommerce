@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\CodigoDescuentoModel;
 use App\Models\ProductoModel;
 use App\Models\ProductoTamanoModel;
 use Illuminate\Http\Request;
@@ -9,6 +10,34 @@ use Cart;
 
 class PagoController extends Controller
 {
+    public function aplicar_codigo_descuento(Request $request)
+    {
+        $getDescuento = CodigoDescuentoModel::CheckDescuento($request->codigo_descuento);
+        if (!empty($getDescuento)) {
+            $total = Cart::getSubTotal();
+
+            if ($getDescuento->tipo == 'Cantidad') {
+                $descuento_cantidad = $getDescuento->porcentaje_cantidad;
+                $total_pagable = $total - $getDescuento->porcentaje_cantidad;
+            } else {
+                $descuento_cantidad = ($total * $getDescuento->porcentaje_cantidad) / 100;
+                $total_pagable = $total - $descuento_cantidad;
+            }
+
+            $json['status'] = true;
+            $json['descuento_cantidad'] = number_format($descuento_cantidad, 2);
+            $json['total_pagable'] = number_format($total_pagable, 2);
+            $json['message'] = "success";
+        } else {
+            $json['status'] = false;
+            $json['descuento_cantidad'] = '0.00';
+            $json['total_pagable'] = number_format(Cart::getSubTotal(), 2);
+            $json['message'] = "Código de descuento inválido!";
+        }
+
+        echo json_encode($json, JSON_UNESCAPED_UNICODE);
+    }
+
     public function pagar(Request $request)
     {
         $data['meta_titulo'] = 'Pagar';

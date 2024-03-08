@@ -127,11 +127,12 @@
                                                 <td colspan="2">
                                                     <div class="cart-discount">
                                                         <div class="input-group">
-                                                            <input type="text" class="form-control" required
+                                                            <input type="text" id="getCodigoDescuento"
+                                                                class="form-control" required
                                                                 placeholder="Código de descuento">
                                                             <div class="input-group-append">
-                                                                <button style="height: 38px" type="button" class="btn btn-outline-primary-2"
-                                                                    type="submit"><i
+                                                                <button style="height: 38px" id="aplicarDescuento"
+                                                                    type="button" class="btn btn-outline-primary-2"><i
                                                                         class="icon-long-arrow-right"></i></button>
                                                             </div>
                                                         </div>
@@ -140,7 +141,7 @@
                                             </tr>
                                             <tr>
                                                 <td>Descuento:</td>
-                                                <td>S/. 0.00</td>
+                                                <td>S/. <span id="getDescuentoCantidad">0.00</span></td>
                                             </tr>
                                             <tr>
                                                 <td>Envíos:</td>
@@ -148,7 +149,7 @@
                                             </tr>
                                             <tr class="summary-total">
                                                 <td>Total:</td>
-                                                <td>S/.{{ number_format(Cart::getSubtotal(), 2) }}</td>
+                                                <td>S/. <span id="getTotalPagable">{{ number_format(Cart::getSubtotal(), 2) }}</span></td>
                                             </tr>
                                         </tbody>
                                     </table>
@@ -231,4 +232,28 @@
 @endsection
 
 @section('script')
+    <script>
+        $('body').delegate('#aplicarDescuento', 'click', function() {
+            var codigo_descuento = $('#getCodigoDescuento').val();
+            
+            $.ajax({
+                type: "POST",
+                url: "{{ url('pagar/aplicar_codigo_descuento') }}",
+                data: {
+                    codigo_descuento: codigo_descuento,
+                    "_token": "{{ csrf_token() }}"
+                },
+                dataType: "json",
+                success: function(data) {
+                    $('#getDescuentoCantidad').html(data.descuento_cantidad)
+                    $('#getTotalPagable').html(data.total_pagable)
+
+                    if (data.status == false) {
+                        alert(data.message)
+                    }
+                },
+                error: function(data) {}
+            });
+        });
+    </script>
 @endsection

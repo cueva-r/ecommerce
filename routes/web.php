@@ -102,7 +102,9 @@ Route::get('/', [InicioController::class, 'inicio']);
 
 Route::get('carrito', [PagoController::class, 'carrito']);
 Route::post('actualizar_carrito', [PagoController::class, 'actualizar_carrito']);
+
 Route::get('pagar', [PagoController::class, 'pagar']);
+Route::post('pagar/aplicar_codigo_descuento', [PagoController::class, 'aplicar_codigo_descuento']);
 
 Route::get('carrito/eliminar/{id}', [PagoController::class, 'eliminar_carrito']);
 

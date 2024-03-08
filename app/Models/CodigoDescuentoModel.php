@@ -23,4 +23,14 @@ class CodigoDescuentoModel extends Model
             ->orderBy('codigo_descuento.id', 'desc')
             ->paginate(20);
     }
+
+    static function CheckDescuento($codigo_descuento)
+    {
+        return self::select('codigo_descuento.*')
+            ->where('codigo_descuento.esta_eliminado', '=', 0)
+            ->where('codigo_descuento.estado', '=', 0)
+            ->where('codigo_descuento.nombre', '=', $codigo_descuento)
+            ->where('codigo_descuento.fecha_expiracion', '>=', date('Y-m-d'))
+            ->first();
+    }
 }
