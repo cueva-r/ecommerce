@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\CategoriaController;
 use App\Http\Controllers\Admin\CodigoDescuentoController;
 use App\Http\Controllers\Admin\ColorController;
+use App\Http\Controllers\Admin\CostoEnvioController;
 use App\Http\Controllers\Admin\MarcaController;
 use App\Http\Controllers\Admin\SubCategoriaController;
 use App\Http\Controllers\Admin\ProductoController;
@@ -96,6 +97,14 @@ Route::group(['middleware' => 'admin'], function () {
     Route::get('admin/codigo_descuento/editar/{id}', [CodigoDescuentoController::class, 'editar']);
     Route::post('admin/codigo_descuento/editar/{id}', [CodigoDescuentoController::class, 'actualizar']);
     Route::get('admin/codigo_descuento/eliminar/{id}', [CodigoDescuentoController::class, 'eliminar']);
+
+    //Ruta para el costo de envío
+    Route::get('admin/costo_envio/listar', [CostoEnvioController::class, 'listar']);
+    Route::get('admin/costo_envio/agregar', [CostoEnvioController::class, 'agregar']);
+    Route::post('admin/costo_envio/agregar', [CostoEnvioController::class, 'insertar']);
+    Route::get('admin/costo_envio/editar/{id}', [CostoEnvioController::class, 'editar']);
+    Route::post('admin/costo_envio/editar/{id}', [CostoEnvioController::class, 'actualizar']);
+    Route::get('admin/costo_envio/eliminar/{id}', [CostoEnvioController::class, 'eliminar']);
 });
 
 Route::get('/', [InicioController::class, 'inicio']);

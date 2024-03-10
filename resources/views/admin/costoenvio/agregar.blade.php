@@ -9,10 +9,10 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>Agregar un nuevo código de descuento</h1>
+                        <h1>Agregar un nuevo costo de envío</h1>
                     </div>
                     <div class="col-sm-6" style="text-align: right">
-                        <a href="{{ url('admin/codigo_descuento/listar') }}" class="btn btn-primary">
+                        <a href="{{ url('admin/costo_envio/listar') }}" class="btn btn-primary">
                             <i class="fa-solid fa-arrow-left"></i>
                         </a>
                     </div>
@@ -31,26 +31,13 @@
                                     <div class="form-group">
                                         <label>Nombre <span style="color: red">*</span></label>
                                         <input type="text" class="form-control" value="{{old('nombre')}}" required name="nombre"
-                                            placeholder="Nombre del código de descuento">
+                                            placeholder="Nombre del costo de envío">
                                     </div>
 
                                     <div class="form-group">
-                                        <label>Tipo  <span style="color: red">*</span></label>
-                                        <select class="form-control" required name="tipo">
-                                            <option {{(old('tipo') == 'Cantidad') ? 'selected' : ''}} value="Cantidad">Cantidad</option>
-                                            <option {{(old('tipo') == 'Porcentaje') ? 'selected' : ''}} value="Porcentaje">Porcentaje</option>
-                                        </select>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label>Porcentaje / cantidad <span style="color: red">*</span></label>
-                                        <input type="number" class="form-control" min="0" max="100" value="{{old('porcentaje_cantidad')}}" required name="porcentaje_cantidad"
-                                            placeholder="Porcentaje / cantidad no superar de 100">
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label>Fecha de expiración <span style="color: red">*</span></label>
-                                        <input type="date" class="form-control" value="{{old('fecha_expiracion')}}" required name="fecha_expiracion">
+                                        <label>Precio <span style="color: red">*</span></label>
+                                        <input type="text" class="form-control" value="{{old('precio')}}" required name="precio"
+                                            placeholder="Precio del costo de envío">
                                     </div>
 
                                     <div class="form-group">

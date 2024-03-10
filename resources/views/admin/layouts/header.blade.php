@@ -207,6 +207,15 @@
                 </li>
 
                 <li class="nav-item">
+                    <a href="{{ url('admin/costo_envio/listar') }}" class="nav-link @if (Request::segment(2) == 'costo_envio') active @endif">
+                        <i class="nav-icon fas fa-shipping-fast"></i>
+                        <p>
+                            Costo de envíos
+                        </p>
+                    </a>
+                </li>
+
+                <li class="nav-item">
                     <a href="{{ url('admin/cerrar-sesion') }}" class="nav-link">
                         <i class="nav-icon fa-solid fa-right-from-bracket"></i>
                         <p>
