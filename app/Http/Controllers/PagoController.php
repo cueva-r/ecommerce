@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\CodigoDescuentoModel;
+use App\Models\CostoEnvioModel;
 use App\Models\ProductoModel;
 use App\Models\ProductoTamanoModel;
 use Illuminate\Http\Request;
@@ -26,12 +27,12 @@ class PagoController extends Controller
 
             $json['status'] = true;
             $json['descuento_cantidad'] = number_format($descuento_cantidad, 2);
-            $json['total_pagable'] = number_format($total_pagable, 2);
+            $json['total_pagable'] = $total_pagable;
             $json['message'] = "success";
         } else {
             $json['status'] = false;
             $json['descuento_cantidad'] = '0.00';
-            $json['total_pagable'] = number_format(Cart::getSubTotal(), 2);
+            $json['total_pagable'] = Cart::getSubTotal();
             $json['message'] = "Código de descuento inválido!";
         }
 
@@ -43,6 +44,8 @@ class PagoController extends Controller
         $data['meta_titulo'] = 'Pagar';
         $data['meta_descripcion'] = '';
         $data['meta_p_clave'] = '';
+
+        $data['getEnvio'] = CostoEnvioModel::getRecordActive();
 
         return view('pagos.pagar', $data);
     }

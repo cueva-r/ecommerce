@@ -23,4 +23,13 @@ class CostoEnvioModel extends Model
             ->orderBy('costo_envio.id', 'desc')
             ->paginate(20);
     }
+
+    static function getRecordActive()
+    {
+        return self::select('costo_envio.*')
+            ->where('costo_envio.esta_eliminado', '=', 0)
+            ->where('costo_envio.estado', '=', 0)
+            ->orderBy('costo_envio.id', 'asc')
+            ->get();
+    }
 }

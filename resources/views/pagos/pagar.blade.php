@@ -143,16 +143,43 @@
                                                 <td>Descuento:</td>
                                                 <td>S/. <span id="getDescuentoCantidad">0.00</span></td>
                                             </tr>
-                                            <tr>
-                                                <td>Envíos:</td>
-                                                <td>Envíos gratis</td>
+                                            <tr class="summary-shipping">
+                                                <td>Envíos</td>
+                                                <td>&nbsp;</td>
                                             </tr>
+
+                                            @foreach ($getEnvio as $envio)
+                                                <tr class="summary-shipping-row">
+                                                    <td>
+                                                        <div class="custom-control custom-radio">
+                                                            <input type="radio" id="free-shipping{{ $envio->id }}"
+                                                                name="shipping" class="custom-control-input getCostoEnvio"
+                                                                data-price="{{ !empty($envio->precio) ? $envio->precio : 0 }}">
+                                                            <label class="custom-control-label"
+                                                                for="free-shipping{{ $envio->id }}">{{ $envio->nombre }}</label>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        @if (!empty($envio->precio))
+                                                            S/. {{ number_format($envio->precio, 2) }}
+                                                        @endif
+                                                    </td>
+                                                </tr>
+                                            @endforeach
+
                                             <tr class="summary-total">
-                                                <td>Total:</td>
-                                                <td>S/. <span id="getTotalPagable">{{ number_format(Cart::getSubtotal(), 2) }}</span></td>
+                                                <td>
+                                                    Total:
+                                                </td>
+                                                <td>S/. <span
+                                                        id="getTotalPagable">{{ number_format(Cart::getSubtotal(), 2) }}</span>
+                                                </td>
                                             </tr>
                                         </tbody>
                                     </table>
+
+                                    <input type="hidden" id="getCostoEnvioTotalPagable" value="0">
+                                    <input type="hidden" id="totalPagable" value="{{ Cart::getSubtotal() }}">
 
                                     <div class="accordion-summary" id="accordion-payment">
                                         <div class="card">
@@ -233,9 +260,17 @@
 
 @section('script')
     <script>
+        $('body').delegate('.getCostoEnvio', 'change', function() {
+            var precio = $(this).attr('data-price')
+            var total = $('#totalPagable').val()
+            $('#getCostoEnvioTotalPagable').val(precio)
+            var total_final = parseFloat(precio) + parseFloat(total)
+            $('#getTotalPagable').html(total_final.toFixed(2))
+        })
+
         $('body').delegate('#aplicarDescuento', 'click', function() {
             var codigo_descuento = $('#getCodigoDescuento').val();
-            
+
             $.ajax({
                 type: "POST",
                 url: "{{ url('pagar/aplicar_codigo_descuento') }}",
@@ -246,7 +281,12 @@
                 dataType: "json",
                 success: function(data) {
                     $('#getDescuentoCantidad').html(data.descuento_cantidad)
-                    $('#getTotalPagable').html(data.total_pagable)
+
+                    var envio = $('#getCostoEnvioTotalPagable').val()
+                    var total_final = parseFloat(envio) + parseFloat(data.total_pagable)
+
+                    $('#getTotalPagable').html(total_final.toFixed(2))
+                    $('#totalPagable').val(data.total_pagable)
 
                     if (data.status == false) {
                         alert(data.message)
