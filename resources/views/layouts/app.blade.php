@@ -69,18 +69,18 @@
                             <div class="tab-content" id="tab-content-5">
                                 <div class="tab-pane fade show active" id="signin" role="tabpanel"
                                     aria-labelledby="signin-tab">
-                                    <form action="#">
+                                    <form action="" method="POST">
                                         <div class="form-group">
                                             <label for="singin-email">Usuario o correo electrónico *</label>
                                             <input type="text" class="form-control" id="singin-email"
                                                 name="singin-email" required>
-                                        </div><!-- End .form-group -->
+                                        </div>
 
                                         <div class="form-group">
                                             <label for="singin-password">Contraseña *</label>
                                             <input type="password" class="form-control" id="singin-password"
                                                 name="singin-password" required>
-                                        </div><!-- End .form-group -->
+                                        </div>
 
                                         <div class="form-footer">
                                             <button type="submit" class="btn btn-outline-primary-2">
@@ -91,7 +91,8 @@
                                             <div class="custom-control custom-checkbox">
                                                 <input type="checkbox" class="custom-control-input"
                                                     id="signin-remember">
-                                                <label class="custom-control-label" for="signin-remember">Recuerdame</label>
+                                                <label class="custom-control-label"
+                                                    for="signin-remember">Recuerdame</label>
                                             </div><!-- End .custom-checkbox -->
 
                                             <a href="#" class="forgot-link">Olvidaste tu contraseña?</a>
@@ -100,18 +101,28 @@
                                 </div><!-- .End .tab-pane -->
                                 <div class="tab-pane fade" id="register" role="tabpanel"
                                     aria-labelledby="register-tab">
-                                    <form action="#">
+                                    <form action="" method="POST" id="enviarFormularioRegistro">
+                                        {{ csrf_field() }}
                                         <div class="form-group">
-                                            <label for="register-email">Tu correo electrónico *</label>
-                                            <input type="email" class="form-control" id="register-email"
-                                                name="register-email" required>
-                                        </div><!-- End .form-group -->
+                                            <label for="register-name">Nombre <span
+                                                    style="color: red">*</span></label>
+                                            <input type="text" class="form-control" id="register-name"
+                                                name="name" required>
+                                        </div>
 
                                         <div class="form-group">
-                                            <label for="register-password">Contraseña *</label>
+                                            <label for="register-email">Tu correo electrónico <span
+                                                    style="color: red">*</span></label>
+                                            <input type="email" class="form-control" id="register-email"
+                                                name="email" required>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="register-password">Contraseña <span
+                                                    style="color: red">*</span></label>
                                             <input type="password" class="form-control" id="register-password"
-                                                name="register-password" required>
-                                        </div><!-- End .form-group -->
+                                                name="password" required>
+                                        </div>
 
                                         <div class="form-footer">
                                             <button type="submit" class="btn btn-outline-primary-2">
@@ -122,7 +133,8 @@
                                             <div class="custom-control custom-checkbox">
                                                 <input type="checkbox" class="custom-control-input"
                                                     id="register-policy" required>
-                                                <label class="custom-control-label" for="register-policy">Acepto la <a href="#">política y provacidad.</a> *</label>
+                                                <label class="custom-control-label" for="register-policy">Acepto la <a
+                                                        href="#">política y provacidad.</a> *</label>
                                             </div><!-- End .custom-checkbox -->
                                         </div><!-- End .form-footer -->
                                     </form>
@@ -171,15 +183,35 @@
     </div> --}}
 
     <!-- Plugins JS File -->
-    <script src="{{  url('assets/js/jquery.min.js') }}"></script>
-    <script src="{{  url('assets/js/bootstrap.bundle.min.js') }}"></script>
-    <script src="{{  url('assets/js/jquery.hoverIntent.min.js') }}"></script>
-    <script src="{{  url('assets/js/jquery.waypoints.min.js') }}"></script>
-    <script src="{{  url('assets/js/superfish.min.js') }}"></script>
-    <script src="{{  url('assets/js/owl.carousel.min.js') }}"></script>
-    <script src="{{  url('assets/js/jquery.magnific-popup.min.js') }}"></script>
+    <script src="{{ url('assets/js/jquery.min.js') }}"></script>
+    <script src="{{ url('assets/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ url('assets/js/jquery.hoverIntent.min.js') }}"></script>
+    <script src="{{ url('assets/js/jquery.waypoints.min.js') }}"></script>
+    <script src="{{ url('assets/js/superfish.min.js') }}"></script>
+    <script src="{{ url('assets/js/owl.carousel.min.js') }}"></script>
+    <script src="{{ url('assets/js/jquery.magnific-popup.min.js') }}"></script>
     <!-- Main JS File -->
-    <script src="{{  url('assets/js/main.js') }}"></script>
+    <script src="{{ url('assets/js/main.js') }}"></script>
+
+    <script>
+        $('body').delegate('#enviarFormularioRegistro', 'submit', function(e) {
+            e.preventDefault()
+
+            $.ajax({
+                type: "POST",
+                url: "{{ url('registro') }}",
+                data: $(this).serialize(),
+                dataType: "json",
+                success: function(data) {
+                    alert(data.message)
+                    if (data.status == true) {
+                        location.reload()
+                    }
+                },
+                error: function(data) {}
+            });
+        })
+    </script>
 
     @yield('script')
 </body>

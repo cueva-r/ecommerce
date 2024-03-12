@@ -108,6 +108,7 @@ Route::group(['middleware' => 'admin'], function () {
 });
 
 Route::get('/', [InicioController::class, 'inicio']);
+Route::post('registro', [AuthController::class, 'registro']);
 
 Route::get('carrito', [PagoController::class, 'carrito']);
 Route::post('actualizar_carrito', [PagoController::class, 'actualizar_carrito']);
