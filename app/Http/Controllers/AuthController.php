@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\RegisterMail;
 use App\Models\User;
 use Auth;
 use Illuminate\Http\Request;
 use Hash;
+use Mail;
 
 class AuthController extends Controller
 {
@@ -45,13 +47,25 @@ class AuthController extends Controller
             $save->password = Hash::make($request->password);
             $save->save();
 
+            Mail::to($save->email)->send(new RegisterMail($save));
+
             $json['status'] = true;
-            $json['message'] = "Cuenta creada con éxito!";
+            $json['message'] = "Cuenta creada con éxito!, Porfavor veirifique su correo electrónico!";
         }else{
             $json['status'] = false;
             $json['message'] = "Este correo ya existe, intente con otro porfavor!";
         }
 
         echo json_encode($json, JSON_UNESCAPED_UNICODE);
+    }
+
+    public function activar_email($id)
+    {
+        $id = base64_decode($id);
+        $user = User::getSingle($id);
+        $user->email_verified_at = date('Y-m-d H:i:s');
+        $user->save();
+
+        return redirect(url(''))->with("success", "Su correo electrónico ya está verificado");
     }
 }
