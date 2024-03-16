@@ -29,10 +29,13 @@
                             <li><a href="tel:#"><i class="icon-phone"></i>Llamar: +51 924 575 577</a></li>
                             <li><a href="{{ url('lista-deseos') }}"><i class="icon-heart-o"></i>Lista de deseos
                                     <span>(3)</span></a></li>
-                            <li><a href="{{ url('sobre-nosotros') }}">Sobre nosotros</a></li>
-                            <li><a href="{{ url('contactenos') }}">Contáctenos</a></li>
-                            <li><a href="#signin-modal" data-toggle="modal"><i class="icon-user"></i>Iniciar sesión</a>
-                            </li>
+                            @if (!empty(Auth::check()))
+                                <li><a href="#">{{ Auth::user()->name }}</a></li> 
+                                <li><a href="{{ url('admin/cerrar-sesion') }}">Cerar sesión</a></li> 
+                            @else
+                                <li><a href="#signin-modal" data-toggle="modal"><i class="icon-user"></i>Iniciar sesión</a>
+                                </li>
+                            @endif
                         </ul>
                     </li>
                 </ul>

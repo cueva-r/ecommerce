@@ -109,6 +109,7 @@ Route::group(['middleware' => 'admin'], function () {
 
 Route::get('/', [InicioController::class, 'inicio']);
 Route::post('registro', [AuthController::class, 'registro']);
+Route::post('login', [AuthController::class, 'login']);
 Route::get('activar/{id}', [AuthController::class, 'activar_email']);
 
 Route::get('carrito', [PagoController::class, 'carrito']);

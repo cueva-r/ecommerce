@@ -69,17 +69,20 @@
                             <div class="tab-content" id="tab-content-5">
                                 <div class="tab-pane fade show active" id="signin" role="tabpanel"
                                     aria-labelledby="signin-tab">
-                                    <form action="" method="POST">
+                                    <form action="" method="POST" id="enviarFormularioLogin">
+                                        {{ csrf_field() }}
                                         <div class="form-group">
-                                            <label for="singin-email">Usuario o correo electrónico *</label>
-                                            <input type="text" class="form-control" id="singin-email"
-                                                name="singin-email" required>
+                                            <label for="singin-email">Correo electrónico <span
+                                                    style="color: red;">*</span></label>
+                                            <input type="text" class="form-control" id="singin-email" name="email"
+                                                required>
                                         </div>
 
                                         <div class="form-group">
-                                            <label for="singin-password">Contraseña *</label>
+                                            <label for="singin-password">Contraseña <span
+                                                    style="color: red;">*</span></label>
                                             <input type="password" class="form-control" id="singin-password"
-                                                name="singin-password" required>
+                                                name="password" required>
                                         </div>
 
                                         <div class="form-footer">
@@ -89,16 +92,16 @@
                                             </button>
 
                                             <div class="custom-control custom-checkbox">
-                                                <input type="checkbox" class="custom-control-input"
+                                                <input type="checkbox" class="custom-control-input" name="is_remember"
                                                     id="signin-remember">
                                                 <label class="custom-control-label"
                                                     for="signin-remember">Recuerdame</label>
-                                            </div><!-- End .custom-checkbox -->
+                                            </div>
 
                                             <a href="#" class="forgot-link">Olvidaste tu contraseña?</a>
-                                        </div><!-- End .form-footer -->
+                                        </div>
                                     </form>
-                                </div><!-- .End .tab-pane -->
+                                </div>
                                 <div class="tab-pane fade" id="register" role="tabpanel"
                                     aria-labelledby="register-tab">
                                     <form action="" method="POST" id="enviarFormularioRegistro">
@@ -138,14 +141,14 @@
                                             </div><!-- End .custom-checkbox -->
                                         </div><!-- End .form-footer -->
                                     </form>
-                                </div><!-- .End .tab-pane -->
-                            </div><!-- End .tab-content -->
-                        </div><!-- End .form-tab -->
-                    </div><!-- End .form-box -->
-                </div><!-- End .modal-body -->
-            </div><!-- End .modal-content -->
-        </div><!-- End .modal-dialog -->
-    </div><!-- End .modal -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     {{-- <div class="container newsletter-popup-container mfp-hide" id="newsletter-popup-form">
         <div class="row justify-content-center">
@@ -206,6 +209,25 @@
                     alert(data.message)
                     if (data.status == true) {
                         location.reload()
+                    }
+                },
+                error: function(data) {}
+            });
+        })
+
+        $('body').delegate('#enviarFormularioLogin', 'submit', function(e) {
+            e.preventDefault()
+
+            $.ajax({
+                type: "POST",
+                url: "{{ url('login') }}",
+                data: $(this).serialize(),
+                dataType: "json",
+                success: function(data) {
+                    if (data.status == true) {
+                        location.reload()
+                    } else {
+                        alert(data.message)
                     }
                 },
                 error: function(data) {}

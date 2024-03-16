@@ -32,7 +32,33 @@ class AuthController extends Controller
     public function cerrar_sesion_admin()
     {
         Auth::logout();
-        return redirect('admin');
+        return redirect(url(''));
+    }
+
+    public function login(Request $request)
+    {
+        $remember = !empty($request->is_remember) ? true : false;
+
+        if (Auth::attempt(['email' => $request->email, 'password' => $request->password, 'estado' => 0, 'esta_eliminado' => 0], $remember)) {
+            if (!empty(Auth::user()->email_verified_at)) {
+                $json['status'] = true;
+                $json['message'] = "success";
+            } else {
+                $save = User::getSingle(Auth::user()->id);
+
+                Mail::to($save->email)->send(new RegisterMail($save));
+
+                Auth::logout();
+
+                $json['status'] = false;
+                $json['message'] = "Tu correo electrónico no está verificado, por favor revisa tu inbox en mailtrap y verificalo!";
+            }
+        } else {
+            $json['status'] = false;
+            $json['message'] = "Email y/o contraseña inconrrectos, por favor introduzca datos correctos!";
+        }
+
+        echo json_encode($json, JSON_UNESCAPED_UNICODE);
     }
 
     public function registro(Request $request)
@@ -50,8 +76,8 @@ class AuthController extends Controller
             Mail::to($save->email)->send(new RegisterMail($save));
 
             $json['status'] = true;
-            $json['message'] = "Cuenta creada con éxito!, Porfavor veirifique su correo electrónico!";
-        }else{
+            $json['message'] = "Cuenta creada con éxito!, Porfavor veirifique su correo electrónico en mailtrap!";
+        } else {
             $json['status'] = false;
             $json['message'] = "Este correo ya existe, intente con otro porfavor!";
         }
