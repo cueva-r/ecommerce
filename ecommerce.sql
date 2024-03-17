@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 10-03-2024 a las 22:53:22
+-- Tiempo de generación: 17-03-2024 a las 05:44:15
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -136,7 +136,8 @@ CREATE TABLE `costo_envio` (
 
 INSERT INTO `costo_envio` (`id`, `nombre`, `precio`, `estado`, `esta_eliminado`, `created_at`, `updated_at`) VALUES
 (1, 'Envío gratis', '0', 0, 0, '2024-03-10 21:44:39', '2024-03-10 21:47:26'),
-(2, 'Estándar', '15', 0, 0, '2024-03-10 21:45:34', '2024-03-10 21:49:37');
+(2, 'Estándar', '15', 0, 0, '2024-03-10 21:45:34', '2024-03-10 21:49:37'),
+(3, 'Especial', '30', 0, 0, '2024-03-11 16:20:20', '2024-03-11 16:20:20');
 
 -- --------------------------------------------------------
 
@@ -465,7 +466,7 @@ INSERT INTO `subcategorias` (`id`, `categoria_id`, `nombre`, `slug`, `meta_titul
 (9, 4, 'Labiales y Bloqueadores', 'labiales-bloqueadores', 'Labiales y Bloqueadores', 'Labiales y Bloqueadores', 'Labiales y Bloqueadores', 1, 0, 0, '2024-02-05 04:59:19', '2024-02-05 04:59:19'),
 (10, 5, 'Cien años de soledad, top gun maveric, esclava remix', 'cien-anos-de-soledad-top-gun-maveric-esclava-remix', 'Cien años de soledad, top gun maveric, esclava remix', 'Cien años de soledad, top gun maveric, esclava remix', 'Cien años de soledad, top gun maveric, esclava remix', 1, 0, 0, '2024-02-05 05:01:41', '2024-02-06 13:48:03'),
 (11, 2, 'Zapatillas y sandalias', 'zapatillas-sandalias', 'Zapatillas y sandalias', 'Zapatillas y sandalias', 'Zapatillas y sandalias', 1, 0, 0, '2024-02-05 05:07:17', '2024-02-05 05:07:17'),
-(12, 6, 'Juegos', 'juegos', 'Juegos', 'Juegos', 'Juegos', 1, 0, 0, '2024-02-05 05:53:38', '2024-02-05 05:53:38'),
+(12, 6, 'Simuladores', 'simuladores', 'Simuladores', 'Simuladores', 'Simuladores', 1, 0, 0, '2024-02-05 05:53:38', '2024-03-15 02:54:13'),
 (13, 2, 'Moda mujer', 'moda-mujer', 'Moda mujer', 'Moda mujer', 'Moda mujer', 1, 0, 0, '2024-02-07 17:42:55', '2024-02-07 17:42:55'),
 (14, 1, 'Laptops', 'laptops', 'Laptops', 'Laptops', 'Laptops', 1, 0, 0, '2024-02-12 20:11:13', '2024-02-12 20:11:13'),
 (15, 1, 'Tablets', 'tablets', 'Tablets', 'Tablets', 'Tablets', 1, 0, 0, '2024-02-17 16:57:21', '2024-02-17 16:57:21'),
@@ -496,11 +497,19 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `es_admin`, `estado`, `esta_eliminado`, `created_at`, `updated_at`) VALUES
-(1, 'Abraham', 'ricoabraham879@gmail.com', '2024-01-28 15:23:19', '$2y$12$9vpn9rWho8FnvhOG0kA3S.kc8Du/M7yet0bpq8oC.657XlgLXUUGm', NULL, 1, 0, 0, '2024-01-28 15:23:20', '2024-01-28 15:23:20'),
+(1, 'Abraham', 'ricoabraham879@gmail.com', '2024-01-28 15:23:19', '$2y$12$9vpn9rWho8FnvhOG0kA3S.kc8Du/M7yet0bpq8oC.657XlgLXUUGm', 'cX1MP6Ze6QF95Pm8BJXjlK533ShJbIsZf4DwJjcY0pM21pr4uNwqhmEc5KAv', 1, 0, 0, '2024-01-28 15:23:20', '2024-03-17 09:17:17'),
 (2, 'test', 'test@gmail.com', NULL, '$2y$12$ohGsPlzjAJYcQ0l14K0FoO0A/QnDNK8aNUJe4kwhJDzmQZCWsVeD.', NULL, 1, 0, 0, '2024-01-29 03:46:12', '2024-01-29 03:46:12'),
 (3, 'prueba', 'prueba@gmail.com', NULL, '$2y$12$K84E6xDH5pPrV/BYwaNzVOZaEAEmHK7l1Nb4rpK1LUAb5/kXcR0ru', NULL, 1, 0, 0, '2024-01-29 03:56:58', '2024-01-29 03:56:58'),
 (4, 'xdd', 'xdd@gmail.com', NULL, '$2y$12$O0waTN9YyZSDX7SQplwU6OPWVY51OA1jcJSYPIy2ERDSb6my7MTIO', NULL, 1, 0, 0, '2024-01-29 04:00:36', '2024-01-29 06:38:30'),
-(5, 'as', 'abrahamrico272@gmail.com', NULL, '$2y$12$XJPF8nFewrFbyvNh6b54NeEyGKhiigMpi1S4FjRz12IWxYk8qxurm', NULL, 1, 0, 0, '2024-01-29 07:47:25', '2024-01-29 07:47:25');
+(5, 'as', 'abrahamrico272@gmail.com', '2024-03-17 09:36:31', '$2y$12$WUtvcxr7/5qrBnI07wDB9etDE96Meyec0XcfM4j0gXJqSZPaQVmvy', 'gMxuT4UBN7NiikYblOMIEoQglR0gMr3oV6p8y4FnnLbDIgaVO8UtrhgxJZlP', 1, 0, 0, '2024-01-29 07:47:25', '2024-03-17 09:36:31'),
+(6, 'xd', 'xd@gmail.com', '2024-03-16 21:34:15', '$2y$12$pQObCCsZMYTAVrgp7.y15e.bGkrUpzr5HeJYxyRsPFzuq4AST7QJ6', NULL, 0, 0, 0, '2024-03-13 00:53:27', '2024-03-16 21:34:15'),
+(7, 'Abraham', 'abraham272@gmail.com', NULL, '$2y$12$oz6KPpNeThQxnC9U3izMXuYkJh7mF3H1M7ki2MwBETY6Z4lew5022', NULL, 0, 0, 0, '2024-03-13 20:21:31', '2024-03-13 20:21:31'),
+(8, 'Abraham', 'abrahamrico559@gmail.com', NULL, '$2y$12$xo6bx.hyzBkFg1zzKhCUVe6qF5krP0YP6mlblUES7HuaQQ1RrcWse', NULL, 0, 0, 0, '2024-03-13 20:39:03', '2024-03-13 20:39:03'),
+(9, 'Abraham', 'abrahamrico879@gmail.com', NULL, '$2y$12$KiNyi9byEu052BbRAIu6Mu2GIglB.7fV.N6DRRdlgL8M6wIqCrGy.', NULL, 0, 0, 0, '2024-03-13 20:50:19', '2024-03-13 20:50:19'),
+(10, 'zd', 'zd@gmail.com', NULL, '$2y$12$ZofQGyw7WwdAHDlO5mrp0e5EJvdg7ZaNe2Qz9c9VivZJTQHPB9M8q', NULL, 0, 0, 0, '2024-03-13 20:51:44', '2024-03-13 20:51:44'),
+(11, 'sano', 'sano@gmail.com', NULL, '$2y$12$D2VMIIdQnjn0PYNM8XbEbOobHJ4m7nimWdoH4LKhoVNLKOJyDADLW', NULL, 0, 0, 0, '2024-03-13 20:57:59', '2024-03-13 20:57:59'),
+(12, 'ala', 'ala@gmail.com', '2024-03-13 21:10:30', '$2y$12$YrxHNpujrduHWqZU8dizoOHGRguYW/Xg0NzTMXz8Vo50gCUB8SBqe', 'wh9x8n8MwBxscu9ajCkh4fesfmv8QN', 0, 0, 0, '2024-03-13 20:59:31', '2024-03-17 09:25:14'),
+(13, 'Abraham', 'abrahamrico546@gmail.com', '2024-03-17 09:42:21', '$2y$12$KuvSpBjoAFqjSDBL5tbSZ.8cSSNlb1XiT/ZBcFBOwGdUIllmOwEPe', 'fOp4tJOjSm0l6FI0Nlgvc7kpWLKD7Z', 0, 0, 0, '2024-03-16 21:36:44', '2024-03-17 09:42:21');
 
 --
 -- Índices para tablas volcadas
@@ -626,7 +635,7 @@ ALTER TABLE `colores`
 -- AUTO_INCREMENT de la tabla `costo_envio`
 --
 ALTER TABLE `costo_envio`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `failed_jobs`
@@ -686,7 +695,7 @@ ALTER TABLE `subcategorias`
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

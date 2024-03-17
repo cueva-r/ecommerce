@@ -98,7 +98,7 @@
                                                     for="signin-remember">Recuerdame</label>
                                             </div>
 
-                                            <a href="#" class="forgot-link">Olvidaste tu contraseña?</a>
+                                            <a href="{{ url('cambiar-contrasena') }}" class="forgot-link">Olvidaste tu contraseña?</a>
                                         </div>
                                     </form>
                                 </div>
