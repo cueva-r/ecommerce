@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 17-03-2024 a las 05:44:15
+-- Tiempo de generación: 18-03-2024 a las 20:44:28
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -53,7 +53,8 @@ INSERT INTO `categorias` (`id`, `nombre`, `slug`, `meta_titulo`, `meta_descripci
 (5, 'Libros, películas y música', 'libros-peliculas-musica', 'Libros, películas y música', 'Libros, películas y música', 'Libros, películas y música', 1, 0, 0, '2024-02-05 04:28:53', '2024-02-06 13:48:55'),
 (6, 'Juguetes y juegos', 'juguetes-juegos', 'Juguetes y juegos', 'Juguetes y juegos', 'Juguetes y juegos', 1, 0, 0, '2024-02-05 04:30:00', '2024-02-05 04:30:00'),
 (7, 'Deportes', 'deportes', 'Deportes', 'Deportes', 'Deportes', 1, 0, 0, '2024-02-05 04:30:56', '2024-02-05 04:30:56'),
-(8, 'Joyas y relojes', 'joyas-relojes', 'Joyas y relojes', 'Joyas y relojes', 'Joyas y relojes', 1, 0, 0, '2024-02-05 04:31:50', '2024-02-05 04:31:50');
+(8, 'Joyas y relojes', 'joyas-relojes', 'Joyas y relojes', 'Joyas y relojes', 'Joyas y relojes', 1, 0, 0, '2024-02-05 04:31:50', '2024-02-05 04:31:50'),
+(9, 'Abarrotes', 'abarrotes', 'Abarrotes', 'Abarrotes', 'Abarrotes', 1, 0, 0, '2024-03-18 17:31:02', '2024-03-18 17:31:02');
 
 -- --------------------------------------------------------
 
@@ -79,7 +80,8 @@ CREATE TABLE `codigo_descuento` (
 
 INSERT INTO `codigo_descuento` (`id`, `nombre`, `tipo`, `porcentaje_cantidad`, `fecha_expiracion`, `estado`, `esta_eliminado`, `created_at`, `updated_at`) VALUES
 (1, 'Hola', 'Cantidad', '25', '2024-03-08', 0, 0, '2024-03-07 16:31:42', '2024-03-07 16:45:45'),
-(2, 'XD', 'Porcentaje', '10', '2024-03-13', 0, 0, '2024-03-08 16:23:56', '2024-03-08 16:39:50');
+(2, 'XD', 'Porcentaje', '10', '2024-03-13', 0, 0, '2024-03-08 16:23:56', '2024-03-08 16:39:50'),
+(3, 'SAS', 'Cantidad', '45', '2024-03-28', 0, 0, '2024-03-18 03:07:01', '2024-03-18 03:07:01');
 
 -- --------------------------------------------------------
 
@@ -188,7 +190,8 @@ INSERT INTO `marcas` (`id`, `nombre`, `slug`, `meta_titulo`, `meta_descripcion`,
 (6, 'Redmi', 'redmi', 'Redmi', 'Redmi', 'Redmi', 1, 0, 0, '2024-02-17 16:50:37', '2024-02-17 16:50:37'),
 (7, 'Motorola', 'motorola', 'Motorola', 'Motorola', 'Motorola', 1, 0, 0, '2024-02-17 16:53:50', '2024-02-17 16:53:50'),
 (8, 'Laminar Research', 'laminar-research', 'Laminar Research', 'Laminar Research', 'Laminar Research', 1, 0, 0, '2024-02-17 17:03:01', '2024-02-17 17:03:01'),
-(9, 'Microsoft', 'microsoft', 'Microsoft', 'Microsoft', 'Microsoft', 1, 0, 0, '2024-02-17 17:11:17', '2024-02-17 17:11:17');
+(9, 'Microsoft', 'microsoft', 'Microsoft', 'Microsoft', 'Microsoft', 1, 0, 0, '2024-02-17 17:11:17', '2024-02-17 17:11:17'),
+(10, 'Faraón', 'faraon', 'Faraón', 'Faraón', 'Faraón', 1, 0, 0, '2024-03-18 17:32:54', '2024-03-18 17:32:54');
 
 -- --------------------------------------------------------
 
@@ -295,7 +298,8 @@ INSERT INTO `productos` (`id`, `titulo`, `slug`, `sku`, `categoria_id`, `subcate
 (18, 'Microsoft Flight Simulator 2020', 'microsoft-flight-simulator-2020', 'MFS', 6, 12, 9, 200, 120, '<p>Microsoft Flight Simulator 2020<br></p>', '<p>Microsoft Flight Simulator 2020<br></p>', '<p>Microsoft Flight Simulator 2020<br></p>', '<p>xd</p>', 0, 0, 1, '2024-02-17 22:10:51', '2024-02-17 22:14:18'),
 (19, 'Galaxy Buds FE', 'galaxy-buds-fe', 'CBFE', 1, 16, 3, 350, 349, '<h2 class=\"pd-info__title\" style=\"margin: 1.11111vw 0px 0px; padding: 0px 2.5vw 0px 0px; vertical-align: top; font-size: 1.66667vw; font-family: SamsungSharpSans, arial, sans-serif; color: rgb(0, 0, 0);\">Galaxy Buds FE</h2>', '<h2 class=\"pd-info__title\" style=\"margin: 1.11111vw 0px 0px; padding: 0px 2.5vw 0px 0px; vertical-align: top; font-size: 1.66667vw; font-family: SamsungSharpSans, arial, sans-serif; color: rgb(0, 0, 0);\">Galaxy Buds FE</h2>', '<h2 class=\"pd-info__title\" style=\"margin: 1.11111vw 0px 0px; padding: 0px 2.5vw 0px 0px; vertical-align: top; font-size: 1.66667vw; font-family: SamsungSharpSans, arial, sans-serif; color: rgb(0, 0, 0);\">Galaxy Buds FE</h2>', '<p>xd</p>', 0, 0, 1, '2024-02-17 22:16:05', '2024-02-17 22:17:13'),
 (20, 'AirPods 3era Generación', 'airpods-3era-generacion', 'APG', 1, 16, 4, 799, 749, '<p>AirPods 3era Generación<br></p>', '<p>AirPods 3era Generación<br></p>', '<p>AirPods 3era Generación<br></p>', '<p>xd</p>', 0, 0, 1, '2024-02-17 22:18:18', '2024-02-17 22:19:45'),
-(21, 'Redmi Airdots Wireless Earbuds 5.0 TWS Earphone Noise Cancelling Mic for Xiaomi', 'redmi-airdots-wireless-earbuds-50-tws-earphone-noise-cancelling-mic-for-xiaomi', 'RAWET', 1, 16, 6, 200, 150, '<p><span style=\"color: inherit; font-family: inherit; font-weight: inherit;\">Redmi Airdots Wireless Earbuds 5.0 TWS Earphone Noise Cancelling Mic for Xiaomi</span><a class=\"detail-title\" href=\"https://www.alibaba.com/product-detail/A6S-BT-Headsets-VS-for-Redmi_1600070709202.html?spm=a2700.pccps_detail.0.0.308013a0hgIUBl\" target=\"_blank\" rel=\"noreferrer\" data-spm-anchor-id=\"a2700.pccps_detail.0.0\" style=\"border: 0px solid rgb(229, 231, 235); --tw-border-spacing-x: 0; --tw-border-spacing-y: 0; --tw-translate-x: 0; --tw-translate-y: 0; --tw-rotate: 0; --tw-skew-x: 0; --tw-skew-y: 0; --tw-scale-x: 1; --tw-scale-y: 1; --tw-pan-x: ; --tw-pan-y: ; --tw-pinch-zoom: ; --tw-scroll-snap-strictness: proximity; --tw-gradient-from-position: ; --tw-gradient-via-position: ; --tw-gradient-to-position: ; --tw-ordinal: ; --tw-slashed-zero: ; --tw-numeric-figure: ; --tw-numeric-spacing: ; --tw-numeric-fraction: ; --tw-ring-inset: ; --tw-ring-offset-width: 0px; --tw-ring-offset-color: #fff; --tw-ring-color: rgba(59,130,246,.5); --tw-ring-offset-shadow: 0 0 #0000; --tw-ring-shadow: 0 0 #0000; --tw-shadow: 0 0 #0000; --tw-shadow-colored: 0 0 #0000; --tw-blur: ; --tw-brightness: ; --tw-contrast: ; --tw-grayscale: ; --tw-hue-rotate: ; --tw-invert: ; --tw-saturate: ; --tw-sepia: ; --tw-drop-shadow: ; --tw-backdrop-blur: ; --tw-backdrop-brightness: ; --tw-backdrop-contrast: ; --tw-backdrop-grayscale: ; --tw-backdrop-hue-rotate: ; --tw-backdrop-invert: ; --tw-backdrop-opacity: ; --tw-backdrop-saturate: ; --tw-backdrop-sepia: ; color: rgb(51, 51, 51); text-decoration-line: underline; margin: 0px 0px 20px; padding: 0px 0px 0px 17px; display: inline-block; font-family: Roboto, Helvetica, Tahoma, Arial, &quot;Microsoft YaHei&quot;, sans-serif; font-size: medium; background-color: rgb(255, 255, 255);\"></a></p>', '<p><span style=\"color: inherit; font-family: inherit; font-weight: inherit;\">Redmi Airdots Wireless Earbuds 5.0 TWS Earphone Noise Cancelling Mic for Xiaomi</span><a class=\"detail-title\" href=\"https://www.alibaba.com/product-detail/A6S-BT-Headsets-VS-for-Redmi_1600070709202.html?spm=a2700.pccps_detail.0.0.308013a0hgIUBl\" target=\"_blank\" rel=\"noreferrer\" data-spm-anchor-id=\"a2700.pccps_detail.0.0\" style=\"border: 0px solid rgb(229, 231, 235); --tw-border-spacing-x: 0; --tw-border-spacing-y: 0; --tw-translate-x: 0; --tw-translate-y: 0; --tw-rotate: 0; --tw-skew-x: 0; --tw-skew-y: 0; --tw-scale-x: 1; --tw-scale-y: 1; --tw-pan-x: ; --tw-pan-y: ; --tw-pinch-zoom: ; --tw-scroll-snap-strictness: proximity; --tw-gradient-from-position: ; --tw-gradient-via-position: ; --tw-gradient-to-position: ; --tw-ordinal: ; --tw-slashed-zero: ; --tw-numeric-figure: ; --tw-numeric-spacing: ; --tw-numeric-fraction: ; --tw-ring-inset: ; --tw-ring-offset-width: 0px; --tw-ring-offset-color: #fff; --tw-ring-color: rgba(59,130,246,.5); --tw-ring-offset-shadow: 0 0 #0000; --tw-ring-shadow: 0 0 #0000; --tw-shadow: 0 0 #0000; --tw-shadow-colored: 0 0 #0000; --tw-blur: ; --tw-brightness: ; --tw-contrast: ; --tw-grayscale: ; --tw-hue-rotate: ; --tw-invert: ; --tw-saturate: ; --tw-sepia: ; --tw-drop-shadow: ; --tw-backdrop-blur: ; --tw-backdrop-brightness: ; --tw-backdrop-contrast: ; --tw-backdrop-grayscale: ; --tw-backdrop-hue-rotate: ; --tw-backdrop-invert: ; --tw-backdrop-opacity: ; --tw-backdrop-saturate: ; --tw-backdrop-sepia: ; color: rgb(51, 51, 51); text-decoration-line: underline; margin: 0px 0px 20px; padding: 0px 0px 0px 17px; display: inline-block; font-family: Roboto, Helvetica, Tahoma, Arial, &quot;Microsoft YaHei&quot;, sans-serif; font-size: medium; background-color: rgb(255, 255, 255);\"></a></p>', '<p><span style=\"color: inherit; font-family: inherit; font-weight: inherit;\">Redmi Airdots Wireless Earbuds 5.0 TWS Earphone Noise Cancelling Mic for Xiaomi</span><a class=\"detail-title\" href=\"https://www.alibaba.com/product-detail/A6S-BT-Headsets-VS-for-Redmi_1600070709202.html?spm=a2700.pccps_detail.0.0.308013a0hgIUBl\" target=\"_blank\" rel=\"noreferrer\" data-spm-anchor-id=\"a2700.pccps_detail.0.0\" style=\"border: 0px solid rgb(229, 231, 235); --tw-border-spacing-x: 0; --tw-border-spacing-y: 0; --tw-translate-x: 0; --tw-translate-y: 0; --tw-rotate: 0; --tw-skew-x: 0; --tw-skew-y: 0; --tw-scale-x: 1; --tw-scale-y: 1; --tw-pan-x: ; --tw-pan-y: ; --tw-pinch-zoom: ; --tw-scroll-snap-strictness: proximity; --tw-gradient-from-position: ; --tw-gradient-via-position: ; --tw-gradient-to-position: ; --tw-ordinal: ; --tw-slashed-zero: ; --tw-numeric-figure: ; --tw-numeric-spacing: ; --tw-numeric-fraction: ; --tw-ring-inset: ; --tw-ring-offset-width: 0px; --tw-ring-offset-color: #fff; --tw-ring-color: rgba(59,130,246,.5); --tw-ring-offset-shadow: 0 0 #0000; --tw-ring-shadow: 0 0 #0000; --tw-shadow: 0 0 #0000; --tw-shadow-colored: 0 0 #0000; --tw-blur: ; --tw-brightness: ; --tw-contrast: ; --tw-grayscale: ; --tw-hue-rotate: ; --tw-invert: ; --tw-saturate: ; --tw-sepia: ; --tw-drop-shadow: ; --tw-backdrop-blur: ; --tw-backdrop-brightness: ; --tw-backdrop-contrast: ; --tw-backdrop-grayscale: ; --tw-backdrop-hue-rotate: ; --tw-backdrop-invert: ; --tw-backdrop-opacity: ; --tw-backdrop-saturate: ; --tw-backdrop-sepia: ; color: rgb(51, 51, 51); text-decoration-line: underline; margin: 0px 0px 20px; padding: 0px 0px 0px 17px; display: inline-block; font-family: Roboto, Helvetica, Tahoma, Arial, &quot;Microsoft YaHei&quot;, sans-serif; font-size: medium; background-color: rgb(255, 255, 255);\"></a></p>', '<p>xd</p>', 0, 0, 1, '2024-02-17 22:21:04', '2024-02-17 22:22:06');
+(21, 'Redmi Airdots Wireless Earbuds 5.0 TWS Earphone Noise Cancelling Mic for Xiaomi', 'redmi-airdots-wireless-earbuds-50-tws-earphone-noise-cancelling-mic-for-xiaomi', 'RAWET', 1, 16, 6, 200, 150, '<p><span style=\"color: inherit; font-family: inherit; font-weight: inherit;\">Redmi Airdots Wireless Earbuds 5.0 TWS Earphone Noise Cancelling Mic for Xiaomi</span><a class=\"detail-title\" href=\"https://www.alibaba.com/product-detail/A6S-BT-Headsets-VS-for-Redmi_1600070709202.html?spm=a2700.pccps_detail.0.0.308013a0hgIUBl\" target=\"_blank\" rel=\"noreferrer\" data-spm-anchor-id=\"a2700.pccps_detail.0.0\" style=\"border: 0px solid rgb(229, 231, 235); --tw-border-spacing-x: 0; --tw-border-spacing-y: 0; --tw-translate-x: 0; --tw-translate-y: 0; --tw-rotate: 0; --tw-skew-x: 0; --tw-skew-y: 0; --tw-scale-x: 1; --tw-scale-y: 1; --tw-pan-x: ; --tw-pan-y: ; --tw-pinch-zoom: ; --tw-scroll-snap-strictness: proximity; --tw-gradient-from-position: ; --tw-gradient-via-position: ; --tw-gradient-to-position: ; --tw-ordinal: ; --tw-slashed-zero: ; --tw-numeric-figure: ; --tw-numeric-spacing: ; --tw-numeric-fraction: ; --tw-ring-inset: ; --tw-ring-offset-width: 0px; --tw-ring-offset-color: #fff; --tw-ring-color: rgba(59,130,246,.5); --tw-ring-offset-shadow: 0 0 #0000; --tw-ring-shadow: 0 0 #0000; --tw-shadow: 0 0 #0000; --tw-shadow-colored: 0 0 #0000; --tw-blur: ; --tw-brightness: ; --tw-contrast: ; --tw-grayscale: ; --tw-hue-rotate: ; --tw-invert: ; --tw-saturate: ; --tw-sepia: ; --tw-drop-shadow: ; --tw-backdrop-blur: ; --tw-backdrop-brightness: ; --tw-backdrop-contrast: ; --tw-backdrop-grayscale: ; --tw-backdrop-hue-rotate: ; --tw-backdrop-invert: ; --tw-backdrop-opacity: ; --tw-backdrop-saturate: ; --tw-backdrop-sepia: ; color: rgb(51, 51, 51); text-decoration-line: underline; margin: 0px 0px 20px; padding: 0px 0px 0px 17px; display: inline-block; font-family: Roboto, Helvetica, Tahoma, Arial, &quot;Microsoft YaHei&quot;, sans-serif; font-size: medium; background-color: rgb(255, 255, 255);\"></a></p>', '<p><span style=\"color: inherit; font-family: inherit; font-weight: inherit;\">Redmi Airdots Wireless Earbuds 5.0 TWS Earphone Noise Cancelling Mic for Xiaomi</span><a class=\"detail-title\" href=\"https://www.alibaba.com/product-detail/A6S-BT-Headsets-VS-for-Redmi_1600070709202.html?spm=a2700.pccps_detail.0.0.308013a0hgIUBl\" target=\"_blank\" rel=\"noreferrer\" data-spm-anchor-id=\"a2700.pccps_detail.0.0\" style=\"border: 0px solid rgb(229, 231, 235); --tw-border-spacing-x: 0; --tw-border-spacing-y: 0; --tw-translate-x: 0; --tw-translate-y: 0; --tw-rotate: 0; --tw-skew-x: 0; --tw-skew-y: 0; --tw-scale-x: 1; --tw-scale-y: 1; --tw-pan-x: ; --tw-pan-y: ; --tw-pinch-zoom: ; --tw-scroll-snap-strictness: proximity; --tw-gradient-from-position: ; --tw-gradient-via-position: ; --tw-gradient-to-position: ; --tw-ordinal: ; --tw-slashed-zero: ; --tw-numeric-figure: ; --tw-numeric-spacing: ; --tw-numeric-fraction: ; --tw-ring-inset: ; --tw-ring-offset-width: 0px; --tw-ring-offset-color: #fff; --tw-ring-color: rgba(59,130,246,.5); --tw-ring-offset-shadow: 0 0 #0000; --tw-ring-shadow: 0 0 #0000; --tw-shadow: 0 0 #0000; --tw-shadow-colored: 0 0 #0000; --tw-blur: ; --tw-brightness: ; --tw-contrast: ; --tw-grayscale: ; --tw-hue-rotate: ; --tw-invert: ; --tw-saturate: ; --tw-sepia: ; --tw-drop-shadow: ; --tw-backdrop-blur: ; --tw-backdrop-brightness: ; --tw-backdrop-contrast: ; --tw-backdrop-grayscale: ; --tw-backdrop-hue-rotate: ; --tw-backdrop-invert: ; --tw-backdrop-opacity: ; --tw-backdrop-saturate: ; --tw-backdrop-sepia: ; color: rgb(51, 51, 51); text-decoration-line: underline; margin: 0px 0px 20px; padding: 0px 0px 0px 17px; display: inline-block; font-family: Roboto, Helvetica, Tahoma, Arial, &quot;Microsoft YaHei&quot;, sans-serif; font-size: medium; background-color: rgb(255, 255, 255);\"></a></p>', '<p><span style=\"color: inherit; font-family: inherit; font-weight: inherit;\">Redmi Airdots Wireless Earbuds 5.0 TWS Earphone Noise Cancelling Mic for Xiaomi</span><a class=\"detail-title\" href=\"https://www.alibaba.com/product-detail/A6S-BT-Headsets-VS-for-Redmi_1600070709202.html?spm=a2700.pccps_detail.0.0.308013a0hgIUBl\" target=\"_blank\" rel=\"noreferrer\" data-spm-anchor-id=\"a2700.pccps_detail.0.0\" style=\"border: 0px solid rgb(229, 231, 235); --tw-border-spacing-x: 0; --tw-border-spacing-y: 0; --tw-translate-x: 0; --tw-translate-y: 0; --tw-rotate: 0; --tw-skew-x: 0; --tw-skew-y: 0; --tw-scale-x: 1; --tw-scale-y: 1; --tw-pan-x: ; --tw-pan-y: ; --tw-pinch-zoom: ; --tw-scroll-snap-strictness: proximity; --tw-gradient-from-position: ; --tw-gradient-via-position: ; --tw-gradient-to-position: ; --tw-ordinal: ; --tw-slashed-zero: ; --tw-numeric-figure: ; --tw-numeric-spacing: ; --tw-numeric-fraction: ; --tw-ring-inset: ; --tw-ring-offset-width: 0px; --tw-ring-offset-color: #fff; --tw-ring-color: rgba(59,130,246,.5); --tw-ring-offset-shadow: 0 0 #0000; --tw-ring-shadow: 0 0 #0000; --tw-shadow: 0 0 #0000; --tw-shadow-colored: 0 0 #0000; --tw-blur: ; --tw-brightness: ; --tw-contrast: ; --tw-grayscale: ; --tw-hue-rotate: ; --tw-invert: ; --tw-saturate: ; --tw-sepia: ; --tw-drop-shadow: ; --tw-backdrop-blur: ; --tw-backdrop-brightness: ; --tw-backdrop-contrast: ; --tw-backdrop-grayscale: ; --tw-backdrop-hue-rotate: ; --tw-backdrop-invert: ; --tw-backdrop-opacity: ; --tw-backdrop-saturate: ; --tw-backdrop-sepia: ; color: rgb(51, 51, 51); text-decoration-line: underline; margin: 0px 0px 20px; padding: 0px 0px 0px 17px; display: inline-block; font-family: Roboto, Helvetica, Tahoma, Arial, &quot;Microsoft YaHei&quot;, sans-serif; font-size: medium; background-color: rgb(255, 255, 255);\"></a></p>', '<p>xd</p>', 0, 0, 1, '2024-02-17 22:21:04', '2024-02-17 22:22:06'),
+(22, 'Arroz Extra Faraón de 5 Kg', 'arroz-extra-faraon-de-5-kg', 'AEF', 9, 17, 10, 27.9, 27.2, '<h1 data-name=\"Arroz Extra Faraón de 5 Kg\" class=\"jsx-1680787435 product-name fa--product-name false\" style=\"border: 0px; overflow-wrap: break-word; margin-right: 15px; margin-bottom: 0px; margin-left: 0px; padding: 0px; font-variant-numeric: inherit; font-variant-east-asian: inherit; font-variant-alternates: inherit; font-variant-position: inherit; font-stretch: inherit; font-size: 20px; line-height: normal; font-optical-sizing: inherit; font-kerning: inherit; font-feature-settings: inherit; font-variation-settings: inherit; font-family: Lato, sans-serif; -webkit-font-smoothing: antialiased; vertical-align: baseline; -webkit-tap-highlight-color: transparent; color: rgb(51, 51, 51); letter-spacing: -0.3px;\">Arroz Extra Faraón de 5 Kg</h1>', '<h1 data-name=\"Arroz Extra Faraón de 5 Kg\" class=\"jsx-1680787435 product-name fa--product-name false\" style=\"border: 0px; overflow-wrap: break-word; margin-right: 15px; margin-bottom: 0px; margin-left: 0px; padding: 0px; font-variant-numeric: inherit; font-variant-east-asian: inherit; font-variant-alternates: inherit; font-variant-position: inherit; font-stretch: inherit; font-size: 20px; line-height: normal; font-optical-sizing: inherit; font-kerning: inherit; font-feature-settings: inherit; font-variation-settings: inherit; font-family: Lato, sans-serif; -webkit-font-smoothing: antialiased; vertical-align: baseline; -webkit-tap-highlight-color: transparent; color: rgb(51, 51, 51); letter-spacing: -0.3px;\">Arroz Extra Faraón de 5 Kg</h1>', '<h1 data-name=\"Arroz Extra Faraón de 5 Kg\" class=\"jsx-1680787435 product-name fa--product-name false\" style=\"border: 0px; overflow-wrap: break-word; margin-right: 15px; margin-bottom: 0px; margin-left: 0px; padding: 0px; font-variant-numeric: inherit; font-variant-east-asian: inherit; font-variant-alternates: inherit; font-variant-position: inherit; font-stretch: inherit; font-size: 20px; line-height: normal; font-optical-sizing: inherit; font-kerning: inherit; font-feature-settings: inherit; font-variation-settings: inherit; font-family: Lato, sans-serif; -webkit-font-smoothing: antialiased; vertical-align: baseline; -webkit-tap-highlight-color: transparent; color: rgb(51, 51, 51); letter-spacing: -0.3px;\">Arroz Extra Faraón de 5 Kg</h1>', '<h1 data-name=\"Arroz Extra Faraón de 5 Kg\" class=\"jsx-1680787435 product-name fa--product-name false\" style=\"border: 0px; overflow-wrap: break-word; margin-right: 15px; margin-bottom: 0px; margin-left: 0px; padding: 0px; font-variant-numeric: inherit; font-variant-east-asian: inherit; font-variant-alternates: inherit; font-variant-position: inherit; font-stretch: inherit; font-size: 20px; line-height: normal; font-optical-sizing: inherit; font-kerning: inherit; font-feature-settings: inherit; font-variation-settings: inherit; font-family: Lato, sans-serif; -webkit-font-smoothing: antialiased; vertical-align: baseline; -webkit-tap-highlight-color: transparent; color: rgb(51, 51, 51); letter-spacing: -0.3px;\">xd</h1>', 0, 0, 1, '2024-03-18 22:32:11', '2024-03-18 22:34:52');
 
 -- --------------------------------------------------------
 
@@ -337,7 +341,8 @@ INSERT INTO `productos_colores` (`id`, `producto_id`, `color_id`, `created_at`, 
 (66, 19, 5, '2024-02-17 17:17:13', '2024-02-17 17:17:13'),
 (67, 20, 10, '2024-02-17 17:19:46', '2024-02-17 17:19:46'),
 (68, 21, 5, '2024-02-17 17:22:07', '2024-02-17 17:22:07'),
-(70, 2, 4, '2024-02-19 14:27:56', '2024-02-19 14:27:56');
+(70, 2, 4, '2024-02-19 14:27:56', '2024-02-19 14:27:56'),
+(71, 22, 10, '2024-03-18 17:34:52', '2024-03-18 17:34:52');
 
 -- --------------------------------------------------------
 
@@ -384,7 +389,8 @@ INSERT INTO `producto_imagen` (`id`, `producto_id`, `nombre_imagen`, `imagen_ext
 (29, 21, '21jwuwe6oymrgb4asrduqt.webp', 'webp', 100, '2024-02-17 17:22:07', '2024-02-17 17:22:07'),
 (30, 2, '2ue5fltoslzh9rfhoefeo.jpg', 'jpg', 100, '2024-02-19 14:27:56', '2024-02-19 14:27:56'),
 (32, 2, '2vyjyyqcqejgebyuttcs1.jpg', 'jpg', 100, '2024-02-19 14:27:56', '2024-02-19 14:27:56'),
-(33, 2, '2abylrtfbfcq4whfp1lip.jpg', 'jpg', 100, '2024-02-19 14:27:57', '2024-02-19 14:27:57');
+(33, 2, '2abylrtfbfcq4whfp1lip.jpg', 'jpg', 100, '2024-02-19 14:27:57', '2024-02-19 14:27:57'),
+(34, 22, '22tvr10pdpxrwy3v8gkux7.jfif', 'jfif', 100, '2024-03-18 17:34:52', '2024-03-18 17:34:52');
 
 -- --------------------------------------------------------
 
@@ -427,7 +433,8 @@ INSERT INTO `producto_tamano` (`id`, `producto_id`, `nombre`, `precio`, `created
 (68, 20, '1.8', 2, '2024-02-17 17:19:46', '2024-02-17 17:19:46'),
 (69, 21, '1.8', 2, '2024-02-17 17:22:07', '2024-02-17 17:22:07'),
 (72, 2, 'SM', 5, '2024-02-19 14:27:56', '2024-02-19 14:27:56'),
-(73, 2, 'LM', 7, '2024-02-19 14:27:56', '2024-02-19 14:27:56');
+(73, 2, 'LM', 7, '2024-02-19 14:27:56', '2024-02-19 14:27:56'),
+(74, 22, '2', 2, '2024-03-18 17:34:52', '2024-03-18 17:34:52');
 
 -- --------------------------------------------------------
 
@@ -470,7 +477,8 @@ INSERT INTO `subcategorias` (`id`, `categoria_id`, `nombre`, `slug`, `meta_titul
 (13, 2, 'Moda mujer', 'moda-mujer', 'Moda mujer', 'Moda mujer', 'Moda mujer', 1, 0, 0, '2024-02-07 17:42:55', '2024-02-07 17:42:55'),
 (14, 1, 'Laptops', 'laptops', 'Laptops', 'Laptops', 'Laptops', 1, 0, 0, '2024-02-12 20:11:13', '2024-02-12 20:11:13'),
 (15, 1, 'Tablets', 'tablets', 'Tablets', 'Tablets', 'Tablets', 1, 0, 0, '2024-02-17 16:57:21', '2024-02-17 16:57:21'),
-(16, 1, 'Audífonos', 'audifonos', 'Audífonos', 'Audífonos', 'Audífonos', 1, 0, 0, '2024-02-17 17:15:54', '2024-02-17 17:15:54');
+(16, 1, 'Audífonos', 'audifonos', 'Audífonos', 'Audífonos', 'Audífonos', 1, 0, 0, '2024-02-17 17:15:54', '2024-02-17 17:15:54'),
+(17, 9, 'Arroz', 'arroz', 'Arroz', 'Arroz', 'Arroz', 1, 0, 0, '2024-03-18 17:31:33', '2024-03-18 17:31:33');
 
 -- --------------------------------------------------------
 
@@ -497,7 +505,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `es_admin`, `estado`, `esta_eliminado`, `created_at`, `updated_at`) VALUES
-(1, 'Abraham', 'ricoabraham879@gmail.com', '2024-01-28 15:23:19', '$2y$12$9vpn9rWho8FnvhOG0kA3S.kc8Du/M7yet0bpq8oC.657XlgLXUUGm', 'cX1MP6Ze6QF95Pm8BJXjlK533ShJbIsZf4DwJjcY0pM21pr4uNwqhmEc5KAv', 1, 0, 0, '2024-01-28 15:23:20', '2024-03-17 09:17:17'),
+(1, 'Abraham', 'ricoabraham879@gmail.com', '2024-03-17 20:13:42', '$2y$12$8UleidFm9iBHJO/ramkqSeTJn69ZxVWwBUtev0mPYmpQ/njkIuu0S', '7npIKd8NSKKpNry2b5ivsATxqdoX5eU3pnKXyag1tWmd8p5188A8pY0VAWpU', 1, 0, 0, '2024-01-28 15:23:20', '2024-03-17 20:13:42'),
 (2, 'test', 'test@gmail.com', NULL, '$2y$12$ohGsPlzjAJYcQ0l14K0FoO0A/QnDNK8aNUJe4kwhJDzmQZCWsVeD.', NULL, 1, 0, 0, '2024-01-29 03:46:12', '2024-01-29 03:46:12'),
 (3, 'prueba', 'prueba@gmail.com', NULL, '$2y$12$K84E6xDH5pPrV/BYwaNzVOZaEAEmHK7l1Nb4rpK1LUAb5/kXcR0ru', NULL, 1, 0, 0, '2024-01-29 03:56:58', '2024-01-29 03:56:58'),
 (4, 'xdd', 'xdd@gmail.com', NULL, '$2y$12$O0waTN9YyZSDX7SQplwU6OPWVY51OA1jcJSYPIy2ERDSb6my7MTIO', NULL, 1, 0, 0, '2024-01-29 04:00:36', '2024-01-29 06:38:30'),
@@ -509,7 +517,8 @@ INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `re
 (10, 'zd', 'zd@gmail.com', NULL, '$2y$12$ZofQGyw7WwdAHDlO5mrp0e5EJvdg7ZaNe2Qz9c9VivZJTQHPB9M8q', NULL, 0, 0, 0, '2024-03-13 20:51:44', '2024-03-13 20:51:44'),
 (11, 'sano', 'sano@gmail.com', NULL, '$2y$12$D2VMIIdQnjn0PYNM8XbEbOobHJ4m7nimWdoH4LKhoVNLKOJyDADLW', NULL, 0, 0, 0, '2024-03-13 20:57:59', '2024-03-13 20:57:59'),
 (12, 'ala', 'ala@gmail.com', '2024-03-13 21:10:30', '$2y$12$YrxHNpujrduHWqZU8dizoOHGRguYW/Xg0NzTMXz8Vo50gCUB8SBqe', 'wh9x8n8MwBxscu9ajCkh4fesfmv8QN', 0, 0, 0, '2024-03-13 20:59:31', '2024-03-17 09:25:14'),
-(13, 'Abraham', 'abrahamrico546@gmail.com', '2024-03-17 09:42:21', '$2y$12$KuvSpBjoAFqjSDBL5tbSZ.8cSSNlb1XiT/ZBcFBOwGdUIllmOwEPe', 'fOp4tJOjSm0l6FI0Nlgvc7kpWLKD7Z', 0, 0, 0, '2024-03-16 21:36:44', '2024-03-17 09:42:21');
+(13, 'Abraham', 'abrahamrico546@gmail.com', '2024-03-17 09:42:21', '$2y$12$KuvSpBjoAFqjSDBL5tbSZ.8cSSNlb1XiT/ZBcFBOwGdUIllmOwEPe', 'fOp4tJOjSm0l6FI0Nlgvc7kpWLKD7Z', 0, 0, 0, '2024-03-16 21:36:44', '2024-03-17 09:42:21'),
+(14, 'alan', 'alan@gmail.com', NULL, '$2y$12$KkwywVJq9uISHUwUcL7SYeHg5jbwG8TqZQVVZcXnLR8MsWCitvgEy', NULL, 1, 0, 0, '2024-03-18 06:59:46', '2024-03-18 06:59:46');
 
 --
 -- Índices para tablas volcadas
@@ -617,13 +626,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT de la tabla `categorias`
 --
 ALTER TABLE `categorias`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT de la tabla `codigo_descuento`
 --
 ALTER TABLE `codigo_descuento`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `colores`
@@ -647,7 +656,7 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT de la tabla `marcas`
 --
 ALTER TABLE `marcas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de la tabla `migrations`
@@ -665,37 +674,37 @@ ALTER TABLE `personal_access_tokens`
 -- AUTO_INCREMENT de la tabla `productos`
 --
 ALTER TABLE `productos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT de la tabla `productos_colores`
 --
 ALTER TABLE `productos_colores`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=71;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=72;
 
 --
 -- AUTO_INCREMENT de la tabla `producto_imagen`
 --
 ALTER TABLE `producto_imagen`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- AUTO_INCREMENT de la tabla `producto_tamano`
 --
 ALTER TABLE `producto_tamano`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=74;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=75;
 
 --
 -- AUTO_INCREMENT de la tabla `subcategorias`
 --
 ALTER TABLE `subcategorias`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
