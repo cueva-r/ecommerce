@@ -23,7 +23,7 @@ class ProductoModel extends Model
             ->join('users', 'users.id', '=', 'productos.creado_por')
             ->where('productos.esta_eliminado', '=', 0)
             ->orderBy('productos.id', 'desc')
-            ->paginate(20);
+            ->get();
     }
 
     static function getProducto($categoria_id = '', $subcategoria_id = '')
