@@ -59,11 +59,11 @@
                                                 <td>{{ $valor->estado == 0 ? 'Activo' : 'Inactivo' }}</td>
                                                 <td>
                                                     <a href="{{ url('admin/admin/editar/' . $valor->id) }}"
-                                                        class="btn btn-outline-primary">
+                                                        class="btn btn-outline-primary btn-sm">
                                                         <i class="fa-solid fa-pen-to-square"></i>
                                                     </a>
                                                     <a href="{{ url('admin/admin/eliminar/' . $valor->id) }}"
-                                                        class="btn btn-outline-danger">
+                                                        class="btn btn-outline-danger btn-sm">
                                                         <i class="fa-solid fa-trash"></i>
                                                     </a>
                                                 </td>

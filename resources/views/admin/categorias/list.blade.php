@@ -64,11 +64,11 @@
                                                 <td>{{ $valor->created_at->diffForHumans() }}</td>
                                                 <td>
                                                     <a href="{{ url('admin/categorias/editar/' . $valor->id) }}"
-                                                        class="btn btn-outline-primary">
+                                                        class="btn btn-outline-primary btn-sm">
                                                         <i class="fa-solid fa-pen-to-square"></i>
                                                     </a>
                                                     <a href="{{ url('admin/categorias/eliminar/' . $valor->id) }}"
-                                                        class="btn btn-outline-danger">
+                                                        class="btn btn-outline-danger btn-sm">
                                                         <i class="fa-solid fa-trash"></i>
                                                     </a>
                                                 </td>
