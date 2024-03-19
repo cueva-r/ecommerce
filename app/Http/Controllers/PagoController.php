@@ -109,4 +109,9 @@ class PagoController extends Controller
 
         return redirect()->back();
     }
+
+    public function realizar_pedido(Request $request)
+    {
+        dd($request->all());
+    }
 }
