@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 18-03-2024 a las 20:44:28
+-- Tiempo de generación: 20-03-2024 a las 18:28:00
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -160,6 +160,26 @@ CREATE TABLE `failed_jobs` (
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `item_pedido`
+--
+
+CREATE TABLE `item_pedido` (
+  `id` int(11) NOT NULL,
+  `pedido_id` int(11) DEFAULT NULL,
+  `producto_id` int(11) DEFAULT NULL,
+  `cantidad` int(11) NOT NULL DEFAULT 0,
+  `precio` varchar(25) NOT NULL DEFAULT '0',
+  `nombre_color` varchar(255) DEFAULT NULL,
+  `nombre_tamano` varchar(255) DEFAULT NULL,
+  `cantidad_tamano` varchar(25) NOT NULL DEFAULT '0',
+  `precio_total` varchar(25) NOT NULL DEFAULT '0',
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `marcas`
 --
 
@@ -226,6 +246,41 @@ CREATE TABLE `password_reset_tokens` (
   `token` varchar(255) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `pedidos`
+--
+
+CREATE TABLE `pedidos` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) DEFAULT NULL,
+  `nombres` varchar(255) DEFAULT NULL,
+  `apellidos` varchar(255) DEFAULT NULL,
+  `nombre_compania` varchar(255) DEFAULT NULL,
+  `pais` varchar(255) DEFAULT NULL,
+  `primera_direccion` varchar(255) DEFAULT NULL,
+  `segunda_direccion` varchar(255) DEFAULT NULL,
+  `ciudad` varchar(255) DEFAULT NULL,
+  `distrito` varchar(255) DEFAULT NULL,
+  `codigo_postal` varchar(255) DEFAULT NULL,
+  `telefono` varchar(255) DEFAULT NULL,
+  `email` varchar(255) DEFAULT NULL,
+  `notas` text DEFAULT NULL,
+  `codigo_descuento` varchar(255) DEFAULT NULL,
+  `cantidad_descuento` varchar(25) DEFAULT '0',
+  `envio_id` int(11) DEFAULT NULL,
+  `cantidad_envio` varchar(25) NOT NULL DEFAULT '0',
+  `cantidad_total` varchar(25) NOT NULL DEFAULT '0',
+  `metodo_pago` varchar(25) DEFAULT NULL,
+  `estado` tinyint(4) NOT NULL DEFAULT 0,
+  `esta_eliminado` tinyint(4) NOT NULL DEFAULT 0,
+  `esta_pagado` tinyint(4) NOT NULL DEFAULT 0,
+  `pago_data` text DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -556,6 +611,12 @@ ALTER TABLE `failed_jobs`
   ADD UNIQUE KEY `failed_jobs_uuid_unique` (`uuid`);
 
 --
+-- Indices de la tabla `item_pedido`
+--
+ALTER TABLE `item_pedido`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indices de la tabla `marcas`
 --
 ALTER TABLE `marcas`
@@ -572,6 +633,12 @@ ALTER TABLE `migrations`
 --
 ALTER TABLE `password_reset_tokens`
   ADD PRIMARY KEY (`email`);
+
+--
+-- Indices de la tabla `pedidos`
+--
+ALTER TABLE `pedidos`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indices de la tabla `personal_access_tokens`
@@ -653,6 +720,12 @@ ALTER TABLE `failed_jobs`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT de la tabla `item_pedido`
+--
+ALTER TABLE `item_pedido`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT de la tabla `marcas`
 --
 ALTER TABLE `marcas`
@@ -663,6 +736,12 @@ ALTER TABLE `marcas`
 --
 ALTER TABLE `migrations`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT de la tabla `pedidos`
+--
+ALTER TABLE `pedidos`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `personal_access_tokens`

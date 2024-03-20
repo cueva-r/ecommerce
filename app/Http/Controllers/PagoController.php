@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\CodigoDescuentoModel;
+use App\Models\ColorModel;
 use App\Models\CostoEnvioModel;
+use App\Models\PedidoItemModel;
+use App\Models\PedidosModel;
 use App\Models\ProductoModel;
 use App\Models\ProductoTamanoModel;
 use Illuminate\Http\Request;
@@ -112,6 +115,48 @@ class PagoController extends Controller
 
     public function realizar_pedido(Request $request)
     {
-        dd($request->all());
+        $pedido = new PedidosModel;
+        $pedido->nombres = trim($request->nombres);
+        $pedido->apellidos = trim($request->apellidos);
+        $pedido->nombre_compania = trim($request->nombre_compania);
+        $pedido->pais = trim($request->pais);
+        $pedido->primera_direccion = trim($request->primera_direccion);
+        $pedido->segunda_direccion = trim($request->segunda_direccion);
+        $pedido->ciudad = trim($request->ciudad);
+        $pedido->distrito = trim($request->distrito);
+        $pedido->codigo_postal = trim($request->codigo_postal);
+        $pedido->telefono = trim($request->telefono);
+        $pedido->email = trim($request->email);
+        $pedido->notas = trim($request->notas);
+        $pedido->codigo_descuento = trim($request->codigo_descuento);
+        $pedido->envio_id = trim($request->shipping);
+        $pedido->metodo_pago = trim($request->metodo_pago);
+        $pedido->save();
+
+        foreach (Cart::getContent() as $key => $carrito) {
+            $pedido_item = new PedidoItemModel;
+            $pedido_item->pedido_id = $pedido->id;
+            $pedido_item->producto_id = $carrito->id;
+            $pedido_item->cantidad = $carrito->quantity;
+            $pedido_item->precio = $carrito->price;
+
+            $color_id = $carrito->attributes->color_id;
+
+            if (!empty($color_id)) {
+                $getColor = ColorModel::getSingle($color_id);
+                $pedido_item->nombre_color = $getColor->nombre;
+            }
+
+            $tamano_id = $carrito->attributes->size_id;
+
+            if (!empty($tamano_id)) {
+                $getTamano = ProductoTamanoModel::getSingle($tamano_id);
+                $pedido_item->nombre_tamano = $getTamano->nombre;
+                $pedido_item->cantidad_tamano = $getTamano->precio;
+            }
+
+            $pedido_item->precio_total = $carrito->price;
+            $pedido_item->save();
+        }
     }
 }
