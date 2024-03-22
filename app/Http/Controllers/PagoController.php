@@ -115,6 +115,29 @@ class PagoController extends Controller
 
     public function realizar_pedido(Request $request)
     {
+        $getEnvio = CostoEnvioModel::getSingle($request->shipping);
+        $total_pagable = Cart::getSubtotal();
+        $descuento_cantidad = 0;
+        $codigo_descuento = '';
+
+        if (!empty($request->codigo_descuento)) {
+            $getDescuento = CodigoDescuentoModel::CheckDescuento($request->codigo_descuento);
+
+            if (!empty($getDescuento)) {
+                if ($getDescuento->tipo == 'Cantidad') {
+                    $codigo_descuento = $request->codigo_descuento;
+                    $descuento_cantidad = $getDescuento->porcentaje_cantidad;
+                    $total_pagable = $total_pagable - $getDescuento->porcentaje_cantidad;
+                } else {
+                    $descuento_cantidad = ($total_pagable * $getDescuento->porcentaje_cantidad) / 100;
+                    $total_pagable = $total_pagable - $descuento_cantidad;
+                }
+            }
+        }
+
+        $cantidad_envio = !empty($getEnvio->precio) ? $getEnvio->precio : 0;
+        $cantidad_total = $total_pagable - $cantidad_envio;
+
         $pedido = new PedidosModel;
         $pedido->nombres = trim($request->nombres);
         $pedido->apellidos = trim($request->apellidos);
@@ -128,8 +151,11 @@ class PagoController extends Controller
         $pedido->telefono = trim($request->telefono);
         $pedido->email = trim($request->email);
         $pedido->notas = trim($request->notas);
-        $pedido->codigo_descuento = trim($request->codigo_descuento);
+        $pedido->cantidad_descuento = trim($descuento_cantidad);
+        $pedido->codigo_descuento = trim($codigo_descuento);
         $pedido->envio_id = trim($request->shipping);
+        $pedido->cantidad_envio = trim($cantidad_envio);
+        $pedido->cantidad_total = trim($cantidad_total);
         $pedido->metodo_pago = trim($request->metodo_pago);
         $pedido->save();
 
@@ -158,5 +184,7 @@ class PagoController extends Controller
             $pedido_item->precio_total = $carrito->price;
             $pedido_item->save();
         }
+
+        die;
     }
 }
