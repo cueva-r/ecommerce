@@ -23,7 +23,7 @@
         <div class="page-content">
             <div class="checkout">
                 <div class="container">
-                    <form action="{{ url('pagar/realizar_pedido') }}" method="POST">
+                    <form action="" id="enviarFormulario" method="POST">
                         {{ csrf_field() }}
                         <div class="row">
                             <div class="col-lg-9">
@@ -79,10 +79,19 @@
                                 <label>Correo electrónico <span style="color: red">*</span></label>
                                 <input type="email" name="email" class="form-control" required>
 
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="checkout-create-acc">
-                                    <label class="custom-control-label" for="checkout-create-acc">¿Crea una cuenta?</label>
-                                </div>
+                                @if (empty(Auth::check()))
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" name="esta_creado" class="custom-control-input crearCuenta"
+                                            id="checkout-create-acc">
+                                        <label class="custom-control-label" for="checkout-create-acc">Crea una
+                                            cuenta</label>
+                                    </div>
+
+                                    <div id="mostrarContrasena" style="display: none;">
+                                        <label>Contraseña <span style="color: red">*</span></label>
+                                        <input type="password" id="inputContrasena" name="password" class="form-control">
+                                    </div>
+                                @endif
 
                                 <label>Notas de pedido (opcional)</label>
                                 <textarea class="form-control" cols="30" name="notas" rows="4"
@@ -122,8 +131,8 @@
                                                 <td colspan="2">
                                                     <div class="cart-discount">
                                                         <div class="input-group">
-                                                            <input type="text" id="getCodigoDescuento" name="codigo_descuento"
-                                                                class="form-control"
+                                                            <input type="text" id="getCodigoDescuento"
+                                                                name="codigo_descuento" class="form-control"
                                                                 placeholder="Código de descuento">
                                                             <div class="input-group-append">
                                                                 <button style="height: 38px" id="aplicarDescuento"
@@ -147,9 +156,9 @@
                                                 <tr class="summary-shipping-row">
                                                     <td>
                                                         <div class="custom-control custom-radio">
-                                                            <input type="radio" value="{{ $envio->id }}" id="free-shipping{{ $envio->id }}"
-                                                                name="shipping" required
-                                                                class="custom-control-input getCostoEnvio"
+                                                            <input type="radio" value="{{ $envio->id }}"
+                                                                id="free-shipping{{ $envio->id }}" name="shipping"
+                                                                required class="custom-control-input getCostoEnvio"
                                                                 data-price="{{ !empty($envio->precio) ? $envio->precio : 0 }}">
                                                             <label class="custom-control-label"
                                                                 for="free-shipping{{ $envio->id }}">{{ $envio->nombre }}</label>
@@ -179,24 +188,25 @@
 
                                     <div class="accordion-summary" id="accordion-payment">
                                         <div class="custom-control custom-radio">
-                                            <input type="radio" value="cash" id="contra_reembolso" name="metodo_pago" required
-                                                class="custom-control-input">
+                                            <input type="radio" value="cash" id="contra_reembolso"
+                                                name="metodo_pago" required class="custom-control-input">
                                             <label class="custom-control-label" for="contra_reembolso">Contra
                                                 reembolso</label>
                                         </div>
 
                                         <div class="custom-control custom-radio" style="margin-top: 0px;">
-                                            <input type="radio" value="paypal" id="paypal" name="metodo_pago" required
-                                                class="custom-control-input">
+                                            <input type="radio" value="paypal" id="paypal" name="metodo_pago"
+                                                required class="custom-control-input">
                                             <label class="custom-control-label" for="paypal">Paypal</label>
                                         </div>
 
                                         <div class="custom-control custom-radio" style="margin-top: 0px;">
-                                            <input type="radio" value="stripe" id="tarjeta_credito_debito" name="metodo_pago" required
-                                                class="custom-control-input">
-                                            <label class="custom-control-label" for="tarjeta_credito_debito">Tarjeta de crédito o
+                                            <input type="radio" value="stripe" id="tarjeta_credito_debito"
+                                                name="metodo_pago" required class="custom-control-input">
+                                            <label class="custom-control-label" for="tarjeta_credito_debito">Tarjeta de
+                                                crédito o
                                                 débito</label>
-                                            
+
                                         </div>
                                     </div>
 
@@ -219,6 +229,34 @@
 
 @section('script')
     <script>
+        $('body').delegate('.crearCuenta', 'change', function() {
+            if (this.checked) {
+                $('#mostrarContrasena').show()
+                $('#inputContrasena').prop('required', true)
+            } else {
+                $('#mostrarContrasena').hide()
+                $('#inputContrasena').prop('required', false)
+            }
+        })
+
+        $('body').delegate('#enviarFormulario', 'submit', function(e) {
+            e.preventDefault()
+            $.ajax({
+                type: "POST",
+                url: "{{ url('pagar/realizar_pedido') }}",
+                data: new FormData(this),
+                processData: false,
+                contentType: false,
+                dataType: "json",
+                success: function(data) {
+                    if (data.status == false) {
+                        alert(data.message)
+                    }
+                },
+                error: function(data) {}
+            })
+        })
+
         $('body').delegate('.getCostoEnvio', 'change', function() {
             var precio = $(this).attr('data-price')
             var total = $('#totalPagable').val()

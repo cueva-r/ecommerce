@@ -9,8 +9,11 @@ use App\Models\PedidoItemModel;
 use App\Models\PedidosModel;
 use App\Models\ProductoModel;
 use App\Models\ProductoTamanoModel;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Cart;
+use Auth;
+use Hash;
 
 class PagoController extends Controller
 {
@@ -115,76 +118,113 @@ class PagoController extends Controller
 
     public function realizar_pedido(Request $request)
     {
-        $getEnvio = CostoEnvioModel::getSingle($request->shipping);
-        $total_pagable = Cart::getSubtotal();
-        $descuento_cantidad = 0;
-        $codigo_descuento = '';
+        $validate = 0;
+        $message = '';
 
-        if (!empty($request->codigo_descuento)) {
-            $getDescuento = CodigoDescuentoModel::CheckDescuento($request->codigo_descuento);
-
-            if (!empty($getDescuento)) {
-                if ($getDescuento->tipo == 'Cantidad') {
-                    $codigo_descuento = $request->codigo_descuento;
-                    $descuento_cantidad = $getDescuento->porcentaje_cantidad;
-                    $total_pagable = $total_pagable - $getDescuento->porcentaje_cantidad;
+        if (!empty(Auth::check())) {
+            $user_id = Auth::user()->id;
+        } else {
+            if (!empty($request->esta_creado)) {
+                $checkEmail = User::checkEmail($request->email);
+                if (!empty($checkEmail)) {
+                    $message = "Este correo ya existe, intente con otro porfavor!";
+                    $validate = 1;
                 } else {
-                    $descuento_cantidad = ($total_pagable * $getDescuento->porcentaje_cantidad) / 100;
-                    $total_pagable = $total_pagable - $descuento_cantidad;
+                    $save = new User;
+                    $save->name = trim($request->nombres);
+                    $save->email = trim($request->email);
+                    $save->password = Hash::make($request->password);
+                    $save->save();
+
+                    $user_id = $save->id;
+                }
+            } else {
+                $user_id = '';
+            }
+        }
+
+        if (empty($validate)) {
+            $getEnvio = CostoEnvioModel::getSingle($request->shipping);
+            $total_pagable = Cart::getSubtotal();
+            $descuento_cantidad = 0;
+            $codigo_descuento = '';
+
+            if (!empty($request->codigo_descuento)) {
+                $getDescuento = CodigoDescuentoModel::CheckDescuento($request->codigo_descuento);
+
+                if (!empty($getDescuento)) {
+                    if ($getDescuento->tipo == 'Cantidad') {
+                        $codigo_descuento = $request->codigo_descuento;
+                        $descuento_cantidad = $getDescuento->porcentaje_cantidad;
+                        $total_pagable = $total_pagable - $getDescuento->porcentaje_cantidad;
+                    } else {
+                        $descuento_cantidad = ($total_pagable * $getDescuento->porcentaje_cantidad) / 100;
+                        $total_pagable = $total_pagable - $descuento_cantidad;
+                    }
                 }
             }
-        }
 
-        $cantidad_envio = !empty($getEnvio->precio) ? $getEnvio->precio : 0;
-        $cantidad_total = $total_pagable - $cantidad_envio;
+            $cantidad_envio = !empty($getEnvio->precio) ? $getEnvio->precio : 0;
+            $cantidad_total = $total_pagable - $cantidad_envio;
 
-        $pedido = new PedidosModel;
-        $pedido->nombres = trim($request->nombres);
-        $pedido->apellidos = trim($request->apellidos);
-        $pedido->nombre_compania = trim($request->nombre_compania);
-        $pedido->pais = trim($request->pais);
-        $pedido->primera_direccion = trim($request->primera_direccion);
-        $pedido->segunda_direccion = trim($request->segunda_direccion);
-        $pedido->ciudad = trim($request->ciudad);
-        $pedido->distrito = trim($request->distrito);
-        $pedido->codigo_postal = trim($request->codigo_postal);
-        $pedido->telefono = trim($request->telefono);
-        $pedido->email = trim($request->email);
-        $pedido->notas = trim($request->notas);
-        $pedido->cantidad_descuento = trim($descuento_cantidad);
-        $pedido->codigo_descuento = trim($codigo_descuento);
-        $pedido->envio_id = trim($request->shipping);
-        $pedido->cantidad_envio = trim($cantidad_envio);
-        $pedido->cantidad_total = trim($cantidad_total);
-        $pedido->metodo_pago = trim($request->metodo_pago);
-        $pedido->save();
+            $pedido = new PedidosModel;
 
-        foreach (Cart::getContent() as $key => $carrito) {
-            $pedido_item = new PedidoItemModel;
-            $pedido_item->pedido_id = $pedido->id;
-            $pedido_item->producto_id = $carrito->id;
-            $pedido_item->cantidad = $carrito->quantity;
-            $pedido_item->precio = $carrito->price;
-
-            $color_id = $carrito->attributes->color_id;
-
-            if (!empty($color_id)) {
-                $getColor = ColorModel::getSingle($color_id);
-                $pedido_item->nombre_color = $getColor->nombre;
+            if (!empty($user_id)) {
+                $pedido->user_id = trim($user_id);
             }
 
-            $tamano_id = $carrito->attributes->size_id;
+            $pedido->nombres = trim($request->nombres);
+            $pedido->apellidos = trim($request->apellidos);
+            $pedido->nombre_compania = trim($request->nombre_compania);
+            $pedido->pais = trim($request->pais);
+            $pedido->primera_direccion = trim($request->primera_direccion);
+            $pedido->segunda_direccion = trim($request->segunda_direccion);
+            $pedido->ciudad = trim($request->ciudad);
+            $pedido->distrito = trim($request->distrito);
+            $pedido->codigo_postal = trim($request->codigo_postal);
+            $pedido->telefono = trim($request->telefono);
+            $pedido->email = trim($request->email);
+            $pedido->notas = trim($request->notas);
+            $pedido->cantidad_descuento = trim($descuento_cantidad);
+            $pedido->codigo_descuento = trim($codigo_descuento);
+            $pedido->envio_id = trim($request->shipping);
+            $pedido->cantidad_envio = trim($cantidad_envio);
+            $pedido->cantidad_total = trim($cantidad_total);
+            $pedido->metodo_pago = trim($request->metodo_pago);
+            $pedido->save();
 
-            if (!empty($tamano_id)) {
-                $getTamano = ProductoTamanoModel::getSingle($tamano_id);
-                $pedido_item->nombre_tamano = $getTamano->nombre;
-                $pedido_item->cantidad_tamano = $getTamano->precio;
+            foreach (Cart::getContent() as $key => $carrito) {
+                $pedido_item = new PedidoItemModel;
+                $pedido_item->pedido_id = $pedido->id;
+                $pedido_item->producto_id = $carrito->id;
+                $pedido_item->cantidad = $carrito->quantity;
+                $pedido_item->precio = $carrito->price;
+
+                $color_id = $carrito->attributes->color_id;
+
+                if (!empty($color_id)) {
+                    $getColor = ColorModel::getSingle($color_id);
+                    $pedido_item->nombre_color = $getColor->nombre;
+                }
+
+                $tamano_id = $carrito->attributes->size_id;
+
+                if (!empty($tamano_id)) {
+                    $getTamano = ProductoTamanoModel::getSingle($tamano_id);
+                    $pedido_item->nombre_tamano = $getTamano->nombre;
+                    $pedido_item->cantidad_tamano = $getTamano->precio;
+                }
+
+                $pedido_item->precio_total = $carrito->price;
+                $pedido_item->save();
             }
-
-            $pedido_item->precio_total = $carrito->price;
-            $pedido_item->save();
+            $json['status'] = true;
+            $json['message'] =  "Pedido exitoso";
+        } else {
+            $json['status'] = false;
+            $json['message'] =  $message;
         }
 
-        die;
+        echo json_encode($json, JSON_UNESCAPED_UNICODE);
     }
 }

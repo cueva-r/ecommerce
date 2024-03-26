@@ -69,7 +69,6 @@ class AuthController extends Controller
 
         if (empty($checkEmail)) {
             $save = new User;
-
             $save->name = trim($request->name);
             $save->email = trim($request->email);
             $save->password = Hash::make($request->password);

@@ -115,7 +115,6 @@ Route::get('cambiar-contrasena', [AuthController::class, 'cambiar_contrasena']);
 Route::post('cambiar-contrasena', [AuthController::class, 'verificar_cambiar_contrasena']);
 Route::get('cambiar/{token}', [AuthController::class, 'cambiar']);
 Route::post('cambiar/{token}', [AuthController::class, 'verificar_cambiar']);
-
 Route::get('activar/{id}', [AuthController::class, 'activar_email']);
 
 Route::get('carrito', [PagoController::class, 'carrito']);
