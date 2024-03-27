@@ -124,6 +124,7 @@ Route::get('pagar', [PagoController::class, 'pagar']);
 Route::post('pagar/aplicar_codigo_descuento', [PagoController::class, 'aplicar_codigo_descuento']);
 
 Route::post('pagar/realizar_pedido', [PagoController::class, 'realizar_pedido']);
+Route::get('pagar/pago', [PagoController::class, 'verificar_pago']);
 
 Route::get('carrito/eliminar/{id}', [PagoController::class, 'eliminar_carrito']);
 

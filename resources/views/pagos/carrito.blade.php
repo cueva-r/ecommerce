@@ -43,6 +43,7 @@
         <div class="page-content">
             <div class="cart">
                 <div class="container">
+                    @include('layouts._message')
                     @if (!empty(Cart::getContent()->count()))
                         <div class="row">
                             <div class="col-lg-9">

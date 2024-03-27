@@ -212,7 +212,7 @@
 
                                     <button type="submit" class="btn btn-outline-primary-2 btn-order btn-block">
                                         <span class="btn-text">Procesar orden</span>
-                                        <span class="btn-hover-text">Pasar por la caja</span>
+                                        <span class="btn-hover-text">Pagar el pedido</span>
                                     </button>
                                     <br>
                                     <br>
@@ -251,6 +251,8 @@
                 success: function(data) {
                     if (data.status == false) {
                         alert(data.message)
+                    }else{
+                        window.location.href = data.redirect
                     }
                 },
                 error: function(data) {}

@@ -219,12 +219,43 @@ class PagoController extends Controller
                 $pedido_item->save();
             }
             $json['status'] = true;
-            $json['message'] =  "Pedido exitoso";
+            $json['message'] =  "success";
+            $json['redirect'] =  url('pagar/pago?pedido_id=' . base64_encode($pedido->id));
         } else {
             $json['status'] = false;
             $json['message'] =  $message;
         }
 
         echo json_encode($json, JSON_UNESCAPED_UNICODE);
+    }
+
+    public function verificar_pago(Request $request)
+    {
+        if (!empty(Cart::getSubTotal()) && !empty($request->pedido_id)) {
+            $pedido_id = base64_decode($request->pedido_id);
+            $getPedido = PedidosModel::getSingle($pedido_id);
+
+            if (!empty($getPedido)) {
+                if ($getPedido->metodo_pago == 'cash') {
+                    $getPedido->esta_pagado = 1;
+                    $getPedido->save();
+
+                    Cart::clear();
+
+                    return redirect('carrito')->with('success', 'Pedido reralizado exitosamente!');
+                }
+                else if ($getPedido->metodo_pago == 'paypal') {
+                    # code...
+                }
+                else if ($getPedido->metodo_pago == 'stripe') {
+                    # code...
+                }
+            } else {
+                abort(404);
+            }
+            
+        } else {
+            abort(404);
+        }
     }
 }

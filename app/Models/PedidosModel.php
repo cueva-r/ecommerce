@@ -10,4 +10,9 @@ class PedidosModel extends Model
     use HasFactory;
 
     protected $table = "pedidos";
+
+    static function getSingle($id)
+    {
+        return self::find($id);
+    }
 }
