@@ -190,15 +190,14 @@
                                         <div class="custom-control custom-radio">
                                             <input type="radio" value="cash" id="contra_reembolso"
                                                 name="metodo_pago" required class="custom-control-input">
-                                            <label class="custom-control-label" for="contra_reembolso">Contra
-                                                reembolso</label>
+                                            <label class="custom-control-label" for="contra_reembolso">Pagar con efectivo</label>
                                         </div>
 
-                                        <div class="custom-control custom-radio" style="margin-top: 0px;">
+                                        {{-- <div class="custom-control custom-radio" style="margin-top: 0px;">
                                             <input type="radio" value="paypal" id="paypal" name="metodo_pago"
                                                 required class="custom-control-input">
                                             <label class="custom-control-label" for="paypal">Paypal</label>
-                                        </div>
+                                        </div> --}}
 
                                         <div class="custom-control custom-radio" style="margin-top: 0px;">
                                             <input type="radio" value="stripe" id="tarjeta_credito_debito"

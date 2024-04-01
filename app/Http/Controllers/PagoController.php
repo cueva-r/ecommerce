@@ -243,17 +243,51 @@ class PagoController extends Controller
                     Cart::clear();
 
                     return redirect('carrito')->with('success', 'Pedido reralizado exitosamente!');
-                }
-                else if ($getPedido->metodo_pago == 'paypal') {
-                    # code...
-                }
-                else if ($getPedido->metodo_pago == 'stripe') {
+                    // } else if ($getPedido->metodo_pago == 'paypal') {
+                    //     $query = array();
+                    //     $query['business'] = "sb-rfjpr29104066@business.example.com";
+                    //     $query['cmd'] = '_xclick';
+                    //     $query['item_name'] = "E-commerce";
+                    //     $query['no_shipping'] = '1';
+                    //     $query['item_number'] = $getPedido->id;
+                    //     $query['amount'] = $getPedido->cantidad_total;
+                    //     $query['cuerrency_code'] = 'USD';
+                    //     $query['cancel_return'] = url('pagar');
+                    //     $query['return'] = url('paypal/success-payment');
+
+                    //     $query_string = http_build_query($query);
+
+                    //     header('Location: https://www.sandbox.paypal.com/cgi-bin/webscr?' . $query_string);
+
+                    //     //header('Location: https://www.paypal.com/cgi-bin/webscr?' . $query_string);
+                    //     exit();
+                } else if ($getPedido->metodo_pago == 'stripe') {
                     # code...
                 }
             } else {
                 abort(404);
             }
-            
+        } else {
+            abort(404);
+        }
+    }
+
+    public function paypal_success_payment(Request $request)
+    {
+        if (!empty($request->item_number) && !empty($request->st) && $request->st == 'Completed') {
+            $getPedido = PedidosModel::getSingle($request->item_number);
+            if (!empty($getPedido)) {
+                $getPedido->esta_pagado = 1;
+                $getPedido->transaccion_id = $request->tx;
+                $getPedido->pago_data = json_encode($request->all());
+                $getPedido->save();
+
+                Cart::clear();
+
+                return redirect('carrito')->with('success', 'Pedido reralizado exitosamente!');
+            } else {
+                abort(404);
+            }
         } else {
             abort(404);
         }
