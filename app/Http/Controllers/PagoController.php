@@ -243,24 +243,24 @@ class PagoController extends Controller
                     Cart::clear();
 
                     return redirect('carrito')->with('success', 'Pedido reralizado exitosamente!');
-                    // } else if ($getPedido->metodo_pago == 'paypal') {
-                    //     $query = array();
-                    //     $query['business'] = "sb-rfjpr29104066@business.example.com";
-                    //     $query['cmd'] = '_xclick';
-                    //     $query['item_name'] = "E-commerce";
-                    //     $query['no_shipping'] = '1';
-                    //     $query['item_number'] = $getPedido->id;
-                    //     $query['amount'] = $getPedido->cantidad_total;
-                    //     $query['cuerrency_code'] = 'USD';
-                    //     $query['cancel_return'] = url('pagar');
-                    //     $query['return'] = url('paypal/success-payment');
+                } else if ($getPedido->metodo_pago == 'paypal') {
+                    $query = array();
+                    $query['business'] = "vipulbusiness1@gmail.com";
+                    $query['cmd'] = '_xclick';
+                    $query['item_name'] = "E-commerce";
+                    $query['no_shipping'] = '1';
+                    $query['item_number'] = $getPedido->id;
+                    $query['amount'] = $getPedido->cantidad_total;
+                    $query['cuerrency_code'] = 'USD';
+                    $query['cancel_return'] = url('pagar');
+                    $query['return'] = url('paypal/success-payment');
 
-                    //     $query_string = http_build_query($query);
+                    $query_string = http_build_query($query);
 
-                    //     header('Location: https://www.sandbox.paypal.com/cgi-bin/webscr?' . $query_string);
+                    header('Location: https://www.sandbox.paypal.com/cgi-bin/webscr?' . $query_string);
 
-                    //     //header('Location: https://www.paypal.com/cgi-bin/webscr?' . $query_string);
-                    //     exit();
+                    //header('Location: https://www.paypal.com/cgi-bin/webscr?' . $query_string);
+                    exit();
                 } else if ($getPedido->metodo_pago == 'stripe') {
                     # code...
                 }
