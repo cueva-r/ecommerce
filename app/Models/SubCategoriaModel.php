@@ -29,7 +29,7 @@ class SubCategoriaModel extends Model
         return self::select('subcategorias.*', 'users.name as created_by_name', 'categorias.nombre as category_nombre')
         ->join('categorias', 'categorias.id', '=', 'subcategorias.categoria_id')
         ->join('users', 'users.id', '=', 'subcategorias.created_by')
-        ->where('subcategorias.esta_eliminado', '=', 0)
+        //->where('subcategorias.esta_eliminado', '=', 0)
         ->orderBy('subcategorias.id', 'desc')
         ->paginate(20);
     }

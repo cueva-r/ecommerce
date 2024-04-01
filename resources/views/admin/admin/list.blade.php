@@ -58,14 +58,21 @@
                                                 <td>{{ $valor->email }}</td>
                                                 <td>{{ $valor->estado == 0 ? 'Activo' : 'Inactivo' }}</td>
                                                 <td>
-                                                    <a href="{{ url('admin/admin/editar/' . $valor->id) }}"
-                                                        class="btn btn-outline-primary btn-sm">
-                                                        <i class="fa-solid fa-pen-to-square"></i>
-                                                    </a>
-                                                    <a href="{{ url('admin/admin/eliminar/' . $valor->id) }}"
-                                                        class="btn btn-outline-danger btn-sm">
-                                                        <i class="fa-solid fa-trash"></i>
-                                                    </a>
+                                                    @if ($valor->esta_eliminado == 0)
+                                                        <a href="{{ url('admin/admin/editar/' . $valor->id) }}"
+                                                            class="btn btn-outline-primary btn-sm">
+                                                            <i class="fa-solid fa-pen-to-square"></i>
+                                                        </a>
+                                                        <a href="{{ url('admin/admin/eliminar/' . $valor->id) }}"
+                                                            class="btn btn-outline-danger btn-sm">
+                                                            <i class="fa-solid fa-trash"></i>
+                                                        </a>
+                                                    @else
+                                                        <a style="margin-left: 20px;" href="{{ url('admin/admin/reingresar/' . $valor->id) }}"
+                                                            class="btn btn-outline-success btn-sm">
+                                                            <i class="fa-solid fa-repeat"></i>
+                                                        </a>
+                                                    @endif
                                                 </td>
                                             </tr>
                                         @endforeach

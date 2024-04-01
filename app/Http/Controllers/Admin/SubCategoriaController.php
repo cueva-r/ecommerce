@@ -80,6 +80,15 @@ class SubCategoriaController extends Controller
         return redirect()->back()->with('success', 'Sub categoría eliminada exitosamente');
     }
 
+    public function reingresar($id)
+    {
+        $categoria = SubCategoriaModel::getSingle($id);
+        $categoria->esta_eliminado = 0;
+        $categoria->save();
+
+        return redirect()->back()->with('success', 'Sub categoría reingresada exitosamente');
+    }
+
     public function get_subcategorias(Request $request)
     {
         $categoria_id = $request->id;

@@ -74,4 +74,13 @@ class CategoriaController extends Controller
 
         return redirect()->back()->with('success', 'Categoría eliminada exitosamente');
     }
+
+    public function reingresar($id)
+    {
+        $categoria = CategoriaModel::getSingle($id);
+        $categoria->esta_eliminado = 0;
+        $categoria->save();
+
+        return redirect()->back()->with('success', 'Categoría reingresada exitosamente');
+    }
 }

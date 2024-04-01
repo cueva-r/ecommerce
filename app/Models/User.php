@@ -52,7 +52,7 @@ class User extends Authenticatable
     {
         return User::select('users.*')
         ->where('es_admin', '=', 1)
-        ->where('esta_eliminado', '=', 0)
+        //->where('esta_eliminado', '=', 0)
         ->orderBy('id', 'desc')
         ->get();
     }

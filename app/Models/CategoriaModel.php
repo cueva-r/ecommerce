@@ -28,9 +28,9 @@ class CategoriaModel extends Model
     {
         return self::select('categorias.*', 'users.name as created_by_name')
         ->join('users', 'users.id', '=', 'categorias.created_by')
-        ->where('categorias.esta_eliminado', '=', 0)
+        //->where('categorias.esta_eliminado', '=', 0)
         ->orderBy('categorias.id', 'desc')
-        ->paginate(20);
+        ->get();
     }
 
     static function getRecordActive()

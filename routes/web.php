@@ -45,6 +45,7 @@ Route::group(['middleware' => 'admin'], function () {
     Route::get('admin/admin/editar/{id}', [AdminController::class, 'editar']);
     Route::post('admin/admin/editar/{id}', [AdminController::class, 'actualizar']);
     Route::get('admin/admin/eliminar/{id}', [AdminController::class, 'eliminar']);
+    Route::get('admin/admin/reingresar/{id}', [AdminController::class, 'reingresar']);
 
     //Ruta de las categorías
     Route::get('admin/categorias/listar', [CategoriaController::class, 'listar']);
@@ -53,6 +54,7 @@ Route::group(['middleware' => 'admin'], function () {
     Route::get('admin/categorias/editar/{id}', [CategoriaController::class, 'editar']);
     Route::post('admin/categorias/editar/{id}', [CategoriaController::class, 'actualizar']);
     Route::get('admin/categorias/eliminar/{id}', [CategoriaController::class, 'eliminar']);
+    Route::get('admin/categorias/reingresar/{id}', [CategoriaController::class, 'reingresar']);
 
     //Ruta de las subcategorías
     Route::get('admin/subcategorias/listar', [SubCategoriaController::class, 'listar']);
@@ -61,6 +63,7 @@ Route::group(['middleware' => 'admin'], function () {
     Route::get('admin/subcategorias/editar/{id}', [SubCategoriaController::class, 'editar']);
     Route::post('admin/subcategorias/editar/{id}', [SubCategoriaController::class, 'actualizar']);
     Route::get('admin/subcategorias/eliminar/{id}', [SubCategoriaController::class, 'eliminar']);
+    Route::get('admin/subcategorias/reingresar/{id}', [SubCategoriaController::class, 'reingresar']);
 
     Route::post('admin/get_subcategorias', [SubCategoriaController::class, 'get_subcategorias']);
 

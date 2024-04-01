@@ -75,4 +75,13 @@ class AdminController extends Controller
 
         return redirect()->back()->with('success', 'Administrador eliminado exitosamente');
     }
+
+    public function reingresar($id)
+    {
+        $usuario = User::getSingle($id);
+        $usuario->esta_eliminado = 0;
+        $usuario->save();
+
+        return redirect()->back()->with('success', 'Administrador reingresado exitosamente');
+    }
 }
