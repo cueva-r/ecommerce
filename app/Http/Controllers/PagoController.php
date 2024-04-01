@@ -250,7 +250,13 @@ class PagoController extends Controller
                     $query['item_name'] = "E-commerce";
                     $query['no_shipping'] = '1';
                     $query['item_number'] = $getPedido->id;
-                    $query['amount'] = $getPedido->cantidad_total;
+
+                    // Convertir el monto de soles a dólares
+                    $soles_total = $getPedido->cantidad_total;
+                    $tasa_cambio = 3.72; 
+                    $dolares_total = $soles_total / $tasa_cambio;
+
+                    $query['amount'] = $dolares_total;
                     $query['cuerrency_code'] = 'USD';
                     $query['cancel_return'] = url('pagar');
                     $query['return'] = url('paypal/success-payment');
