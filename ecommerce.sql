@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 20-03-2024 a las 18:28:00
+-- Tiempo de generación: 03-04-2024 a las 19:00:42
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -53,8 +53,8 @@ INSERT INTO `categorias` (`id`, `nombre`, `slug`, `meta_titulo`, `meta_descripci
 (5, 'Libros, películas y música', 'libros-peliculas-musica', 'Libros, películas y música', 'Libros, películas y música', 'Libros, películas y música', 1, 0, 0, '2024-02-05 04:28:53', '2024-02-06 13:48:55'),
 (6, 'Juguetes y juegos', 'juguetes-juegos', 'Juguetes y juegos', 'Juguetes y juegos', 'Juguetes y juegos', 1, 0, 0, '2024-02-05 04:30:00', '2024-02-05 04:30:00'),
 (7, 'Deportes', 'deportes', 'Deportes', 'Deportes', 'Deportes', 1, 0, 0, '2024-02-05 04:30:56', '2024-02-05 04:30:56'),
-(8, 'Joyas y relojes', 'joyas-relojes', 'Joyas y relojes', 'Joyas y relojes', 'Joyas y relojes', 1, 0, 0, '2024-02-05 04:31:50', '2024-02-05 04:31:50'),
-(9, 'Abarrotes', 'abarrotes', 'Abarrotes', 'Abarrotes', 'Abarrotes', 1, 0, 0, '2024-03-18 17:31:02', '2024-03-18 17:31:02');
+(8, 'Joyas y relojes', 'joyas-relojes', 'Joyas y relojes', 'Joyas y relojes', 'Joyas y relojes', 1, 0, 0, '2024-02-05 04:31:50', '2024-04-01 19:52:45'),
+(9, 'Abarrotes', 'abarrotes', 'Abarrotes', 'Abarrotes', 'Abarrotes', 1, 0, 0, '2024-03-18 17:31:02', '2024-04-01 19:51:40');
 
 -- --------------------------------------------------------
 
@@ -79,9 +79,7 @@ CREATE TABLE `codigo_descuento` (
 --
 
 INSERT INTO `codigo_descuento` (`id`, `nombre`, `tipo`, `porcentaje_cantidad`, `fecha_expiracion`, `estado`, `esta_eliminado`, `created_at`, `updated_at`) VALUES
-(1, 'Hola', 'Cantidad', '25', '2024-03-08', 0, 0, '2024-03-07 16:31:42', '2024-03-07 16:45:45'),
-(2, 'XD', 'Porcentaje', '10', '2024-03-13', 0, 0, '2024-03-08 16:23:56', '2024-03-08 16:39:50'),
-(3, 'SAS', 'Cantidad', '45', '2024-03-28', 0, 0, '2024-03-18 03:07:01', '2024-03-18 03:07:01');
+(1, 'sa', 'Porcentaje', '50', '2024-04-10', 0, 0, '2024-04-02 18:42:50', '2024-04-02 18:42:50');
 
 -- --------------------------------------------------------
 
@@ -137,9 +135,9 @@ CREATE TABLE `costo_envio` (
 --
 
 INSERT INTO `costo_envio` (`id`, `nombre`, `precio`, `estado`, `esta_eliminado`, `created_at`, `updated_at`) VALUES
-(1, 'Envío gratis', '0', 0, 0, '2024-03-10 21:44:39', '2024-03-10 21:47:26'),
-(2, 'Estándar', '15', 0, 0, '2024-03-10 21:45:34', '2024-03-10 21:49:37'),
-(3, 'Especial', '30', 0, 0, '2024-03-11 16:20:20', '2024-03-11 16:20:20');
+(1, 'Envío gratis', '0', 0, 0, '2024-03-22 16:38:43', '2024-03-22 16:38:43'),
+(2, 'Estándar', '15', 0, 0, '2024-03-22 16:38:59', '2024-03-22 16:38:59'),
+(3, 'Especial', '20', 0, 0, '2024-03-22 16:39:12', '2024-03-22 16:39:12');
 
 -- --------------------------------------------------------
 
@@ -176,6 +174,20 @@ CREATE TABLE `item_pedido` (
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `item_pedido`
+--
+
+INSERT INTO `item_pedido` (`id`, `pedido_id`, `producto_id`, `cantidad`, `precio`, `nombre_color`, `nombre_tamano`, `cantidad_tamano`, `precio_total`, `created_at`, `updated_at`) VALUES
+(1, 1, 22, 1, '29.2', 'Blanco', '2', '2', '29.2', '2024-04-02 18:43:03', '2024-04-02 18:43:03'),
+(2, 2, 22, 1, '29.2', 'Blanco', '2', '2', '29.2', '2024-04-02 18:44:41', '2024-04-02 18:44:41'),
+(3, 3, 22, 1, '29.2', 'Blanco', '2', '2', '29.2', '2024-04-02 19:53:48', '2024-04-02 19:53:48'),
+(4, 4, 22, 1, '29.2', 'Blanco', '2', '2', '29.2', '2024-04-02 20:12:10', '2024-04-02 20:12:10'),
+(5, 5, 20, 1, '751', 'Blanco', '1.8', '2', '751', '2024-04-03 15:23:08', '2024-04-03 15:23:08'),
+(6, 6, 20, 1, '751', 'Blanco', '1.8', '2', '751', '2024-04-03 16:28:33', '2024-04-03 16:28:33'),
+(7, 7, 20, 1, '751', 'Blanco', '1.8', '2', '751', '2024-04-03 16:42:59', '2024-04-03 16:42:59'),
+(8, 8, 20, 1, '751', 'Blanco', '1.8', '2', '751', '2024-04-03 16:44:18', '2024-04-03 16:44:18');
 
 -- --------------------------------------------------------
 
@@ -255,6 +267,8 @@ CREATE TABLE `password_reset_tokens` (
 
 CREATE TABLE `pedidos` (
   `id` int(11) NOT NULL,
+  `transaccion_id` varchar(255) DEFAULT NULL,
+  `stripe_session_id` varchar(255) DEFAULT NULL,
   `user_id` int(11) DEFAULT NULL,
   `nombres` varchar(255) DEFAULT NULL,
   `apellidos` varchar(255) DEFAULT NULL,
@@ -281,6 +295,20 @@ CREATE TABLE `pedidos` (
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `pedidos`
+--
+
+INSERT INTO `pedidos` (`id`, `transaccion_id`, `stripe_session_id`, `user_id`, `nombres`, `apellidos`, `nombre_compania`, `pais`, `primera_direccion`, `segunda_direccion`, `ciudad`, `distrito`, `codigo_postal`, `telefono`, `email`, `notas`, `codigo_descuento`, `cantidad_descuento`, `envio_id`, `cantidad_envio`, `cantidad_total`, `metodo_pago`, `estado`, `esta_eliminado`, `esta_pagado`, `pago_data`, `created_at`, `updated_at`) VALUES
+(1, NULL, NULL, 1, 'test', 'test', 'test', 'test', 'test', 'test', 'test', 'test', 'test', 'test', 'test@gmail.com', '', '', '14.6', 3, '20', '-5.4', 'paypal', 0, 0, 0, NULL, '2024-04-02 18:43:03', '2024-04-02 18:43:03'),
+(2, NULL, NULL, 1, 'Abraham', 'Elias', 'ss', 'Perú', 'Salamanca', 'Hefesto', 'Lima', 'ss', '15022', '924575577', 'ricoabraham879@gmail.com', 'ss', '', '14.6', 3, '20', '-5.4', 'paypal', 0, 0, 0, NULL, '2024-04-02 18:44:41', '2024-04-02 18:44:41'),
+(3, NULL, NULL, 1, 'test', 'test', 'test', 'test', 'test', 'test', 'test', 'test', 'test', 'test', 'test@gmail.com', '', '', '14.6', 2, '15', '-0.4', 'paypal', 0, 0, 0, NULL, '2024-04-02 19:53:48', '2024-04-02 19:53:48'),
+(4, NULL, NULL, 1, 'test', 'test', 'test', 'test', 'test', 'test', 'test', 'test', 'test', 'test', 'test@gmail.com', '', '', '14.6', 2, '15', '-0.4', 'paypal', 0, 0, 0, NULL, '2024-04-02 20:12:09', '2024-04-02 20:12:09'),
+(5, NULL, 'cs_test_a1HgvbqBKmkQZeYFGyrQ0GmJL8jCdJv9ak3DEGJ3Po1RbTmTrvfFftGiYa', 1, 'test', 'test', 'test', 'test', 'test', 'test', 'test', 'test', 'test', 'test', 'test@gmail.com', 'test', '', '375.5', 2, '15', '360.5', 'stripe', 0, 0, 0, NULL, '2024-04-03 15:23:08', '2024-04-03 16:27:57'),
+(6, NULL, 'cs_test_a1f3T3RZI1dPtDQhvLQlXs3eIoDPgUR6TL71mtvXoexjHM55LWxUq03ije', 1, 'test', 'test', 'test', 'test', 'test', 'test', 'test', 'test', 'test', 'test', 'test@gmail.com', 'test', '', '375.5', 2, '15', '360.5', 'stripe', 0, 0, 0, NULL, '2024-04-03 16:28:33', '2024-04-03 16:36:17'),
+(7, NULL, 'cs_test_a1DOUDINuslU6M0cBRM3nRYmvgvjfptw1sbFni7055HmqdZ1WGOTtJGJgL', 1, 'test', 'test', 'test', 'test', 'test', 'test', 'test', 'test', 'test', 'test', 'test@gmail.com', 'test', '', '0', 3, '20', '731', 'stripe', 0, 0, 0, NULL, '2024-04-03 16:42:59', '2024-04-03 16:43:02'),
+(8, 'cs_test_a1Gtk0fWhaLQZTFJOKeq7dW0D8eXTVLGz5ioRYVxFiyZjqSeamMBnJIdRL', 'cs_test_a1Gtk0fWhaLQZTFJOKeq7dW0D8eXTVLGz5ioRYVxFiyZjqSeamMBnJIdRL', 1, 'test', 'test', 'test', 'test', 'test', 'test', 'test', 'test', 'test', 'test', 'test@gmail.com', 'test', '', '0', 2, '15', '736', 'stripe', 0, 0, 1, '{\"id\":\"cs_test_a1Gtk0fWhaLQZTFJOKeq7dW0D8eXTVLGz5ioRYVxFiyZjqSeamMBnJIdRL\",\"object\":\"checkout.session\",\"after_expiration\":null,\"allow_promotion_codes\":null,\"amount_subtotal\":19784,\"amount_total\":19784,\"automatic_tax\":{\"enabled\":false,\"liability\":null,\"status\":null},\"billing_address_collection\":null,\"cancel_url\":\"http:\\/\\/localhost\\/ecommerce\\/pagar\",\"client_reference_id\":null,\"client_secret\":null,\"consent\":null,\"consent_collection\":null,\"created\":1712162664,\"currency\":\"usd\",\"currency_conversion\":null,\"custom_fields\":[],\"custom_text\":{\"after_submit\":null,\"shipping_address\":null,\"submit\":null,\"terms_of_service_acceptance\":null},\"customer\":null,\"customer_creation\":\"if_required\",\"customer_details\":{\"address\":{\"city\":null,\"country\":\"PE\",\"line1\":null,\"line2\":null,\"postal_code\":null,\"state\":null},\"email\":\"test@gmail.com\",\"name\":\"1111\",\"phone\":null,\"tax_exempt\":\"none\",\"tax_ids\":[]},\"customer_email\":\"test@gmail.com\",\"expires_at\":1712249064,\"invoice\":null,\"invoice_creation\":{\"enabled\":false,\"invoice_data\":{\"account_tax_ids\":null,\"custom_fields\":null,\"description\":null,\"footer\":null,\"issuer\":null,\"metadata\":[],\"rendering_options\":null}},\"livemode\":false,\"locale\":null,\"metadata\":[],\"mode\":\"payment\",\"payment_intent\":\"pi_3P1Wxi071tYYB9Py0hGc25bu\",\"payment_link\":null,\"payment_method_collection\":\"if_required\",\"payment_method_configuration_details\":null,\"payment_method_options\":{\"card\":{\"request_three_d_secure\":\"automatic\"}},\"payment_method_types\":[\"card\"],\"payment_status\":\"paid\",\"phone_number_collection\":{\"enabled\":false},\"recovered_from\":null,\"setup_intent\":null,\"shipping_address_collection\":null,\"shipping_cost\":null,\"shipping_details\":null,\"shipping_options\":[],\"status\":\"complete\",\"submit_type\":null,\"subscription\":null,\"success_url\":\"http:\\/\\/localhost\\/ecommerce\\/stripe\\/payment-success\",\"total_details\":{\"amount_discount\":0,\"amount_shipping\":0,\"amount_tax\":0},\"ui_mode\":\"hosted\",\"url\":null}', '2024-04-03 16:44:18', '2024-04-03 16:58:51');
 
 -- --------------------------------------------------------
 
@@ -517,7 +545,7 @@ CREATE TABLE `subcategorias` (
 --
 
 INSERT INTO `subcategorias` (`id`, `categoria_id`, `nombre`, `slug`, `meta_titulo`, `meta_descripcion`, `meta_p_clave`, `created_by`, `estado`, `esta_eliminado`, `created_at`, `updated_at`) VALUES
-(1, 2, 'Pantalones y camisas', 'pantalones-camisas', 'Pantalones y camisas', 'Pantalones y camisas', 'Pantalones y camisas', 1, 0, 0, '2024-01-29 20:58:12', '2024-02-05 20:49:43'),
+(1, 2, 'Pantalones y camisas', 'pantalones-camisas', 'Pantalones y camisas', 'Pantalones y camisas', 'Pantalones y camisas', 1, 0, 0, '2024-01-29 20:58:12', '2024-04-01 19:58:50'),
 (2, 1, 'Celulares', 'celulares', 'Celulares', 'Celulares', 'Celulares', 1, 0, 0, '2024-01-30 14:34:06', '2024-02-07 20:34:17'),
 (3, 2, 'Polos y medias', 'polos-medias', 'Polos y medias', 'Polos y medias', 'Polos y medias', 1, 0, 0, '2024-01-31 04:21:00', '2024-02-05 04:36:18'),
 (4, 3, 'Sofás y sillas', 'sofas-sillas', 'Sofás y sillas', 'Sofás y sillas', 'Sofás y sillas', 1, 0, 0, '2024-01-31 04:43:02', '2024-02-05 20:16:25'),
@@ -526,7 +554,7 @@ INSERT INTO `subcategorias` (`id`, `categoria_id`, `nombre`, `slug`, `meta_titul
 (7, 8, 'Collares y rolex', 'collares-rolex', 'Collares y rolex', 'Collares y rolex', 'Collares y rolex', 1, 0, 0, '2024-02-05 04:46:06', '2024-02-05 04:46:06'),
 (8, 6, 'Transformers y GTAV', 'transformers-gtav', 'Transformers y GTAV', 'Transformers y GTAV', 'Transformers y GTAV', 1, 0, 0, '2024-02-05 04:58:36', '2024-02-05 04:58:36'),
 (9, 4, 'Labiales y Bloqueadores', 'labiales-bloqueadores', 'Labiales y Bloqueadores', 'Labiales y Bloqueadores', 'Labiales y Bloqueadores', 1, 0, 0, '2024-02-05 04:59:19', '2024-02-05 04:59:19'),
-(10, 5, 'Cien años de soledad, top gun maveric, esclava remix', 'cien-anos-de-soledad-top-gun-maveric-esclava-remix', 'Cien años de soledad, top gun maveric, esclava remix', 'Cien años de soledad, top gun maveric, esclava remix', 'Cien años de soledad, top gun maveric, esclava remix', 1, 0, 0, '2024-02-05 05:01:41', '2024-02-06 13:48:03'),
+(10, 5, 'Cien años de soledad, top gun maveric, esclava remix', 'cien-anos-de-soledad-top-gun-maveric-esclava-remix', 'Cien años de soledad, top gun maveric, esclava remix', 'Cien años de soledad, top gun maveric, esclava remix', 'Cien años de soledad, top gun maveric, esclava remix', 1, 0, 0, '2024-02-05 05:01:41', '2024-04-01 20:43:59'),
 (11, 2, 'Zapatillas y sandalias', 'zapatillas-sandalias', 'Zapatillas y sandalias', 'Zapatillas y sandalias', 'Zapatillas y sandalias', 1, 0, 0, '2024-02-05 05:07:17', '2024-02-05 05:07:17'),
 (12, 6, 'Simuladores', 'simuladores', 'Simuladores', 'Simuladores', 'Simuladores', 1, 0, 0, '2024-02-05 05:53:38', '2024-03-15 02:54:13'),
 (13, 2, 'Moda mujer', 'moda-mujer', 'Moda mujer', 'Moda mujer', 'Moda mujer', 1, 0, 0, '2024-02-07 17:42:55', '2024-02-07 17:42:55'),
@@ -560,9 +588,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `es_admin`, `estado`, `esta_eliminado`, `created_at`, `updated_at`) VALUES
-(1, 'Abraham', 'ricoabraham879@gmail.com', '2024-03-17 20:13:42', '$2y$12$8UleidFm9iBHJO/ramkqSeTJn69ZxVWwBUtev0mPYmpQ/njkIuu0S', '7npIKd8NSKKpNry2b5ivsATxqdoX5eU3pnKXyag1tWmd8p5188A8pY0VAWpU', 1, 0, 0, '2024-01-28 15:23:20', '2024-03-17 20:13:42'),
-(2, 'test', 'test@gmail.com', NULL, '$2y$12$ohGsPlzjAJYcQ0l14K0FoO0A/QnDNK8aNUJe4kwhJDzmQZCWsVeD.', NULL, 1, 0, 0, '2024-01-29 03:46:12', '2024-01-29 03:46:12'),
-(3, 'prueba', 'prueba@gmail.com', NULL, '$2y$12$K84E6xDH5pPrV/BYwaNzVOZaEAEmHK7l1Nb4rpK1LUAb5/kXcR0ru', NULL, 1, 0, 0, '2024-01-29 03:56:58', '2024-01-29 03:56:58'),
+(1, 'Abraham', 'ricoabraham879@gmail.com', '2024-03-17 20:13:42', '$2y$12$8UleidFm9iBHJO/ramkqSeTJn69ZxVWwBUtev0mPYmpQ/njkIuu0S', 'pdO4Zmh5uC81ROkYwma1GtY6jKSPY9CJbM8O48dJOVBkQ4HPLKqP6bviJlht', 1, 0, 0, '2024-01-28 15:23:20', '2024-03-17 20:13:42'),
+(2, 'test', 'test@gmail.com', NULL, '$2y$12$ohGsPlzjAJYcQ0l14K0FoO0A/QnDNK8aNUJe4kwhJDzmQZCWsVeD.', NULL, 1, 0, 0, '2024-01-29 03:46:12', '2024-04-02 00:39:09'),
+(3, 'prueba', 'prueba@gmail.com', NULL, '$2y$12$K84E6xDH5pPrV/BYwaNzVOZaEAEmHK7l1Nb4rpK1LUAb5/kXcR0ru', NULL, 1, 0, 0, '2024-01-29 03:56:58', '2024-04-02 00:39:34'),
 (4, 'xdd', 'xdd@gmail.com', NULL, '$2y$12$O0waTN9YyZSDX7SQplwU6OPWVY51OA1jcJSYPIy2ERDSb6my7MTIO', NULL, 1, 0, 0, '2024-01-29 04:00:36', '2024-01-29 06:38:30'),
 (5, 'as', 'abrahamrico272@gmail.com', '2024-03-17 09:36:31', '$2y$12$WUtvcxr7/5qrBnI07wDB9etDE96Meyec0XcfM4j0gXJqSZPaQVmvy', 'gMxuT4UBN7NiikYblOMIEoQglR0gMr3oV6p8y4FnnLbDIgaVO8UtrhgxJZlP', 1, 0, 0, '2024-01-29 07:47:25', '2024-03-17 09:36:31'),
 (6, 'xd', 'xd@gmail.com', '2024-03-16 21:34:15', '$2y$12$pQObCCsZMYTAVrgp7.y15e.bGkrUpzr5HeJYxyRsPFzuq4AST7QJ6', NULL, 0, 0, 0, '2024-03-13 00:53:27', '2024-03-16 21:34:15'),
@@ -573,7 +601,9 @@ INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `re
 (11, 'sano', 'sano@gmail.com', NULL, '$2y$12$D2VMIIdQnjn0PYNM8XbEbOobHJ4m7nimWdoH4LKhoVNLKOJyDADLW', NULL, 0, 0, 0, '2024-03-13 20:57:59', '2024-03-13 20:57:59'),
 (12, 'ala', 'ala@gmail.com', '2024-03-13 21:10:30', '$2y$12$YrxHNpujrduHWqZU8dizoOHGRguYW/Xg0NzTMXz8Vo50gCUB8SBqe', 'wh9x8n8MwBxscu9ajCkh4fesfmv8QN', 0, 0, 0, '2024-03-13 20:59:31', '2024-03-17 09:25:14'),
 (13, 'Abraham', 'abrahamrico546@gmail.com', '2024-03-17 09:42:21', '$2y$12$KuvSpBjoAFqjSDBL5tbSZ.8cSSNlb1XiT/ZBcFBOwGdUIllmOwEPe', 'fOp4tJOjSm0l6FI0Nlgvc7kpWLKD7Z', 0, 0, 0, '2024-03-16 21:36:44', '2024-03-17 09:42:21'),
-(14, 'alan', 'alan@gmail.com', NULL, '$2y$12$KkwywVJq9uISHUwUcL7SYeHg5jbwG8TqZQVVZcXnLR8MsWCitvgEy', NULL, 1, 0, 0, '2024-03-18 06:59:46', '2024-03-18 06:59:46');
+(14, 'alan', 'alan@gmail.com', NULL, '$2y$12$KkwywVJq9uISHUwUcL7SYeHg5jbwG8TqZQVVZcXnLR8MsWCitvgEy', NULL, 1, 0, 0, '2024-03-18 06:59:46', '2024-04-02 00:50:44'),
+(15, 'x', 'x@gmail.com', NULL, '$2y$12$pSiUIbnpbfkUZTsraPbaIu5tUvgnc6A26plagqUly4RSJeLb39huu', 'rVkPER1Brs82CvvZETjs0FCyIjM5sinqgSAZCLd5P02pdwuDkCiLrQGE8s84', 0, 0, 0, '2024-03-26 22:07:09', '2024-03-26 22:07:09'),
+(16, 'x', 'xd2@gmail.com', '2024-03-27 01:25:40', '$2y$12$9J6OagsBuJegI9VYnpv89uILrQ7bJJ40vHXltPst6wuBZ8nhRzV3C', NULL, 0, 0, 0, '2024-03-27 01:21:17', '2024-03-27 01:25:40');
 
 --
 -- Índices para tablas volcadas
@@ -699,7 +729,7 @@ ALTER TABLE `categorias`
 -- AUTO_INCREMENT de la tabla `codigo_descuento`
 --
 ALTER TABLE `codigo_descuento`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `colores`
@@ -723,7 +753,7 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT de la tabla `item_pedido`
 --
 ALTER TABLE `item_pedido`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT de la tabla `marcas`
@@ -741,7 +771,7 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT de la tabla `pedidos`
 --
 ALTER TABLE `pedidos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT de la tabla `personal_access_tokens`
@@ -783,7 +813,7 @@ ALTER TABLE `subcategorias`
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

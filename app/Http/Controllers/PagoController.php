@@ -14,6 +14,8 @@ use Illuminate\Http\Request;
 use Cart;
 use Auth;
 use Hash;
+use Session;
+use Stripe\Stripe;
 
 class PagoController extends Controller
 {
@@ -253,7 +255,7 @@ class PagoController extends Controller
 
                     // Convertir el monto de soles a dólares
                     $soles_total = $getPedido->cantidad_total;
-                    $tasa_cambio = 3.72; 
+                    $tasa_cambio = 3.72;
                     $dolares_total = $soles_total / $tasa_cambio;
 
                     $query['amount'] = $dolares_total;
@@ -268,7 +270,41 @@ class PagoController extends Controller
                     //header('Location: https://www.paypal.com/cgi-bin/webscr?' . $query_string);
                     exit();
                 } else if ($getPedido->metodo_pago == 'stripe') {
-                    # code...
+                    Stripe::setApiKey(env('STRIPE_SECRET'));
+
+                    // Convertir el monto de soles a dólares
+                    $soles_total = $getPedido->cantidad_total;
+                    $tasa_cambio = 3.72;
+                    $dolares_total = $soles_total / $tasa_cambio;
+
+                    $finalPrice = $dolares_total * 100;
+
+                    $session = \Stripe\Checkout\Session::create([
+                        'customer_email' => $getPedido->email,
+                        'payment_method_types' => ['card'],
+                        'line_items' => [[
+                            'price_data' => [
+                                'currency' => 'usd',
+                                'product_data' => [
+                                    'name' => 'E-commerce'
+                                ],
+                                'unit_amount' => intval($finalPrice),
+                            ],
+                            'quantity' => 1,
+                        ]],
+                        'mode' => 'payment',
+                        'success_url' => url('stripe/payment-success'),
+                        'cancel_url' => url('pagar'),
+                    ]);
+
+                    $getPedido->stripe_session_id = $session['id'];
+                    $getPedido->save();
+
+                    $data['session_id'] = $session['id'];
+                    Session::put('stripe_session_id', $session['id']);
+                    $data['setPublicKey'] = env('STRIPE_KEY');
+
+                    return view('pagos.stripe_charge', $data);
                 }
             } else {
                 abort(404);
@@ -296,6 +332,28 @@ class PagoController extends Controller
             }
         } else {
             abort(404);
+        }
+    }
+
+    public function stripe_success_payment(Request $request)
+    {
+        $trans_id = Session::get('stripe_session_id');
+        \Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
+        $getdata = \Stripe\Checkout\Session::retrieve($trans_id);
+
+        $getPedido = PedidosModel::where('stripe_session_id', '=', $getdata->id)->first();
+
+        if (!empty($getPedido) && !empty($getdata->id) && $getdata->id == $getPedido->stripe_session_id) {
+            $getPedido->esta_pagado = 1;
+            $getPedido->transaccion_id = $getdata->id;
+            $getPedido->pago_data = json_encode($getdata);
+            $getPedido->save();
+
+            Cart::clear();
+
+            return redirect('carrito')->with('success', 'Pedido reralizado exitosamente!');
+        } else {
+            return redirect('carrito')->with('error', 'Hubo un error por favor intenta nuevamente');
         }
     }
 }

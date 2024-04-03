@@ -129,6 +129,7 @@ Route::post('pagar/aplicar_codigo_descuento', [PagoController::class, 'aplicar_c
 Route::post('pagar/realizar_pedido', [PagoController::class, 'realizar_pedido']);
 Route::get('pagar/pago', [PagoController::class, 'verificar_pago']);
 Route::get('paypal/success-payment', [PagoController::class, 'paypal_success_payment']);
+Route::get('stripe/payment-success', [PagoController::class, 'stripe_success_payment']);
 
 Route::get('carrito/eliminar/{id}', [PagoController::class, 'eliminar_carrito']);
 
