@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\CodigoDescuentoController;
 use App\Http\Controllers\Admin\ColorController;
 use App\Http\Controllers\Admin\CostoEnvioController;
 use App\Http\Controllers\Admin\MarcaController;
+use App\Http\Controllers\Admin\PedidosController;
 use App\Http\Controllers\Admin\SubCategoriaController;
 use App\Http\Controllers\Admin\ProductoController;
 use App\Http\Controllers\AuthController;
@@ -38,7 +39,7 @@ Route::group(['middleware' => 'admin'], function () {
 
     Route::get('admin/dashboard', [DashboardController::class, 'dashboard']);
 
-    // RUTAS DE LOS ADMINS
+    // Rutas de los asdmins
     Route::get('admin/admin/listar', [AdminController::class, 'listar']);
     Route::get('admin/admin/agregar', [AdminController::class, 'agregar']);
     Route::post('admin/admin/agregar', [AdminController::class, 'insertar']);
@@ -46,6 +47,9 @@ Route::group(['middleware' => 'admin'], function () {
     Route::post('admin/admin/editar/{id}', [AdminController::class, 'actualizar']);
     Route::get('admin/admin/eliminar/{id}', [AdminController::class, 'eliminar']);
     Route::get('admin/admin/reingresar/{id}', [AdminController::class, 'reingresar']);
+
+    // Ruta para los pedidos
+    Route::get('admin/pedidos/listar', [PedidosController::class, 'listar']);
 
     //Ruta de las categorías
     Route::get('admin/categorias/listar', [CategoriaController::class, 'listar']);

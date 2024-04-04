@@ -160,6 +160,7 @@ class PagoController extends Controller
                         $descuento_cantidad = $getDescuento->porcentaje_cantidad;
                         $total_pagable = $total_pagable - $getDescuento->porcentaje_cantidad;
                     } else {
+                        $codigo_descuento = $request->codigo_descuento;
                         $descuento_cantidad = ($total_pagable * $getDescuento->porcentaje_cantidad) / 100;
                         $total_pagable = $total_pagable - $descuento_cantidad;
                     }
