@@ -61,7 +61,7 @@
                                                 <td>{{ $valor->nombres }} {{ $valor->apellidos }}</td>
                                                 <td>{{ $valor->nombre_compania }}</td>
                                                 <td>{{ $valor->pais }}</td>
-                                                <td>{{ $valor->primera_direccion }}</td>
+                                                <td>{{ $valor->primera_direccion }} <br> {{ $valor->segunda_direccion }}</td>
                                                 <td>{{ $valor->ciudad }}</td>
                                                 <td>{{ $valor->distrito }}</td>
                                                 <td>{{ $valor->codigo_postal }}</td>
@@ -76,13 +76,9 @@
                                                 <td>{{ date('d-m-Y h:i A', strtotime($valor->created_at)) }}</td>
                                                 {{-- <td>{{ $valor->created_at->diffForHumans() }}</td> --}}
                                                 <td>
-                                                    <a href="{{ url('admin/categorias/editar/' . $valor->id) }}"
-                                                        class="btn btn-outline-primary btn-sm">
-                                                        <i class="fa-solid fa-pen-to-square"></i>
-                                                    </a>
-                                                    <a href="{{ url('admin/categorias/eliminar/' . $valor->id) }}"
-                                                        class="btn btn-outline-danger btn-sm">
-                                                        <i class="fa-solid fa-trash"></i>
+                                                    <a href="{{ url('admin/pedidos/detalles/' . $valor->id) }}"
+                                                        class="btn btn-outline-success btn-sm">
+                                                        <i class="fa-solid fa-circle-info"></i>
                                                     </a>
                                                 </td>
                                             </tr>
@@ -127,7 +123,7 @@
                 "info": "Mostrando la página _PAGE_ de _PAGES_",
                 "infoEmpty": "No hay registros disponibles",
                 "infoFiltered": "(Filtrado de _MAX_ registros totales)",
-                "search": "Buscar:"
+                "search": "Buscar:",
             }
         });
     </script>

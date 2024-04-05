@@ -10,4 +10,9 @@ class PedidoItemModel extends Model
     use HasFactory;
 
     protected $table = "item_pedido";
+
+    public function getProducto()
+    {
+        return $this->belongsTo(ProductoModel::class, 'producto_id');
+    }
 }

@@ -26,4 +26,14 @@ class PedidosModel extends Model
 
         return $return;
     }
+
+    public function getEnvio()
+    {
+        return $this->belongsTo(CostoEnvioModel::class, 'envio_id');
+    }
+
+    public function getArticulo()
+    {
+        return $this->hasMany(PedidoItemModel::class, 'pedido_id');
+    }
 }

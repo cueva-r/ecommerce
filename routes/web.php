@@ -50,6 +50,7 @@ Route::group(['middleware' => 'admin'], function () {
 
     // Ruta para los pedidos
     Route::get('admin/pedidos/listar', [PedidosController::class, 'listar']);
+    Route::get('admin/pedidos/detalles/{id}', [PedidosController::class, 'detalles_pedido']);
 
     //Ruta de las categorías
     Route::get('admin/categorias/listar', [CategoriaController::class, 'listar']);

@@ -14,4 +14,11 @@ class PedidosController extends Controller
         $data['header_title'] = 'Pedidos';
         return view('admin.pedidos.lista', $data);
     }
+
+    public function detalles_pedido($id)
+    {
+        $data['getRecord'] = PedidosModel::getSingle($id);
+        $data['header_title'] = 'Destalles del pedido';
+        return view('admin.pedidos.detalles', $data);
+    }
 }
