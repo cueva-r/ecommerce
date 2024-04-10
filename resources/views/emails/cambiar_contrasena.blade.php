@@ -1,4 +1,5 @@
-@component('mail::message')
+@component('mail::layout')
+
     Hola <b>{{ $user->name }}</b>
 
     <p>Nosotros entendemos que pasa</p>

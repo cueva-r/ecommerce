@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\FacturaPedidoMail;
+use App\Mail\RegisterMail;
 use App\Models\CodigoDescuentoModel;
 use App\Models\ColorModel;
 use App\Models\CostoEnvioModel;
@@ -15,6 +17,7 @@ use Cart;
 use Auth;
 use Hash;
 use Session;
+use Mail;
 use Stripe\Stripe;
 
 class PagoController extends Controller
@@ -176,6 +179,7 @@ class PagoController extends Controller
                 $pedido->user_id = trim($user_id);
             }
 
+            $pedido->numero_pedido = mt_rand(100000000, 999999999);
             $pedido->nombres = trim($request->nombres);
             $pedido->apellidos = trim($request->apellidos);
             $pedido->nombre_compania = trim($request->nombre_compania);
@@ -325,6 +329,8 @@ class PagoController extends Controller
                 $getPedido->pago_data = json_encode($request->all());
                 $getPedido->save();
 
+                Mail::to($getPedido->email)->send(new FacturaPedidoMail($getPedido));
+
                 Cart::clear();
 
                 return redirect('carrito')->with('success', 'Pedido reralizado exitosamente!');
@@ -349,6 +355,8 @@ class PagoController extends Controller
             $getPedido->transaccion_id = $getdata->id;
             $getPedido->pago_data = json_encode($getdata);
             $getPedido->save();
+
+            Mail::to($getPedido->email)->send(new FacturaPedidoMail($getPedido));
 
             Cart::clear();
 
