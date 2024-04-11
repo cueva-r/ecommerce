@@ -33,7 +33,7 @@
                                     <thead>
                                         <tr>
                                             <th>#</th>
-                                            <th>ID transacción</th>
+                                            <th>Número de pedido</th>
                                             <th>Nombres</th>
                                             <th>Nombre compañía</th>
                                             <th>País</th>
@@ -57,11 +57,12 @@
                                         @foreach ($getRecord as $valor)
                                             <tr>
                                                 <td>{{ $valor->id }}</td>
-                                                <td>{{ $valor->transaccion_id }}</td>
+                                                <td>{{ $valor->numero_pedido }}</td>
                                                 <td>{{ $valor->nombres }} {{ $valor->apellidos }}</td>
                                                 <td>{{ $valor->nombre_compania }}</td>
                                                 <td>{{ $valor->pais }}</td>
-                                                <td>{{ $valor->primera_direccion }} <br> {{ $valor->segunda_direccion }}</td>
+                                                <td>{{ $valor->primera_direccion }} <br> {{ $valor->segunda_direccion }}
+                                                </td>
                                                 <td>{{ $valor->ciudad }}</td>
                                                 <td>{{ $valor->distrito }}</td>
                                                 <td>{{ $valor->codigo_postal }}</td>
@@ -72,7 +73,21 @@
                                                 <td>{{ number_format($valor->cantidad_envio, 2) }}</td>
                                                 <td>{{ number_format($valor->cantidad_total, 2) }}</td>
                                                 <td>{{ $valor->metodo_pago }}</td>
-                                                <td>{{ $valor->estado == 0 ? 'Activo' : 'Inactivo' }}</td>
+                                                <td>
+                                                    <select class="form-control changeEstado" id="{{ $valor->id }}"
+                                                        style="width: 150px;">
+                                                        <option {{ $valor->estado == 0 ? 'selected' : '' }} value="0">
+                                                            Pendiente</option>
+                                                        <option {{ $valor->estado == 1 ? 'selected' : '' }} value="1">
+                                                            En progreso</option>
+                                                        <option {{ $valor->estado == 2 ? 'selected' : '' }} value="2">
+                                                            Entregado</option>
+                                                        <option {{ $valor->estado == 3 ? 'selected' : '' }} value="3">
+                                                            Completado</option>
+                                                        <option {{ $valor->estado == 4 ? 'selected' : '' }} value="4">
+                                                            Cancelado</option>
+                                                    </select>
+                                                </td>
                                                 <td>{{ date('d-m-Y h:i A', strtotime($valor->created_at)) }}</td>
                                                 {{-- <td>{{ $valor->created_at->diffForHumans() }}</td> --}}
                                                 <td>
@@ -104,6 +119,26 @@
 @endsection
 
 @section('script')
+    <script>
+        $('body').delegate('.changeEstado', 'change', function() {
+            var estado = $(this).val()
+            var pedido_id = $(this).attr('id')
+
+            $.ajax({
+                type : "GET",
+                url : "{{ url('admin/estado_pedido') }}",
+                data : {
+                    estado: estado,
+                    pedido_id: pedido_id
+                },
+                dataType : "json",
+                success: function(data) {
+                    alert(data.message)
+                }
+            })
+        })
+    </script>
+
     <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/js/bootstrap.min.js"></script>

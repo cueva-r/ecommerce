@@ -126,7 +126,7 @@
 
                                 <div class="form-group">
                                     <label>Estado : <span
-                                            style="font-weight: normal;">{{ $getRecord->estado == 0 ? 'Activo' : 'Inactivo' }}</span></label>
+                                            style="font-weight: normal;"></span></label>
                                 </div>
 
                                 <div class="form-group">
