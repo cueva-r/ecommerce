@@ -53,6 +53,11 @@ Route::group(['middleware' => 'admin'], function () {
     Route::get('admin/pedidos/detalles/{id}', [PedidosController::class, 'detalles_pedido']);
     Route::get('admin/estado_pedido', [PedidosController::class, 'estado_pedido']);
 
+    // Ruta para los clientes 
+    Route::get('admin/clientes/listar', [AdminController::class, 'lista_clientes']);
+    Route::get('admin/admin/eliminar_cliente/{id}', [AdminController::class, 'eliminar_cliente']);
+    Route::get('admin/admin/reingresar_cliente/{id}', [AdminController::class, 'reingresar_cliente']);
+
     //Ruta de las categorías
     Route::get('admin/categorias/listar', [CategoriaController::class, 'listar']);
     Route::get('admin/categorias/agregar', [CategoriaController::class, 'agregar']);

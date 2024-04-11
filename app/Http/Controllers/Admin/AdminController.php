@@ -84,4 +84,29 @@ class AdminController extends Controller
 
         return redirect()->back()->with('success', 'Administrador reingresado exitosamente');
     }
+
+    public function eliminar_cliente($id)
+    {
+        $usuario = User::getSingle($id);
+        $usuario->esta_eliminado = 1;
+        $usuario->save();
+
+        return redirect()->back()->with('success', 'Cliente eliminado exitosamente');
+    }
+
+    public function reingresar_cliente($id)
+    {
+        $usuario = User::getSingle($id);
+        $usuario->esta_eliminado = 0;
+        $usuario->save();
+
+        return redirect()->back()->with('success', 'Cliente reingresado exitosamente');
+    }
+
+    public function lista_clientes()
+    {
+        $data['getRecord'] = User::getClientes();
+        $data['header_title'] = 'Clientes';
+        return view('admin.clientes.lista', $data);
+    }
 }

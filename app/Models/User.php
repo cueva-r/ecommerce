@@ -57,6 +57,15 @@ class User extends Authenticatable
         ->get();
     }
 
+    static public function getClientes()
+    {
+        return User::select('users.*')
+        ->where('es_admin', '=', 0)
+        //->where('esta_eliminado', '=', 0)
+        ->orderBy('id', 'desc')
+        ->get();
+    }
+
     static function checkEmail($email)
     {
         return User::select('users.*')
