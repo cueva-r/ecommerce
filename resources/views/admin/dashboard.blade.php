@@ -1,34 +1,108 @@
 @extends('admin.layouts.app')
 
 @section('style')
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/2.0.2/css/dataTables.bootstrap4.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/responsive/3.0.0/css/responsive.bootstrap4.css">
 @endsection
 
 @section('content')
-<!-- Content Wrapper. Contains page content -->
-<div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <div class="content-header">
-        <div class="container-fluid">
-            <div class="row mb-2">
-                <div class="col-sm-6">
-                    <h1 class="m-0">Dashboard</h1>
-                </div><!-- /.col -->
-                <div class="col-sm-6">
-                    <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item active">Dashboard v3</li>
-                    </ol>
-                </div><!-- /.col -->
-            </div><!-- /.row -->
-        </div><!-- /.container-fluid -->
-    </div>
-    <!-- /.content-header -->
+    <div class="content-wrapper">
+        <div class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1 class="m-0">Dashboard</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-    <!-- Main content -->
-    <div class="content">
-        <div class="container-fluid">
+        <div class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12 col-sm-6 col-md-2">
+                        <div class="info-box mb-3">
+                            <span class="info-box-icon bg-success elevation-1">
+                                <i class="fa-solid fa-list"></i>
+                            </span>
+
+                            <div class="info-box-content">
+                                <span class="info-box-text">Pedidos totales</span>
+                                <span class="info-box-number">{{ $totalPedidos }}</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-sm-6 col-md-2">
+                        <div class="info-box mb-3">
+                            <span class="info-box-icon bg-primary elevation-1">
+                                <i class="fas fa-shopping-cart"></i>
+                            </span>
+
+                            <div class="info-box-content">
+                                <span class="info-box-text">Pedidos de hoy</span>
+                                <span class="info-box-number">{{ $totalPedidosHoy }}</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-sm-6 col-md-2">
+                        <div class="info-box mb-3">
+                            <span class="info-box-icon bg-secondary elevation-1">
+                                <i class="fa-solid fa-money-bill"></i>
+                            </span>
+
+                            <div class="info-box-content">
+                                <span class="info-box-text">Cantidad total</span>
+                                <span class="info-box-number">s/. {{ number_format($cantidadTotal, 2) }}</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-sm-6 col-md-2">
+                        <div class="info-box mb-3">
+                            <span class="info-box-icon bg-info elevation-1">
+                                <i class="fa-solid fa-money-bill"></i>
+                            </span>
+
+                            <div class="info-box-content">
+                                <span class="info-box-text">Cantidad de hoy</span>
+                                <span class="info-box-number">s/. {{ number_format($cantidadTotalHoy, 2) }}</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-sm-6 col-md-2">
+                        <div class="info-box mb-3">
+                            <span class="info-box-icon bg-warning elevation-1">
+                                <i class="fa-solid fa-users"></i>
+                            </span>
+
+                            <div class="info-box-content">
+                                <span class="info-box-text">Total de clientes</span>
+                                <span class="info-box-number">{{ $totalClientes }}</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-sm-6 col-md-2">
+                        <div class="info-box mb-3">
+                            <span class="info-box-icon bg-danger elevation-1">
+                                <i class="fa-solid fa-users"></i>
+                            </span>
+
+                            <div class="info-box-content">
+                                <span class="info-box-text">Total de clientes hoy</span>
+                                <span class="info-box-number">{{ $totalClientesHoy }}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <div class="row">
-                <div class="col-lg-6">
+                <div class="col-lg-12">
                     <div class="card">
                         <div class="card-header border-0">
                             <div class="d-flex justify-content-between">
@@ -49,7 +123,6 @@
                                     <span class="text-muted">Since last week</span>
                                 </p>
                             </div>
-                            <!-- /.d-flex -->
 
                             <div class="position-relative mb-4">
                                 <canvas id="visitors-chart" height="200"></canvas>
@@ -66,223 +139,104 @@
                             </div>
                         </div>
                     </div>
-                    <!-- /.card -->
 
                     <div class="card">
                         <div class="card-header border-0">
-                            <h3 class="card-title">Products</h3>
-                            <div class="card-tools">
-                                <a href="#" class="btn btn-tool btn-sm">
-                                    <i class="fas fa-download"></i>
-                                </a>
-                                <a href="#" class="btn btn-tool btn-sm">
-                                    <i class="fas fa-bars"></i>
-                                </a>
-                            </div>
+                            <h3 class="card-title">Últimos pedidos</h3>
                         </div>
                         <div class="card-body table-responsive p-0">
-                            <table class="table table-striped table-valign-middle">
-                                <thead>
-                                    <tr>
-                                        <th>Product</th>
-                                        <th>Price</th>
-                                        <th>Sales</th>
-                                        <th>More</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>
-                                            <img src="{{ url('public/assets/dist/img/default-150x150.png') }}"
-                                                alt="Product 1" class="img-circle img-size-32 mr-2">
-                                            Some Product
-                                        </td>
-                                        <td>$13 USD</td>
-                                        <td>
-                                            <small class="text-success mr-1">
-                                                <i class="fas fa-arrow-up"></i>
-                                                12%
-                                            </small>
-                                            12,000 Sold
-                                        </td>
-                                        <td>
-                                            <a href="#" class="text-muted">
-                                                <i class="fas fa-search"></i>
-                                            </a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <img src="{{ url('public/assets/dist/img/default-150x150.png') }}"
-                                                alt="Product 1" class="img-circle img-size-32 mr-2">
-                                            Another Product
-                                        </td>
-                                        <td>$29 USD</td>
-                                        <td>
-                                            <small class="text-warning mr-1">
-                                                <i class="fas fa-arrow-down"></i>
-                                                0.5%
-                                            </small>
-                                            123,234 Sold
-                                        </td>
-                                        <td>
-                                            <a href="#" class="text-muted">
-                                                <i class="fas fa-search"></i>
-                                            </a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <img src="{{ url('public/assets/dist/img/default-150x150.png') }}"
-                                                alt="Product 1" class="img-circle img-size-32 mr-2">
-                                            Amazing Product
-                                        </td>
-                                        <td>$1,230 USD</td>
-                                        <td>
-                                            <small class="text-danger mr-1">
-                                                <i class="fas fa-arrow-down"></i>
-                                                3%
-                                            </small>
-                                            198 Sold
-                                        </td>
-                                        <td>
-                                            <a href="#" class="text-muted">
-                                                <i class="fas fa-search"></i>
-                                            </a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <img src="{{ url('public/assets/dist/img/default-150x150.png') }}"
-                                                alt="Product 1" class="img-circle img-size-32 mr-2">
-                                            Perfect Item
-                                            <span class="badge bg-danger">NEW</span>
-                                        </td>
-                                        <td>$199 USD</td>
-                                        <td>
-                                            <small class="text-success mr-1">
-                                                <i class="fas fa-arrow-up"></i>
-                                                63%
-                                            </small>
-                                            87 Sold
-                                        </td>
-                                        <td>
-                                            <a href="#" class="text-muted">
-                                                <i class="fas fa-search"></i>
-                                            </a>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                    <!-- /.card -->
-                </div>
-                <!-- /.col-md-6 -->
-                <div class="col-lg-6">
-                    <div class="card">
-                        <div class="card-header border-0">
-                            <div class="d-flex justify-content-between">
-                                <h3 class="card-title">Sales</h3>
-                                <a href="javascript:void(0);">View Report</a>
-                            </div>
-                        </div>
-                        <div class="card-body">
-                            <div class="d-flex">
-                                <p class="d-flex flex-column">
-                                    <span class="text-bold text-lg">$18,230.00</span>
-                                    <span>Sales Over Time</span>
-                                </p>
-                                <p class="ml-auto d-flex flex-column text-right">
-                                    <span class="text-success">
-                                        <i class="fas fa-arrow-up"></i> 33.1%
-                                    </span>
-                                    <span class="text-muted">Since last month</span>
-                                </p>
-                            </div>
-                            <!-- /.d-flex -->
-
-                            <div class="position-relative mb-4">
-                                <canvas id="sales-chart" height="200"></canvas>
-                            </div>
-
-                            <div class="d-flex flex-row justify-content-end">
-                                <span class="mr-2">
-                                    <i class="fas fa-square text-primary"></i> This year
-                                </span>
-
-                                <span>
-                                    <i class="fas fa-square text-gray"></i> Last year
-                                </span>
+                            <div class="card">
+                                <div class="card-body">
+                                    <table class="table table-striped" id="ultimosPedidos">
+                                        <thead>
+                                            <tr>
+                                                <th>#</th>
+                                                <th>Número de pedido</th>
+                                                <th>Nombres</th>
+                                                <th>País</th>
+                                                <th>Dirección</th>
+                                                <th>Ciudad</th>
+                                                <th>Distrito</th>
+                                                <th>Código postal</th>
+                                                <th>Teléfono</th>
+                                                <th>Correo electrónico</th>
+                                                <th>Código descuento</th>
+                                                <th>Cantidad descuento (s/.)</th>
+                                                <th>Cantidad envío (s/.)</th>
+                                                <th>Cantidad total (s/.)</th>
+                                                <th>Metodo pago</th>
+                                                <th>Fecha creación</th>
+                                                <th>Acción</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach ($mostrarUltimosPedidos as $valor)
+                                                <tr>
+                                                    <td>{{ $valor->id }}</td>
+                                                    <td>{{ $valor->numero_pedido }}</td>
+                                                    <td>{{ $valor->nombres }} {{ $valor->apellidos }}</td>
+                                                    <td>{{ $valor->pais }}</td>
+                                                    <td>{{ $valor->primera_direccion }} <br>
+                                                        {{ $valor->segunda_direccion }}
+                                                    </td>
+                                                    <td>{{ $valor->ciudad }}</td>
+                                                    <td>{{ $valor->distrito }}</td>
+                                                    <td>{{ $valor->codigo_postal }}</td>
+                                                    <td>{{ $valor->telefono }}</td>
+                                                    <td>{{ $valor->email }}</td>
+                                                    <td>{{ $valor->codigo_descuento }}</td>
+                                                    <td>{{ number_format($valor->cantidad_descuento, 2) }}</td>
+                                                    <td>{{ number_format($valor->cantidad_envio, 2) }}</td>
+                                                    <td>{{ number_format($valor->cantidad_total, 2) }}</td>
+                                                    <td>{{ $valor->metodo_pago }}</td>
+                                                    <td>{{ date('d-m-Y h:i A', strtotime($valor->created_at)) }}</td>
+                                                    {{-- <td>{{ $valor->created_at->diffForHumans() }}</td> --}}
+                                                    <td>
+                                                        <a href="{{ url('admin/pedidos/detalles/' . $valor->id) }}"
+                                                            class="btn btn-outline-success btn-sm">
+                                                            <i class="fa-solid fa-circle-info"></i>
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
                         </div>
                     </div>
                     <!-- /.card -->
-
-                    <div class="card">
-                        <div class="card-header border-0">
-                            <h3 class="card-title">Online Store Overview</h3>
-                            <div class="card-tools">
-                                <a href="#" class="btn btn-sm btn-tool">
-                                    <i class="fas fa-download"></i>
-                                </a>
-                                <a href="#" class="btn btn-sm btn-tool">
-                                    <i class="fas fa-bars"></i>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="card-body">
-                            <div class="d-flex justify-content-between align-items-center border-bottom mb-3">
-                                <p class="text-success text-xl">
-                                    <i class="ion ion-ios-refresh-empty"></i>
-                                </p>
-                                <p class="d-flex flex-column text-right">
-                                    <span class="font-weight-bold">
-                                        <i class="ion ion-android-arrow-up text-success"></i> 12%
-                                    </span>
-                                    <span class="text-muted">CONVERSION RATE</span>
-                                </p>
-                            </div>
-                            <!-- /.d-flex -->
-                            <div class="d-flex justify-content-between align-items-center border-bottom mb-3">
-                                <p class="text-warning text-xl">
-                                    <i class="ion ion-ios-cart-outline"></i>
-                                </p>
-                                <p class="d-flex flex-column text-right">
-                                    <span class="font-weight-bold">
-                                        <i class="ion ion-android-arrow-up text-warning"></i> 0.8%
-                                    </span>
-                                    <span class="text-muted">SALES RATE</span>
-                                </p>
-                            </div>
-                            <!-- /.d-flex -->
-                            <div class="d-flex justify-content-between align-items-center mb-0">
-                                <p class="text-danger text-xl">
-                                    <i class="ion ion-ios-people-outline"></i>
-                                </p>
-                                <p class="d-flex flex-column text-right">
-                                    <span class="font-weight-bold">
-                                        <i class="ion ion-android-arrow-down text-danger"></i> 1%
-                                    </span>
-                                    <span class="text-muted">REGISTRATION RATE</span>
-                                </p>
-                            </div>
-                            <!-- /.d-flex -->
-                        </div>
-                    </div>
                 </div>
-                <!-- /.col-md-6 -->
             </div>
-            <!-- /.row -->
         </div>
-        <!-- /.container-fluid -->
     </div>
-    <!-- /.content -->
-</div>
-<!-- /.content-wrapper -->
+    </div>
 @endsection
 
 @section('script')
-<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-<script src="{{ url('public/assets/dist/js/pages/dashboard3.js') }}"></script>
+    <script src="{{ url('public/assets/dist/js/pages/dashboard3.js') }}"></script>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdn.datatables.net/2.0.2/js/dataTables.js"></script>
+    <script src="https://cdn.datatables.net/2.0.2/js/dataTables.bootstrap4.js"></script>
+
+    <script src="https://cdn.datatables.net/responsive/3.0.0/js/dataTables.responsive.js"></script>
+    <script src="https://cdn.datatables.net/responsive/3.0.0/js/responsive.bootstrap4.js"></script>
+
+    <script>
+        new DataTable('#ultimosPedidos', {
+            responsive: true,
+            autoWidth: false,
+            "language": {
+                "lengthMenu": "Mostrar _MENU_ registros por página",
+                "zeroRecords": "No se encontró nada - lo siento",
+                "info": "Mostrando la página _PAGE_ de _PAGES_",
+                "infoEmpty": "No hay registros disponibles",
+                "infoFiltered": "(Filtrado de _MAX_ registros totales)",
+                "search": "Buscar:"
+            }
+        });
+    </script>
 @endsection

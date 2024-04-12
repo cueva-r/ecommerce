@@ -72,4 +72,21 @@ class User extends Authenticatable
         ->where('email', '=', $email)
         ->first();
     }
+
+    static function mostrarTotalClientes()
+    {
+        return self::select('id')
+            ->where('es_admin', '=', 0)
+            ->where('esta_eliminado', '=', 0)
+            ->count();
+    }
+
+    static function mostrarTotalClientesHoy()
+    {
+        return self::select('id')
+            ->where('es_admin', '=', 0)
+            ->where('esta_eliminado', '=', 0)
+            ->whereDate('created_at', '=', date('Y-m-d'))
+            ->count();
+    }
 }

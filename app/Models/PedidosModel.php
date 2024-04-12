@@ -36,4 +36,46 @@ class PedidosModel extends Model
     {
         return $this->hasMany(PedidoItemModel::class, 'pedido_id');
     }
+
+    static function mostrarTotalPedidos()
+    {
+        return self::select('id')
+            ->where('esta_pagado', '=', 1)
+            ->where('esta_eliminado', '=', 0)
+            ->count();
+    }
+
+    static function mostrarTotalPedidosHoy()
+    {
+        return self::select('id')
+            ->where('esta_pagado', '=', 1)
+            ->where('esta_eliminado', '=', 0)
+            ->whereDate('created_at', '=', date('Y-m-d'))
+            ->count();
+    }
+
+    static function mostrarCantidadTotal()
+    {
+        return self::select('id')
+            ->where('esta_pagado', '=', 1)
+            ->where('esta_eliminado', '=', 0)
+            ->sum('cantidad_total');
+    }
+
+    static function mostrarCantidadTotalHoy()
+    {
+        return self::select('id')
+            ->where('esta_pagado', '=', 1)
+            ->where('esta_eliminado', '=', 0)
+            ->whereDate('created_at', '=', date('Y-m-d'))
+            ->sum('cantidad_total');
+    }
+
+    static function mostrarUltimosPedidos()
+    {
+        return PedidosModel::select('pedidos.*')
+            ->where('esta_pagado', '=', 1)
+            ->where('esta_eliminado', '=', 0)
+            ->get();
+    }
 }
