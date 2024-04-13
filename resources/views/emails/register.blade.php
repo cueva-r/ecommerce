@@ -1,4 +1,4 @@
-@component('mail::layout')
+@component('mail::message')
     Hola <b>{{ $user->name }}</b>
 
     <p>Ya casi estás listo para comenzar a disfrutar de los beneficios del E-commerce</p>
