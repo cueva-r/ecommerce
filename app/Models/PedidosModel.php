@@ -54,6 +54,26 @@ class PedidosModel extends Model
             ->count();
     }
 
+    static function mostrarTotalPedidosPorMes($fecha_inicio, $fecha_fin)
+    {
+        return self::select('id')
+            ->where('esta_pagado', '=', 1)
+            ->where('esta_eliminado', '=', 0)
+            ->whereDate('created_at', '>=', $fecha_inicio)
+            ->whereDate('created_at', '<=', $fecha_fin)
+            ->count();
+    }
+
+    static function mostrarTotalCantidadPedidosPorMes($fecha_inicio, $fecha_fin)
+    {
+        return self::select('id')
+            ->where('esta_pagado', '=', 1)
+            ->where('esta_eliminado', '=', 0)
+            ->whereDate('created_at', '>=', $fecha_inicio)
+            ->whereDate('created_at', '<=', $fecha_fin)
+            ->sum('cantidad_total');
+    }
+
     static function mostrarCantidadTotal()
     {
         return self::select('id')

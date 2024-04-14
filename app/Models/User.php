@@ -89,4 +89,14 @@ class User extends Authenticatable
             ->whereDate('created_at', '=', date('Y-m-d'))
             ->count();
     }
+
+    static function mostrarTotalClientesPorMes($fecha_inicio, $fecha_fin)
+    {
+        return self::select('id')
+            ->where('es_admin', '=', 0)
+            ->where('esta_eliminado', '=', 0)
+            ->whereDate('created_at', '>=', $fecha_inicio)
+            ->whereDate('created_at', '<=', $fecha_fin)
+            ->count();
+    }
 }

@@ -106,35 +106,38 @@
                     <div class="card">
                         <div class="card-header border-0">
                             <div class="d-flex justify-content-between">
-                                <h3 class="card-title">Online Store Visitors</h3>
-                                <a href="javascript:void(0);">View Report</a>
+                                <h3 class="card-title">Ventas</h3>
+                                <select class="form-control cambiarAño" style="width: 100px;">
+                                    @for ($i = 2020; $i <= date('Y'); $i++)
+                                        <option {{ ($año == $i) ? 'selected' : '' }} value="{{ $i }}">{{ $i }}</option>
+                                    @endfor
+                                </select>
                             </div>
                         </div>
                         <div class="card-body">
                             <div class="d-flex">
                                 <p class="d-flex flex-column">
-                                    <span class="text-bold text-lg">820</span>
-                                    <span>Visitors Over Time</span>
-                                </p>
-                                <p class="ml-auto d-flex flex-column text-right">
-                                    <span class="text-success">
-                                        <i class="fas fa-arrow-up"></i> 12.5%
-                                    </span>
-                                    <span class="text-muted">Since last week</span>
+                                    <span class="text-bold text-lg">s/. {{ number_format($cantidadTotal, 2) }}</span>
+                                    <span>Ventas a lo largo del tiempo</span>
                                 </p>
                             </div>
+                            <!-- /.d-flex -->
 
                             <div class="position-relative mb-4">
-                                <canvas id="visitors-chart" height="200"></canvas>
+                                <canvas id="sales-chart-pedidos" height="200"></canvas>
                             </div>
 
                             <div class="d-flex flex-row justify-content-end">
                                 <span class="mr-2">
-                                    <i class="fas fa-square text-primary"></i> This Week
+                                    <i class="fas fa-square text-primary"></i> Clientes
+                                </span>
+
+                                <span class="mr-2">
+                                    <i class="fas fa-square text-gray"></i> Pedidos
                                 </span>
 
                                 <span>
-                                    <i class="fas fa-square text-gray"></i> Last Week
+                                    <i class="fas fa-square text-danger"></i> Cantidad
                                 </span>
                             </div>
                         </div>
@@ -205,7 +208,6 @@
                             </div>
                         </div>
                     </div>
-                    <!-- /.card -->
                 </div>
             </div>
         </div>
@@ -238,5 +240,92 @@
                 "search": "Buscar:"
             }
         });
+    </script>
+
+    <script>
+        $('.cambiarAño').change(function(){
+            var año = $(this).val()
+            window.location.href = "{{ url('admin/dashboard?año=') }}"+año
+        })
+
+        var ticksStyle = {
+            fontColor: '#495057',
+            fontStyle: 'bold'
+        }
+
+        var mode = 'index'
+        var intersect = true
+
+        var $salesChart = $('#sales-chart-pedidos')
+        // eslint-disable-next-line no-unused-vars
+        var salesChart = new Chart($salesChart, {
+            type: 'bar',
+            data: {
+                labels: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre',
+                    'Octuber', 'Noviembre', 'Diciembre'
+                ],
+                datasets: [{
+                        backgroundColor: '#007bff',
+                        borderColor: '#007bff',
+                        data: [{{ $mostrarTotalClientesPorMes }}]
+                    },
+                    {
+                        backgroundColor: '#ced4da',
+                        borderColor: '#ced4da',
+                        data: [{{ $mostrarTotalPedidosPorMes }}]
+                    },
+                    {
+                        backgroundColor: '#dc3545',
+                        borderColor: '#dc3545',
+                        data: [{{ $mostrarTotalCantidadPedidosPorMes }}]
+                    }
+                ]
+            },
+            options: {
+                maintainAspectRatio: false,
+                tooltips: {
+                    mode: mode,
+                    intersect: intersect
+                },
+                hover: {
+                    mode: mode,
+                    intersect: intersect
+                },
+                legend: {
+                    display: false
+                },
+                scales: {
+                    yAxes: [{
+                        // display: false,
+                        gridLines: {
+                            display: true,
+                            lineWidth: '4px',
+                            color: 'rgba(0, 0, 0, .2)',
+                            zeroLineColor: 'transparent'
+                        },
+                        ticks: $.extend({
+                            beginAtZero: true,
+
+                            // Include a dollar sign in the ticks
+                            callback: function(value) {
+                                if (value >= 1000) {
+                                    value /= 1000
+                                    value += 'k'
+                                }
+
+                                return 's/.' + value
+                            }
+                        }, ticksStyle)
+                    }],
+                    xAxes: [{
+                        display: true,
+                        gridLines: {
+                            display: false
+                        },
+                        ticks: ticksStyle
+                    }]
+                }
+            }
+        })
     </script>
 @endsection
