@@ -37,6 +37,58 @@ class PedidosModel extends Model
         return $this->hasMany(PedidoItemModel::class, 'pedido_id');
     }
 
+    // parte cliente
+
+    static function mostrarTotalPedidosCliente($user_id)
+    {
+        return self::select('id')
+            ->where('user_id', '=', $user_id)
+            ->where('esta_pagado', '=', 1)
+            ->where('esta_eliminado', '=', 0)
+            ->count();
+    }
+
+    static function mostrarTotalPedidosHoyCliente($user_id)
+    {
+        return self::select('id')
+            ->where('user_id', '=', $user_id)
+            ->where('esta_pagado', '=', 1)
+            ->where('esta_eliminado', '=', 0)
+            ->whereDate('created_at', '=', date('Y-m-d'))
+            ->count();
+    }
+
+    static function mostrarCantidadTotalCliente($user_id)
+    {
+        return self::select('id')
+            ->where('user_id', '=', $user_id)
+            ->where('esta_pagado', '=', 1)
+            ->where('esta_eliminado', '=', 0)
+            ->sum('cantidad_total');
+    }
+
+    static function mostrarCantidadTotalHoyCliente($user_id)
+    {
+        return self::select('id')
+            ->where('user_id', '=', $user_id)
+            ->where('esta_pagado', '=', 1)
+            ->where('esta_eliminado', '=', 0)
+            ->whereDate('created_at', '=', date('Y-m-d'))
+            ->sum('cantidad_total');
+    }
+
+    static function mostrarEstadoPedidoCliente($user_id, $estado)
+    {
+        return self::select('id')
+            ->where('user_id', '=', $user_id)
+            ->where('estado', '=', $estado)
+            ->where('esta_pagado', '=', 1)
+            ->where('esta_eliminado', '=', 0)
+            ->count();
+    }
+
+    // fin cliente
+
     static function mostrarTotalPedidos()
     {
         return self::select('id')

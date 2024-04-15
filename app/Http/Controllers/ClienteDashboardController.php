@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\PedidosModel;
 use Illuminate\Http\Request;
+use Auth;
 
 class ClienteDashboardController extends Controller
 {
@@ -11,6 +13,17 @@ class ClienteDashboardController extends Controller
         $data['meta_titulo'] = 'Dashboard';
         $data['meta_descripcion'] = '';
         $data['meta_p_clave'] = '';
+
+        $data['totalPedidosCliente'] = PedidosModel::mostrarTotalPedidosCliente(Auth::user()->id);
+        $data['totalPedidosHoyCliente'] = PedidosModel::mostrarTotalPedidosHoyCliente(Auth::user()->id);
+        $data['cantidadTotalCliente'] = PedidosModel::mostrarCantidadTotalCliente(Auth::user()->id);
+        $data['cantidadTotalHoyCliente'] = PedidosModel::mostrarCantidadTotalHoyCliente(Auth::user()->id);
+
+
+        $data['estadoPedidoClientePendiente'] = PedidosModel::mostrarEstadoPedidoCliente(Auth::user()->id, 0);
+        $data['estadoPedidoClienteEnProgreso'] = PedidosModel::mostrarEstadoPedidoCliente(Auth::user()->id, 1);
+        $data['estadoPedidoClienteCompletado'] = PedidosModel::mostrarEstadoPedidoCliente(Auth::user()->id, 3);
+        $data['estadoPedidoClienteCancelado'] = PedidosModel::mostrarEstadoPedidoCliente(Auth::user()->id, 4);
 
         return view('cliente.dashboard', $data);
     }

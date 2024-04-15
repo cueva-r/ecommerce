@@ -1,6 +1,14 @@
 @extends('layouts.app')
 
 @section('style')
+    <style>
+        .box-btn{
+            padding: 10px;
+            text-align: center;
+            border-radius: 5px;
+            box-shadow: 0 0 1px rgba(0, 0, 0, .125), 0 1px 3px rgba(0, 0, 0, .2);
+        }
+    </style>
 @endsection
 
 @section('content')
@@ -23,16 +31,63 @@
 
                         <div class="col-md-8 col-lg-9">
                             <div class="tab-content">
+                                <div class="row">
+                                    <div class="col-md-3" style="margin-bottom: 10px;">
+                                        <div class="box-btn">
+                                            <div style="font-size: 20px; font-weight: bold;">{{ $totalPedidosCliente }}</div>
+                                            <div style="font-weight: 16px;">Pedidos totales</div>
+                                        </div>
+                                    </div>
 
-                                <p>Hello <span class="font-weight-normal text-dark">User</span> (not <span
-                                        class="font-weight-normal text-dark">User</span>? <a href="#">Log out</a>)
-                                    <br>
-                                    From your account dashboard you can view your <a href="#tab-orders"
-                                        class="tab-trigger-link link-underline">recent orders</a>, manage your <a
-                                        href="#tab-address" class="tab-trigger-link">shipping and billing addresses</a>,
-                                    and <a href="#tab-account" class="tab-trigger-link">edit your password and account
-                                        details</a>.
-                                </p>
+                                    <div class="col-md-3" style="margin-bottom: 10px;">
+                                        <div class="box-btn">
+                                            <div style="font-size: 20px; font-weight: bold;">{{ $totalPedidosHoyCliente }}</div>
+                                            <div style="font-weight: 16px;">Pedidos de hoy</div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-3" style="margin-bottom: 10px;">
+                                        <div class="box-btn">
+                                            <div style="font-size: 20px; font-weight: bold;">s/. {{ number_format($cantidadTotalCliente, 2) }}</div>
+                                            <div style="font-weight: 16px;">Cantidad total</div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-3" style="margin-bottom: 10px;">
+                                        <div class="box-btn">
+                                            <div style="font-size: 20px; font-weight: bold;">s/. {{ number_format($cantidadTotalHoyCliente, 2) }}</div>
+                                            <div style="font-weight: 16px;">Cantidad total hoy</div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-3" style="margin-bottom: 10px;">
+                                        <div class="box-btn">
+                                            <div style="font-size: 20px; font-weight: bold;"> {{ $estadoPedidoClientePendiente }} </div>
+                                            <div style="font-weight: 16px;">Pedidos pendientes</div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-3" style="margin-bottom: 10px;">
+                                        <div class="box-btn">
+                                            <div style="font-size: 20px; font-weight: bold;">{{ $estadoPedidoClienteEnProgreso }}</div>
+                                            <div style="font-weight: 16px;">Pedidos en progreso</div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-3" style="margin-bottom: 10px;">
+                                        <div class="box-btn">
+                                            <div style="font-size: 20px; font-weight: bold;">{{ $estadoPedidoClienteCompletado }}</div>
+                                            <div style="font-weight: 16px;">Pedidos completados</div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-3" style="margin-bottom: 10px;">
+                                        <div class="box-btn">
+                                            <div style="font-size: 20px; font-weight: bold;">{{ $estadoPedidoClienteCancelado }}</div>
+                                            <div style="font-weight: 16px;">Pedidos cancelados</div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
