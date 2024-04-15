@@ -30,8 +30,8 @@
                             <li><a href="{{ url('lista-deseos') }}"><i class="icon-heart-o"></i>Lista de deseos
                                     <span>(3)</span></a></li>
                             @if (!empty(Auth::check()))
-                                <li><a href="#">{{ Auth::user()->name }}</a></li> 
-                                <li><a href="{{ url('admin/cerrar-sesion') }}">Cerar sesión</a></li> 
+                                <li><a href="{{ url('cliente/dashboard') }}"><i class="icon-user"></i> {{ Auth::user()->name }}</a></li> 
+                                {{-- <li><a href="{{ url('admin/cerrar-sesion') }}">Cerar sesión</a></li>  --}}
                             @else
                                 <li><a href="#signin-modal" data-toggle="modal"><i class="icon-user"></i>Iniciar sesión</a>
                                 </li>

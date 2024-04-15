@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\PedidosController;
 use App\Http\Controllers\Admin\SubCategoriaController;
 use App\Http\Controllers\Admin\ProductoController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ClienteDashboardController;
 use App\Http\Controllers\InicioController;
 use App\Http\Controllers\PagoController;
 use Illuminate\Support\Facades\Route;
@@ -35,6 +36,15 @@ Route::get('admin', [AuthController::class, 'login_admin']);
 Route::post('admin', [AuthController::class, 'auth_login_admin']);
 Route::get('admin/cerrar-sesion', [AuthController::class, 'cerrar_sesion_admin']);
 
+// cliente :)
+Route::group(['middleware' => 'cliente'], function () {
+    Route::get('cliente/dashboard', [ClienteDashboardController::class, 'dashboard']);
+    Route::get('cliente/pedidos', [ClienteDashboardController::class, 'pedidos']);
+    Route::get('cliente/editar-perfil', [ClienteDashboardController::class, 'editar_perfil']);
+    Route::get('cliente/cambiar-contrasena', [ClienteDashboardController::class, 'cambiar_contrasena']);
+});
+
+// admin .-.
 Route::group(['middleware' => 'admin'], function () {
 
     Route::get('admin/dashboard', [DashboardController::class, 'dashboard']);
