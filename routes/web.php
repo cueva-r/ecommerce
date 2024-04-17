@@ -42,6 +42,7 @@ Route::group(['middleware' => 'cliente'], function () {
     Route::get('cliente/pedidos', [ClienteDashboardController::class, 'pedidos']);
     Route::get('cliente/editar-perfil', [ClienteDashboardController::class, 'editar_perfil']);
     Route::get('cliente/cambiar-contrasena', [ClienteDashboardController::class, 'cambiar_contrasena']);
+    Route::get('cliente/pedidos/detalles/{id}', [ClienteDashboardController::class, 'detalle_pedido']);
 });
 
 // admin .-.

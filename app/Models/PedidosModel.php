@@ -87,6 +87,26 @@ class PedidosModel extends Model
             ->count();
     }
 
+    static function getRecordCliente($user_id)
+    {
+        return PedidosModel::select('pedidos.*')
+            ->where('user_id', '=', $user_id)
+            ->where('esta_pagado', '=', 1)
+            ->where('esta_eliminado', '=', 0)
+            ->orderBy('id', 'desc')
+            ->get();
+    }
+
+    static function getSingleCliente($user_id, $id)
+    {
+        return PedidosModel::select('pedidos.*')
+            ->where('user_id', '=', $user_id)
+            ->where('id', '=', $id)
+            ->where('esta_pagado', '=', 1)
+            ->where('esta_eliminado', '=', 0)
+            ->first();
+    }
+
     // fin cliente
 
     static function mostrarTotalPedidos()

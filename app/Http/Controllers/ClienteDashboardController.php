@@ -34,7 +34,24 @@ class ClienteDashboardController extends Controller
         $data['meta_descripcion'] = '';
         $data['meta_p_clave'] = '';
 
+        $data['getRecord'] = PedidosModel::getRecordCliente(Auth::user()->id);
+
         return view('cliente.pedidos', $data);
+    }
+
+    public function detalle_pedido($id)
+    {
+        $data['getRecord'] = PedidosModel::getSingleCliente(Auth::user()->id, $id);
+
+        if (!empty($data['getRecord'])) {
+            $data['meta_titulo'] = 'Detalles del pedido';
+            $data['meta_descripcion'] = '';
+            $data['meta_p_clave'] = '';
+        } else {
+            abort(404);
+        }
+
+        return view('cliente.detalle_pedido', $data);
     }
 
     public function editar_perfil()

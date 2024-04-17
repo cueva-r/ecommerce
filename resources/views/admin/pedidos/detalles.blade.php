@@ -125,8 +125,21 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label>Estado : <span
-                                            style="font-weight: normal;"></span></label>
+                                    <label>Estado :
+                                        <span style="font-weight: normal;">
+                                            @if ($getRecord->estado == 0)
+                                                Pendiente
+                                            @elseif ($getRecord->estado == 1)
+                                                En progreso
+                                            @elseif ($getRecord->estado == 2)
+                                                Entregado
+                                            @elseif ($getRecord->estado == 3)
+                                                Completado
+                                            @elseif ($getRecord->estado == 4)
+                                                Cancelado
+                                            @endif
+                                        </span>
+                                    </label>
                                 </div>
 
                                 <div class="form-group">
@@ -159,13 +172,17 @@
                                     <tbody>
                                         @foreach ($getRecord->getArticulo as $articulo)
                                             @php
-                                                $getProductoImagen = $articulo->getProducto->getImagenSingle($articulo->getProducto->id);
+                                                $getProductoImagen = $articulo->getProducto->getImagenSingle(
+                                                    $articulo->getProducto->id,
+                                                );
                                             @endphp
                                             <tr>
                                                 <td>
-                                                    <img style="width: 100px; height: 100px;" src="{{ $getProductoImagen->getLogo() }}" alt="">
+                                                    <img style="width: 100px; height: 100px;"
+                                                        src="{{ $getProductoImagen->getLogo() }}" alt="">
                                                 </td>
-                                                <td><a href="{{ url($articulo->getProducto->slug) }}" target="_blank">{{ $articulo->getProducto->titulo }}</a></td>
+                                                <td><a href="{{ url($articulo->getProducto->slug) }}"
+                                                        target="_blank">{{ $articulo->getProducto->titulo }}</a></td>
                                                 <td>{{ $articulo->cantidad }}</td>
                                                 <td>{{ number_format($articulo->precio, 2) }}</td>
                                                 <td>{{ $articulo->nombre_tamano }}</td>
