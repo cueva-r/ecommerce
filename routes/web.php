@@ -43,6 +43,8 @@ Route::group(['middleware' => 'cliente'], function () {
     Route::get('cliente/editar-perfil', [ClienteDashboardController::class, 'editar_perfil']);
     Route::post('cliente/editar-perfil', [ClienteDashboardController::class, 'actualizar_perfil']);
     Route::get('cliente/cambiar-contrasena', [ClienteDashboardController::class, 'cambiar_contrasena']);
+    Route::post('cliente/cambiar-contrasena', [ClienteDashboardController::class, 'actualizar_contrasena']);
+
     Route::get('cliente/pedidos/detalles/{id}', [ClienteDashboardController::class, 'detalle_pedido']);
 });
 

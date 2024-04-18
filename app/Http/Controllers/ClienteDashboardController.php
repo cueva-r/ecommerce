@@ -6,6 +6,7 @@ use App\Models\PedidosModel;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Auth;
+use Hash;
 
 class ClienteDashboardController extends Controller
 {
@@ -91,5 +92,22 @@ class ClienteDashboardController extends Controller
         $data['meta_p_clave'] = '';
 
         return view('cliente.cambiar_contrasena', $data);
+    }
+
+    public function actualizar_contrasena(Request $request)
+    {
+        $cliente = User::getSingle(Auth::user()->id);
+        if (Hash::check($request->contrasena_anterior, $cliente->password)) {
+            if ($request->contrasena == $request->ccontrasena) {
+                $cliente->password = Hash::make($request->contrasena);
+                $cliente->save();
+
+                return redirect()->back()->with('success', "Contraseñas actualizada exitosamente");  
+            }else{
+                return redirect()->back()->with('error', "Las contraseñas no coinciden");  
+            }
+        }else{
+            return redirect()->back()->with('error', "La contraseña anterior no es correcta");
+        }
     }
 }
