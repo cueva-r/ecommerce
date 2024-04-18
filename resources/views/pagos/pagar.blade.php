@@ -31,53 +31,53 @@
                                 <div class="row">
                                     <div class="col-sm-6">
                                         <label>Nombres <span style="color: red">*</span></label>
-                                        <input type="text" name="nombres" class="form-control" required>
+                                        <input type="text" value="{{ !empty(Auth::user()->name) ? Auth::user()->name : '' }}" name="nombres" class="form-control" required>
                                     </div>
 
                                     <div class="col-sm-6">
                                         <label>Apellidos <span style="color: red">*</span></label>
-                                        <input type="text" name="apellidos" class="form-control" required>
+                                        <input type="text" value="{{ !empty(Auth::user()->apellidos) ? Auth::user()->apellidos : '' }}" name="apellidos" class="form-control" required>
                                     </div>
                                 </div>
 
                                 <label>Nombre de compañía (Opcional)</label>
-                                <input type="text" name="nombre_compania" class="form-control">
+                                <input type="text" value="{{ !empty(Auth::user()->nombre_compania) ? Auth::user()->nombre_compania : '' }}" name="nombre_compania" class="form-control">
 
                                 <label>País <span style="color: red">*</span></label>
-                                <input type="text" name="pais" class="form-control" required>
+                                <input type="text" value="{{ !empty(Auth::user()->pais) ? Auth::user()->pais : '' }}" name="pais" class="form-control" required>
 
                                 <label>Dirección <span style="color: red">*</span></label>
-                                <input type="text" class="form-control" name="primera_direccion"
+                                <input type="text" value="{{ !empty(Auth::user()->primera_direccion) ? Auth::user()->primera_direccion : '' }}" class="form-control" name="primera_direccion"
                                     placeholder="Número de casa y nombre de la calle" required>
-                                <input type="text" class="form-control" name="segunda_direccion"
+                                <input type="text" value="{{ !empty(Auth::user()->segunda_direccion) ? Auth::user()->segunda_direccion : '' }}" class="form-control" name="segunda_direccion"
                                     placeholder="Apartamentos, suite, unidad etc..." required>
 
                                 <div class="row">
                                     <div class="col-sm-6">
-                                        <label>Ciudad / Provincia <span style="color: red">*</span></label>
-                                        <input type="text" name="ciudad" class="form-control" required>
+                                        <label>Ciudad <span style="color: red">*</span></label>
+                                        <input type="text" value="{{ !empty(Auth::user()->ciudad) ? Auth::user()->ciudad : '' }}" name="ciudad" class="form-control" required>
                                     </div>
 
                                     <div class="col-sm-6">
                                         <label>Distrito <span style="color: red">*</span></label>
-                                        <input type="text" name="distrito" class="form-control" required>
+                                        <input type="text" value="{{ !empty(Auth::user()->distrito) ? Auth::user()->distrito : '' }}" name="distrito" class="form-control" required>
                                     </div>
                                 </div>
 
                                 <div class="row">
                                     <div class="col-sm-6">
                                         <label>Código postal <span style="color: red">*</span></label>
-                                        <input type="text" name="codigo_postal" class="form-control" required>
+                                        <input type="text" value="{{ !empty(Auth::user()->codigo_postal) ? Auth::user()->codigo_postal : '' }}" name="codigo_postal" class="form-control" required>
                                     </div>
 
                                     <div class="col-sm-6">
                                         <label>Teléfono <span style="color: red">*</span></label>
-                                        <input type="tel" name="telefono" class="form-control" required>
+                                        <input type="tel" value="{{ !empty(Auth::user()->telefono) ? Auth::user()->telefono : '' }}" name="telefono" class="form-control" required>
                                     </div>
                                 </div>
 
                                 <label>Correo electrónico <span style="color: red">*</span></label>
-                                <input type="email" name="email" class="form-control" required>
+                                <input type="email" value="{{ !empty(Auth::user()->email) ? Auth::user()->email : '' }}" name="email" class="form-control" required>
 
                                 @if (empty(Auth::check()))
                                     <div class="custom-control custom-checkbox">

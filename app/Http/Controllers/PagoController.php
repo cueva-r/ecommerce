@@ -222,7 +222,7 @@ class PagoController extends Controller
                     $pedido_item->cantidad_tamano = $getTamano->precio;
                 }
 
-                $pedido_item->precio_total = $carrito->price;
+                $pedido_item->precio_total = $carrito->price * $carrito->quantity;
                 $pedido_item->save();
             }
             $json['status'] = true;

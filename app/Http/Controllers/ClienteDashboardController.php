@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\PedidosModel;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Auth;
 
@@ -60,7 +61,27 @@ class ClienteDashboardController extends Controller
         $data['meta_descripcion'] = '';
         $data['meta_p_clave'] = '';
 
+        $data['getRecord'] = User::getSingle(Auth::user()->id);
+
         return view('cliente.editar_perfil', $data);
+    }
+
+    public function actualizar_perfil(Request $request)
+    {
+        $cliente = User::getSingle(Auth::user()->id);
+        $cliente->name = trim($request->nombres);
+        $cliente->apellidos = trim($request->apellidos);
+        $cliente->nombre_compania = trim($request->nombre_compania);
+        $cliente->pais = trim($request->pais);
+        $cliente->primera_direccion = trim($request->primera_direccion);
+        $cliente->segunda_direccion = trim($request->segunda_direccion);
+        $cliente->ciudad = trim($request->ciudad);
+        $cliente->distrito = trim($request->distrito);
+        $cliente->codigo_postal = trim($request->codigo_postal);
+        $cliente->telefono = trim($request->telefono);
+        $cliente->save();
+
+        return redirect()->back()->with('success', "Perfil actualizado exitosamente");
     }
 
     public function cambiar_contrasena()
