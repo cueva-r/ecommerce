@@ -46,6 +46,8 @@ Route::group(['middleware' => 'cliente'], function () {
     Route::post('cliente/cambiar-contrasena', [ClienteDashboardController::class, 'actualizar_contrasena']);
 
     Route::get('cliente/pedidos/detalles/{id}', [ClienteDashboardController::class, 'detalle_pedido']);
+
+    Route::post('agregar_a_la_lista_de_deseos', [ClienteDashboardController::class, 'agregar_a_la_lista_de_deseos']);
 });
 
 // admin .-.

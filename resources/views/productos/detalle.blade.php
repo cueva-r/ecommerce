@@ -143,12 +143,18 @@
                                             class="btn-product btn-cart"><span>Añadir al carrito</span></button>
 
                                         <div class="details-action-wrapper">
-                                            <a href="#" class="btn-product btn-wishlist" title="Wishlist"><span>Añadir
-                                                    a
-                                                    la
-                                                    lista de deseos</span></a>
-                                            {{-- <a href="#" class="btn-product btn-compare"
-                                            title="Compare"><span>Comparar</span></a> --}}
+                                            @if (!empty(Auth::check()))
+                                                <a href="javascript:;"
+                                                    class="agregar_a_la_lista_de_deseos btn-agregar-listadeseos{{ $getProducto->id }} btn-product btn-wishlist {{ !empty($getProducto->revisarListaDeDeseos($getProducto->id)) ? 'btn-agregar-listadeseos' : '' }}"
+                                                    title="Wishlist" id="{{ $getProducto->id }}">
+                                                    <span>Añadir a la lista de deseos</span>
+                                                </a>
+                                            @else
+                                                <a href="#signin-modal" class="btn-product btn-wishlist" data-toggle="modal"
+                                                    title="Wishlist">
+                                                    <span>Añadir a la lista de deseos</span>
+                                                </a>
+                                            @endif
                                         </div>
                                     </div>
                                 </form>
@@ -343,8 +349,26 @@
                                 </a>
 
                                 <div class="product-action-vertical">
-                                    <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>Agregar a
-                                            la lista de deseos</span></a>
+                                    @if (!empty(Auth::check()))
+                                        {{-- <a href="javascript:;"
+                                            class="agregar_a_la_lista_de_deseos btn-agregar-listadeseos{{ $getProducto->id }} btn-product btn-wishlist {{ !empty($getProducto->revisarListaDeDeseos($getProducto->id)) ? 'btn-agregar-listadeseos' : '' }}"
+                                            title="Wishlist" id="{{ $getProducto->id }}">
+                                            <span>Añadir a la lista de deseos</span>
+                                        </a> --}}
+
+                                        <a href="javascript:;" class="agregar_a_la_lista_de_deseos btn-agregar-listadeseos{{ $valor->id }} btn-product-icon btn-wishlist btn-expandable {{ !empty($valor->revisarListaDeDeseos($valor->id)) ? 'btn-agregar-listadeseos' : '' }}"
+                                            title="Wishlist" id="{{ $valor->id }}">
+                                            <span>Añadir a la lista de deseos</span>
+                                        </a>
+                                    @else
+                                        <a href="#signin-modal" class="btn-product-icon btn-wishlist btn-expandable" data-toggle="modal"
+                                            title="Wishlist">
+                                            <span>Añadir a la lista de deseos</span>
+                                        </a>
+                                    @endif
+
+                                    {{-- <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>Agregar a
+                                            la lista de deseos</span></a> --}}
                                 </div>
                             </figure>
 

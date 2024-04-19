@@ -29,6 +29,12 @@
         integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     @yield('style')
+
+    <style>
+        .btn-agregar-listadeseos::before{
+            content: '\f233' !important;
+        }
+    </style>
 </head>
 
 <body>
@@ -236,6 +242,26 @@
                     }
                 },
                 error: function(data) {}
+            });
+        })
+
+        $('body').delegate('.agregar_a_la_lista_de_deseos', 'click', function(e) {
+            var producto_id = $(this).attr('id')
+            $.ajax({
+                type: "POST",
+                url: "{{ url('agregar_a_la_lista_de_deseos') }}",
+                data: {
+                    "_token": "{{ csrf_token() }}",
+                    producto_id: producto_id
+                },
+                dataType: "json",
+                success: function(data) {
+                    if (data.esta_en_la_lista == 0) {
+                        $('.btn-agregar-listadeseos' + producto_id).removeClass('btn-agregar-listadeseos')
+                    } else {
+                        $('.btn-agregar-listadeseos' + producto_id).addClass('btn-agregar-listadeseos')
+                    }
+                }
             });
         })
     </script>

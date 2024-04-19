@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ListaDeDeseosModel;
 use App\Models\PedidosModel;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -102,12 +103,33 @@ class ClienteDashboardController extends Controller
                 $cliente->password = Hash::make($request->contrasena);
                 $cliente->save();
 
-                return redirect()->back()->with('success', "Contraseñas actualizada exitosamente");  
-            }else{
-                return redirect()->back()->with('error', "Las contraseñas no coinciden");  
+                return redirect()->back()->with('success', "Contraseñas actualizada exitosamente");
+            } else {
+                return redirect()->back()->with('error', "Las contraseñas no coinciden");
             }
-        }else{
+        } else {
             return redirect()->back()->with('error', "La contraseña anterior no es correcta");
         }
+    }
+
+    public function agregar_a_la_lista_de_deseos(Request $request)
+    {
+        $check = ListaDeDeseosModel::revisarExistente($request->producto_id, Auth::user()->id);
+
+        if (empty($check)) {
+            $guardar = new ListaDeDeseosModel;
+            $guardar->producto_id = $request->producto_id;
+            $guardar->user_id = Auth::user()->id;
+            $guardar->save();
+
+            $json['esta_en_la_lista'] = 1;
+        } else {
+            ListaDeDeseosModel::eliminarRecord($request->producto_id, Auth::user()->id);
+
+            $json['esta_en_la_lista'] = 0;
+        }
+
+        $json['status'] = true;
+        echo json_encode($json);
     }
 }

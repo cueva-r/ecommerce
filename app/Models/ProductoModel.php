@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Request;
+use Auth;
 
 class ProductoModel extends Model
 {
@@ -128,6 +129,11 @@ class ProductoModel extends Model
     static function checkSlug($slug)
     {
         return self::where('slug', '=', $slug)->count();
+    }
+
+    static function revisarListaDeDeseos($producto_id)
+    {
+        return ListaDeDeseosModel::revisarExistente($producto_id, Auth::user()->id);
     }
 
     public function getColor()
