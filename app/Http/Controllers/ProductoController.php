@@ -8,9 +8,21 @@ use App\Models\MarcaModel;
 use App\Models\ProductoModel;
 use App\Models\SubCategoriaModel;
 use Illuminate\Http\Request;
+use Auth;
 
 class ProductoController extends Controller
 {
+    public function mi_lista_de_deseos()
+    {
+        $data['meta_titulo'] = 'Mi lista de deseos';
+        $data['meta_descripcion'] = '';
+        $data['meta_p_clave'] = '';
+
+        $data['getProducto'] = ProductoModel::getMiLIstaDeDeseos(Auth::user()->id);
+
+        return view('productos.mi_lista_de_deseos', $data);
+    }
+
     public function getProductoBuscar(Request $request)
     {
         $data['meta_titulo'] = 'Buscar';

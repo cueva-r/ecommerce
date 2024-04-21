@@ -27,13 +27,28 @@
                         <a href="#">Links</a>
                         <ul>
                             <li><a href="tel:#"><i class="icon-phone"></i>Llamar: +51 924 575 577</a></li>
-                            <li><a href="{{ url('lista-deseos') }}"><i class="icon-heart-o"></i>Lista de deseos
-                                    <span>(3)</span></a></li>
                             @if (!empty(Auth::check()))
-                                <li><a href="{{ url('cliente/dashboard') }}"><i class="icon-user"></i> {{ Auth::user()->name }}</a></li> 
+                                <li>
+                                    <a href="{{ url('mi-lista-de-deseos') }}">
+                                        <i class="icon-heart-o"></i>Lista de deseos
+                                        <span>(3)</span>
+                                    </a>
+                                </li>
+                            @else
+                                <li>
+                                    <a href="#signin-modal" data-toggle="modal">
+                                        <i class="icon-heart-o"></i>Lista de deseos
+                                    </a>
+                                </li>
+                            @endif
+
+                            @if (!empty(Auth::check()))
+                                <li><a href="{{ url('cliente/dashboard') }}"><i class="icon-user"></i>
+                                        {{ Auth::user()->name }}</a></li>
                                 {{-- <li><a href="{{ url('admin/cerrar-sesion') }}">Cerar sesión</a></li>  --}}
                             @else
-                                <li><a href="#signin-modal" data-toggle="modal"><i class="icon-user"></i>Iniciar sesión</a>
+                                <li><a href="#signin-modal" data-toggle="modal"><i class="icon-user"></i>Iniciar
+                                        sesión</a>
                                 </li>
                             @endif
                         </ul>
@@ -125,7 +140,9 @@
                                     @endphp
                                     @if (!empty($getCarritoProducto))
                                         @php
-                                            $getProductoImagen = $getCarritoProducto->getImagenSingle($getCarritoProducto->id);
+                                            $getProductoImagen = $getCarritoProducto->getImagenSingle(
+                                                $getCarritoProducto->id,
+                                            );
                                         @endphp
                                         <div class="product">
                                             <div class="product-cart-details">
@@ -146,7 +163,8 @@
                                                     <img src="{{ $getProductoImagen->getLogo() }}" alt="product">
                                                 </a>
                                             </figure>
-                                            <a href="{{ url('carrito/eliminar/' . $header_carrito->id) }}" class="btn-remove" title="Quitar producto"><i
+                                            <a href="{{ url('carrito/eliminar/' . $header_carrito->id) }}"
+                                                class="btn-remove" title="Quitar producto"><i
                                                     class="icon-close"></i></a>
                                         </div>
                                     @endif

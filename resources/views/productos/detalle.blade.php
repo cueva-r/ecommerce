@@ -350,11 +350,6 @@
 
                                 <div class="product-action-vertical">
                                     @if (!empty(Auth::check()))
-                                        {{-- <a href="javascript:;"
-                                            class="agregar_a_la_lista_de_deseos btn-agregar-listadeseos{{ $getProducto->id }} btn-product btn-wishlist {{ !empty($getProducto->revisarListaDeDeseos($getProducto->id)) ? 'btn-agregar-listadeseos' : '' }}"
-                                            title="Wishlist" id="{{ $getProducto->id }}">
-                                            <span>Añadir a la lista de deseos</span>
-                                        </a> --}}
 
                                         <a href="javascript:;" class="agregar_a_la_lista_de_deseos btn-agregar-listadeseos{{ $valor->id }} btn-product-icon btn-wishlist btn-expandable {{ !empty($valor->revisarListaDeDeseos($valor->id)) ? 'btn-agregar-listadeseos' : '' }}"
                                             title="Wishlist" id="{{ $valor->id }}">

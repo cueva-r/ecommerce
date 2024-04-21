@@ -16,15 +16,19 @@
                         </a>
 
                         <div class="product-action-vertical">
-                            <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>Agregar a
-                                    la lista de desos</span></a>
-                            {{-- <a href="popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Ver</span></a>
-                                <a href="#" class="btn-product-icon btn-compare" title="Compare"><span>Comparar</span></a> --}}
+                            @if (!empty(Auth::check()))
+                                <a href="javascript:;"
+                                    class="agregar_a_la_lista_de_deseos btn-agregar-listadeseos{{ $valor->id }} btn-product-icon btn-wishlist btn-expandable {{ !empty($valor->revisarListaDeDeseos($valor->id)) ? 'btn-agregar-listadeseos' : '' }}"
+                                    title="Wishlist" id="{{ $valor->id }}">
+                                    <span>Añadir a la lista de deseos</span>
+                                </a>
+                            @else
+                                <a href="#signin-modal" class="btn-product-icon btn-wishlist btn-expandable"
+                                    data-toggle="modal" title="Wishlist">
+                                    <span>Añadir a la lista de deseos</span>
+                                </a>
+                            @endif
                         </div>
-
-                        {{-- <div class="product-action">
-                            <a href="#" class="btn-product btn-cart"><span>Agregar al carrito</span></a>
-                        </div> --}}
                     </figure>
 
                     <div class="product-body">
