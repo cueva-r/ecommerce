@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\CalificacionProductoModel;
 use App\Models\ListaDeDeseosModel;
 use App\Models\PedidosModel;
 use App\Models\User;
@@ -131,5 +132,18 @@ class ClienteDashboardController extends Controller
 
         $json['status'] = true;
         echo json_encode($json);
+    }
+
+    public function enviar_calificacion(Request $request)
+    {
+        $guardar = new CalificacionProductoModel;
+        $guardar->producto_id = trim($request->producto_id);
+        $guardar->pedido_id = trim($request->pedido_id);
+        $guardar->user_id = Auth::user()->id;
+        $guardar->rating = trim($request->rating);
+        $guardar->opinion = trim($request->opinion);
+        $guardar->save();
+
+        return redirect()->back()->with('success', "Gracias por tu calificación");
     }
 }

@@ -32,6 +32,7 @@
 
                         <div class="col-md-8 col-lg-9">
                             <div class="tab-content">
+                                @include('layouts._message')
                                 <div class="">
                                     <div class="form-group">
                                         <label>Número de pedido : <span
@@ -177,12 +178,38 @@
                                                         <td><a href="{{ url($articulo->getProducto->slug) }}"
                                                                 target="_blank">{{ $articulo->getProducto->titulo }}</a>
                                                             <br>
-                                                            Tamaño: {{ $articulo->nombre_tamano }} <br>
-                                                            Color: {{ $articulo->nombre_color }} <br>
+                                                            @if (!empty($articulo->nombre_tamano))
+                                                                <b>Tamaño:</b> {{ $articulo->nombre_tamano }} <br>
+                                                            @endif
+                                                            
+                                                            @if (!empty($articulo->nombre_color))
+                                                                <b>Color:</b> {{ $articulo->nombre_color }} <br>
+                                                            @endif
+                                                            
+                                                            <br>
+                                                            @if ($getRecord->estado == 3)
+                                                                @php
+                                                                    $getCalificacion = $articulo->getCalificacion(
+                                                                        $articulo->getProducto->id,
+                                                                        $getRecord->id,
+                                                                    );
+                                                                @endphp
+
+                                                                <hr>
+
+                                                                @if (!empty($getCalificacion))
+                                                                    <b>Califiación:</b> {{ $getCalificacion->rating }} <br>
+                                                                    <b>Opinión:</b> {{ $getCalificacion->opinion }}
+                                                                @else
+                                                                    <button class="btn btn-outline-success calificar"
+                                                                        id="{{ $articulo->getProducto->id }}"
+                                                                        data-order="{{ $getRecord->id }}">Calificar</button>
+                                                                @endif
+                                                            @endif
                                                         </td>
                                                         <td>{{ $articulo->cantidad }}</td>
                                                         <td>{{ number_format($articulo->precio, 2) }}</td>
-                                                        <td>{{ $articulo->cantidad_tamano }}</td>
+                                                        <td>{{ number_format($articulo->cantidad_tamano, 2) }}</td>
                                                         <td>{{ number_format($articulo->precio_total, 2) }}</td>
                                                     </tr>
                                                 @endforeach
@@ -197,6 +224,48 @@
             </div>
         </div>
     </main>
+
+    <!-- Modal -->
+    <div class="modal fade" id="calificarModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Califica este producto</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form action="{{ url('cliente/enviar-calificacion') }}" method="POST">
+                    {{ csrf_field() }}
+                    <input type="hidden" required id="getProductoId" name="producto_id">
+                    <input type="hidden" required id="getPedidoId" name="pedido_id">
+                    <div class="modal-body" style="padding: 20px;">
+                        <div class="form-group" style="margin-bottom: 15px;">
+                            <label for="">¿Que calificación nos dará?</label>
+                            <select class="form-control" required name="rating">
+                                <option value="">Seleccionar</option>
+                                <option value="1">1 estrella</option>
+                                <option value="2">2 estrellas</option>
+                                <option value="3">3 estrellas</option>
+                                <option value="4">4 estrellas</option>
+                                <option value="5">5 estrellas</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Opiniones</label>
+                            <textarea class="form-control" required name="opinion"></textarea>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                        <button type="submit" class="btn btn-primary">Enviar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 @endsection
 
 @section('script')
@@ -222,5 +291,17 @@
                 "search": "Buscar:",
             }
         });
+    </script>
+
+    <script>
+        $('body').delegate('.calificar', 'click', function() {
+            var producto_id = $(this).attr('id')
+            var pedido_id = $(this).attr('data-order')
+
+            $('#getProductoId').val(producto_id)
+            $('#getPedidoId').val(pedido_id)
+
+            $('#calificarModal').modal('show')
+        })
     </script>
 @endsection

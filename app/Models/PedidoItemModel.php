@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Auth;
 
 class PedidoItemModel extends Model
 {
@@ -14,5 +15,10 @@ class PedidoItemModel extends Model
     public function getProducto()
     {
         return $this->belongsTo(ProductoModel::class, 'producto_id');
+    }
+
+    static public function getCalificacion($producto_id, $pedido_id)
+    {
+        return CalificacionProductoModel::getCalificacion($producto_id, $pedido_id, Auth::user()->id);
     }
 }

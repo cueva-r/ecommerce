@@ -48,6 +48,7 @@ Route::group(['middleware' => 'cliente'], function () {
     Route::get('cliente/pedidos/detalles/{id}', [ClienteDashboardController::class, 'detalle_pedido']);
 
     Route::post('agregar_a_la_lista_de_deseos', [ClienteDashboardController::class, 'agregar_a_la_lista_de_deseos']);
+    Route::post('cliente/enviar-calificacion', [ClienteDashboardController::class, 'enviar_calificacion']);
 
     Route::get('mi-lista-de-deseos', [ProductoFront::class, 'mi_lista_de_deseos']);
 });
