@@ -177,4 +177,11 @@ class ProductoModel extends Model
     {
         return $this->belongsTo(SubCategoriaModel::class, 'subcategoria_id');
     }
+
+    public function getTotalCalificaciones()
+    {
+        return $this->hasMany(CalificacionProductoModel::class, 'producto_id')
+            ->join('users', 'users.id', 'calificacion_productos.user_id')
+            ->count();
+    }
 }

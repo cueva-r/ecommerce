@@ -26,4 +26,32 @@ class CalificacionProductoModel extends Model
             ->where('user_id', '=', $user_id)
             ->first();
     }
+
+    static public function getCalificacionProducto($producto_id)
+    {
+        return self::select('calificacion_productos.*', 'users.name')
+            ->join('users', 'users.id', 'calificacion_productos.user_id')
+            ->where('calificacion_productos.producto_id', '=', $producto_id)
+            ->orderBy('calificacion_productos.id', 'desc')
+            ->paginate(20);
+    }
+
+    public function getPorcentaje()
+    {
+        $rating = $this->rating;
+
+        if ($rating == 1) {
+            return 20;
+        } elseif ($rating == 2) {
+            return 40;
+        } elseif ($rating == 3) {
+            return 60;
+        } elseif ($rating == 4) {
+            return 80;
+        } elseif ($rating == 5) {
+            return 100;
+        } else {
+            return 0;
+        }
+    }
 }

@@ -80,7 +80,7 @@
                                     <div class="ratings">
                                         <div class="ratings-val" style="width: 80%;"></div>
                                     </div>
-                                    <a class="ratings-text" href="#product-review-link" id="review-link">( 2 Reseñas )</a>
+                                    <a class="ratings-text" href="#product-review-link" id="review-link">( {{ $getProducto->getTotalCalificaciones() }} Reseñas )</a>
                                 </div>
 
                                 <div class="product-price mb-4">
@@ -205,7 +205,7 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" id="product-review-link" data-toggle="tab" href="#product-review-tab"
-                                role="tab" aria-controls="product-review-tab" aria-selected="false">Reseñas (2)</a>
+                                role="tab" aria-controls="product-review-tab" aria-selected="false">Reseñas ({{ $getProducto->getTotalCalificaciones() }})</a>
                         </li>
                     </ul>
                 </div>
@@ -240,65 +240,30 @@
                         aria-labelledby="product-review-link">
                         <div class="reviews">
                             <div class="container" style="margin-top: 30px">
-                                <h3>Reseñas (2)</h3>
-                                <div class="review">
-                                    <div class="row no-gutters">
-                                        <div class="col-auto">
-                                            <h4><a href="#">Samanta J.</a></h4>
-                                            <div class="ratings-container">
-                                                <div class="ratings">
-                                                    <div class="ratings-val" style="width: 80%;"></div>
-                                                    <!-- End .ratings-val -->
-                                                </div><!-- End .ratings -->
-                                            </div><!-- End .rating-container -->
-                                            <span class="review-date">6 days ago</span>
-                                        </div><!-- End .col -->
-                                        <div class="col">
-                                            <h4>Good, perfect size</h4>
+                                <h3>Reseñas ({{ $getProducto->getTotalCalificaciones() }})</h3>
+                                @foreach ($traerCalificacion as $calificacion)
+                                    <div class="review">
+                                        <div class="row no-gutters">
 
-                                            <div class="review-content">
-                                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus cum
-                                                    dolores assumenda asperiores facilis porro reprehenderit animi culpa
-                                                    atque blanditiis commodi perspiciatis doloremque, possimus, explicabo,
-                                                    autem fugit beatae quae voluptas!</p>
-                                            </div><!-- End .review-content -->
 
-                                            <div class="review-action">
-                                                <a href="#"><i class="icon-thumbs-up"></i>Helpful (2)</a>
-                                                <a href="#"><i class="icon-thumbs-down"></i>Unhelpful (0)</a>
-                                            </div><!-- End .review-action -->
-                                        </div><!-- End .col-auto -->
-                                    </div><!-- End .row -->
-                                </div><!-- End .review -->
 
-                                <div class="review">
-                                    <div class="row no-gutters">
-                                        <div class="col-auto">
-                                            <h4><a href="#">John Doe</a></h4>
-                                            <div class="ratings-container">
-                                                <div class="ratings">
-                                                    <div class="ratings-val" style="width: 100%;"></div>
-                                                    <!-- End .ratings-val -->
-                                                </div><!-- End .ratings -->
-                                            </div><!-- End .rating-container -->
-                                            <span class="review-date">5 days ago</span>
-                                        </div><!-- End .col -->
-                                        <div class="col">
-                                            <h4>Very good</h4>
-
-                                            <div class="review-content">
-                                                <p>Sed, molestias, tempore? Ex dolor esse iure hic veniam laborum blanditiis
-                                                    laudantium iste amet. Cum non voluptate eos enim, ab cumque nam, modi,
-                                                    quas iure illum repellendus, blanditiis perspiciatis beatae!</p>
+                                            <div class="col-auto">
+                                                <h4><a href="#">{{ $calificacion->name }}</a></h4>
+                                                <div class="ratings-container">
+                                                    <div class="ratings">
+                                                        <div class="ratings-val" style="width: {{ $calificacion->getPorcentaje() }}%;"></div>
+                                                    </div>
+                                                </div>
+                                                <span class="review-date">{{ Carbon\Carbon::parse($calificacion->created_at)->diffForHumans() }}</span>
                                             </div>
-
-                                            <div class="review-action">
-                                                <a href="#"><i class="icon-thumbs-up"></i>Helpful (0)</a>
-                                                <a href="#"><i class="icon-thumbs-down"></i>Unhelpful (0)</a>
+                                            <div class="col">
+                                                <h4>{{ $calificacion->opinion }}</h4>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                @endforeach
+
+                                {!! $traerCalificacion->appends(Illuminate\Support\Facades\Request::except('page'))->links() !!}
                             </div>
                         </div>
                     </div>
@@ -350,14 +315,14 @@
 
                                 <div class="product-action-vertical">
                                     @if (!empty(Auth::check()))
-
-                                        <a href="javascript:;" class="agregar_a_la_lista_de_deseos btn-agregar-listadeseos{{ $valor->id }} btn-product-icon btn-wishlist btn-expandable {{ !empty($valor->revisarListaDeDeseos($valor->id)) ? 'btn-agregar-listadeseos' : '' }}"
+                                        <a href="javascript:;"
+                                            class="agregar_a_la_lista_de_deseos btn-agregar-listadeseos{{ $valor->id }} btn-product-icon btn-wishlist btn-expandable {{ !empty($valor->revisarListaDeDeseos($valor->id)) ? 'btn-agregar-listadeseos' : '' }}"
                                             title="Wishlist" id="{{ $valor->id }}">
                                             <span>Añadir a la lista de deseos</span>
                                         </a>
                                     @else
-                                        <a href="#signin-modal" class="btn-product-icon btn-wishlist btn-expandable" data-toggle="modal"
-                                            title="Wishlist">
+                                        <a href="#signin-modal" class="btn-product-icon btn-wishlist btn-expandable"
+                                            data-toggle="modal" title="Wishlist">
                                             <span>Añadir a la lista de deseos</span>
                                         </a>
                                     @endif

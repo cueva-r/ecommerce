@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\CalificacionProductoModel;
 use App\Models\CategoriaModel;
 use App\Models\ColorModel;
 use App\Models\MarcaModel;
@@ -61,6 +62,8 @@ class ProductoController extends Controller
             $data['meta_titulo'] = $getProductoSingle->titulo;
             $data['meta_descripcion'] = $getProductoSingle->descripcion_corta;
             $data['getProducto'] = $getProductoSingle;
+
+            $data['traerCalificacion'] = CalificacionProductoModel::getCalificacionProducto($getProductoSingle->id);
 
             $data['getRelatedProducto'] = ProductoModel::getRelatedProducto($getProductoSingle->id, $getProductoSingle->subcategoria_id);
 
