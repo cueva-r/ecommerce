@@ -54,4 +54,12 @@ class CalificacionProductoModel extends Model
             return 0;
         }
     }
+
+    static public function getRatingAVG($producto_id)
+    {
+        return self::select('calificacion_productos.rating')
+        ->join('users', 'users.id', 'calificacion_productos.user_id')
+        ->where('calificacion_productos.producto_id', '=', $producto_id)
+        ->avg('calificacion_productos.rating');
+    }
 }

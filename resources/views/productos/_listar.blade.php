@@ -42,9 +42,9 @@
                         </div>
                         <div class="ratings-container">
                             <div class="ratings">
-                                <div class="ratings-val" style="width: 20%;"></div>
+                                <div class="ratings-val" style="width: {{ $valor->getReviewRating($valor->id) }}%;"></div>
                             </div>
-                            <span class="ratings-text">( 2 Reseñas )</span>
+                            <span class="ratings-text">( {{ $valor->getTotalCalificaciones() }} Reseñas )</span>
                         </div>
                     </div>
                 </div>

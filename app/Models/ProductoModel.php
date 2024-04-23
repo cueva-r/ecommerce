@@ -184,4 +184,30 @@ class ProductoModel extends Model
             ->join('users', 'users.id', 'calificacion_productos.user_id')
             ->count();
     }
+
+    static public function getReviewRating($producto_id)
+    {
+        $avg = CalificacionProductoModel::getRatingAVG($producto_id);
+
+        // if (!empty($avg)) {
+        //     return number_format(($avg * 100) / 100, 2);
+        // } else {
+        //     return 0;
+        // }
+        
+
+        if ($avg >= 1 && $avg <= 1) {
+            return 20;
+        } elseif ($avg >= 1 && $avg <= 2) {
+            return 40;
+        } elseif ($avg >= 1 && $avg <= 3) {
+            return 60;
+        } elseif ($avg >= 1 && $avg <= 4) {
+            return 80;
+        } elseif ($avg >= 1 && $avg <= 5) {
+            return 100;
+        } else {
+            return 0;
+        }
+    }
 }

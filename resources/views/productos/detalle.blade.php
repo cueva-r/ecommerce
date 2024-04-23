@@ -78,8 +78,9 @@
 
                                 <div class="ratings-container">
                                     <div class="ratings">
-                                        <div class="ratings-val" style="width: 80%;"></div>
+                                        <div class="ratings-val" style="width: {{ $getProducto->getReviewRating($getProducto->id) }}%;"></div>
                                     </div>
+
                                     <a class="ratings-text" href="#product-review-link" id="review-link">( {{ $getProducto->getTotalCalificaciones() }} Reseñas )</a>
                                 </div>
 
@@ -326,9 +327,6 @@
                                             <span>Añadir a la lista de deseos</span>
                                         </a>
                                     @endif
-
-                                    {{-- <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>Agregar a
-                                            la lista de deseos</span></a> --}}
                                 </div>
                             </figure>
 
