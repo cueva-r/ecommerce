@@ -52,7 +52,7 @@ Route::group(['middleware' => 'cliente'], function () {
 
     Route::get('mi-lista-de-deseos', [ProductoFront::class, 'mi_lista_de_deseos']);
 });
-
+ 
 // admin .-.
 Route::group(['middleware' => 'admin'], function () {
 
@@ -141,6 +141,16 @@ Route::group(['middleware' => 'admin'], function () {
 });
 
 Route::get('/', [InicioController::class, 'inicio']);
+Route::get('contactenos', [InicioController::class, 'contactenos']);
+Route::get('sobre-nosotros', [InicioController::class, 'sobre_nosotros']);
+Route::get('faq', [InicioController::class, 'faq']);
+Route::get('metodo-pago', [InicioController::class, 'metodo_pago']);
+Route::get('garantias', [InicioController::class, 'garantias']);
+Route::get('devoluciones', [InicioController::class, 'devoluciones']);
+Route::get('envios', [InicioController::class, 'envios']);
+Route::get('terminos-condiciones', [InicioController::class, 'terminos_condiciones']);
+Route::get('politica-privacidad', [InicioController::class, 'politica_privacidad']);
+
 Route::post('registro', [AuthController::class, 'registro']);
 Route::post('login', [AuthController::class, 'login']);
 

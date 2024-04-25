@@ -173,9 +173,9 @@
                     </a>
                 </div><!-- End .owl-carousel -->
             </div><!-- End .container -->
-        </div><!-- End .bg-lighter -->
+        </div>
 
-        <div class="mb-6"></div><!-- End .mb-6 -->
+        <div class="mb-6"></div>
 
         <div class="container">
             <div class="heading heading-center mb-3">
@@ -724,7 +724,7 @@
                     </div><!-- End .owl-carousel -->
                 </div><!-- .End .tab-pane -->
             </div><!-- End .tab-content -->
-        </div><!-- End .container -->
+        </div>
 
         <div class="container categories pt-6">
             <h2 class="title-lg text-center mb-4">Shop by Categories</h2><!-- End .title-lg text-center -->
@@ -788,9 +788,9 @@
                     </div>
                 </div><!-- End .col-sm-6 col-lg-3 -->
             </div><!-- End .row -->
-        </div><!-- End .container -->
+        </div>
 
-        <div class="mb-5"></div><!-- End .mb-6 -->
+        <div class="mb-5"></div>
 
 
         <div class="container">
@@ -1378,7 +1378,7 @@
                 <a href="#" class="btn btn-outline-darker btn-more"><span>Load more products</span><i
                         class="icon-long-arrow-down"></i></a>
             </div><!-- End .more-container -->
-        </div><!-- End .container -->
+        </div>
 
         <div class="container">
             <hr>
@@ -1421,7 +1421,7 @@
             </div><!-- End .row -->
 
             <div class="mb-2"></div><!-- End .mb-2 -->
-        </div><!-- End .container -->
+        </div>
         <div class="blog-posts pt-7 pb-7" style="background-color: #fafafa;">
             <div class="container">
                 <h2 class="title-lg text-center mb-3 mb-md-4">From Our Blog</h2><!-- End .title-lg text-center -->
@@ -1544,6 +1544,6 @@
                     </div><!-- End .col-md-10 col-lg-9 -->
                 </div><!-- End .row -->
             </div><!-- End .container -->
-        </div><!-- End .cta -->
-    </main><!-- End .main -->
+        </div>
+    </main>
 @endsection

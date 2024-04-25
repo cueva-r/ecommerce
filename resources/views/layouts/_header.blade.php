@@ -27,11 +27,21 @@
                         <a href="#">Links</a>
                         <ul>
                             <li><a href="tel:#"><i class="icon-phone"></i>Llamar: +51 924 575 577</a></li>
+                            <li>
+                                <a href="{{ url('sobre-nosotros') }}">
+                                    Sobre nosotros
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ url('contactenos') }}">
+                                    Contáctenos
+                                </a>
+                            </li>
                             @if (!empty(Auth::check()))
                                 <li>
                                     <a href="{{ url('mi-lista-de-deseos') }}">
                                         <i class="icon-heart-o"></i>Lista de deseos
-                                        <span>(3)</span>
+                                        {{-- <span>(3)</span> --}}
                                     </a>
                                 </li>
                             @else
