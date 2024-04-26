@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 22-04-2024 a las 16:50:41
+-- Tiempo de generación: 26-04-2024 a las 18:59:58
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -43,11 +43,10 @@ CREATE TABLE `calificacion_productos` (
 --
 
 INSERT INTO `calificacion_productos` (`id`, `producto_id`, `pedido_id`, `user_id`, `rating`, `opinion`, `created_at`, `updated_at`) VALUES
-(1, 18, 3, 1, 5, 'oooo', '2024-04-22 14:21:24', '2024-04-22 14:21:24'),
-(2, 18, 3, 1, 5, 'aaaa', '2024-04-22 14:22:56', '2024-04-22 14:22:56'),
-(3, 1, 1, 1, 4, 'Good', '2024-04-22 14:40:10', '2024-04-22 14:40:10'),
-(4, 22, 1, 1, 4, 'Muy bueno el producto para comer :\'v', '2024-04-22 14:40:32', '2024-04-22 14:40:32'),
-(5, 22, 6, 17, 4, 'Good', '2024-04-22 14:50:00', '2024-04-22 14:50:00');
+(1, 22, 1, 1, 3, 'Muy bueno el arroz :D', '2024-04-22 20:01:28', '2024-04-22 20:01:28'),
+(2, 22, 6, 17, 4, 'Que haya otra presentacion :\'v', '2024-04-22 20:10:07', '2024-04-22 20:10:07'),
+(3, 15, 7, 17, 4, 'Al comienzo la tablet es buena, despues de tiempo se vuelve lente :\'c', '2024-04-23 16:22:18', '2024-04-23 16:22:18'),
+(4, 3, 8, 17, 1, 'No me gustó', '2024-04-23 19:05:22', '2024-04-23 19:05:22');
 
 -- --------------------------------------------------------
 
@@ -215,7 +214,9 @@ INSERT INTO `item_pedido` (`id`, `pedido_id`, `producto_id`, `cantidad`, `precio
 (4, 3, 18, 1, '122', 'Azul', '1.8', '2', '122', '2024-04-18 20:18:42', '2024-04-18 20:18:42'),
 (5, 4, 22, 1, '29.2', 'Blanco', '2', '2', '29.2', '2024-04-22 14:47:24', '2024-04-22 14:47:24'),
 (6, 5, 22, 1, '29.2', 'Blanco', '2', '2', '29.2', '2024-04-22 14:47:46', '2024-04-22 14:47:46'),
-(7, 6, 22, 1, '29.2', 'Blanco', '2', '2', '29.2', '2024-04-22 14:48:01', '2024-04-22 14:48:01');
+(7, 6, 22, 1, '29.2', 'Blanco', '2', '2', '29.2', '2024-04-22 14:48:01', '2024-04-22 14:48:01'),
+(8, 7, 15, 1, '861', 'Gris', '1.8', '2', '861', '2024-04-23 16:18:32', '2024-04-23 16:18:32'),
+(9, 8, 3, 1, '30', 'Azul', '1.8', '20', '30', '2024-04-23 19:03:42', '2024-04-23 19:03:42');
 
 -- --------------------------------------------------------
 
@@ -292,6 +293,41 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `pages`
+--
+
+CREATE TABLE `pages` (
+  `id` int(11) NOT NULL,
+  `nombre` varchar(255) DEFAULT NULL,
+  `slug` varchar(255) DEFAULT NULL,
+  `titulo` varchar(255) DEFAULT NULL,
+  `descripcion` longtext DEFAULT NULL,
+  `nombre_imagen` varchar(255) NOT NULL,
+  `meta_titulo` varchar(255) NOT NULL,
+  `meta_descripcion` text NOT NULL,
+  `meta_p_clave` varchar(255) NOT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `pages`
+--
+
+INSERT INTO `pages` (`id`, `nombre`, `slug`, `titulo`, `descripcion`, `nombre_imagen`, `meta_titulo`, `meta_descripcion`, `meta_p_clave`, `created_at`, `updated_at`) VALUES
+(1, 'Sobre nosotros', 'sobre-nosotros', 'Sobre nosotros', '', '1snijee886kdmdwyvpj1w.jpg', 'Sobre nosotros', '', '', '2024-04-25 22:30:19', '2024-04-26 15:30:13'),
+(2, 'Preguntas frecuentes', 'faq', 'Preguntas frecuentes', '', '', 'Preguntas frecuentes', '', '', '2024-04-25 22:31:05', '2024-04-26 16:35:06'),
+(3, 'contactenos', 'contactenos', NULL, NULL, '', '', '', '', '2024-04-25 22:31:05', '2024-04-25 22:31:05'),
+(4, 'metodo-pago', 'metodo-pago', NULL, NULL, '', '', '', '', '2024-04-25 22:31:53', '2024-04-25 22:31:53'),
+(5, 'garantias', 'garantias', NULL, NULL, '', '', '', '', '2024-04-25 22:31:53', '2024-04-25 22:31:53'),
+(6, 'devoluciones', 'devoluciones', NULL, NULL, '', '', '', '', '2024-04-25 22:32:17', '2024-04-25 22:32:17'),
+(7, 'envios', 'envios', NULL, NULL, '', '', '', '', '2024-04-25 22:32:17', '2024-04-25 22:32:17'),
+(8, 'terminos-condiciones', 'terminos-condiciones', NULL, NULL, '', '', '', '', '2024-04-25 22:32:58', '2024-04-25 22:32:58'),
+(9, 'politica-privacidad', 'politica-privacidad', NULL, NULL, '', '', '', '', '2024-04-25 22:32:58', '2024-04-25 22:32:58');
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `password_reset_tokens`
 --
 
@@ -347,9 +383,11 @@ INSERT INTO `pedidos` (`id`, `transaccion_id`, `stripe_session_id`, `numero_pedi
 (1, 'cs_test_a1AgWPCR8BVJkWfyeE5vAzmhqxvSkD5EWAVJeczM8hL3ULb99pwVhiVg0m', 'cs_test_a1AgWPCR8BVJkWfyeE5vAzmhqxvSkD5EWAVJeczM8hL3ULb99pwVhiVg0m', '464483417', 1, 'Abraham Elias', 'Cueva Rico', 'rico\'s', 'Perú', 'Lima', 'Lima', 'LIMA', 'Ate', '15021', '924575577', 'ricoabraham879@gmail.com', 'zzzz', 'sa', '115.6', 3, '20', '95.6', 'stripe', 3, 0, 1, '{\"id\":\"cs_test_a1AgWPCR8BVJkWfyeE5vAzmhqxvSkD5EWAVJeczM8hL3ULb99pwVhiVg0m\",\"object\":\"checkout.session\",\"after_expiration\":null,\"allow_promotion_codes\":null,\"amount_subtotal\":2569,\"amount_total\":2569,\"automatic_tax\":{\"enabled\":false,\"liability\":null,\"status\":null},\"billing_address_collection\":null,\"cancel_url\":\"http:\\/\\/localhost\\/ecommerce\\/pagar\",\"client_reference_id\":null,\"client_secret\":null,\"consent\":null,\"consent_collection\":null,\"created\":1713391107,\"currency\":\"usd\",\"currency_conversion\":null,\"custom_fields\":[],\"custom_text\":{\"after_submit\":null,\"shipping_address\":null,\"submit\":null,\"terms_of_service_acceptance\":null},\"customer\":null,\"customer_creation\":\"if_required\",\"customer_details\":{\"address\":{\"city\":null,\"country\":\"PE\",\"line1\":null,\"line2\":null,\"postal_code\":null,\"state\":null},\"email\":\"ricoabraham879@gmail.com\",\"name\":\"1111\",\"phone\":null,\"tax_exempt\":\"none\",\"tax_ids\":[]},\"customer_email\":\"ricoabraham879@gmail.com\",\"expires_at\":1713477506,\"invoice\":null,\"invoice_creation\":{\"enabled\":false,\"invoice_data\":{\"account_tax_ids\":null,\"custom_fields\":null,\"description\":null,\"footer\":null,\"issuer\":null,\"metadata\":[],\"rendering_options\":null}},\"livemode\":false,\"locale\":null,\"metadata\":[],\"mode\":\"payment\",\"payment_intent\":\"pi_3P6gUy071tYYB9Py0IAMLLTx\",\"payment_link\":null,\"payment_method_collection\":\"if_required\",\"payment_method_configuration_details\":null,\"payment_method_options\":{\"card\":{\"request_three_d_secure\":\"automatic\"}},\"payment_method_types\":[\"card\"],\"payment_status\":\"paid\",\"phone_number_collection\":{\"enabled\":false},\"recovered_from\":null,\"saved_payment_method_options\":null,\"setup_intent\":null,\"shipping_address_collection\":null,\"shipping_cost\":null,\"shipping_details\":null,\"shipping_options\":[],\"status\":\"complete\",\"submit_type\":null,\"subscription\":null,\"success_url\":\"http:\\/\\/localhost\\/ecommerce\\/stripe\\/payment-success\",\"total_details\":{\"amount_discount\":0,\"amount_shipping\":0,\"amount_tax\":0},\"ui_mode\":\"hosted\",\"url\":null}', '2024-04-17 21:58:25', '2024-04-17 21:59:39'),
 (2, NULL, 'cs_test_a1DdYJcjPmiy2eHpcRXVgY2di0uX9hAxxqD8XNpnvcoqhwxqjTQgAUxzGg', '635942052', 1, 'Abraham Elias', 'Cueva Rico', 'rico\'s', 'Perú', 'Hefestos', '404', 'Lima', 'Ate', '15022', '924575577', 'ricoabraham879@gmail.com', 'xddd', 'sa', '61', 3, '20', '41', 'stripe', 3, 0, 1, NULL, '2024-04-18 20:17:19', '2024-04-22 14:42:35'),
 (3, '7JE35513JV461833J', NULL, '641643414', 1, 'Abraham Elias', 'Cueva Rico', 'rico\'s', 'Perú', 'Hefestos', '404', 'Lima', 'Ate', '15022', '924575577', 'ricoabraham879@gmail.com', '', 'sa', '61', 3, '20', '41', 'paypal', 3, 0, 1, '{\"PayerID\":\"5JT8MGVM5R8SS\",\"st\":\"Completed\",\"tx\":\"7JE35513JV461833J\",\"cc\":\"USD\",\"amt\":\"11.02\",\"payer_email\":\"sb-pazhd25352612@business.example.com\",\"payer_id\":\"5JT8MGVM5R8SS\",\"payer_status\":\"VERIFIED\",\"first_name\":\"John\",\"last_name\":\"Doe\",\"txn_id\":\"7JE35513JV461833J\",\"mc_currency\":\"USD\",\"mc_fee\":\"0.73\",\"mc_gross\":\"11.02\",\"protection_eligibility\":\"ELIGIBLE\",\"payment_fee\":\"0.73\",\"payment_gross\":\"11.02\",\"payment_status\":\"Completed\",\"payment_type\":\"instant\",\"handling_amount\":\"0.00\",\"shipping\":\"0.00\",\"item_name\":\"E-commerce\",\"item_number\":\"3\",\"quantity\":\"1\",\"txn_type\":\"web_accept\",\"payment_date\":\"2024-04-18T20:18:43Z\",\"receiver_id\":\"85UBVEVAEQXA2\",\"notify_version\":\"UNVERSIONED\",\"verify_sign\":\"A7lRxa76xmHCL33PX02qN6zIbG7iA3BwxmhZIEihMzZABFaUuk3frr0l\"}', '2024-04-18 20:18:42', '2024-04-21 20:08:53'),
-(4, NULL, NULL, '646174706', 17, 'Sofía', 'zz', 'zz', 'z', 'zz', 'zz', 'zz', 'zz', 'zz', 'zz', 'sofia@gmail.com', 'zz', 'sa', '14.6', 3, '20', '-5.4', 'stripe', 0, 0, 0, NULL, '2024-04-22 14:47:24', '2024-04-22 14:47:24'),
-(5, NULL, NULL, '834349467', 17, 'Sofía', 'zz', 'zz', 'z', 'zz', 'zz', 'zz', 'zz', 'zz', 'zz', 'sofia@gmail.com', 'zz', 'sa', '14.6', 3, '20', '-5.4', 'stripe', 0, 0, 0, NULL, '2024-04-22 14:47:46', '2024-04-22 14:47:46'),
-(6, 'cs_test_a1FLexr4GLUHnsfxqghOxYO7G5YQ7BgIZWaQi8v2YRAvD1PypdJdRL3km6', 'cs_test_a1FLexr4GLUHnsfxqghOxYO7G5YQ7BgIZWaQi8v2YRAvD1PypdJdRL3km6', '833934621', 17, 'Sofía', 'zz', 'zz', 'z', 'zz', 'zz', 'zz', 'zz', 'zz', 'zz', 'sofia@gmail.com', 'zz', 'sa', '14.6', 1, '0', '14.6', 'stripe', 3, 0, 1, '{\"id\":\"cs_test_a1FLexr4GLUHnsfxqghOxYO7G5YQ7BgIZWaQi8v2YRAvD1PypdJdRL3km6\",\"object\":\"checkout.session\",\"after_expiration\":null,\"allow_promotion_codes\":null,\"amount_subtotal\":392,\"amount_total\":392,\"automatic_tax\":{\"enabled\":false,\"liability\":null,\"status\":null},\"billing_address_collection\":null,\"cancel_url\":\"http:\\/\\/localhost\\/ecommerce\\/pagar\",\"client_reference_id\":null,\"client_secret\":null,\"consent\":null,\"consent_collection\":null,\"created\":1713797280,\"currency\":\"usd\",\"currency_conversion\":null,\"custom_fields\":[],\"custom_text\":{\"after_submit\":null,\"shipping_address\":null,\"submit\":null,\"terms_of_service_acceptance\":null},\"customer\":null,\"customer_creation\":\"if_required\",\"customer_details\":{\"address\":{\"city\":null,\"country\":\"PE\",\"line1\":null,\"line2\":null,\"postal_code\":null,\"state\":null},\"email\":\"sofia@gmail.com\",\"name\":\"1111\",\"phone\":null,\"tax_exempt\":\"none\",\"tax_ids\":[]},\"customer_email\":\"sofia@gmail.com\",\"expires_at\":1713883680,\"invoice\":null,\"invoice_creation\":{\"enabled\":false,\"invoice_data\":{\"account_tax_ids\":null,\"custom_fields\":null,\"description\":null,\"footer\":null,\"issuer\":null,\"metadata\":[],\"rendering_options\":null}},\"livemode\":false,\"locale\":null,\"metadata\":[],\"mode\":\"payment\",\"payment_intent\":\"pi_3P8OAL071tYYB9Py1KpRzexV\",\"payment_link\":null,\"payment_method_collection\":\"if_required\",\"payment_method_configuration_details\":null,\"payment_method_options\":{\"card\":{\"request_three_d_secure\":\"automatic\"}},\"payment_method_types\":[\"card\"],\"payment_status\":\"paid\",\"phone_number_collection\":{\"enabled\":false},\"recovered_from\":null,\"saved_payment_method_options\":null,\"setup_intent\":null,\"shipping_address_collection\":null,\"shipping_cost\":null,\"shipping_details\":null,\"shipping_options\":[],\"status\":\"complete\",\"submit_type\":null,\"subscription\":null,\"success_url\":\"http:\\/\\/localhost\\/ecommerce\\/stripe\\/payment-success\",\"total_details\":{\"amount_discount\":0,\"amount_shipping\":0,\"amount_tax\":0},\"ui_mode\":\"hosted\",\"url\":null}', '2024-04-22 14:48:01', '2024-04-22 14:49:20');
+(4, NULL, NULL, '646174706', 17, 'Sofía', 'zz', 'zz', 'z', 'zz', 'zz', 'zz', 'zz', 'zz', 'zz', 'sofia@gmail.com', 'zz', 'sa', '14.6', 3, '20', '-5.4', 'stripe', 4, 0, 1, NULL, '2024-04-22 14:47:24', '2024-04-23 16:20:03'),
+(5, NULL, NULL, '834349467', 17, 'Sofía', 'zz', 'zz', 'z', 'zz', 'zz', 'zz', 'zz', 'zz', 'zz', 'sofia@gmail.com', 'zz', 'sa', '14.6', 3, '20', '-5.4', 'stripe', 4, 0, 1, NULL, '2024-04-22 14:47:46', '2024-04-23 16:19:38'),
+(6, 'cs_test_a1FLexr4GLUHnsfxqghOxYO7G5YQ7BgIZWaQi8v2YRAvD1PypdJdRL3km6', 'cs_test_a1FLexr4GLUHnsfxqghOxYO7G5YQ7BgIZWaQi8v2YRAvD1PypdJdRL3km6', '833934621', 17, 'Sofía', 'zz', 'zz', 'z', 'zz', 'zz', 'zz', 'zz', 'zz', 'zz', 'sofia@gmail.com', 'zz', 'sa', '14.6', 1, '0', '14.6', 'stripe', 3, 0, 1, '{\"id\":\"cs_test_a1FLexr4GLUHnsfxqghOxYO7G5YQ7BgIZWaQi8v2YRAvD1PypdJdRL3km6\",\"object\":\"checkout.session\",\"after_expiration\":null,\"allow_promotion_codes\":null,\"amount_subtotal\":392,\"amount_total\":392,\"automatic_tax\":{\"enabled\":false,\"liability\":null,\"status\":null},\"billing_address_collection\":null,\"cancel_url\":\"http:\\/\\/localhost\\/ecommerce\\/pagar\",\"client_reference_id\":null,\"client_secret\":null,\"consent\":null,\"consent_collection\":null,\"created\":1713797280,\"currency\":\"usd\",\"currency_conversion\":null,\"custom_fields\":[],\"custom_text\":{\"after_submit\":null,\"shipping_address\":null,\"submit\":null,\"terms_of_service_acceptance\":null},\"customer\":null,\"customer_creation\":\"if_required\",\"customer_details\":{\"address\":{\"city\":null,\"country\":\"PE\",\"line1\":null,\"line2\":null,\"postal_code\":null,\"state\":null},\"email\":\"sofia@gmail.com\",\"name\":\"1111\",\"phone\":null,\"tax_exempt\":\"none\",\"tax_ids\":[]},\"customer_email\":\"sofia@gmail.com\",\"expires_at\":1713883680,\"invoice\":null,\"invoice_creation\":{\"enabled\":false,\"invoice_data\":{\"account_tax_ids\":null,\"custom_fields\":null,\"description\":null,\"footer\":null,\"issuer\":null,\"metadata\":[],\"rendering_options\":null}},\"livemode\":false,\"locale\":null,\"metadata\":[],\"mode\":\"payment\",\"payment_intent\":\"pi_3P8OAL071tYYB9Py1KpRzexV\",\"payment_link\":null,\"payment_method_collection\":\"if_required\",\"payment_method_configuration_details\":null,\"payment_method_options\":{\"card\":{\"request_three_d_secure\":\"automatic\"}},\"payment_method_types\":[\"card\"],\"payment_status\":\"paid\",\"phone_number_collection\":{\"enabled\":false},\"recovered_from\":null,\"saved_payment_method_options\":null,\"setup_intent\":null,\"shipping_address_collection\":null,\"shipping_cost\":null,\"shipping_details\":null,\"shipping_options\":[],\"status\":\"complete\",\"submit_type\":null,\"subscription\":null,\"success_url\":\"http:\\/\\/localhost\\/ecommerce\\/stripe\\/payment-success\",\"total_details\":{\"amount_discount\":0,\"amount_shipping\":0,\"amount_tax\":0},\"ui_mode\":\"hosted\",\"url\":null}', '2024-04-22 14:48:01', '2024-04-22 14:49:20'),
+(7, 'cs_test_a1BIcrF0e8madZRRivCAAwewEl1j8eUv31GjbnCMmBNZhl1274xOYM880b', 'cs_test_a1BIcrF0e8madZRRivCAAwewEl1j8eUv31GjbnCMmBNZhl1274xOYM880b', '474665651', 17, 'Abraham Elias', 'Correa', 'rico\'s', 'Perú', 'Lima', 'Lima', 'Lima', 'Ate', '15022', '924575577', 'sofia@gmail.com', 'Alaaa', 'sa', '430.5', 3, '20', '410.5', 'stripe', 3, 0, 1, '{\"id\":\"cs_test_a1BIcrF0e8madZRRivCAAwewEl1j8eUv31GjbnCMmBNZhl1274xOYM880b\",\"object\":\"checkout.session\",\"after_expiration\":null,\"allow_promotion_codes\":null,\"amount_subtotal\":11034,\"amount_total\":11034,\"automatic_tax\":{\"enabled\":false,\"liability\":null,\"status\":null},\"billing_address_collection\":null,\"cancel_url\":\"http:\\/\\/localhost\\/ecommerce\\/pagar\",\"client_reference_id\":null,\"client_secret\":null,\"consent\":null,\"consent_collection\":null,\"created\":1713889112,\"currency\":\"usd\",\"currency_conversion\":null,\"custom_fields\":[],\"custom_text\":{\"after_submit\":null,\"shipping_address\":null,\"submit\":null,\"terms_of_service_acceptance\":null},\"customer\":null,\"customer_creation\":\"if_required\",\"customer_details\":{\"address\":{\"city\":null,\"country\":\"PE\",\"line1\":null,\"line2\":null,\"postal_code\":null,\"state\":null},\"email\":\"sofia@gmail.com\",\"name\":\"1111\",\"phone\":null,\"tax_exempt\":\"none\",\"tax_ids\":[]},\"customer_email\":\"sofia@gmail.com\",\"expires_at\":1713975512,\"invoice\":null,\"invoice_creation\":{\"enabled\":false,\"invoice_data\":{\"account_tax_ids\":null,\"custom_fields\":null,\"description\":null,\"footer\":null,\"issuer\":null,\"metadata\":[],\"rendering_options\":null}},\"livemode\":false,\"locale\":null,\"metadata\":[],\"mode\":\"payment\",\"payment_intent\":\"pi_3P8m3P071tYYB9Py0JfLWwHL\",\"payment_link\":null,\"payment_method_collection\":\"if_required\",\"payment_method_configuration_details\":null,\"payment_method_options\":{\"card\":{\"request_three_d_secure\":\"automatic\"}},\"payment_method_types\":[\"card\"],\"payment_status\":\"paid\",\"phone_number_collection\":{\"enabled\":false},\"recovered_from\":null,\"saved_payment_method_options\":null,\"setup_intent\":null,\"shipping_address_collection\":null,\"shipping_cost\":null,\"shipping_details\":null,\"shipping_options\":[],\"status\":\"complete\",\"submit_type\":null,\"subscription\":null,\"success_url\":\"http:\\/\\/localhost\\/ecommerce\\/stripe\\/payment-success\",\"total_details\":{\"amount_discount\":0,\"amount_shipping\":0,\"amount_tax\":0},\"ui_mode\":\"hosted\",\"url\":null}', '2024-04-23 16:18:32', '2024-04-23 16:20:51'),
+(8, '4PE70417MC359702K', NULL, '636659515', 17, 'Sofía', 'zz', 'zz', 'Perú', 'Lima', 'Lima', 'Lima', 'zz', '15022', '924575577', 'sofia@gmail.com', 'zzz', 'sa', '15', 1, '0', '15', 'paypal', 3, 0, 1, '{\"PayerID\":\"5JT8MGVM5R8SS\",\"st\":\"Completed\",\"tx\":\"4PE70417MC359702K\",\"cc\":\"USD\",\"amt\":\"4.03\",\"payer_email\":\"sb-pazhd25352612@business.example.com\",\"payer_id\":\"5JT8MGVM5R8SS\",\"payer_status\":\"VERIFIED\",\"first_name\":\"John\",\"last_name\":\"Doe\",\"txn_id\":\"4PE70417MC359702K\",\"mc_currency\":\"USD\",\"mc_fee\":\"0.46\",\"mc_gross\":\"4.03\",\"protection_eligibility\":\"ELIGIBLE\",\"payment_fee\":\"0.46\",\"payment_gross\":\"4.03\",\"payment_status\":\"Completed\",\"payment_type\":\"instant\",\"handling_amount\":\"0.00\",\"shipping\":\"0.00\",\"item_name\":\"E-commerce\",\"item_number\":\"8\",\"quantity\":\"1\",\"txn_type\":\"web_accept\",\"payment_date\":\"2024-04-23T19:03:40Z\",\"receiver_id\":\"85UBVEVAEQXA2\",\"notify_version\":\"UNVERSIONED\",\"verify_sign\":\"Ab165HSaBYXAUcq..5qSrVzIi7IaACR3xEZIcqLGPiMk0ZMT0tGoU4Rs\"}', '2024-04-23 19:03:41', '2024-04-23 19:04:40');
 
 -- --------------------------------------------------------
 
@@ -638,7 +676,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `apellidos`, `email`, `email_verified_at`, `password`, `remember_token`, `nombre_compania`, `pais`, `primera_direccion`, `segunda_direccion`, `ciudad`, `distrito`, `codigo_postal`, `telefono`, `es_admin`, `estado`, `esta_eliminado`, `created_at`, `updated_at`) VALUES
-(1, 'Abraham Elias', 'Cueva Rico', 'ricoabraham879@gmail.com', '2024-03-17 20:13:42', '$2y$12$teqAlxN7bszkF5PLf8IMn.EgGlIID8nI0pRiFKNIAfDT0bXwzsMNi', 'NxNE3JeJ15vrIzglLdlHnb6YpLZz5U3Rm8npOUbFnQOD0jQR5bXfbcW4fSrk', 'rico\'s', 'Perú', 'Hefestos', '404', 'Lima', 'Ate', '15022', '924575577', 1, 0, 0, '2024-01-28 15:23:20', '2024-04-19 01:11:45'),
+(1, 'Abraham Elias', 'Cueva Rico', 'ricoabraham879@gmail.com', '2024-03-17 20:13:42', '$2y$12$teqAlxN7bszkF5PLf8IMn.EgGlIID8nI0pRiFKNIAfDT0bXwzsMNi', 'jRWfErxH7BqhGRpMif86M1SpK2QjMwbUxonR0y0mXVEZFzn7SBAq1DwK3yT5', 'rico\'s', 'Perú', 'Hefestos', '404', 'Lima', 'Ate', '15022', '924575577', 1, 0, 0, '2024-01-28 15:23:20', '2024-04-19 01:11:45'),
 (2, 'test', NULL, 'test@gmail.com', NULL, '$2y$12$ohGsPlzjAJYcQ0l14K0FoO0A/QnDNK8aNUJe4kwhJDzmQZCWsVeD.', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, 0, '2024-01-29 03:46:12', '2024-04-02 00:39:09'),
 (3, 'prueba', NULL, 'prueba@gmail.com', NULL, '$2y$12$K84E6xDH5pPrV/BYwaNzVOZaEAEmHK7l1Nb4rpK1LUAb5/kXcR0ru', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, 0, '2024-01-29 03:56:58', '2024-04-02 00:39:34'),
 (4, 'xdd', NULL, 'xdd@gmail.com', NULL, '$2y$12$O0waTN9YyZSDX7SQplwU6OPWVY51OA1jcJSYPIy2ERDSb6my7MTIO', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, 0, '2024-01-29 04:00:36', '2024-01-29 06:38:30'),
@@ -654,7 +692,8 @@ INSERT INTO `users` (`id`, `name`, `apellidos`, `email`, `email_verified_at`, `p
 (14, 'alan', NULL, 'alan@gmail.com', NULL, '$2y$12$KkwywVJq9uISHUwUcL7SYeHg5jbwG8TqZQVVZcXnLR8MsWCitvgEy', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, 0, '2024-03-18 06:59:46', '2024-04-02 00:50:44'),
 (15, 'x', NULL, 'x@gmail.com', '2024-04-10 19:58:59', '$2y$12$pSiUIbnpbfkUZTsraPbaIu5tUvgnc6A26plagqUly4RSJeLb39huu', 'rVkPER1Brs82CvvZETjs0FCyIjM5sinqgSAZCLd5P02pdwuDkCiLrQGE8s84', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, 0, '2024-03-26 22:07:09', '2024-04-10 19:58:59'),
 (16, 'x', NULL, 'xd2@gmail.com', '2024-03-27 01:25:40', '$2y$12$9J6OagsBuJegI9VYnpv89uILrQ7bJJ40vHXltPst6wuBZ8nhRzV3C', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, 0, '2024-03-27 01:21:17', '2024-03-27 01:25:40'),
-(17, 'Sofía', NULL, 'sofia@gmail.com', '2024-04-13 23:08:49', '$2y$12$fKg2ROLeo/QoccYEcjhv6.oSVLoOO7Q9nHV3fPMl/2pvZMfYBvav6', '5yB4j4bzWjyYH3jKsHn4Hbv8YQLYVVv1vBkkXqF1ZbRrJ1AkjLMNDAFaq9H5', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, 0, '2024-04-13 22:34:17', '2024-04-13 23:11:52');
+(17, 'Sofía', NULL, 'sofia@gmail.com', '2024-04-13 23:08:49', '$2y$12$fKg2ROLeo/QoccYEcjhv6.oSVLoOO7Q9nHV3fPMl/2pvZMfYBvav6', 'wnrJmjbqTpicoqEF4zY4TEfrhFss37V3LE9qfxx8SuV8qiiEA1mcy7WWz1Ya', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, 0, '2024-04-13 22:34:17', '2024-04-13 23:11:52'),
+(18, 'Gustavo', NULL, 'gustavo@gmail.com', '2024-04-23 21:25:43', '$2y$12$hwucRpS31IZfjfUFOTkSIuPPf7Kgm6M/B8OWwKSse5y.4fHBPruqS', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, 0, '2024-04-23 21:25:18', '2024-04-23 21:25:43');
 
 --
 -- Índices para tablas volcadas
@@ -722,6 +761,12 @@ ALTER TABLE `migrations`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indices de la tabla `pages`
+--
+ALTER TABLE `pages`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indices de la tabla `password_reset_tokens`
 --
 ALTER TABLE `password_reset_tokens`
@@ -786,7 +831,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT de la tabla `calificacion_productos`
 --
 ALTER TABLE `calificacion_productos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `categorias`
@@ -822,13 +867,13 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT de la tabla `item_pedido`
 --
 ALTER TABLE `item_pedido`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT de la tabla `lista_de_deseos`
 --
 ALTER TABLE `lista_de_deseos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT de la tabla `marcas`
@@ -843,10 +888,16 @@ ALTER TABLE `migrations`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
+-- AUTO_INCREMENT de la tabla `pages`
+--
+ALTER TABLE `pages`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
 -- AUTO_INCREMENT de la tabla `pedidos`
 --
 ALTER TABLE `pedidos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT de la tabla `personal_access_tokens`
@@ -888,7 +939,7 @@ ALTER TABLE `subcategorias`
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
