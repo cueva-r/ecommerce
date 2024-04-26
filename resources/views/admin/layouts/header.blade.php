@@ -234,6 +234,15 @@
                 </li>
 
                 <li class="nav-item">
+                    <a href="{{ url('admin/paginas/listar') }}" class="nav-link @if (Request::segment(2) == 'paginas') active @endif">
+                        <i class="nav-icon fa-solid fa-book"></i>
+                        <p>
+                            Páginas
+                        </p>
+                    </a>
+                </li>
+
+                <li class="nav-item">
                     <a href="{{ url('admin/cerrar-sesion') }}" class="nav-link">
                         <i class="nav-icon fa-solid fa-right-from-bracket"></i>
                         <p>

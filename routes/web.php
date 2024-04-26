@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\CodigoDescuentoController;
 use App\Http\Controllers\Admin\ColorController;
 use App\Http\Controllers\Admin\CostoEnvioController;
 use App\Http\Controllers\Admin\MarcaController;
+use App\Http\Controllers\Admin\PagesController;
 use App\Http\Controllers\Admin\PedidosController;
 use App\Http\Controllers\Admin\SubCategoriaController;
 use App\Http\Controllers\Admin\ProductoController;
@@ -138,6 +139,11 @@ Route::group(['middleware' => 'admin'], function () {
     Route::get('admin/costo_envio/editar/{id}', [CostoEnvioController::class, 'editar']);
     Route::post('admin/costo_envio/editar/{id}', [CostoEnvioController::class, 'actualizar']);
     Route::get('admin/costo_envio/eliminar/{id}', [CostoEnvioController::class, 'eliminar']);
+
+    // Ruta para las paginas(pages :'v)
+    Route::get('admin/paginas/listar', [PagesController::class, 'listar']);
+    Route::get('admin/paginas/editar/{id}', [PagesController::class, 'editar']);
+    Route::post('admin/paginas/editar/{id}', [PagesController::class, 'actualizar']);
 });
 
 Route::get('/', [InicioController::class, 'inicio']);
