@@ -2,61 +2,128 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\PagesModel;
 use Illuminate\Http\Request;
 
 class InicioController extends Controller
 {
     public function inicio()
     {
-        $data['meta_titulo'] = 'E-commerce';
-        $data['meta_descripcion'] = '';
-        $data['meta_p_clave'] = '';
+        $getPage = PagesModel::getSlug('inicio');
+        $data['getPage'] = $getPage;
+        
+        $data['meta_titulo'] = $getPage->meta_titulo;
+        $data['meta_descripcion'] = $getPage->meta_descripcion;
+        $data['meta_p_clave'] = $getPage->meta_p_clave;
 
         return view('inicio', $data);
     }
 
     public function contactenos()
     {
-        return view('pages.contactenos');
+        $getPage = PagesModel::getSlug('contactenos');
+        $data['getPage'] = $getPage;
+        
+        $data['meta_titulo'] = $getPage->meta_titulo;
+        $data['meta_descripcion'] = $getPage->meta_descripcion;
+        $data['meta_p_clave'] = $getPage->meta_p_clave;
+
+        return view('pages.contactenos', $data);
     }
 
     public function sobre_nosotros()
     {
-        return view('pages.sobre_nosotros');
+        $getPage = PagesModel::getSlug('sobre-nosotros');
+        $data['getPage'] = $getPage;
+
+        $data['meta_titulo'] = $getPage->meta_titulo;
+        $data['meta_descripcion'] = $getPage->meta_descripcion;
+        $data['meta_p_clave'] = $getPage->meta_p_clave;
+
+        return view('pages.sobre_nosotros', $data);
     }
 
     public function faq()
     {
-        return view('pages.faq');
+        $getPage = PagesModel::getSlug('faq');
+        $data['getPage'] = $getPage;
+        
+        $data['meta_titulo'] = $getPage->meta_titulo;
+        $data['meta_descripcion'] = $getPage->meta_descripcion;
+        $data['meta_p_clave'] = $getPage->meta_p_clave;
+        
+        return view('pages.faq', $data);
     }
 
     public function metodo_pago()
     {
-        return view('pages.metodo_pago');
+        $getPage = PagesModel::getSlug('metodo-pago');
+        $data['getPage'] = $getPage;
+        
+        $data['meta_titulo'] = $getPage->meta_titulo;
+        $data['meta_descripcion'] = $getPage->meta_descripcion;
+        $data['meta_p_clave'] = $getPage->meta_p_clave;
+
+        return view('pages.metodo_pago', $data);
     }
 
     public function garantias()
     {
-        return view('pages.garantias');
+        $getPage = PagesModel::getSlug('garantias');
+        $data['getPage'] = $getPage;
+        
+        $data['meta_titulo'] = $getPage->meta_titulo;
+        $data['meta_descripcion'] = $getPage->meta_descripcion;
+        $data['meta_p_clave'] = $getPage->meta_p_clave;
+        
+        return view('pages.garantias', $data);
     }
 
     public function devoluciones()
     {
-        return view('pages.devoluciones');
+        $getPage = PagesModel::getSlug('devoluciones');
+        $data['getPage'] = $getPage;
+        
+        $data['meta_titulo'] = $getPage->meta_titulo;
+        $data['meta_descripcion'] = $getPage->meta_descripcion;
+        $data['meta_p_clave'] = $getPage->meta_p_clave;
+
+        return view('pages.devoluciones', $data);
     }
 
     public function envios()
     {
-        return view('pages.envios');
+        $getPage = PagesModel::getSlug('envios');
+        $data['getPage'] = $getPage;
+        
+        $data['meta_titulo'] = $getPage->meta_titulo;
+        $data['meta_descripcion'] = $getPage->meta_descripcion;
+        $data['meta_p_clave'] = $getPage->meta_p_clave;
+
+        return view('pages.envios', $data);
     }
 
     public function terminos_condiciones()
     {
-        return view('pages.terminos_condiciones');
+        $getPage = PagesModel::getSlug('terminos-condiciones');
+        $data['getPage'] = $getPage;
+        
+        $data['meta_titulo'] = $getPage->meta_titulo;
+        $data['meta_descripcion'] = $getPage->meta_descripcion;
+        $data['meta_p_clave'] = $getPage->meta_p_clave;
+
+        return view('pages.terminos_condiciones', $data);
     }
 
     public function politica_privacidad()
     {
-        return view('pages.politica_privacidad');
+        $getPage = PagesModel::getSlug('politica-privacidad');
+        $data['getPage'] = $getPage;
+        
+        $data['meta_titulo'] = $getPage->meta_titulo;
+        $data['meta_descripcion'] = $getPage->meta_descripcion;
+        $data['meta_p_clave'] = $getPage->meta_p_clave;
+
+        return view('pages.politica_privacidad', $data);
     }  
 }

@@ -6,13 +6,13 @@
         <div class="container">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="{{ url('') }}">Inicio</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Preguntas frecuentes</li>
+                <li class="breadcrumb-item active" aria-current="page">{{ $getPage->titulo }}</li>
             </ol>
         </div>
     </nav>
     <div class="container">
-        <div class="page-header page-header-big text-center" style="background-image: url('assets/images/about-header-bg.jpg')">
-            <h1 class="page-title text-white">Preguntas frecuentes</h1>
+        <div class="page-header page-header-big text-center" style="background-image: url('{{ $getPage->getImagen() }}')">
+            <h1 class="page-title text-white">{{ $getPage->titulo }}</h1>
         </div>
     </div>
 
@@ -20,8 +20,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 mb-3 mb-lg-0">
-                    <h2 class="title">Nuestra visión</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Phasellus hendrerit. Pellentesque aliquet nibh nec urna. In nisi neque, aliquet vel, dapibus id, mattis vel, nisi. Sed pretium, ligula sollicitudin laoreet viverra, tortor libero sodales leo, eget blandit nunc tortor eu nibh. </p>
+                    {!! $getPage->descripcion !!}
                 </div>
             </div>
 

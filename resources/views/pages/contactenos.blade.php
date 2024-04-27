@@ -6,22 +6,23 @@
         <div class="container">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="{{ url('') }}">Inicio</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Contáctenos</li>
+                <li class="breadcrumb-item active" aria-current="page">{{ $getPage->titulo }}</li>
             </ol>
         </div>
     </nav>
     <div class="container">
-        <div class="page-header page-header-big text-center" style="background-image: url('assets/images/contact-header-bg.jpg')">
-            <h1 class="page-title text-white">Contáctenos</h1>
-        </div><!-- End .page-header -->
-    </div><!-- End .container -->
+        <div class="page-header page-header-big text-center" style="background-image: url('{{ $getPage->getImagen() }}')">
+            <h1 class="page-title text-white">{{ $getPage->titulo }}</h1>
+        </div>
+    </div>
 
     <div class="page-content pb-0">
         <div class="container">
             <div class="row">
                 <div class="col-lg-6 mb-2 mb-lg-0">
-                    <h2 class="title mb-1">Contact Information</h2><!-- End .title mb-2 -->
-                    <p class="mb-3">Vestibulum volutpat, lacus a ultrices sagittis, mi neque euismod dui, eu pulvinar nunc sapien ornare nisl. Phasellus pede arcu, dapibus eu, fermentum et, dapibus sed, urna.</p>
+                    {!! $getPage->descripcion !!}
+                    <br>
+
                     <div class="row">
                         <div class="col-sm-7">
                             <div class="contact-info">
