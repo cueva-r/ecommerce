@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 27-04-2024 a las 22:58:42
+-- Tiempo de generación: 28-04-2024 a las 23:23:00
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -141,6 +141,42 @@ INSERT INTO `colores` (`id`, `nombre`, `codigo`, `creado_por`, `estado`, `esta_e
 (8, 'Beige', '#D9BFA9', 1, 0, 0, '2024-02-12 16:42:35', '2024-02-12 16:42:35'),
 (9, 'Gris', '#b3b2b2', 1, 0, 0, '2024-02-17 17:01:16', '2024-02-17 17:01:16'),
 (10, 'Blanco', '#ffffff', 1, 0, 0, '2024-02-17 17:18:57', '2024-02-17 17:18:57');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `configuracion_sistema`
+--
+
+CREATE TABLE `configuracion_sistema` (
+  `id` int(11) NOT NULL,
+  `nombre_sitioweb` varchar(255) DEFAULT NULL,
+  `logo` varchar(255) DEFAULT NULL,
+  `favicon` varchar(255) DEFAULT NULL,
+  `descripcion_pie_pagina` text DEFAULT NULL,
+  `pie_pagina_pagos_icono` varchar(255) DEFAULT NULL,
+  `direccion` varchar(255) DEFAULT NULL,
+  `telefono` varchar(255) DEFAULT NULL,
+  `telefono_dos` varchar(255) DEFAULT NULL,
+  `enviar_email` varchar(255) DEFAULT NULL,
+  `email` varchar(255) DEFAULT NULL,
+  `email_dos` varchar(255) DEFAULT NULL,
+  `hora_trabajo` varchar(255) DEFAULT NULL,
+  `facebook_link` varchar(255) DEFAULT NULL,
+  `twitter_link` varchar(255) DEFAULT NULL,
+  `instagram_link` varchar(255) DEFAULT NULL,
+  `github_link` varchar(255) DEFAULT NULL,
+  `linkedin_link` varchar(255) DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `configuracion_sistema`
+--
+
+INSERT INTO `configuracion_sistema` (`id`, `nombre_sitioweb`, `logo`, `favicon`, `descripcion_pie_pagina`, `pie_pagina_pagos_icono`, `direccion`, `telefono`, `telefono_dos`, `enviar_email`, `email`, `email_dos`, `hora_trabajo`, `facebook_link`, `twitter_link`, `instagram_link`, `github_link`, `linkedin_link`, `created_at`, `updated_at`) VALUES
+(1, 'rico\'s', '46ksfalirz.png', 'wamodwho6d.jfif', 'ZZZ', '7c7njgtptu.png', 'ZZZ', '924575577', '12345', 'ricoabraham879@gmail.com', 'abrahamrico272@gmail.com', 'abrahamrico272@gmail.com', '4PM - 8PM', 'https://www.facebook.com/ab.rico.05/?locale=es_LA', 'https://twitter.com/rico_a_2005', 'https://www.instagram.com/a.rico_20/', 'https://github.com/cueva-r', 'https://www.linkedin.com/in/abrahamrico/', NULL, '2024-04-28 21:22:02');
 
 -- --------------------------------------------------------
 
@@ -725,6 +761,12 @@ ALTER TABLE `colores`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indices de la tabla `configuracion_sistema`
+--
+ALTER TABLE `configuracion_sistema`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indices de la tabla `costo_envio`
 --
 ALTER TABLE `costo_envio`
@@ -851,6 +893,12 @@ ALTER TABLE `codigo_descuento`
 --
 ALTER TABLE `colores`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT de la tabla `configuracion_sistema`
+--
+ALTER TABLE `configuracion_sistema`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `costo_envio`

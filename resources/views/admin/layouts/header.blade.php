@@ -243,6 +243,15 @@
                 </li>
 
                 <li class="nav-item">
+                    <a href="{{ url('admin/configuracion-sistema') }}" class="nav-link @if (Request::segment(2) == 'configuracion-sistema') active @endif">
+                        <i class="nav-icon fa-solid fa-gear"></i>
+                        <p>
+                            Configuraciones
+                        </p>
+                    </a>
+                </li>
+
+                <li class="nav-item">
                     <a href="{{ url('admin/cerrar-sesion') }}" class="nav-link">
                         <i class="nav-icon fa-solid fa-right-from-bracket"></i>
                         <p>

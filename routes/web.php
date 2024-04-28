@@ -144,6 +144,9 @@ Route::group(['middleware' => 'admin'], function () {
     Route::get('admin/paginas/listar', [PagesController::class, 'listar']);
     Route::get('admin/paginas/editar/{id}', [PagesController::class, 'editar']);
     Route::post('admin/paginas/editar/{id}', [PagesController::class, 'actualizar']);
+
+    Route::get('admin/configuracion-sistema', [PagesController::class, 'configuracion_sistema']);
+    Route::post('admin/configuracion-sistema', [PagesController::class, 'actualizar_configuracion_sistema']);
 });
 
 Route::get('/', [InicioController::class, 'inicio']);
