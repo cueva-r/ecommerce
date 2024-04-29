@@ -15,8 +15,12 @@
         <meta name="description" content="{{ $meta_descripcion }}">
     @endif
 
+    @php
+        $configuracionSistemaApp = App\Models\ConfiguracionSistemaModel::getSingle();
+    @endphp
+
     <!-- Favicon -->
-    <link rel="shortcut icon" href="{{ url('assets/images/favicon.ico') }}">
+    <link rel="shortcut icon" href="{{ $configuracionSistemaApp->getFavicon() }}">
 
     <!-- Plugins CSS File -->
     <link rel="stylesheet" href="{{ url('assets/css/bootstrap.min.css') }}">
@@ -52,10 +56,8 @@
 
     @include('layouts._mobile_menu')
 
-    <!-- Mobile Menu -->
-    <div class="mobile-menu-overlay"></div><!-- End .mobil-menu-overlay -->
+    <div class="mobile-menu-overlay"></div>
 
-    <!-- Sign in / Register Modal -->
     <div class="modal fade" id="signin-modal" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">

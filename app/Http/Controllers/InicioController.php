@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ConfiguracionSistemaModel;
 use App\Models\PagesModel;
 use Illuminate\Http\Request;
 
@@ -23,6 +24,8 @@ class InicioController extends Controller
     {
         $getPage = PagesModel::getSlug('contactenos');
         $data['getPage'] = $getPage;
+
+        $data['configuracionSistema'] = ConfiguracionSistemaModel::getSingle();
         
         $data['meta_titulo'] = $getPage->meta_titulo;
         $data['meta_descripcion'] = $getPage->meta_descripcion;

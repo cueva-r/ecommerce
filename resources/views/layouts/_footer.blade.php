@@ -4,31 +4,45 @@
             <div class="row">
                 <div class="col-sm-6 col-lg-3">
                     <div class="widget widget-about">
-                        <img src="{{ url('assets/images/logo.png') }}" class="footer-logo" alt="Footer Logo" width="150"
-                            height="25">
-                        <p>Praesent dapibus, neque id cursus ucibus, tortor neque egestas augue, eu vulputate magna eros
-                            eu erat. </p>
+                        <img src="{{ $configuracionSistemaApp->getLogo() }}" class="footer-logo" alt="Footer Logo"
+                            width="150" height="25">
+                        <p>{{ $configuracionSistemaApp->descripcion_pie_pagina }}</p>
 
                         <div class="social-icons">
-                            <a href="https://www.facebook.com/ab.rico.05/?locale=es_LA" class="social-icon"
-                                title="Facebook" target="_blank">
-                                <i class="icon-facebook-f"></i>
-                            </a>
-                            <a href="https://twitter.com/rico_a_2005" class="social-icon" title="Twitter"
-                                target="_blank">
-                                <i class="icon-twitter"></i>
-                            </a>
-                            <a href="https://www.instagram.com/a.rico_20/" class="social-icon" title="Instagram"
-                                target="_blank">
-                                <i class="icon-instagram"></i>
-                            </a>
-                            <a href="https://github.com/cueva-r" class="social-icon" title="GitHub" target="_blank">
-                                <i class="icon-github"></i>
-                            </a>
-                            <a href="https://www.linkedin.com/in/abrahamrico/" class="social-icon" title="Linkedin"
-                                target="_blank">
-                                <i class="icon-linkedin"></i>
-                            </a>
+                            @if (!empty($configuracionSistemaApp->facebook_link))
+                                <a href="{{ $configuracionSistemaApp->facebook_link }}" class="social-icon"
+                                    title="Facebook" target="_blank">
+                                    <i class="icon-facebook-f"></i>
+                                </a>
+                            @endif
+
+                            @if (!empty($configuracionSistemaApp->twitter_link))
+                                <a href="{{ $configuracionSistemaApp->twitter_link }}" class="social-icon" title="Twitter"
+                                    target="_blank">
+                                    <i class="icon-twitter"></i>
+                                </a>
+                            @endif
+
+                            @if (!empty($configuracionSistemaApp->instagram_link))
+                                <a href="{{ $configuracionSistemaApp->instagram_link }}" class="social-icon" title="Instagram"
+                                    target="_blank">
+                                    <i class="icon-instagram"></i>
+                                </a>
+                            @endif
+
+                            @if (!empty($configuracionSistemaApp->github_link))
+                                <a href="{{ $configuracionSistemaApp->github_link }}" class="social-icon" title="GitHub" target="_blank">
+                                    <i class="icon-github"></i>
+                                </a>
+                            @endif
+
+                            @if (!empty($configuracionSistemaApp->linkedin_link))
+                                <a href="{{ $configuracionSistemaApp->linkedin_link }}" class="social-icon" title="Linkedin"
+                                    target="_blank">
+                                    <i class="icon-linkedin"></i>
+                                </a>
+                            @endif
+
                         </div>
                     </div>
                 </div>
@@ -73,11 +87,11 @@
                         @if (!empty(Auth::check()))
                             <ul class="widget-list">
                                 <li><a href="{{ url('cliente/dashboard') }}">Mi cuenta</a></li>
-                            <ul>
-                        @else
-                            <ul class="widget-list">
-                                <li><a href="#signin-modal" data-toggle="modal">Mi cuenta</a></li>
-                            <ul>
+                                <ul>
+                                @else
+                                    <ul class="widget-list">
+                                        <li><a href="#signin-modal" data-toggle="modal">Mi cuenta</a></li>
+                                        <ul>
                         @endif
 
                         <ul class="widget-list">
@@ -94,10 +108,9 @@
 
     <div class="footer-bottom">
         <div class="container">
-            <p class="footer-copyright">Copyright © {{ date('Y') }} rico's. Todos los derechos reservados.</p>
-            <!-- End .footer-copyright -->
+            <p class="footer-copyright">Copyright © {{ date('Y') }} {{ $configuracionSistemaApp->nombre_sitioweb }}. Todos los derechos reservados.</p>
             <figure class="footer-payments">
-                <img src="{{ url('assets/images/payments.png') }}" alt="Payment methods" width="272" height="20">
+                <img src="{{ $configuracionSistemaApp->getPiePaginaIcono() }}" alt="Payment methods" width="272" height="20">
             </figure>
         </div>
     </div>

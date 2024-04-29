@@ -3,15 +3,6 @@
         <div class="container">
             <div class="header-left">
                 <div class="header-dropdown">
-                    <a href="#">Moneda</a>
-                    <div class="header-menu">
-                        <ul>
-                            <li><a href="#">Pen(S/.)</a></li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="header-dropdown">
                     <a href="#">Idioma</a>
                     <div class="header-menu">
                         <ul>
@@ -26,7 +17,7 @@
                     <li>
                         <a href="#">Links</a>
                         <ul>
-                            <li><a href="tel:#"><i class="icon-phone"></i>Llamar: +51 924 575 577</a></li>
+                            <li><a href="tel:{{ $configuracionSistemaApp->telefono }}"><i class="icon-phone"></i>Llamar: {{ $configuracionSistemaApp->telefono }}</a></li>
                             <li>
                                 <a href="{{ url('sobre-nosotros') }}">
                                     Sobre nosotros
@@ -77,7 +68,7 @@
                 </button>
 
                 <a href="{{ url('/') }}" class="logo">
-                    <img src="{{ url('assets/images/logo.png') }}" alt="rico's Logo" width="150" height="25">
+                    <img src="{{ $configuracionSistemaApp->getLogo() }}" alt="rico's Logo" width="150" height="25">
                 </a>
 
                 <nav class="main-nav">
