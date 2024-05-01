@@ -91,7 +91,7 @@
                         <div style="padding-top: 20px; padding-bottom: 20px;">
                             @include('layouts._message')
                         </div>
-                        <form action="#" class="contact-form mb-3" method="POST">
+                        <form action="#" class="contact-form mb-3" autocomplete="off" method="POST">
                             {{ csrf_field() }}
                             <div class="row">
                                 <div class="col-sm-6">
@@ -119,6 +119,11 @@
 
                             <label for="cmessage" class="sr-only">Mensaje</label>
                             <textarea class="form-control" cols="30" rows="4" name="mensaje" id="cmessage" required placeholder="Mensaje *"></textarea>
+
+                            <div class="col-sm-6">
+                                <label for="verificacion">{{ $primer_numero }} + {{ $segundo_numero }} = ?</label>
+                                <input type="text" class="form-control" name="verificacion" id="verificacion" required placeholder="Verificación de suma">
+                            </div>
 
                             <button type="submit" class="btn btn-outline-primary-2 btn-minwidth-sm">
                                 <span>Enviar</span>

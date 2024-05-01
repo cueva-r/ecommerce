@@ -9,6 +9,7 @@ use App\Models\PagesModel;
 use Illuminate\Http\Request;
 use Auth;
 use Mail;
+use Session;
 
 class InicioController extends Controller
 {
@@ -16,7 +17,7 @@ class InicioController extends Controller
     {
         $getPage = PagesModel::getSlug('inicio');
         $data['getPage'] = $getPage;
-        
+
         $data['meta_titulo'] = $getPage->meta_titulo;
         $data['meta_descripcion'] = $getPage->meta_descripcion;
         $data['meta_p_clave'] = $getPage->meta_p_clave;
@@ -26,11 +27,19 @@ class InicioController extends Controller
 
     public function contactenos()
     {
+        $primer_numero = mt_rand(0, 9);
+        $segundo_numero = mt_rand(0, 9);
+
+        $data['primer_numero'] = $primer_numero;
+        $data['segundo_numero'] = $segundo_numero;
+
+        Session::put('suma_total', $primer_numero + $segundo_numero);
+
         $getPage = PagesModel::getSlug('contactenos');
         $data['getPage'] = $getPage;
 
         $data['configuracionSistema'] = ConfiguracionSistemaModel::getSingle();
-        
+
         $data['meta_titulo'] = $getPage->meta_titulo;
         $data['meta_descripcion'] = $getPage->meta_descripcion;
         $data['meta_p_clave'] = $getPage->meta_p_clave;
@@ -40,21 +49,29 @@ class InicioController extends Controller
 
     public function enviar_contactenos(Request $request)
     {
-        $guardar = new ContactenosModel;
-        if (!empty(Auth::check())) {
-            $guardar->user_id = Auth::user()->id;
+        if (!empty($request->verificacion) && !empty(Session::get('suma_total'))) {
+            if (trim(Session::get('suma_total')) == trim($request->verificacion)) {
+                $guardar = new ContactenosModel;
+                if (!empty(Auth::check())) {
+                    $guardar->user_id = Auth::user()->id;
+                }
+                $guardar->nombre = trim($request->nombre);
+                $guardar->email = trim($request->email);
+                $guardar->telefono = trim($request->telefono);
+                $guardar->subjeto = trim($request->subjeto);
+                $guardar->mensaje = trim($request->mensaje);
+                $guardar->save();
+
+                $getConfiguracionSistema = ConfiguracionSistemaModel::getSingle();
+                Mail::to($getConfiguracionSistema->enviar_email)->send(new ContactenosMail($guardar));
+
+                return redirect()->back()->with('success', "Tu mensaje ha sido enviado correctamente");
+            } else {
+                return redirect()->back()->with('error', "Su suma de verificación es incorrecta");
+            }
+        } else {
+            return redirect()->back()->with('error', "Su suma de verificación es incorrecta");
         }
-        $guardar->nombre = trim($request->nombre);
-        $guardar->email = trim($request->email);
-        $guardar->telefono = trim($request->telefono);
-        $guardar->subjeto = trim($request->subjeto);
-        $guardar->mensaje = trim($request->mensaje);
-        $guardar->save();
-
-        $getConfiguracionSistema = ConfiguracionSistemaModel::getSingle();
-        Mail::to($getConfiguracionSistema->enviar_email)->send(new ContactenosMail($guardar));
-
-        return redirect()->back()->with('success', "Tu mensaje ha sido enviado correctamente");
     }
 
     public function sobre_nosotros()
@@ -73,11 +90,11 @@ class InicioController extends Controller
     {
         $getPage = PagesModel::getSlug('faq');
         $data['getPage'] = $getPage;
-        
+
         $data['meta_titulo'] = $getPage->meta_titulo;
         $data['meta_descripcion'] = $getPage->meta_descripcion;
         $data['meta_p_clave'] = $getPage->meta_p_clave;
-        
+
         return view('pages.faq', $data);
     }
 
@@ -85,7 +102,7 @@ class InicioController extends Controller
     {
         $getPage = PagesModel::getSlug('metodo-pago');
         $data['getPage'] = $getPage;
-        
+
         $data['meta_titulo'] = $getPage->meta_titulo;
         $data['meta_descripcion'] = $getPage->meta_descripcion;
         $data['meta_p_clave'] = $getPage->meta_p_clave;
@@ -97,11 +114,11 @@ class InicioController extends Controller
     {
         $getPage = PagesModel::getSlug('garantias');
         $data['getPage'] = $getPage;
-        
+
         $data['meta_titulo'] = $getPage->meta_titulo;
         $data['meta_descripcion'] = $getPage->meta_descripcion;
         $data['meta_p_clave'] = $getPage->meta_p_clave;
-        
+
         return view('pages.garantias', $data);
     }
 
@@ -109,7 +126,7 @@ class InicioController extends Controller
     {
         $getPage = PagesModel::getSlug('devoluciones');
         $data['getPage'] = $getPage;
-        
+
         $data['meta_titulo'] = $getPage->meta_titulo;
         $data['meta_descripcion'] = $getPage->meta_descripcion;
         $data['meta_p_clave'] = $getPage->meta_p_clave;
@@ -121,7 +138,7 @@ class InicioController extends Controller
     {
         $getPage = PagesModel::getSlug('envios');
         $data['getPage'] = $getPage;
-        
+
         $data['meta_titulo'] = $getPage->meta_titulo;
         $data['meta_descripcion'] = $getPage->meta_descripcion;
         $data['meta_p_clave'] = $getPage->meta_p_clave;
@@ -133,7 +150,7 @@ class InicioController extends Controller
     {
         $getPage = PagesModel::getSlug('terminos-condiciones');
         $data['getPage'] = $getPage;
-        
+
         $data['meta_titulo'] = $getPage->meta_titulo;
         $data['meta_descripcion'] = $getPage->meta_descripcion;
         $data['meta_p_clave'] = $getPage->meta_p_clave;
@@ -145,11 +162,11 @@ class InicioController extends Controller
     {
         $getPage = PagesModel::getSlug('politica-privacidad');
         $data['getPage'] = $getPage;
-        
+
         $data['meta_titulo'] = $getPage->meta_titulo;
         $data['meta_descripcion'] = $getPage->meta_descripcion;
         $data['meta_p_clave'] = $getPage->meta_p_clave;
 
         return view('pages.politica_privacidad', $data);
-    }  
+    }
 }
