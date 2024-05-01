@@ -2,9 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\ContactenosMail;
 use App\Models\ConfiguracionSistemaModel;
+use App\Models\ContactenosModel;
 use App\Models\PagesModel;
 use Illuminate\Http\Request;
+use Auth;
+use Mail;
 
 class InicioController extends Controller
 {
@@ -32,6 +36,25 @@ class InicioController extends Controller
         $data['meta_p_clave'] = $getPage->meta_p_clave;
 
         return view('pages.contactenos', $data);
+    }
+
+    public function enviar_contactenos(Request $request)
+    {
+        $guardar = new ContactenosModel;
+        if (!empty(Auth::check())) {
+            $guardar->user_id = Auth::user()->id;
+        }
+        $guardar->nombre = trim($request->nombre);
+        $guardar->email = trim($request->email);
+        $guardar->telefono = trim($request->telefono);
+        $guardar->subjeto = trim($request->subjeto);
+        $guardar->mensaje = trim($request->mensaje);
+        $guardar->save();
+
+        $getConfiguracionSistema = ConfiguracionSistemaModel::getSingle();
+        Mail::to($getConfiguracionSistema->enviar_email)->send(new ContactenosMail($guardar));
+
+        return redirect()->back()->with('success', "Tu mensaje ha sido enviado correctamente");
     }
 
     public function sobre_nosotros()

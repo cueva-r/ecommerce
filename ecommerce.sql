@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 28-04-2024 a las 23:23:00
+-- Tiempo de generación: 01-05-2024 a las 21:33:14
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -176,7 +176,33 @@ CREATE TABLE `configuracion_sistema` (
 --
 
 INSERT INTO `configuracion_sistema` (`id`, `nombre_sitioweb`, `logo`, `favicon`, `descripcion_pie_pagina`, `pie_pagina_pagos_icono`, `direccion`, `telefono`, `telefono_dos`, `enviar_email`, `email`, `email_dos`, `hora_trabajo`, `facebook_link`, `twitter_link`, `instagram_link`, `github_link`, `linkedin_link`, `created_at`, `updated_at`) VALUES
-(1, 'rico\'s', '46ksfalirz.png', 'wamodwho6d.jfif', 'ZZZ', '7c7njgtptu.png', 'ZZZ', '924575577', '12345', 'ricoabraham879@gmail.com', 'abrahamrico272@gmail.com', 'abrahamrico272@gmail.com', '4PM - 8PM', 'https://www.facebook.com/ab.rico.05/?locale=es_LA', 'https://twitter.com/rico_a_2005', 'https://www.instagram.com/a.rico_20/', 'https://github.com/cueva-r', 'https://www.linkedin.com/in/abrahamrico/', NULL, '2024-04-28 21:22:02');
+(1, 'rico\'s', '5ewmorvjhy.png', 'iimzembpmj.ico', 'ZZZ', 'nkbrky2pk2.png', 'Lima', '924575577', '12345', 'ricoabraham879@gmail.com', 'abrahamrico272@gmail.com', 'abrahamrico546@gmail.com', 'Lunes - sábado \r\n4PM - 8PM', 'https://www.facebook.com/ab.rico.05/?locale=es_LA', 'https://twitter.com/rico_a_2005', 'https://www.instagram.com/a.rico_20/', 'https://github.com/cueva-r', 'https://www.linkedin.com/in/abrahamrico/', NULL, '2024-04-29 20:02:26');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `contactenos`
+--
+
+CREATE TABLE `contactenos` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) DEFAULT NULL,
+  `nombre` varchar(255) DEFAULT NULL,
+  `email` varchar(255) DEFAULT NULL,
+  `telefono` varchar(255) DEFAULT NULL,
+  `subjeto` varchar(255) NOT NULL,
+  `mensaje` text DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `contactenos`
+--
+
+INSERT INTO `contactenos` (`id`, `user_id`, `nombre`, `email`, `telefono`, `subjeto`, `mensaje`, `created_at`, `updated_at`) VALUES
+(1, NULL, 'test', 'test@gmail.com', '12345', 'test', 'test', '2024-05-01 18:52:25', '2024-05-01 18:52:25'),
+(2, NULL, 'test', 'test@gmail.com', '12345', 'test', 'Lorem ipsum dolor sit amet consectetur adipiscing elit iaculis donec, lectus gravida metus fames vestibulum vel parturient porta, hendrerit ultrices feugiat himenaeos nisl enim maecenas pulvinar. Euismod netus ornare vehicula venenatis ultricies accumsan lacinia mus eleifend sagittis, convallis ante proin porta scelerisque molestie volutpat morbi class, habitant lobortis facilisi nullam fermentum himenaeos nostra sociosqu vestibulum.', '2024-05-01 19:27:16', '2024-05-01 19:27:16');
 
 -- --------------------------------------------------------
 
@@ -767,6 +793,12 @@ ALTER TABLE `configuracion_sistema`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indices de la tabla `contactenos`
+--
+ALTER TABLE `contactenos`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indices de la tabla `costo_envio`
 --
 ALTER TABLE `costo_envio`
@@ -899,6 +931,12 @@ ALTER TABLE `colores`
 --
 ALTER TABLE `configuracion_sistema`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT de la tabla `contactenos`
+--
+ALTER TABLE `contactenos`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `costo_envio`
