@@ -22,4 +22,9 @@ class ContactenosModel extends Model
             ->orderBy('contactenos.id', 'desc')
             ->paginate(20);
     }
+
+    public function getUsuario()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
 }

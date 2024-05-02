@@ -147,6 +147,9 @@ Route::group(['middleware' => 'admin'], function () {
 
     Route::get('admin/configuracion-sistema', [PagesController::class, 'configuracion_sistema']);
     Route::post('admin/configuracion-sistema', [PagesController::class, 'actualizar_configuracion_sistema']);
+
+    Route::get('admin/contactenos', [PagesController::class, 'contactenos']);
+    Route::get('admin/contactenos/eliminar/{id}', [PagesController::class, 'eliminar_contactenos']);
 });
 
 Route::get('/', [InicioController::class, 'inicio']);

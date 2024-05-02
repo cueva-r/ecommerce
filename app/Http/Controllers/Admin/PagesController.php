@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\ConfiguracionSistemaModel;
+use App\Models\ContactenosModel;
 use App\Models\PagesModel;
 use Illuminate\Http\Request;
 use Str;
@@ -104,5 +105,19 @@ class PagesController extends Controller
         $guardar->save();
 
         return redirect()->back()->with('success', 'Configuración del sistema actualizado exitosamente');
+    }
+
+    public function contactenos()
+    {
+        $data['getRecord'] = ContactenosModel::getRecord();
+        $data['header_title'] = 'Contáctenos';
+        return view('admin.contactenos.lista', $data);
+    }
+
+    public function eliminar_contactenos($id)
+    {
+        ContactenosModel::where('id', '=', $id)->delete();
+
+        return redirect()->back()->with('success', "Mensaje eliminado correctamente");
     }
 }

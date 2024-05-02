@@ -243,6 +243,15 @@
                 </li>
 
                 <li class="nav-item">
+                    <a href="{{ url('admin/contactenos') }}" class="nav-link @if (Request::segment(2) == 'contactenos') active @endif">
+                        <i class="nav-icon fa-solid fa-address-card"></i>
+                        <p>
+                            Contáctenos
+                        </p>
+                    </a>
+                </li>
+
+                <li class="nav-item">
                     <a href="{{ url('admin/configuracion-sistema') }}" class="nav-link @if (Request::segment(2) == 'configuracion-sistema') active @endif">
                         <i class="nav-icon fa-solid fa-gear"></i>
                         <p>
