@@ -26,14 +26,22 @@
                                 <div class="card-body">
                                     <div class="form-group">
                                         <label>Sitio web</label>
-                                        <input type="text" class="form-control" value="{{ $getRecord->nombre_sitioweb }}" name="nombre_sitioweb">
+                                        <input type="text" class="form-control" value="{{ $getRecord->nombre_sitioweb }}"
+                                            name="nombre_sitioweb">
                                     </div>
 
                                     <div class="form-group">
                                         <label>Logo</label>
                                         <input type="file" class="form-control" name="logo">
                                         @if (!empty($getRecord->getLogo()))
-                                            <img src="{{ $getRecord->getLogo() }}" style="width: 200px;">
+                                            <br>
+                                            <div class="col-lg-3">
+                                                <div class="card">
+                                                    <div class="card-body text-center">
+                                                        <img src="{{ $getRecord->getLogo() }}" style="width: 200px;">
+                                                    </div>
+                                                </div>
+                                            </div>
                                         @endif
                                     </div>
 
@@ -41,7 +49,14 @@
                                         <label>Favicon</label>
                                         <input type="file" class="form-control" name="favicon">
                                         @if (!empty($getRecord->getFavicon()))
-                                            <img src="{{ $getRecord->getFavicon() }}" style="width: 50px;">
+                                            <br>
+                                            <div class="col-lg-3">
+                                                <div class="card">
+                                                    <div class="card-body text-center">
+                                                        <img src="{{ $getRecord->getFavicon() }}" style="width: 50px;">
+                                                    </div>
+                                                </div>
+                                            </div>
                                         @endif
                                     </div>
 
@@ -54,7 +69,15 @@
                                         <label>Pie de página Pagos icono</label>
                                         <input type="file" class="form-control" name="pie_pagina_pagos_icono">
                                         @if (!empty($getRecord->getPiePaginaIcono()))
-                                            <img src="{{ $getRecord->getPiePaginaIcono() }}" style="width: 200px;">
+                                            <br>
+                                            <div class="col-lg-3">
+                                                <div class="card">
+                                                    <div class="card-body text-center">
+                                                        <img src="{{ $getRecord->getPiePaginaIcono() }}"
+                                                            style="width: 200px;">
+                                                    </div>
+                                                </div>
+                                            </div>
                                         @endif
                                     </div>
 
@@ -67,27 +90,32 @@
 
                                     <div class="form-group">
                                         <label>Teléfono</label>
-                                        <input type="text" class="form-control" value="{{ $getRecord->telefono }}" name="telefono">
+                                        <input type="text" class="form-control" value="{{ $getRecord->telefono }}"
+                                            name="telefono">
                                     </div>
 
                                     <div class="form-group">
                                         <label>Teléfono 2</label>
-                                        <input type="text" class="form-control" value="{{ $getRecord->telefono_dos }}" name="telefono_dos">
+                                        <input type="text" class="form-control" value="{{ $getRecord->telefono_dos }}"
+                                            name="telefono_dos">
                                     </div>
 
                                     <div class="form-group">
                                         <label>Enviar correo electrónico de contacto</label>
-                                        <input type="text" class="form-control" value="{{ $getRecord->enviar_email }}" name="enviar_email">
+                                        <input type="text" class="form-control" value="{{ $getRecord->enviar_email }}"
+                                            name="enviar_email">
                                     </div>
 
                                     <div class="form-group">
                                         <label>Correo electrónico</label>
-                                        <input type="text" class="form-control" value="{{ $getRecord->email_dos }}" name="email">
+                                        <input type="text" class="form-control" value="{{ $getRecord->email_dos }}"
+                                            name="email">
                                     </div>
 
                                     <div class="form-group">
                                         <label>Correo electrónico </label>
-                                        <input type="text" class="form-control" value="{{ $getRecord->email_dos }}" name="email_dos">
+                                        <input type="text" class="form-control" value="{{ $getRecord->email_dos }}"
+                                            name="email_dos">
                                     </div>
 
                                     <div class="form-group">
@@ -99,27 +127,32 @@
 
                                     <div class="form-group">
                                         <label>Facebook link</label>
-                                        <input type="text" class="form-control"  value="{{ $getRecord->facebook_link }}" name="facebook_link">
+                                        <input type="text" class="form-control" value="{{ $getRecord->facebook_link }}"
+                                            name="facebook_link">
                                     </div>
 
                                     <div class="form-group">
                                         <label>Twitter link</label>
-                                        <input type="text" class="form-control" value="{{ $getRecord->twitter_link }}" name="twitter_link">
+                                        <input type="text" class="form-control" value="{{ $getRecord->twitter_link }}"
+                                            name="twitter_link">
                                     </div>
 
                                     <div class="form-group">
                                         <label>Instagram link</label>
-                                        <input type="text" class="form-control" value="{{ $getRecord->instagram_link }}" name="instagram_link">
+                                        <input type="text" class="form-control" value="{{ $getRecord->instagram_link }}"
+                                            name="instagram_link">
                                     </div>
 
                                     <div class="form-group">
                                         <label>GitHub link</label>
-                                        <input type="text" class="form-control" value="{{ $getRecord->github_link }}" name="github_link">
+                                        <input type="text" class="form-control" value="{{ $getRecord->github_link }}"
+                                            name="github_link">
                                     </div>
 
                                     <div class="form-group">
                                         <label>Linkedin link</label>
-                                        <input type="text" class="form-control" value="{{ $getRecord->linkedin_link }}" name="linkedin_link">
+                                        <input type="text" class="form-control"
+                                            value="{{ $getRecord->linkedin_link }}" name="linkedin_link">
                                     </div>
                                 </div>
                                 <div class="card-footer">
@@ -129,8 +162,8 @@
                         </div>
                     </div>
                 </div>
-            </section>
-        </div>
+        </section>
+    </div>
 @endsection
 
 @section('script')

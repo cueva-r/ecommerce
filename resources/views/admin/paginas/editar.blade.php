@@ -45,7 +45,15 @@
                                         <label>Imagen <span style="color: red">*</span></label>
                                         <input type="file" class="form-control" name="imagen">
                                         @if (!empty($getRecord->getImagen()))
-                                            <img style="width: 200px;" src="{{ $getRecord->getImagen() }}" alt="">
+                                            <br>
+                                            <div class="col-lg-3">
+                                                <div class="card">
+                                                    <div class="card-body text-center">
+                                                        <img style="width: 200px;" src="{{ $getRecord->getImagen() }}"
+                                                            alt="">
+                                                    </div>
+                                                </div>
+                                            </div>
                                         @endif
                                     </div>
 

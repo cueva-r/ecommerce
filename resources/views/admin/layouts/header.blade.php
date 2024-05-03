@@ -234,6 +234,15 @@
                 </li>
 
                 <li class="nav-item">
+                    <a href="{{ url('admin/sliders/lista') }}" class="nav-link @if (Request::segment(2) == 'sliders') active @endif">
+                        <i class="nav-icon  fa-solid fa-layer-group"></i>
+                        <p>
+                            Sliders
+                        </p>
+                    </a>
+                </li>
+
+                <li class="nav-item">
                     <a href="{{ url('admin/paginas/listar') }}" class="nav-link @if (Request::segment(2) == 'paginas') active @endif">
                         <i class="nav-icon fa-solid fa-book"></i>
                         <p>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 01-05-2024 a las 21:33:14
+-- Tiempo de generación: 03-05-2024 a las 22:06:06
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -176,7 +176,7 @@ CREATE TABLE `configuracion_sistema` (
 --
 
 INSERT INTO `configuracion_sistema` (`id`, `nombre_sitioweb`, `logo`, `favicon`, `descripcion_pie_pagina`, `pie_pagina_pagos_icono`, `direccion`, `telefono`, `telefono_dos`, `enviar_email`, `email`, `email_dos`, `hora_trabajo`, `facebook_link`, `twitter_link`, `instagram_link`, `github_link`, `linkedin_link`, `created_at`, `updated_at`) VALUES
-(1, 'rico\'s', '5ewmorvjhy.png', 'iimzembpmj.ico', 'ZZZ', 'nkbrky2pk2.png', 'Lima', '924575577', '12345', 'ricoabraham879@gmail.com', 'abrahamrico272@gmail.com', 'abrahamrico546@gmail.com', 'Lunes - sábado \r\n4PM - 8PM', 'https://www.facebook.com/ab.rico.05/?locale=es_LA', 'https://twitter.com/rico_a_2005', 'https://www.instagram.com/a.rico_20/', 'https://github.com/cueva-r', 'https://www.linkedin.com/in/abrahamrico/', NULL, '2024-04-29 20:02:26');
+(1, 'rico\'s', '5ewmorvjhy.png', 'iimzembpmj.ico', 'Bienvenido a nuestro e-commerce, tu destino en línea para descubrir una amplia gama de productos de alta calidad que satisfacen todas tus necesidades.', 'nkbrky2pk2.png', 'Lima', '924575577', '12345', 'ricoabraham879@gmail.com', 'abrahamrico546@gmail.com', 'abrahamrico546@gmail.com', 'Lunes - sábado \r\n4PM - 8PM', 'https://www.facebook.com/ab.rico.05/?locale=es_LA', 'https://twitter.com/rico_a_2005', 'https://www.instagram.com/a.rico_20/', 'https://github.com/cueva-r', 'https://www.linkedin.com/in/abrahamrico/', NULL, '2024-05-03 02:02:42');
 
 -- --------------------------------------------------------
 
@@ -202,7 +202,8 @@ CREATE TABLE `contactenos` (
 
 INSERT INTO `contactenos` (`id`, `user_id`, `nombre`, `email`, `telefono`, `subjeto`, `mensaje`, `created_at`, `updated_at`) VALUES
 (1, NULL, 'test', 'test@gmail.com', '12345', 'test', 'test', '2024-05-01 18:52:25', '2024-05-01 18:52:25'),
-(2, NULL, 'test', 'test@gmail.com', '12345', 'test', 'Lorem ipsum dolor sit amet consectetur adipiscing elit iaculis donec, lectus gravida metus fames vestibulum vel parturient porta, hendrerit ultrices feugiat himenaeos nisl enim maecenas pulvinar. Euismod netus ornare vehicula venenatis ultricies accumsan lacinia mus eleifend sagittis, convallis ante proin porta scelerisque molestie volutpat morbi class, habitant lobortis facilisi nullam fermentum himenaeos nostra sociosqu vestibulum.', '2024-05-01 19:27:16', '2024-05-01 19:27:16');
+(3, NULL, 'test', 'test@gmail.com', '12345', 'test', 'alaaaa', '2024-05-01 20:10:08', '2024-05-01 20:10:08'),
+(4, 1, 'xd', 'xdd@gmail.com', 'xd', 'xd', 'xdddd', '2024-05-02 20:25:30', '2024-05-02 20:25:30');
 
 -- --------------------------------------------------------
 
@@ -385,7 +386,7 @@ INSERT INTO `pages` (`id`, `nombre`, `slug`, `titulo`, `descripcion`, `nombre_im
 (6, 'Devoluciones', 'devoluciones', 'Devoluciones', '<p><font color=\"#000000\"><span style=\"font-weight: bolder;\"><span style=\"font-family: &quot;Source Sans Pro&quot;, sans-serif; font-size: 16.2px; letter-spacing: -0.0486px; text-align: justify;\">Lorem ipsum dolo</span><span style=\"font-family: &quot;Source Sans Pro&quot;, sans-serif; font-size: 16.2px; letter-spacing: -0.0486px; text-align: justify;\">r&nbsp;</span></span></font><span style=\"color: rgba(0, 0, 0, 0.8); font-family: &quot;Source Sans Pro&quot;, sans-serif; font-size: 16.2px; letter-spacing: -0.0486px; text-align: justify;\">sit amet consectetur adipiscing elit iaculis donec, lectus gravida metus fames vestibulum vel parturient porta, hendrerit ultrices feugiat himenaeos nisl enim maecenas pulvinar. Euismod netus ornare vehicula venenatis ultricies accumsan lacinia mus eleifend sagittis, convallis ante proin porta scelerisque molestie volutpat morbi class, habitant lobortis facilisi nullam fermentum himenaeos nostra sociosqu vestibulum. Felis blandit libero gravida enim id dictum curae magnis volutpat habitasse, suscipit cras sodales pellentesque hendrerit turpis molestie ante fusce, viverra nibh feugiat mus urna condimentum tempor pulvinar netus.</span><br></p>', '6w3xbg1yb0ttmamsafujk.jpg', 'Devoluciones', '', '', '2024-04-25 22:32:17', '2024-04-27 20:05:22'),
 (7, 'Envíos', 'envios', 'Envíos', '<p><font color=\"#000000\"><span style=\"font-weight: bolder;\"><span style=\"font-family: &quot;Source Sans Pro&quot;, sans-serif; font-size: 16.2px; letter-spacing: -0.0486px; text-align: justify;\">Lorem ipsum dolo</span><span style=\"font-family: &quot;Source Sans Pro&quot;, sans-serif; font-size: 16.2px; letter-spacing: -0.0486px; text-align: justify;\">r&nbsp;</span></span></font><span style=\"color: rgba(0, 0, 0, 0.8); font-family: &quot;Source Sans Pro&quot;, sans-serif; font-size: 16.2px; letter-spacing: -0.0486px; text-align: justify;\">sit amet consectetur adipiscing elit iaculis donec, lectus gravida metus fames vestibulum vel parturient porta, hendrerit ultrices feugiat himenaeos nisl enim maecenas pulvinar. Euismod netus ornare vehicula venenatis ultricies accumsan lacinia mus eleifend sagittis, convallis ante proin porta scelerisque molestie volutpat morbi class, habitant lobortis facilisi nullam fermentum himenaeos nostra sociosqu vestibulum. Felis blandit libero gravida enim id dictum curae magnis volutpat habitasse, suscipit cras sodales pellentesque hendrerit turpis molestie ante fusce, viverra nibh feugiat mus urna condimentum tempor pulvinar netus.</span><br></p>', '7cru7ox2kfr6xp6xt4kxs.jpg', 'Envíos', '', '', '2024-04-25 22:32:17', '2024-04-27 20:06:39'),
 (8, 'Términos y condiciones', 'terminos-condiciones', 'Términos y condiciones', '', '8kz1ybothizlgukzlkcfe.webp', 'Términos y condiciones', '', '', '2024-04-25 22:32:58', '2024-04-27 20:07:39'),
-(9, 'Política y privacidad', 'politica-privacidad', 'Política y privacidad', '<p><font color=\"#000000\"><span style=\"font-weight: bolder;\"><span style=\"font-family: &quot;Source Sans Pro&quot;, sans-serif; font-size: 16.2px; letter-spacing: -0.0486px; text-align: justify;\">Lorem ipsum dolo</span><span style=\"font-family: &quot;Source Sans Pro&quot;, sans-serif; font-size: 16.2px; letter-spacing: -0.0486px; text-align: justify;\">r&nbsp;</span></span></font><span style=\"color: rgba(0, 0, 0, 0.8); font-family: &quot;Source Sans Pro&quot;, sans-serif; font-size: 16.2px; letter-spacing: -0.0486px; text-align: justify;\">sit amet consectetur adipiscing elit iaculis donec, lectus gravida metus fames vestibulum vel parturient porta, hendrerit ultrices feugiat himenaeos nisl enim maecenas pulvinar. Euismod netus ornare vehicula venenatis ultricies accumsan lacinia mus eleifend sagittis, convallis ante proin porta scelerisque molestie volutpat morbi class, habitant lobortis facilisi nullam fermentum himenaeos nostra sociosqu vestibulum. Felis blandit libero gravida enim id dictum curae magnis volutpat habitasse, suscipit cras sodales pellentesque hendrerit turpis molestie ante fusce, viverra nibh feugiat mus urna condimentum tempor pulvinar netus.</span><br></p>', '9w5ggvknzicbvu9xdys5z.webp', 'Política y privacidad', '', '', '2024-04-25 22:32:58', '2024-04-27 20:09:20'),
+(9, 'Política y privacidad', 'politica-privacidad', 'Política y privacidad', '<p><font color=\"#000000\" style=\"\"><span style=\"font-weight: bolder;\"><span style=\"font-family: &quot;Source Sans Pro&quot;, sans-serif; font-size: 16.2px; letter-spacing: -0.0486px; text-align: justify;\"><u>Lorem ipsum dolo</u></span><span style=\"font-family: &quot;Source Sans Pro&quot;, sans-serif; font-size: 16.2px; letter-spacing: -0.0486px; text-align: justify;\"><u>r</u>&nbsp;</span></span></font><span style=\"text-align: justify;\"><font color=\"#000000\">sit amet consectetur adipiscing elit iaculis donec, lectus gravida metus fames vestibulum vel parturient porta, hendrerit ultrices feugiat himenaeos nisl enim maecenas pulvinar. Euismod netus ornare vehicula venenatis ultricies accumsan lacinia mus eleifend sagittis, convallis ante proin porta scelerisque molestie volutpat morbi class, habitant lobortis facilisi nullam fermentum himenaeos nostra sociosqu vestibulum. Felis blandit libero gravida enim id dictum curae magnis volutpat habitasse, suscipit cras sodales pellentesque hendrerit turpis molestie ante fusce, viverra nibh feugiat mus urna condimentum tempor pulvinar netus.</font></span><br></p>', '9w5ggvknzicbvu9xdys5z.webp', 'Política y privacidad', '', '', '2024-04-25 22:32:58', '2024-05-03 02:05:07'),
 (10, 'Inicio', 'inicio', 'Inicio', '<p><font color=\"#000000\"><span style=\"font-weight: bolder;\"><span style=\"font-family: &quot;Source Sans Pro&quot;, sans-serif; font-size: 16.2px; letter-spacing: -0.0486px; text-align: justify;\">Lorem ipsum dolo</span><span style=\"font-family: &quot;Source Sans Pro&quot;, sans-serif; font-size: 16.2px; letter-spacing: -0.0486px; text-align: justify;\">r&nbsp;</span></span></font><span style=\"color: rgba(0, 0, 0, 0.8); font-family: &quot;Source Sans Pro&quot;, sans-serif; font-size: 16.2px; letter-spacing: -0.0486px; text-align: justify;\">sit amet consectetur adipiscing elit iaculis donec, lectus gravida metus fames vestibulum vel parturient porta, hendrerit ultrices feugiat himenaeos nisl enim maecenas pulvinar. Euismod netus ornare vehicula venenatis ultricies accumsan lacinia mus eleifend sagittis, convallis ante proin porta scelerisque molestie volutpat morbi class, habitant lobortis facilisi nullam fermentum himenaeos nostra sociosqu vestibulum. Felis blandit libero gravida enim id dictum curae magnis volutpat habitasse, suscipit cras sodales pellentesque hendrerit turpis molestie ante fusce, viverra nibh feugiat mus urna condimentum tempor pulvinar netus.</span><br></p>', '9w5ggvknzicbvu9xdys5z.webp', 'Inicio', '', '', '2024-04-25 22:32:58', '2024-04-27 20:57:47');
 
 -- --------------------------------------------------------
@@ -664,6 +665,31 @@ INSERT INTO `producto_tamano` (`id`, `producto_id`, `nombre`, `precio`, `created
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `sliders`
+--
+
+CREATE TABLE `sliders` (
+  `id` int(11) NOT NULL,
+  `titulo` varchar(255) DEFAULT NULL,
+  `nombre_imagen` varchar(255) DEFAULT NULL,
+  `nombre_button` varchar(255) DEFAULT NULL,
+  `link_button` text DEFAULT NULL,
+  `esta_eliminado` tinyint(4) NOT NULL DEFAULT 0,
+  `estado` tinyint(4) NOT NULL DEFAULT 0,
+  `created_at` date DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `sliders`
+--
+
+INSERT INTO `sliders` (`id`, `titulo`, `nombre_imagen`, `nombre_button`, `link_button`, `esta_eliminado`, `estado`, `created_at`, `updated_at`) VALUES
+(1, 'Airbus A340-600', '3i6hvwcmkfatekdidazy.jpg', 'Ver', 'https://www.facebook.com/', 0, 0, '2024-05-03', '2024-05-03 20:00:47');
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `subcategorias`
 --
 
@@ -886,6 +912,12 @@ ALTER TABLE `producto_tamano`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indices de la tabla `sliders`
+--
+ALTER TABLE `sliders`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indices de la tabla `subcategorias`
 --
 ALTER TABLE `subcategorias`
@@ -936,7 +968,7 @@ ALTER TABLE `configuracion_sistema`
 -- AUTO_INCREMENT de la tabla `contactenos`
 --
 ALTER TABLE `contactenos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `costo_envio`
@@ -1015,6 +1047,12 @@ ALTER TABLE `producto_imagen`
 --
 ALTER TABLE `producto_tamano`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=75;
+
+--
+-- AUTO_INCREMENT de la tabla `sliders`
+--
+ALTER TABLE `sliders`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `subcategorias`
