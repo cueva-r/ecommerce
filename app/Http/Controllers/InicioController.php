@@ -6,6 +6,7 @@ use App\Mail\ContactenosMail;
 use App\Models\ConfiguracionSistemaModel;
 use App\Models\ContactenosModel;
 use App\Models\PagesModel;
+use App\Models\SlidersModel;
 use Illuminate\Http\Request;
 use Auth;
 use Mail;
@@ -17,6 +18,8 @@ class InicioController extends Controller
     {
         $getPage = PagesModel::getSlug('inicio');
         $data['getPage'] = $getPage;
+
+        $data['getSliders'] = SlidersModel::getRecordActive();
 
         $data['meta_titulo'] = $getPage->meta_titulo;
         $data['meta_descripcion'] = $getPage->meta_descripcion;
