@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 03-05-2024 a las 22:06:06
+-- Tiempo de generación: 05-05-2024 a las 20:29:54
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -378,7 +378,7 @@ CREATE TABLE `pages` (
 --
 
 INSERT INTO `pages` (`id`, `nombre`, `slug`, `titulo`, `descripcion`, `nombre_imagen`, `meta_titulo`, `meta_descripcion`, `meta_p_clave`, `created_at`, `updated_at`) VALUES
-(1, 'Sobre nosotros', 'sobre-nosotros', 'Sobre nosotros', '<p><font color=\"#000000\" style=\"\"><b style=\"\"><span style=\"font-family: &quot;Source Sans Pro&quot;, sans-serif; font-size: 16.2px; letter-spacing: -0.0486px; text-align: justify;\">Lorem ipsum dolo</span><span style=\"font-family: &quot;Source Sans Pro&quot;, sans-serif; font-size: 16.2px; letter-spacing: -0.0486px; text-align: justify;\">r </span></b></font><span style=\"color: rgba(0, 0, 0, 0.8); font-family: &quot;Source Sans Pro&quot;, sans-serif; font-size: 16.2px; letter-spacing: -0.0486px; text-align: justify;\">sit amet consectetur adipiscing elit iaculis donec, lectus gravida metus fames vestibulum vel parturient porta, hendrerit ultrices feugiat himenaeos nisl enim maecenas pulvinar. Euismod netus ornare vehicula venenatis ultricies accumsan lacinia mus eleifend sagittis, convallis ante proin porta scelerisque molestie volutpat morbi class, habitant lobortis facilisi nullam fermentum himenaeos nostra sociosqu vestibulum. Felis blandit libero gravida enim id dictum curae magnis volutpat habitasse, suscipit cras sodales pellentesque hendrerit turpis molestie ante fusce, viverra nibh feugiat mus urna condimentum tempor pulvinar netus.</span><br></p>', '1snijee886kdmdwyvpj1w.jpg', 'Sobre nosotros', '', '', '2024-04-25 22:30:19', '2024-04-27 19:51:31'),
+(1, 'Sobre nosotros', 'sobre-nosotros', 'Sobre nosotros', '<p><font color=\"#000000\" style=\"\"><b style=\"\"><span style=\"font-family: &quot;Comic Sans MS&quot;; font-size: 16.2px; letter-spacing: -0.0486px; text-align: justify;\">Lorem ipsum dolo</span><span style=\"font-family: &quot;Comic Sans MS&quot;; font-size: 16.2px; letter-spacing: -0.0486px; text-align: justify;\">r </span></b></font><span style=\"color: rgba(0, 0, 0, 0.8); font-family: &quot;Comic Sans MS&quot;; font-size: 16.2px; letter-spacing: -0.0486px; text-align: justify;\">sit amet consectetur adipiscing elit iaculis donec, lectus gravida metus fames vestibulum vel parturient porta, hendrerit ultrices feugiat himenaeos nisl enim maecenas pulvinar. Euismod netus ornare vehicula venenatis ultricies accumsan lacinia mus eleifend sagittis, convallis ante proin porta scelerisque molestie volutpat morbi class, habitant lobortis facilisi nullam fermentum himenaeos nostra sociosqu vestibulum. Felis blandit libero gravida enim id dictum curae magnis volutpat habitasse, suscipit cras sodales pellentesque hendrerit turpis molestie ante fusce, viverra nibh feugiat mus urna condimentum tempor pulvinar netus.</span><br></p>', '1snijee886kdmdwyvpj1w.jpg', 'Sobre nosotros', '', '', '2024-04-25 22:30:19', '2024-05-05 00:04:57'),
 (2, 'Preguntas frecuentes', 'faq', 'Preguntas frecuentes', '<p><font color=\"#000000\"><span style=\"font-weight: bolder;\"><span style=\"font-family: &quot;Source Sans Pro&quot;, sans-serif; font-size: 16.2px; letter-spacing: -0.0486px; text-align: justify;\">Lorem ipsum dolo</span><span style=\"font-family: &quot;Source Sans Pro&quot;, sans-serif; font-size: 16.2px; letter-spacing: -0.0486px; text-align: justify;\">r&nbsp;</span></span></font><span style=\"color: rgba(0, 0, 0, 0.8); font-family: &quot;Source Sans Pro&quot;, sans-serif; font-size: 16.2px; letter-spacing: -0.0486px; text-align: justify;\">sit amet consectetur adipiscing elit iaculis donec, lectus gravida metus fames vestibulum vel parturient porta, hendrerit ultrices feugiat himenaeos nisl enim maecenas pulvinar. Euismod netus ornare vehicula venenatis ultricies accumsan lacinia mus eleifend sagittis, convallis ante proin porta scelerisque molestie volutpat morbi class, habitant lobortis facilisi nullam fermentum himenaeos nostra sociosqu vestibulum. Felis blandit libero gravida enim id dictum curae magnis volutpat habitasse, suscipit cras sodales pellentesque hendrerit turpis molestie ante fusce, viverra nibh feugiat mus urna condimentum tempor pulvinar netus.</span><br></p>', '2cwzuuxw4gnhloexvejvr.jpg', 'Preguntas frecuentes', '', '', '2024-04-25 22:31:05', '2024-04-27 19:55:31'),
 (3, 'Contáctenos', 'contactenos', 'Contáctenos', '<p><font color=\"#000000\"><span style=\"font-weight: bolder;\"><span style=\"font-family: &quot;Source Sans Pro&quot;, sans-serif; font-size: 16.2px; letter-spacing: -0.0486px; text-align: justify;\">Lorem ipsum dolo</span><span style=\"font-family: &quot;Source Sans Pro&quot;, sans-serif; font-size: 16.2px; letter-spacing: -0.0486px; text-align: justify;\">r&nbsp;</span></span></font><span style=\"color: rgba(0, 0, 0, 0.8); font-family: &quot;Source Sans Pro&quot;, sans-serif; font-size: 16.2px; letter-spacing: -0.0486px; text-align: justify;\">sit amet consectetur adipiscing elit iaculis donec, lectus gravida metus fames vestibulum vel parturient porta, hendrerit ultrices feugiat himenaeos nisl enim maecenas pulvinar. Euismod netus ornare vehicula venenatis ultricies accumsan lacinia mus eleifend sagittis, convallis ante proin porta scelerisque molestie volutpat morbi class, habitant lobortis facilisi nullam fermentum himenaeos nostra sociosqu vestibulum.</span><br></p>', '3z0vblwmelygc4g1pgtds.jpg', 'Contáctenos', '', '', '2024-04-25 22:31:05', '2024-04-27 20:44:35'),
 (4, 'Métodos de pago', 'metodo-pago', 'Métodos de pago', '<p><font color=\"#000000\"><span style=\"font-weight: bolder;\"><span style=\"font-family: &quot;Source Sans Pro&quot;, sans-serif; font-size: 16.2px; letter-spacing: -0.0486px; text-align: justify;\">Lorem ipsum dolo</span><span style=\"font-family: &quot;Source Sans Pro&quot;, sans-serif; font-size: 16.2px; letter-spacing: -0.0486px; text-align: justify;\">r&nbsp;</span></span></font><span style=\"color: rgba(0, 0, 0, 0.8); font-family: &quot;Source Sans Pro&quot;, sans-serif; font-size: 16.2px; letter-spacing: -0.0486px; text-align: justify;\">sit amet consectetur adipiscing elit iaculis donec, lectus gravida metus fames vestibulum vel parturient porta, hendrerit ultrices feugiat himenaeos nisl enim maecenas pulvinar. Euismod netus ornare vehicula venenatis ultricies accumsan lacinia mus eleifend sagittis, convallis ante proin porta scelerisque molestie volutpat morbi class, habitant lobortis facilisi nullam fermentum himenaeos nostra sociosqu vestibulum. Felis blandit libero gravida enim id dictum curae magnis volutpat habitasse, suscipit cras sodales pellentesque hendrerit turpis molestie ante fusce, viverra nibh feugiat mus urna condimentum tempor pulvinar netus.</span><br></p>', '44kwinr5kz3lemhk0gemb.jpg', 'Métodos de pago', '', '', '2024-04-25 22:31:53', '2024-04-27 20:04:34'),
@@ -685,7 +685,9 @@ CREATE TABLE `sliders` (
 --
 
 INSERT INTO `sliders` (`id`, `titulo`, `nombre_imagen`, `nombre_button`, `link_button`, `esta_eliminado`, `estado`, `created_at`, `updated_at`) VALUES
-(1, 'Airbus A340-600', '3i6hvwcmkfatekdidazy.jpg', 'Ver', 'https://www.facebook.com/', 0, 0, '2024-05-03', '2024-05-03 20:00:47');
+(1, 'A340-600 Lufthansa', '3i6hvwcmkfatekdidazy.jpg', 'Ver', 'https://www.facebook.com/', 0, 0, '2024-05-03', '2024-05-05 00:03:35'),
+(2, 'A350-900 Turkish airlines', '3xn10hfaspugxm36posd.jpg', 'Ver', 'https://www.instagram.com/a.rico_20/', 0, 0, '2024-05-03', '2024-05-05 00:03:47'),
+(3, 'B777-300ER Turkish airlines', 'aopn6te84fhwy4lsyhix.jpg', 'Ver', 'https://www.tiktok.com/foryou', 0, 0, '2024-05-03', '2024-05-05 00:04:00');
 
 -- --------------------------------------------------------
 
@@ -992,7 +994,7 @@ ALTER TABLE `item_pedido`
 -- AUTO_INCREMENT de la tabla `lista_de_deseos`
 --
 ALTER TABLE `lista_de_deseos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT de la tabla `marcas`
@@ -1052,7 +1054,7 @@ ALTER TABLE `producto_tamano`
 -- AUTO_INCREMENT de la tabla `sliders`
 --
 ALTER TABLE `sliders`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `subcategorias`
