@@ -7,6 +7,7 @@ use App\Models\ConfiguracionSistemaModel;
 use App\Models\ContactenosModel;
 use App\Models\PagesModel;
 use App\Models\SlidersModel;
+use App\Models\SociosModel;
 use Illuminate\Http\Request;
 use Auth;
 use Mail;
@@ -20,6 +21,7 @@ class InicioController extends Controller
         $data['getPage'] = $getPage;
 
         $data['getSliders'] = SlidersModel::getRecordActive();
+        $data['getSocios'] = SociosModel::getRecordActive();
 
         $data['meta_titulo'] = $getPage->meta_titulo;
         $data['meta_descripcion'] = $getPage->meta_descripcion;

@@ -29,12 +29,6 @@
                                 {{ csrf_field() }}
                                 <div class="card-body">
                                     <div class="form-group">
-                                        <label>Título <span style="color: red">*</span></label>
-                                        <input type="text" class="form-control" value="{{ $getRecord->titulo }}" required
-                                            name="titulo" placeholder="Título del slider">
-                                    </div>
-
-                                    <div class="form-group">
                                         <label>Imágen</label>
                                         <input type="file" class="form-control" name="nombre_imagen">
                                         @if (!empty($getRecord->getImagen()))
@@ -50,15 +44,9 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <label>Nombre del button </label>
-                                        <input type="text" class="form-control" value="{{ $getRecord->nombre_button }}"
-                                            name="nombre_button" placeholder="Nombre del button">
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label>Link del button</label>
+                                        <label>Link</label>
                                         <input type="text" class="form-control" value="{{ $getRecord->link_button }}"
-                                            name="link_button" placeholder="Link del button">
+                                            name="link_button" placeholder="Link">
                                     </div>
 
                                     <div class="form-group">

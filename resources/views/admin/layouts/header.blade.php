@@ -243,6 +243,15 @@
                 </li>
 
                 <li class="nav-item">
+                    <a href="{{ url('admin/socios/lista') }}" class="nav-link @if (Request::segment(2) == 'socios') active @endif">
+                        <i class="nav-icon fa-solid fa-handshake"></i>
+                        <p>
+                            Socios
+                        </p>
+                    </a>
+                </li>
+
+                <li class="nav-item">
                     <a href="{{ url('admin/paginas/listar') }}" class="nav-link @if (Request::segment(2) == 'paginas') active @endif">
                         <i class="nav-icon fa-solid fa-book"></i>
                         <p>

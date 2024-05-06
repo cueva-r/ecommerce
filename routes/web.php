@@ -12,6 +12,7 @@ use App\Http\Controllers\Admin\PedidosController;
 use App\Http\Controllers\Admin\SubCategoriaController;
 use App\Http\Controllers\Admin\ProductoController;
 use App\Http\Controllers\Admin\SlidersController;
+use App\Http\Controllers\Admin\SociosController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ClienteDashboardController;
 use App\Http\Controllers\InicioController;
@@ -158,6 +159,13 @@ Route::group(['middleware' => 'admin'], function () {
     Route::get('admin/sliders/editar/{id}', [SlidersController::class, 'editar']);
     Route::post('admin/sliders/editar/{id}', [SlidersController::class, 'actualizar']);
     Route::get('admin/sliders/eliminar/{id}', [SlidersController::class, 'eliminar']);
+
+    Route::get('admin/socios/lista', [SociosController::class, 'lista']);
+    Route::get('admin/socios/agregar', [SociosController::class, 'agregar']);
+    Route::post('admin/socios/agregar', [SociosController::class, 'insertar']);
+    Route::get('admin/socios/editar/{id}', [SociosController::class, 'editar']);
+    Route::post('admin/socios/editar/{id}', [SociosController::class, 'actualizar']);
+    Route::get('admin/socios/eliminar/{id}', [SociosController::class, 'eliminar']);
 });
 
 Route::get('/', [InicioController::class, 'inicio']);

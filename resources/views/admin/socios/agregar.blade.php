@@ -9,7 +9,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>Agregar un nuevo slider</h1>
+                        <h1>Agregar un nuevo socios</h1>
                     </div>
                     <div class="col-sm-6" style="text-align: right">
                         <a href="{{ url('admin/sliders/lista') }}" class="btn btn-primary">
@@ -29,26 +29,14 @@
                                 {{ csrf_field() }}
                                 <div class="card-body">
                                     <div class="form-group">
-                                        <label>Título <span style="color: red">*</span></label>
-                                        <input type="text" class="form-control" value="{{old('titulo')}}" required name="titulo"
-                                            placeholder="Título del slider">
-                                    </div>
-
-                                    <div class="form-group">
                                         <label>Imágen <span style="color: red">*</span></label>
                                         <input type="file" class="form-control" required name="nombre_imagen">
                                     </div>
 
                                     <div class="form-group">
-                                        <label>Nombre del button </label>
-                                        <input type="text" class="form-control" value="{{old('nombre_button')}}" name="nombre_button"
-                                            placeholder="Nombre del button">
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label>Link del button</label>
+                                        <label>Link</label>
                                         <input type="text" class="form-control" value="{{old('link_button')}}" name="link_button"
-                                            placeholder="Link del button">
+                                            placeholder="Link">
                                     </div>
 
                                     <div class="form-group">

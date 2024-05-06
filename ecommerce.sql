@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 05-05-2024 a las 20:29:54
+-- Tiempo de generación: 06-05-2024 a las 22:06:24
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -279,7 +279,14 @@ INSERT INTO `item_pedido` (`id`, `pedido_id`, `producto_id`, `cantidad`, `precio
 (6, 5, 22, 1, '29.2', 'Blanco', '2', '2', '29.2', '2024-04-22 14:47:46', '2024-04-22 14:47:46'),
 (7, 6, 22, 1, '29.2', 'Blanco', '2', '2', '29.2', '2024-04-22 14:48:01', '2024-04-22 14:48:01'),
 (8, 7, 15, 1, '861', 'Gris', '1.8', '2', '861', '2024-04-23 16:18:32', '2024-04-23 16:18:32'),
-(9, 8, 3, 1, '30', 'Azul', '1.8', '20', '30', '2024-04-23 19:03:42', '2024-04-23 19:03:42');
+(9, 8, 3, 1, '30', 'Azul', '1.8', '20', '30', '2024-04-23 19:03:42', '2024-04-23 19:03:42'),
+(10, 9, 22, 1, '29.2', 'Blanco', '2', '2', '29.2', '2024-05-06 16:47:42', '2024-05-06 16:47:42'),
+(11, 10, 22, 1, '29.2', 'Blanco', '2', '2', '29.2', '2024-05-06 16:53:01', '2024-05-06 16:53:01'),
+(12, 11, 22, 1, '29.2', 'Blanco', '2', '2', '29.2', '2024-05-06 16:56:15', '2024-05-06 16:56:15'),
+(13, 12, 15, 1, '861', 'Gris', '1.8', '2', '861', '2024-05-06 16:59:06', '2024-05-06 16:59:06'),
+(14, 13, 22, 1, '29.2', 'Blanco', '2', '2', '29.2', '2024-05-06 16:59:41', '2024-05-06 16:59:41'),
+(15, 14, 22, 1, '29.2', 'Blanco', '2', '2', '29.2', '2024-05-06 17:01:08', '2024-05-06 17:01:08'),
+(16, 15, 22, 1, '29.2', 'Blanco', '2', '2', '29.2', '2024-05-06 17:02:51', '2024-05-06 17:02:51');
 
 -- --------------------------------------------------------
 
@@ -451,7 +458,14 @@ INSERT INTO `pedidos` (`id`, `transaccion_id`, `stripe_session_id`, `numero_pedi
 (5, NULL, NULL, '834349467', 17, 'Sofía', 'zz', 'zz', 'z', 'zz', 'zz', 'zz', 'zz', 'zz', 'zz', 'sofia@gmail.com', 'zz', 'sa', '14.6', 3, '20', '-5.4', 'stripe', 4, 0, 1, NULL, '2024-04-22 14:47:46', '2024-04-23 16:19:38'),
 (6, 'cs_test_a1FLexr4GLUHnsfxqghOxYO7G5YQ7BgIZWaQi8v2YRAvD1PypdJdRL3km6', 'cs_test_a1FLexr4GLUHnsfxqghOxYO7G5YQ7BgIZWaQi8v2YRAvD1PypdJdRL3km6', '833934621', 17, 'Sofía', 'zz', 'zz', 'z', 'zz', 'zz', 'zz', 'zz', 'zz', 'zz', 'sofia@gmail.com', 'zz', 'sa', '14.6', 1, '0', '14.6', 'stripe', 3, 0, 1, '{\"id\":\"cs_test_a1FLexr4GLUHnsfxqghOxYO7G5YQ7BgIZWaQi8v2YRAvD1PypdJdRL3km6\",\"object\":\"checkout.session\",\"after_expiration\":null,\"allow_promotion_codes\":null,\"amount_subtotal\":392,\"amount_total\":392,\"automatic_tax\":{\"enabled\":false,\"liability\":null,\"status\":null},\"billing_address_collection\":null,\"cancel_url\":\"http:\\/\\/localhost\\/ecommerce\\/pagar\",\"client_reference_id\":null,\"client_secret\":null,\"consent\":null,\"consent_collection\":null,\"created\":1713797280,\"currency\":\"usd\",\"currency_conversion\":null,\"custom_fields\":[],\"custom_text\":{\"after_submit\":null,\"shipping_address\":null,\"submit\":null,\"terms_of_service_acceptance\":null},\"customer\":null,\"customer_creation\":\"if_required\",\"customer_details\":{\"address\":{\"city\":null,\"country\":\"PE\",\"line1\":null,\"line2\":null,\"postal_code\":null,\"state\":null},\"email\":\"sofia@gmail.com\",\"name\":\"1111\",\"phone\":null,\"tax_exempt\":\"none\",\"tax_ids\":[]},\"customer_email\":\"sofia@gmail.com\",\"expires_at\":1713883680,\"invoice\":null,\"invoice_creation\":{\"enabled\":false,\"invoice_data\":{\"account_tax_ids\":null,\"custom_fields\":null,\"description\":null,\"footer\":null,\"issuer\":null,\"metadata\":[],\"rendering_options\":null}},\"livemode\":false,\"locale\":null,\"metadata\":[],\"mode\":\"payment\",\"payment_intent\":\"pi_3P8OAL071tYYB9Py1KpRzexV\",\"payment_link\":null,\"payment_method_collection\":\"if_required\",\"payment_method_configuration_details\":null,\"payment_method_options\":{\"card\":{\"request_three_d_secure\":\"automatic\"}},\"payment_method_types\":[\"card\"],\"payment_status\":\"paid\",\"phone_number_collection\":{\"enabled\":false},\"recovered_from\":null,\"saved_payment_method_options\":null,\"setup_intent\":null,\"shipping_address_collection\":null,\"shipping_cost\":null,\"shipping_details\":null,\"shipping_options\":[],\"status\":\"complete\",\"submit_type\":null,\"subscription\":null,\"success_url\":\"http:\\/\\/localhost\\/ecommerce\\/stripe\\/payment-success\",\"total_details\":{\"amount_discount\":0,\"amount_shipping\":0,\"amount_tax\":0},\"ui_mode\":\"hosted\",\"url\":null}', '2024-04-22 14:48:01', '2024-04-22 14:49:20'),
 (7, 'cs_test_a1BIcrF0e8madZRRivCAAwewEl1j8eUv31GjbnCMmBNZhl1274xOYM880b', 'cs_test_a1BIcrF0e8madZRRivCAAwewEl1j8eUv31GjbnCMmBNZhl1274xOYM880b', '474665651', 17, 'Abraham Elias', 'Correa', 'rico\'s', 'Perú', 'Lima', 'Lima', 'Lima', 'Ate', '15022', '924575577', 'sofia@gmail.com', 'Alaaa', 'sa', '430.5', 3, '20', '410.5', 'stripe', 3, 0, 1, '{\"id\":\"cs_test_a1BIcrF0e8madZRRivCAAwewEl1j8eUv31GjbnCMmBNZhl1274xOYM880b\",\"object\":\"checkout.session\",\"after_expiration\":null,\"allow_promotion_codes\":null,\"amount_subtotal\":11034,\"amount_total\":11034,\"automatic_tax\":{\"enabled\":false,\"liability\":null,\"status\":null},\"billing_address_collection\":null,\"cancel_url\":\"http:\\/\\/localhost\\/ecommerce\\/pagar\",\"client_reference_id\":null,\"client_secret\":null,\"consent\":null,\"consent_collection\":null,\"created\":1713889112,\"currency\":\"usd\",\"currency_conversion\":null,\"custom_fields\":[],\"custom_text\":{\"after_submit\":null,\"shipping_address\":null,\"submit\":null,\"terms_of_service_acceptance\":null},\"customer\":null,\"customer_creation\":\"if_required\",\"customer_details\":{\"address\":{\"city\":null,\"country\":\"PE\",\"line1\":null,\"line2\":null,\"postal_code\":null,\"state\":null},\"email\":\"sofia@gmail.com\",\"name\":\"1111\",\"phone\":null,\"tax_exempt\":\"none\",\"tax_ids\":[]},\"customer_email\":\"sofia@gmail.com\",\"expires_at\":1713975512,\"invoice\":null,\"invoice_creation\":{\"enabled\":false,\"invoice_data\":{\"account_tax_ids\":null,\"custom_fields\":null,\"description\":null,\"footer\":null,\"issuer\":null,\"metadata\":[],\"rendering_options\":null}},\"livemode\":false,\"locale\":null,\"metadata\":[],\"mode\":\"payment\",\"payment_intent\":\"pi_3P8m3P071tYYB9Py0JfLWwHL\",\"payment_link\":null,\"payment_method_collection\":\"if_required\",\"payment_method_configuration_details\":null,\"payment_method_options\":{\"card\":{\"request_three_d_secure\":\"automatic\"}},\"payment_method_types\":[\"card\"],\"payment_status\":\"paid\",\"phone_number_collection\":{\"enabled\":false},\"recovered_from\":null,\"saved_payment_method_options\":null,\"setup_intent\":null,\"shipping_address_collection\":null,\"shipping_cost\":null,\"shipping_details\":null,\"shipping_options\":[],\"status\":\"complete\",\"submit_type\":null,\"subscription\":null,\"success_url\":\"http:\\/\\/localhost\\/ecommerce\\/stripe\\/payment-success\",\"total_details\":{\"amount_discount\":0,\"amount_shipping\":0,\"amount_tax\":0},\"ui_mode\":\"hosted\",\"url\":null}', '2024-04-23 16:18:32', '2024-04-23 16:20:51'),
-(8, '4PE70417MC359702K', NULL, '636659515', 17, 'Sofía', 'zz', 'zz', 'Perú', 'Lima', 'Lima', 'Lima', 'zz', '15022', '924575577', 'sofia@gmail.com', 'zzz', 'sa', '15', 1, '0', '15', 'paypal', 3, 0, 1, '{\"PayerID\":\"5JT8MGVM5R8SS\",\"st\":\"Completed\",\"tx\":\"4PE70417MC359702K\",\"cc\":\"USD\",\"amt\":\"4.03\",\"payer_email\":\"sb-pazhd25352612@business.example.com\",\"payer_id\":\"5JT8MGVM5R8SS\",\"payer_status\":\"VERIFIED\",\"first_name\":\"John\",\"last_name\":\"Doe\",\"txn_id\":\"4PE70417MC359702K\",\"mc_currency\":\"USD\",\"mc_fee\":\"0.46\",\"mc_gross\":\"4.03\",\"protection_eligibility\":\"ELIGIBLE\",\"payment_fee\":\"0.46\",\"payment_gross\":\"4.03\",\"payment_status\":\"Completed\",\"payment_type\":\"instant\",\"handling_amount\":\"0.00\",\"shipping\":\"0.00\",\"item_name\":\"E-commerce\",\"item_number\":\"8\",\"quantity\":\"1\",\"txn_type\":\"web_accept\",\"payment_date\":\"2024-04-23T19:03:40Z\",\"receiver_id\":\"85UBVEVAEQXA2\",\"notify_version\":\"UNVERSIONED\",\"verify_sign\":\"Ab165HSaBYXAUcq..5qSrVzIi7IaACR3xEZIcqLGPiMk0ZMT0tGoU4Rs\"}', '2024-04-23 19:03:41', '2024-04-23 19:04:40');
+(8, '4PE70417MC359702K', NULL, '636659515', 17, 'Sofía', 'zz', 'zz', 'Perú', 'Lima', 'Lima', 'Lima', 'zz', '15022', '924575577', 'sofia@gmail.com', 'zzz', 'sa', '15', 1, '0', '15', 'paypal', 3, 0, 1, '{\"PayerID\":\"5JT8MGVM5R8SS\",\"st\":\"Completed\",\"tx\":\"4PE70417MC359702K\",\"cc\":\"USD\",\"amt\":\"4.03\",\"payer_email\":\"sb-pazhd25352612@business.example.com\",\"payer_id\":\"5JT8MGVM5R8SS\",\"payer_status\":\"VERIFIED\",\"first_name\":\"John\",\"last_name\":\"Doe\",\"txn_id\":\"4PE70417MC359702K\",\"mc_currency\":\"USD\",\"mc_fee\":\"0.46\",\"mc_gross\":\"4.03\",\"protection_eligibility\":\"ELIGIBLE\",\"payment_fee\":\"0.46\",\"payment_gross\":\"4.03\",\"payment_status\":\"Completed\",\"payment_type\":\"instant\",\"handling_amount\":\"0.00\",\"shipping\":\"0.00\",\"item_name\":\"E-commerce\",\"item_number\":\"8\",\"quantity\":\"1\",\"txn_type\":\"web_accept\",\"payment_date\":\"2024-04-23T19:03:40Z\",\"receiver_id\":\"85UBVEVAEQXA2\",\"notify_version\":\"UNVERSIONED\",\"verify_sign\":\"Ab165HSaBYXAUcq..5qSrVzIi7IaACR3xEZIcqLGPiMk0ZMT0tGoU4Rs\"}', '2024-04-23 19:03:41', '2024-04-23 19:04:40'),
+(9, 'cs_test_a1xuPzh0iokKjkDg8rLEyfE6bSJl3oPipKSPGKecXbXSM9iHfhWJ3fjXrk', 'cs_test_a1xuPzh0iokKjkDg8rLEyfE6bSJl3oPipKSPGKecXbXSM9iHfhWJ3fjXrk', '931942458', 1, 'Abraham Elias', 'Cueva Rico', 'rico\'s', 'Perú', 'Hefestos', '404', 'Lima', 'Ate', '15022', '924575577', 'ricoabraham879@gmail.com', 'alaaa', '', '0', 3, '20', '9.2', 'stripe', 0, 0, 1, '{\"id\":\"cs_test_a1xuPzh0iokKjkDg8rLEyfE6bSJl3oPipKSPGKecXbXSM9iHfhWJ3fjXrk\",\"object\":\"checkout.session\",\"after_expiration\":null,\"allow_promotion_codes\":null,\"amount_subtotal\":247,\"amount_total\":247,\"automatic_tax\":{\"enabled\":false,\"liability\":null,\"status\":null},\"billing_address_collection\":null,\"cancel_url\":\"http:\\/\\/localhost\\/ecommerce\\/pagar\",\"client_reference_id\":null,\"client_secret\":null,\"consent\":null,\"consent_collection\":null,\"created\":1715014063,\"currency\":\"usd\",\"currency_conversion\":null,\"custom_fields\":[],\"custom_text\":{\"after_submit\":null,\"shipping_address\":null,\"submit\":null,\"terms_of_service_acceptance\":null},\"customer\":null,\"customer_creation\":\"if_required\",\"customer_details\":{\"address\":{\"city\":null,\"country\":\"PE\",\"line1\":null,\"line2\":null,\"postal_code\":null,\"state\":null},\"email\":\"ricoabraham879@gmail.com\",\"name\":\"1111\",\"phone\":null,\"tax_exempt\":\"none\",\"tax_ids\":[]},\"customer_email\":\"ricoabraham879@gmail.com\",\"expires_at\":1715100463,\"invoice\":null,\"invoice_creation\":{\"enabled\":false,\"invoice_data\":{\"account_tax_ids\":null,\"custom_fields\":null,\"description\":null,\"footer\":null,\"issuer\":null,\"metadata\":[],\"rendering_options\":null}},\"livemode\":false,\"locale\":null,\"metadata\":[],\"mode\":\"payment\",\"payment_intent\":\"pi_3PDUi3071tYYB9Py08vMk36B\",\"payment_link\":null,\"payment_method_collection\":\"if_required\",\"payment_method_configuration_details\":null,\"payment_method_options\":{\"card\":{\"request_three_d_secure\":\"automatic\"}},\"payment_method_types\":[\"card\"],\"payment_status\":\"paid\",\"phone_number_collection\":{\"enabled\":false},\"recovered_from\":null,\"saved_payment_method_options\":null,\"setup_intent\":null,\"shipping_address_collection\":null,\"shipping_cost\":null,\"shipping_details\":null,\"shipping_options\":[],\"status\":\"complete\",\"submit_type\":null,\"subscription\":null,\"success_url\":\"http:\\/\\/localhost\\/ecommerce\\/stripe\\/payment-success\",\"total_details\":{\"amount_discount\":0,\"amount_shipping\":0,\"amount_tax\":0},\"ui_mode\":\"hosted\",\"url\":null}', '2024-05-06 16:47:41', '2024-05-06 16:48:21'),
+(10, 'cs_test_a1OSQroAbRf9nRwiNhUvIeon9u7JgaTzzTCAeIfRwjAtlxkeFNR5E0oMN3', 'cs_test_a1OSQroAbRf9nRwiNhUvIeon9u7JgaTzzTCAeIfRwjAtlxkeFNR5E0oMN3', '604118575', 1, 'Abraham Elias', 'Cueva Rico', 'rico\'s', 'Perú', 'Hefestos', '404', 'Lima', 'Ate', '15022', '924575577', 'ricoabraham879@gmail.com', 'alaaaa', '', '0', 3, '20', '9.2', 'stripe', 0, 0, 1, '{\"id\":\"cs_test_a1OSQroAbRf9nRwiNhUvIeon9u7JgaTzzTCAeIfRwjAtlxkeFNR5E0oMN3\",\"object\":\"checkout.session\",\"after_expiration\":null,\"allow_promotion_codes\":null,\"amount_subtotal\":247,\"amount_total\":247,\"automatic_tax\":{\"enabled\":false,\"liability\":null,\"status\":null},\"billing_address_collection\":null,\"cancel_url\":\"http:\\/\\/localhost\\/ecommerce\\/pagar\",\"client_reference_id\":null,\"client_secret\":null,\"consent\":null,\"consent_collection\":null,\"created\":1715014420,\"currency\":\"usd\",\"currency_conversion\":null,\"custom_fields\":[],\"custom_text\":{\"after_submit\":null,\"shipping_address\":null,\"submit\":null,\"terms_of_service_acceptance\":null},\"customer\":null,\"customer_creation\":\"if_required\",\"customer_details\":{\"address\":{\"city\":null,\"country\":\"PE\",\"line1\":null,\"line2\":null,\"postal_code\":null,\"state\":null},\"email\":\"ricoabraham879@gmail.com\",\"name\":\"1111\",\"phone\":null,\"tax_exempt\":\"none\",\"tax_ids\":[]},\"customer_email\":\"ricoabraham879@gmail.com\",\"expires_at\":1715100820,\"invoice\":null,\"invoice_creation\":{\"enabled\":false,\"invoice_data\":{\"account_tax_ids\":null,\"custom_fields\":null,\"description\":null,\"footer\":null,\"issuer\":null,\"metadata\":[],\"rendering_options\":null}},\"livemode\":false,\"locale\":null,\"metadata\":[],\"mode\":\"payment\",\"payment_intent\":\"pi_3PDUoz071tYYB9Py0wRTfGsd\",\"payment_link\":null,\"payment_method_collection\":\"if_required\",\"payment_method_configuration_details\":null,\"payment_method_options\":{\"card\":{\"request_three_d_secure\":\"automatic\"}},\"payment_method_types\":[\"card\"],\"payment_status\":\"paid\",\"phone_number_collection\":{\"enabled\":false},\"recovered_from\":null,\"saved_payment_method_options\":null,\"setup_intent\":null,\"shipping_address_collection\":null,\"shipping_cost\":null,\"shipping_details\":null,\"shipping_options\":[],\"status\":\"complete\",\"submit_type\":null,\"subscription\":null,\"success_url\":\"http:\\/\\/localhost\\/ecommerce\\/stripe\\/payment-success\",\"total_details\":{\"amount_discount\":0,\"amount_shipping\":0,\"amount_tax\":0},\"ui_mode\":\"hosted\",\"url\":null}', '2024-05-06 16:53:00', '2024-05-06 16:55:45'),
+(11, 'cs_test_a19e43aDdliV0Kbvr5z9hWOAX4iSHy4JuAsqngFTUarrvpYVu3bpd6KlbC', 'cs_test_a19e43aDdliV0Kbvr5z9hWOAX4iSHy4JuAsqngFTUarrvpYVu3bpd6KlbC', '978945747', 1, 'Abraham Elias', 'Cueva Rico', 'rico\'s', 'Perú', 'Hefestos', '404', 'Lima', 'Ate', '15022', '924575577', 'ricoabraham879@gmail.com', 'zaaaaxa', '', '0', 3, '20', '9.2', 'stripe', 0, 0, 1, '{\"id\":\"cs_test_a19e43aDdliV0Kbvr5z9hWOAX4iSHy4JuAsqngFTUarrvpYVu3bpd6KlbC\",\"object\":\"checkout.session\",\"after_expiration\":null,\"allow_promotion_codes\":null,\"amount_subtotal\":247,\"amount_total\":247,\"automatic_tax\":{\"enabled\":false,\"liability\":null,\"status\":null},\"billing_address_collection\":null,\"cancel_url\":\"http:\\/\\/localhost\\/ecommerce\\/pagar\",\"client_reference_id\":null,\"client_secret\":null,\"consent\":null,\"consent_collection\":null,\"created\":1715014574,\"currency\":\"usd\",\"currency_conversion\":null,\"custom_fields\":[],\"custom_text\":{\"after_submit\":null,\"shipping_address\":null,\"submit\":null,\"terms_of_service_acceptance\":null},\"customer\":null,\"customer_creation\":\"if_required\",\"customer_details\":{\"address\":{\"city\":null,\"country\":\"PE\",\"line1\":null,\"line2\":null,\"postal_code\":null,\"state\":null},\"email\":\"ricoabraham879@gmail.com\",\"name\":\"1111\",\"phone\":null,\"tax_exempt\":\"none\",\"tax_ids\":[]},\"customer_email\":\"ricoabraham879@gmail.com\",\"expires_at\":1715100974,\"invoice\":null,\"invoice_creation\":{\"enabled\":false,\"invoice_data\":{\"account_tax_ids\":null,\"custom_fields\":null,\"description\":null,\"footer\":null,\"issuer\":null,\"metadata\":[],\"rendering_options\":null}},\"livemode\":false,\"locale\":null,\"metadata\":[],\"mode\":\"payment\",\"payment_intent\":\"pi_3PDUre071tYYB9Py1iGEEJ9f\",\"payment_link\":null,\"payment_method_collection\":\"if_required\",\"payment_method_configuration_details\":null,\"payment_method_options\":{\"card\":{\"request_three_d_secure\":\"automatic\"}},\"payment_method_types\":[\"card\"],\"payment_status\":\"paid\",\"phone_number_collection\":{\"enabled\":false},\"recovered_from\":null,\"saved_payment_method_options\":null,\"setup_intent\":null,\"shipping_address_collection\":null,\"shipping_cost\":null,\"shipping_details\":null,\"shipping_options\":[],\"status\":\"complete\",\"submit_type\":null,\"subscription\":null,\"success_url\":\"http:\\/\\/localhost\\/ecommerce\\/stripe\\/payment-success\",\"total_details\":{\"amount_discount\":0,\"amount_shipping\":0,\"amount_tax\":0},\"ui_mode\":\"hosted\",\"url\":null}', '2024-05-06 16:56:15', '2024-05-06 16:58:16'),
+(12, NULL, 'cs_test_a1IL0ClrWAC42DKXfUYYJ8EHHIIKUWWoNWpLMASN1Lu7qonCwXaIF695h4', '223409630', 1, 'Abraham Elias', 'Cueva Rico', 'rico\'s', 'Perú', 'Hefestos', '404', 'Lima', 'Ate', '15022', '924575577', 'ricoabraham879@gmail.com', 'sadsadd', '', '0', 3, '20', '841', 'stripe', 0, 0, 0, NULL, '2024-05-06 16:59:06', '2024-05-06 16:59:08'),
+(13, NULL, 'cs_test_a1kSVXW6CXnNF4lEB19zbDf2BSQoVg9UBNNJzRLafuBVyc8Lo2bM4YVMDC', '541054225', 1, 'Abraham Elias', 'Cueva Rico', 'rico\'s', 'Perú', 'Hefestos', '404', 'Lima', 'Ate', '15022', '924575577', 'ricoabraham879@gmail.com', 'sdfdsfsfd', '', '0', 2, '15', '14.2', 'stripe', 0, 0, 0, NULL, '2024-05-06 16:59:41', '2024-05-06 16:59:42'),
+(14, '2F594884LA9687732', NULL, '557583761', 1, 'Abraham Elias', 'Cueva Rico', 'rico\'s', 'Perú', 'Hefestos', '404', 'Lima', 'Ate', '15022', '924575577', 'ricoabraham879@gmail.com', 'xdxdxdxdd', '', '0', 3, '20', '9.2', 'paypal', 0, 0, 1, '{\"PayerID\":\"5JT8MGVM5R8SS\",\"st\":\"Completed\",\"tx\":\"2F594884LA9687732\",\"cc\":\"USD\",\"amt\":\"2.47\",\"payer_email\":\"sb-pazhd25352612@business.example.com\",\"payer_id\":\"5JT8MGVM5R8SS\",\"payer_status\":\"VERIFIED\",\"first_name\":\"John\",\"last_name\":\"Doe\",\"txn_id\":\"2F594884LA9687732\",\"mc_currency\":\"USD\",\"mc_fee\":\"0.40\",\"mc_gross\":\"2.47\",\"protection_eligibility\":\"ELIGIBLE\",\"payment_fee\":\"0.40\",\"payment_gross\":\"2.47\",\"payment_status\":\"Completed\",\"payment_type\":\"instant\",\"handling_amount\":\"0.00\",\"shipping\":\"0.00\",\"item_name\":\"E-commerce\",\"item_number\":\"14\",\"quantity\":\"1\",\"txn_type\":\"web_accept\",\"payment_date\":\"2024-05-06T17:01:07Z\",\"receiver_id\":\"85UBVEVAEQXA2\",\"notify_version\":\"UNVERSIONED\",\"verify_sign\":\"Anp6FYsTiu25aR0NYrmne7rT0vriAz4PmiFJylWyP4k2Idy6ulLj8BKT\"}', '2024-05-06 17:01:07', '2024-05-06 17:01:55'),
+(15, '6DE41219PM045315S', NULL, '725149611', 1, 'Abraham Elias', 'Cueva Rico', 'rico\'s', 'Perú', 'Hefestos', '404', 'Lima', 'Ate', '15022', '924575577', 'ricoabraham879@gmail.com', 'asdxasdcasc', '', '0', 3, '20', '9.2', 'paypal', 0, 0, 1, '{\"PayerID\":\"5JT8MGVM5R8SS\",\"st\":\"Completed\",\"tx\":\"6DE41219PM045315S\",\"cc\":\"USD\",\"amt\":\"2.47\",\"payer_email\":\"sb-pazhd25352612@business.example.com\",\"payer_id\":\"5JT8MGVM5R8SS\",\"payer_status\":\"VERIFIED\",\"first_name\":\"John\",\"last_name\":\"Doe\",\"txn_id\":\"6DE41219PM045315S\",\"mc_currency\":\"USD\",\"mc_fee\":\"0.40\",\"mc_gross\":\"2.47\",\"protection_eligibility\":\"ELIGIBLE\",\"payment_fee\":\"0.40\",\"payment_gross\":\"2.47\",\"payment_status\":\"Completed\",\"payment_type\":\"instant\",\"handling_amount\":\"0.00\",\"shipping\":\"0.00\",\"item_name\":\"E-commerce\",\"item_number\":\"15\",\"quantity\":\"1\",\"txn_type\":\"web_accept\",\"payment_date\":\"2024-05-06T17:02:51Z\",\"receiver_id\":\"85UBVEVAEQXA2\",\"notify_version\":\"UNVERSIONED\",\"verify_sign\":\"AXiMFXRWkmt9OxNFdW5tF1mgblXiA1d1ian2eHHCeeBgUqnhVHhcIHiP\"}', '2024-05-06 17:02:51', '2024-05-06 17:03:51');
 
 -- --------------------------------------------------------
 
@@ -685,9 +699,39 @@ CREATE TABLE `sliders` (
 --
 
 INSERT INTO `sliders` (`id`, `titulo`, `nombre_imagen`, `nombre_button`, `link_button`, `esta_eliminado`, `estado`, `created_at`, `updated_at`) VALUES
-(1, 'A340-600 Lufthansa', '3i6hvwcmkfatekdidazy.jpg', 'Ver', 'https://www.facebook.com/', 0, 0, '2024-05-03', '2024-05-05 00:03:35'),
-(2, 'A350-900 Turkish airlines', '3xn10hfaspugxm36posd.jpg', 'Ver', 'https://www.instagram.com/a.rico_20/', 0, 0, '2024-05-03', '2024-05-05 00:03:47'),
-(3, 'B777-300ER Turkish airlines', 'aopn6te84fhwy4lsyhix.jpg', 'Ver', 'https://www.tiktok.com/foryou', 0, 0, '2024-05-03', '2024-05-05 00:04:00');
+(1, 'A340-600 Lufthansa', '3i6hvwcmkfatekdidazy.jpg', 'Ver', 'https://www.facebook.com/', 0, 0, '2024-05-03', '2024-05-06 19:19:01'),
+(2, 'A350-900 Turkish airlines', '3xn10hfaspugxm36posd.jpg', 'Ver', 'https://www.instagram.com/a.rico_20/', 0, 0, '2024-05-03', '2024-05-05 19:26:30'),
+(3, 'B777-300ER Turkish airlines', 'aopn6te84fhwy4lsyhix.jpg', 'Ver', 'https://www.tiktok.com/foryou', 0, 0, '2024-05-03', '2024-05-06 19:20:12');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `socios`
+--
+
+CREATE TABLE `socios` (
+  `id` int(11) NOT NULL,
+  `nombre_imagen` varchar(255) DEFAULT NULL,
+  `link_button` varchar(255) DEFAULT NULL,
+  `esta_eliminado` tinyint(4) DEFAULT 0,
+  `estado` tinyint(4) NOT NULL DEFAULT 0,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `socios`
+--
+
+INSERT INTO `socios` (`id`, `nombre_imagen`, `link_button`, `esta_eliminado`, `estado`, `created_at`, `updated_at`) VALUES
+(1, '1vr8usiyfshvddrbl7ac.png', 'http://localhost/ecommerce/', 0, 0, '2024-05-06 19:25:54', '2024-05-06 19:29:36'),
+(2, 'ulznslkv0aa75q88mlot.png', 'http://localhost/ecommerce/', 0, 0, '2024-05-06 19:26:39', '2024-05-06 19:26:39'),
+(3, 'vnoqmcpulk4njb7ad1yx.png', 'http://localhost/ecommerce/', 0, 0, '2024-05-06 19:26:50', '2024-05-06 19:27:10'),
+(4, 'fxpnqsgwxwkp2rjgauia.png', 'http://localhost/ecommerce/', 0, 0, '2024-05-06 19:26:58', '2024-05-06 19:27:04'),
+(5, 'llnxxteylsdxyd4scrcf.png', 'http://localhost/ecommerce/', 0, 0, '2024-05-06 19:27:19', '2024-05-06 19:27:19'),
+(6, '9lodx5cnnseymgifmtx0.png', 'http://localhost/ecommerce/', 0, 0, '2024-05-06 19:28:28', '2024-05-06 19:28:28'),
+(7, 'xyvbhoz5k3ejvxy5xpkq.png', 'http://localhost/ecommerce/', 0, 0, '2024-05-06 19:44:06', '2024-05-06 19:44:06'),
+(8, 'k2igsdn0j7txqpl83fct.png', 'http://localhost/ecommerce/', 0, 0, '2024-05-06 19:44:18', '2024-05-06 19:44:18');
 
 -- --------------------------------------------------------
 
@@ -920,6 +964,12 @@ ALTER TABLE `sliders`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indices de la tabla `socios`
+--
+ALTER TABLE `socios`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indices de la tabla `subcategorias`
 --
 ALTER TABLE `subcategorias`
@@ -988,7 +1038,7 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT de la tabla `item_pedido`
 --
 ALTER TABLE `item_pedido`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT de la tabla `lista_de_deseos`
@@ -1018,7 +1068,7 @@ ALTER TABLE `pages`
 -- AUTO_INCREMENT de la tabla `pedidos`
 --
 ALTER TABLE `pedidos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT de la tabla `personal_access_tokens`
@@ -1055,6 +1105,12 @@ ALTER TABLE `producto_tamano`
 --
 ALTER TABLE `sliders`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT de la tabla `socios`
+--
+ALTER TABLE `socios`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT de la tabla `subcategorias`
