@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Mail\ContactenosMail;
+use App\Models\CategoriaModel;
 use App\Models\ConfiguracionSistemaModel;
 use App\Models\ContactenosModel;
 use App\Models\PagesModel;
@@ -22,6 +23,7 @@ class InicioController extends Controller
 
         $data['getSliders'] = SlidersModel::getRecordActive();
         $data['getSocios'] = SociosModel::getRecordActive();
+        $data['getCategorias'] = CategoriaModel::getRecordActiveInicio();
 
         $data['meta_titulo'] = $getPage->meta_titulo;
         $data['meta_descripcion'] = $getPage->meta_descripcion;

@@ -38,6 +38,7 @@
                                     <thead>
                                         <tr>
                                             <th>#</th>
+                                            <th>Imagen</th>
                                             <th>Nombre</th>
                                             <th>Slug</th>
                                             <th>Meta título</th>
@@ -45,6 +46,7 @@
                                             <th>Meta palabras clave</th>
                                             <th>Creado por</th>
                                             <th>Estado</th>
+                                            <th>Esta inicio</th>
                                             <th>Fecha creación</th>
                                             <th>Acción</th>
                                         </tr>
@@ -53,6 +55,11 @@
                                         @foreach ($getRecord as $valor)
                                             <tr>
                                                 <td>{{ $valor->id }}</td>
+                                                <td>
+                                                    @if (!empty($valor->getImagen()))
+                                                        <img src="{{ $valor->getImagen() }}" style="width: 100px">
+                                                    @endif
+                                                </td>
                                                 <td>{{ $valor->nombre }}</td>
                                                 <td>{{ $valor->slug }}</td>
                                                 <td>{{ $valor->meta_titulo }}</td>
@@ -60,6 +67,7 @@
                                                 <td>{{ $valor->meta_p_clave }}</td>
                                                 <td>{{ $valor->created_by_name }}</td>
                                                 <td>{{ $valor->estado == 0 ? 'Activo' : 'Inactivo' }}</td>
+                                                <td>{{ $valor->esta_inicio == 1 ? 'Sí' : 'No' }}</td>
                                                 {{-- <td>{{ date('d-m-Y', strtotime($valor->created_at)) }}</td> --}}
                                                 <td>{{ $valor->created_at->diffForHumans() }}</td>
                                                 <td>

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\CategoriaModel;
 use Auth;
+use Str;
 
 class CategoriaController extends Controller
 {
@@ -36,6 +37,19 @@ class CategoriaController extends Controller
         $categoria->meta_descripcion = trim($request->meta_descripcion);
         $categoria->meta_p_clave = trim($request->meta_p_clave);
         $categoria->created_by = Auth::user()->id;
+
+        $categoria->nombre_button = trim($request->nombre_button);
+        $categoria->esta_inicio = !empty($request->esta_inicio) ? 1 : 0;
+
+        if (!empty($request->file('nombre_imagen'))) {
+            $file = $request->file('nombre_imagen');
+            $ext = $file->getClientOriginalExtension();
+            $randomStr = Str::random(20);
+            $filename = strtolower($randomStr) . '.' . $ext;
+            $file->move('upload/categorias/', $filename);
+            $categoria->nombre_imagen = $filename;
+        }
+
         $categoria->save();
 
         return redirect('admin/categorias/listar')->with('success', 'Categoría agregada exitosamente');
@@ -61,6 +75,19 @@ class CategoriaController extends Controller
         $categoria->meta_titulo = trim($request->meta_titulo);
         $categoria->meta_descripcion = trim($request->meta_descripcion);
         $categoria->meta_p_clave = trim($request->meta_p_clave);
+
+        $categoria->nombre_button = trim($request->nombre_button);
+        $categoria->esta_inicio = !empty($request->esta_inicio) ? 1 : 0;
+
+        if (!empty($request->file('nombre_imagen'))) {
+            $file = $request->file('nombre_imagen');
+            $ext = $file->getClientOriginalExtension();
+            $randomStr = Str::random(20);
+            $filename = strtolower($randomStr) . '.' . $ext;
+            $file->move('upload/categorias/', $filename);
+            $categoria->nombre_imagen = $filename;
+        }
+
         $categoria->save();
 
         return redirect('admin/categorias/listar')->with('success', 'Categoría actualizada exitosamente');

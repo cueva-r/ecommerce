@@ -43,6 +43,17 @@ class CategoriaModel extends Model
         ->get();
     }
 
+    static function getRecordActiveInicio()
+    {
+        return self::select('categorias.*')
+        ->join('users', 'users.id', '=', 'categorias.created_by')
+        ->where('categorias.esta_inicio', '=', 1)
+        ->where('categorias.esta_eliminado', '=', 0)
+        ->where('categorias.estado', '=', 0)
+        ->orderBy('categorias.id', 'asc')
+        ->get();
+    }
+
     static function getRecordMenu()
     {
         return self::select('categorias.*')
@@ -57,5 +68,14 @@ class CategoriaModel extends Model
         return $this->hasMany(SubCategoriaModel::class, "categoria_id")
         ->where('subcategorias.estado', '=', 0)
         ->where('subcategorias.esta_eliminado', '=', 0);
+    }
+
+    public function getImagen()
+    {
+        if (!empty($this->nombre_imagen) && file_exists('upload/categorias/' . $this->nombre_imagen)) {
+            return url('upload/categorias/' . $this->nombre_imagen);
+        } else {
+            return "";
+        }
     }
 }
