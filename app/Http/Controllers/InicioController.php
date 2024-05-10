@@ -7,6 +7,7 @@ use App\Models\CategoriaModel;
 use App\Models\ConfiguracionSistemaModel;
 use App\Models\ContactenosModel;
 use App\Models\PagesModel;
+use App\Models\ProductoModel;
 use App\Models\SlidersModel;
 use App\Models\SociosModel;
 use Illuminate\Http\Request;
@@ -24,6 +25,7 @@ class InicioController extends Controller
         $data['getSliders'] = SlidersModel::getRecordActive();
         $data['getSocios'] = SociosModel::getRecordActive();
         $data['getCategorias'] = CategoriaModel::getRecordActiveInicio();
+        $data['getProducto'] = ProductoModel::getRecienLlegados();
 
         $data['meta_titulo'] = $getPage->meta_titulo;
         $data['meta_descripcion'] = $getPage->meta_descripcion;

@@ -1,11 +1,12 @@
 <div class="products mb-3">
     <div class="row justify-content-center">
         @foreach ($getProducto as $valor)
-            <div class="col-12 col-md-4 col-lg-4">
+            @php
+                $getProductoImagen = $valor->getImagenSingle($valor->id);
+            @endphp
+
+            <div class="col-12 @if(!empty($esta_inicio)) col-md-3 col-lg-3 @else col-md-4 col-lg-4 @endif">
                 <div class="product product-7 text-center">
-                    @php
-                        $getProductoImagen = $valor->getImagenSingle($valor->id);
-                    @endphp
                     <figure class="product-media">
                         <a href="{{ url($valor->slug) }}">
                             @if (!empty($getProductoImagen) && !empty($getProductoImagen->getLogo()))
@@ -42,7 +43,8 @@
                         </div>
                         <div class="ratings-container">
                             <div class="ratings">
-                                <div class="ratings-val" style="width: {{ $valor->getReviewRating($valor->id) }}%;"></div>
+                                <div class="ratings-val" style="width: {{ $valor->getReviewRating($valor->id) }}%;">
+                                </div>
                             </div>
                             <span class="ratings-text">( {{ $valor->getTotalCalificaciones() }} Reseñas )</span>
                         </div>
