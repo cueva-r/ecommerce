@@ -180,6 +180,21 @@
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="form-group">
+                                                <label>Es tendencia?</label>
+                                                <div>
+                                                    <label>
+                                                        <input {{ !empty($productos->es_tendencia) ? 'checked' : '' }} type="checkbox" name="es_tendencia">
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <hr>
+
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
                                                 <label>Tamaño <span style="color: red">*</span></label>
                                                 <div>
                                                     <table class="table table-striped">
@@ -371,7 +386,7 @@
                         },
                         dataType: "json",
                         success: function(data) {
-                            
+
                         },
                         error: function(data) {}
                     });
@@ -388,18 +403,18 @@
 
         $('body').delegate(".agregarTamano", "click", function() {
             var html = '<tr id="eliminarTamano' + i + '">\n\
-                                    <td>\n\
-                                        <input type="text" name="tamano[' + i + '][nombre]" placeholder="Nombre" class="form-control">\n\
-                                    </td>\n\
-                                    <td>\n\
-                                        <input type="text" name="tamano[' + i + '][precio]" placeholder="Precio" class="form-control">\n\
-                                    </td>\n\
-                                    <td>\n\
-                                        <button type="button" id="' + i + '" class="btn btn-outline-danger eliminarTamano">\n\
-                                            <i class="fa-solid fa-trash"></i>\n\
-                                        </button>\n\
-                                    </td>\n\
-                                </tr>';
+                                        <td>\n\
+                                            <input type="text" name="tamano[' + i + '][nombre]" placeholder="Nombre" class="form-control">\n\
+                                        </td>\n\
+                                        <td>\n\
+                                            <input type="text" name="tamano[' + i + '][precio]" placeholder="Precio" class="form-control">\n\
+                                        </td>\n\
+                                        <td>\n\
+                                            <button type="button" id="' + i + '" class="btn btn-outline-danger eliminarTamano">\n\
+                                                <i class="fa-solid fa-trash"></i>\n\
+                                            </button>\n\
+                                        </td>\n\
+                                    </tr>';
             i++;
 
             $('#appendTamano').append(html);

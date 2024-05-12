@@ -27,6 +27,7 @@ class InicioController extends Controller
         $data['getCategorias'] = CategoriaModel::getRecordActiveInicio();
 
         $data['getProducto'] = ProductoModel::getRecienAgregados();
+        $data['getProductoTendencia'] = ProductoModel::getProductoTendencia();
 
         $data['meta_titulo'] = $getPage->meta_titulo;
         $data['meta_descripcion'] = $getPage->meta_descripcion;

@@ -78,6 +78,9 @@ class ProductoController extends Controller
             $productos->categoria_id = trim($request->categoria_id);
             $productos->subcategoria_id = trim($request->subcategoria_id);
             $productos->marca_id = trim($request->marca_id);
+
+            $productos->es_tendencia = !empty($request->es_tendencia) ? 1 : 0;
+
             $productos->precio = trim($request->precio);
             $productos->precio_anterior = trim($request->precio_anterior);
             $productos->descripcion_corta = trim($request->descripcion_corta);

@@ -65,6 +65,23 @@ class ProductoModel extends Model
         return $return;
     }
 
+    static public function getProductoTendencia()
+    {
+        $return = ProductoModel::select('productos.*', 'users.name as creado_por_nombre', 'categorias.nombre as categoria_nombre', 'categorias.slug as categoria_slug', 'subcategorias.nombre as subcategoria_nombre', 'subcategorias.slug as subcategoria_slug')
+            ->join('users', 'users.id', '=', 'productos.creado_por')
+            ->join('categorias', 'categorias.id', '=', 'productos.categoria_id')
+            ->join('subcategorias', 'subcategorias.id', '=', 'productos.subcategoria_id')
+            ->where('productos.es_tendencia', '=', 1)
+            ->where('productos.esta_eliminado', '=', 0)
+            ->where('productos.estado', '=', 0)
+            ->groupBy('productos.id')
+            ->orderBy('productos.id', 'desc')
+            ->limit(20)
+            ->get();
+
+        return $return;
+    }
+
     static public function getProducto($categoria_id = '', $subcategoria_id = '')
     {
         $return = ProductoModel::select('productos.*', 'users.name as creado_por_nombre', 'categorias.nombre as categoria_nombre', 'categorias.slug as categoria_slug', 'subcategorias.nombre as subcategoria_nombre', 'subcategorias.slug as subcategoria_slug')
