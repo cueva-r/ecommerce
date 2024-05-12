@@ -25,7 +25,8 @@ class InicioController extends Controller
         $data['getSliders'] = SlidersModel::getRecordActive();
         $data['getSocios'] = SociosModel::getRecordActive();
         $data['getCategorias'] = CategoriaModel::getRecordActiveInicio();
-        $data['getProducto'] = ProductoModel::getRecienLlegados();
+
+        $data['getProducto'] = ProductoModel::getRecienAgregados();
 
         $data['meta_titulo'] = $getPage->meta_titulo;
         $data['meta_descripcion'] = $getPage->meta_descripcion;

@@ -35,7 +35,7 @@ class ProductoModel extends Model
         return $return;
     }
 
-    static function getRecord()
+    static public function getRecord()
     {
         return self::select('productos.*', 'users.name as creado_por_nombre')
             ->join('users', 'users.id', '=', 'productos.creado_por')
@@ -44,7 +44,7 @@ class ProductoModel extends Model
             ->get();
     }
 
-    static public function getRecienLlegados()
+    static public function getRecienAgregados()
     {
         $return = ProductoModel::select('productos.*', 'users.name as creado_por_nombre', 'categorias.nombre as categoria_nombre', 'categorias.slug as categoria_slug', 'subcategorias.nombre as subcategoria_nombre', 'subcategorias.slug as subcategoria_slug')
             ->join('users', 'users.id', '=', 'productos.creado_por')

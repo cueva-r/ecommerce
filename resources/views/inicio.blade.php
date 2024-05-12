@@ -371,7 +371,7 @@
                             </div><!-- End .product-action -->
                         </div><!-- End .product -->
                     </div><!-- End .owl-carousel -->
-                </div><!-- .End .tab-pane -->
+                </div>
                 <div class="tab-pane p-0 fade" id="trendy-fur-tab" role="tabpanel" aria-labelledby="trendy-fur-link">
                     <div class="owl-carousel owl-simple carousel-equal-height carousel-with-shadow" data-toggle="owl"
                         data-owl-options='{
@@ -465,7 +465,7 @@
                             </div><!-- End .product-action -->
                         </div><!-- End .product -->
                     </div><!-- End .owl-carousel -->
-                </div><!-- .End .tab-pane -->
+                </div>
                 <div class="tab-pane p-0 fade" id="trendy-decor-tab" role="tabpanel"
                     aria-labelledby="trendy-decor-link">
                     <div class="owl-carousel owl-simple carousel-equal-height carousel-with-shadow" data-toggle="owl"
@@ -548,7 +548,7 @@
                             </div><!-- End .product-action -->
                         </div><!-- End .product -->
                     </div><!-- End .owl-carousel -->
-                </div><!-- .End .tab-pane -->
+                </div>
                 <div class="tab-pane p-0 fade" id="trendy-light-tab" role="tabpanel"
                     aria-labelledby="trendy-light-link">
                     <div class="owl-carousel owl-simple carousel-equal-height carousel-with-shadow" data-toggle="owl"
@@ -645,7 +645,7 @@
                             </div><!-- End .product-action -->
                         </div><!-- End .product -->
                     </div><!-- End .owl-carousel -->
-                </div><!-- .End .tab-pane -->
+                </div>
             </div><!-- End .tab-content -->
         </div>
 
@@ -689,37 +689,33 @@
 
                 <ul class="nav nav-pills nav-border-anim justify-content-center" role="tablist">
                     <li class="nav-item">
-                        <a class="nav-link active" id="top-all-link" data-toggle="tab" href="#top-all-tab"
-                            role="tab" aria-controls="top-all-tab" aria-selected="true">Todos</a>
+                        <a class="nav-link active" id="top-all-link" data-toggle="tab" href="#top-all-tab" role="tab" aria-controls="top-all-tab" aria-selected="true">Todos</a>
                     </li>
                     @foreach ($getCategorias as $categorias)
                         <li class="nav-item">
-                            <a class="nav-link" id="top-{{ $categorias->slug }}-link" data-toggle="tab"
-                                href="#top-{{ $categorias->slug }}-tab" role="tab"
-                                aria-controls="top-{{ $categorias->slug }}-tab"
-                                aria-selected="false">{{ $categorias->nombre }}</a>
+                            <a class="nav-link" id="top-{{ $categorias->slug }}-link" data-toggle="tab" href="#top-{{ $categorias->slug }}-tab" role="tab" aria-controls="top-{{ $categorias->slug }}-tab" aria-selected="false">{{ $categorias->nombre }}</a>
                         </li>
                     @endforeach
                 </ul>
             </div>
 
             <div class="tab-content">
-                <div class="tab-pane p-0 fade show active" id="top-all-tab" role="tabpanel"
-                    aria-labelledby="top-all-link">
+                <div class="tab-pane p-0 fade show active" id="top-all-tab" role="tabpanel" aria-labelledby="top-all-link">
                     <div class="products">
                         @php
                             $esta_inicio = 1;
                         @endphp
                         @include('productos._listar')
-                        <div class="more-container text-center">
-                            <a href="{{ url('buscar') }}" class="btn btn-outline-darker btn-more"><span>Ver más productos</span><i
-                                    class="icon-long-arrow-down"></i></a>
-                        </div>
+                    </div>
+                    <div class="more-container text-center">
+                        <a href="{{ url('buscar') }}" class="btn btn-outline-darker btn-more">
+                            <span>Ver más productos</span>
+                            <i class="icon-long-arrow-down"></i>
+                        </a>
                     </div>
                 </div>
                 @foreach ($getCategorias as $categorias)
-                    <div class="tab-pane p-0 fade" id="top-{{ $categorias->slug }}-tab" role="tabpanel"
-                        aria-labelledby="top-{{ $categorias->slug }}-link">
+                    <div class="tab-pane p-0 fade" id="top-{{ $categorias->slug }}-tab" role="tabpanel" aria-labelledby="top-{{ $categorias->slug }}-link">
                         <div class="products">
                             <div class="row justify-content-center">
                                 <div class="col-6 col-md-4 col-lg-3">
@@ -727,21 +723,17 @@
                                         <figure class="product-media">
                                             <span class="product-label label-new">NEW</span>
                                             <a href="product.html">
-                                                <img src="assets/images/demos/demo-2/products/product-9-1.jpg"
-                                                    alt="Product image" class="product-image">
-                                                <img src="assets/images/demos/demo-2/products/product-9-2.jpg"
-                                                    alt="Product image" class="product-image-hover">
+                                                <img src="assets/images/demos/demo-2/products/product-9-1.jpg" alt="Product image" class="product-image">
+                                                <img src="assets/images/demos/demo-2/products/product-9-2.jpg" alt="Product image" class="product-image-hover">
                                             </a>
 
                                             <div class="product-action-vertical">
-                                                <a href="#" class="btn-product-icon btn-wishlist "><span>add to
-                                                        wishlist</span></a>
+                                                <a href="#" class="btn-product-icon btn-wishlist "><span>add to wishlist</span></a>
                                             </div><!-- End .product-action-vertical -->
                                         </figure><!-- End .product-media -->
 
                                         <div class="product-body">
-                                            <h3 class="product-title"><a href="product.html">Garden Armchair</a></h3>
-                                            <!-- End .product-title -->
+                                            <h3 class="product-title"><a href="product.html">Garden Armchair</a></h3><!-- End .product-title -->
                                             <div class="product-price">
                                                 $94,00
                                             </div><!-- End .product-price -->
@@ -756,32 +748,24 @@
                                     <div class="product product-11 mt-v3 text-center">
                                         <figure class="product-media">
                                             <a href="product.html">
-                                                <img src="assets/images/demos/demo-2/products/product-12-1.jpg"
-                                                    alt="Product image" class="product-image">
-                                                <img src="assets/images/demos/demo-2/products/product-12-2.jpg"
-                                                    alt="Product image" class="product-image-hover">
+                                                <img src="assets/images/demos/demo-2/products/product-12-1.jpg" alt="Product image" class="product-image">
+                                                <img src="assets/images/demos/demo-2/products/product-12-2.jpg" alt="Product image" class="product-image-hover">
                                             </a>
 
                                             <div class="product-action-vertical">
-                                                <a href="#" class="btn-product-icon btn-wishlist "><span>add to
-                                                        wishlist</span></a>
+                                                <a href="#" class="btn-product-icon btn-wishlist "><span>add to wishlist</span></a>
                                             </div><!-- End .product-action-vertical -->
                                         </figure><!-- End .product-media -->
 
                                         <div class="product-body">
-                                            <h3 class="product-title"><a href="product.html">Block Side Table/Trolley</a>
-                                            </h3>
-                                            <!-- End .product-title -->
+                                            <h3 class="product-title"><a href="product.html">Block Side Table/Trolley</a></h3><!-- End .product-title -->
                                             <div class="product-price">
                                                 $229,00
                                             </div><!-- End .product-price -->
 
                                             <div class="product-nav product-nav-dots">
-                                                <a href="#" class="active" style="background: #333333;"><span
-                                                        class="sr-only">Color name</span></a>
-                                                <a href="#" style="background: #e8e8e8;"><span
-                                                        class="sr-only">Color
-                                                        name</span></a>
+                                                <a href="#" class="active" style="background: #333333;"><span class="sr-only">Color name</span></a>
+                                                <a href="#" style="background: #e8e8e8;"><span class="sr-only">Color name</span></a>
                                             </div><!-- End .product-nav -->
                                         </div><!-- End .product-body -->
                                         <div class="product-action">
@@ -789,26 +773,22 @@
                                         </div><!-- End .product-action -->
                                     </div><!-- End .product -->
                                 </div><!-- End .col-sm-6 col-md-4 col-lg-3 -->
-
+                                
                                 <div class="col-6 col-md-4 col-lg-3">
                                     <div class="product product-11 mt-v3 text-center">
                                         <figure class="product-media">
                                             <a href="product.html">
-                                                <img src="assets/images/demos/demo-2/products/product-13-1.jpg"
-                                                    alt="Product image" class="product-image">
-                                                <img src="assets/images/demos/demo-2/products/product-13-2.jpg"
-                                                    alt="Product image" class="product-image-hover">
+                                                <img src="assets/images/demos/demo-2/products/product-13-1.jpg" alt="Product image" class="product-image">
+                                                <img src="assets/images/demos/demo-2/products/product-13-2.jpg" alt="Product image" class="product-image-hover">
                                             </a>
 
                                             <div class="product-action-vertical">
-                                                <a href="#" class="btn-product-icon btn-wishlist "><span>add to
-                                                        wishlist</span></a>
+                                                <a href="#" class="btn-product-icon btn-wishlist "><span>add to wishlist</span></a>
                                             </div><!-- End .product-action-vertical -->
                                         </figure><!-- End .product-media -->
 
                                         <div class="product-body">
-                                            <h3 class="product-title"><a href="product.html">2-Seater</a></h3>
-                                            <!-- End .product-title -->
+                                            <h3 class="product-title"><a href="product.html">2-Seater</a></h3><!-- End .product-title -->
                                             <div class="product-price">
                                                 $3.107,00
                                             </div><!-- End .product-price -->
@@ -820,9 +800,16 @@
                                 </div><!-- End .col-sm-6 col-md-4 col-lg-3 -->
                             </div><!-- End .row -->
                         </div><!-- End .products -->
+                        <div class="more-container text-center">
+                            <a href="{{ url('buscar') }}" class="btn btn-outline-darker btn-more">
+                                <span>Ver más productos</span>
+                                <i class="icon-long-arrow-down"></i>
+                            </a>
+                        </div>
                     </div>
                 @endforeach
             </div>
+            
         </div>
 
         <div class="container">
