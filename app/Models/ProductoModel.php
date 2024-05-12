@@ -51,8 +51,13 @@ class ProductoModel extends Model
             ->join('categorias', 'categorias.id', '=', 'productos.categoria_id')
             ->join('subcategorias', 'subcategorias.id', '=', 'productos.subcategoria_id')
             ->where('productos.esta_eliminado', '=', 0)
-            ->where('productos.estado', '=', 0)
-            ->groupBy('productos.id')
+            ->where('productos.estado', '=', 0);
+
+            if (!empty(Request::get('categoria_id'))) {
+                $return = $return->where('productos.categoria_id', '=', Request::get('categoria_id'));
+            }
+
+            $return = $return->groupBy('productos.id')
             ->orderBy('productos.id', 'desc')
             ->limit(8)
             ->get();

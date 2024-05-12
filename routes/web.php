@@ -169,6 +169,9 @@ Route::group(['middleware' => 'admin'], function () {
 });
 
 Route::get('/', [InicioController::class, 'inicio']);
+
+Route::post('recien_agregados_categoria_producto', [InicioController::class, 'recien_agregados_categoria_producto']);
+
 Route::get('contactenos', [InicioController::class, 'contactenos']);
 Route::post('contactenos', [InicioController::class, 'enviar_contactenos']);
 Route::get('sobre-nosotros', [InicioController::class, 'sobre_nosotros']);

@@ -35,6 +35,23 @@ class InicioController extends Controller
         return view('inicio', $data);
     }
 
+    public function recien_agregados_categoria_producto(Request $request)
+    {
+        $getProducto = ProductoModel::getRecienAgregados();
+        $getCategoria = CategoriaModel::getSingle($request->categoria_id);
+
+        return response()->json([
+            "estado" => true,
+            "success" => view(
+                "productos._listar_recien_agregados",
+                [
+                    "getProducto" => $getProducto,
+                    "getCategoria" => $getCategoria,
+                ]
+            )->render(),
+        ], 200);
+    }
+
     public function contactenos()
     {
         $primer_numero = mt_rand(0, 9);
