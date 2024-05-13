@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 12-05-2024 a las 21:01:59
+-- Tiempo de generación: 13-05-2024 a las 17:22:26
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -20,6 +20,32 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `ecommerce`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `blog_categoria`
+--
+
+CREATE TABLE `blog_categoria` (
+  `id` int(11) NOT NULL,
+  `nombre` varchar(255) DEFAULT NULL,
+  `slug` varchar(255) DEFAULT NULL,
+  `meta_titulo` varchar(255) DEFAULT NULL,
+  `meta_descripcion` text DEFAULT NULL,
+  `meta_p_clave` varchar(1000) DEFAULT NULL,
+  `estado` tinyint(4) NOT NULL DEFAULT 0,
+  `esta_eliminado` tinyint(4) NOT NULL DEFAULT 0,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `blog_categoria`
+--
+
+INSERT INTO `blog_categoria` (`id`, `nombre`, `slug`, `meta_titulo`, `meta_descripcion`, `meta_p_clave`, `estado`, `esta_eliminado`, `created_at`, `updated_at`) VALUES
+(1, 'PHP', 'php', 'PHP', '', '', 0, 0, '2024-05-13 15:16:10', '2024-05-13 15:22:08');
 
 -- --------------------------------------------------------
 
@@ -828,6 +854,12 @@ INSERT INTO `users` (`id`, `name`, `apellidos`, `email`, `email_verified_at`, `p
 --
 
 --
+-- Indices de la tabla `blog_categoria`
+--
+ALTER TABLE `blog_categoria`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indices de la tabla `calificacion_productos`
 --
 ALTER TABLE `calificacion_productos`
@@ -978,6 +1010,12 @@ ALTER TABLE `users`
 --
 -- AUTO_INCREMENT de las tablas volcadas
 --
+
+--
+-- AUTO_INCREMENT de la tabla `blog_categoria`
+--
+ALTER TABLE `blog_categoria`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `calificacion_productos`

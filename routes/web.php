@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\BlogCategoriaController;
 use App\Http\Controllers\Admin\CategoriaController;
 use App\Http\Controllers\Admin\CodigoDescuentoController;
 use App\Http\Controllers\Admin\ColorController;
@@ -89,6 +90,13 @@ Route::group(['middleware' => 'admin'], function () {
     Route::get('admin/categorias/eliminar/{id}', [CategoriaController::class, 'eliminar']);
     Route::get('admin/categorias/reingresar/{id}', [CategoriaController::class, 'reingresar']);
 
+    // Ruta para el blog de categoría
+    Route::get('admin/blogcategoria/listar', [BlogCategoriaController::class, 'listar']);
+    Route::get('admin/blogcategoria/agregar', [BlogCategoriaController::class, 'agregar']);
+    Route::post('admin/blogcategoria/agregar', [BlogCategoriaController::class, 'insertar']);
+    Route::get('admin/blogcategoria/editar/{id}', [BlogCategoriaController::class, 'editar']);
+    Route::post('admin/blogcategoria/editar/{id}', [BlogCategoriaController::class, 'actualizar']);
+    Route::get('admin/blogcategoria/eliminar/{id}', [BlogCategoriaController::class, 'eliminar']);
     //Ruta de las subcategorías
     Route::get('admin/subcategorias/listar', [SubCategoriaController::class, 'listar']);
     Route::get('admin/subcategorias/agregar', [SubCategoriaController::class, 'agregar']);
@@ -147,12 +155,15 @@ Route::group(['middleware' => 'admin'], function () {
     Route::get('admin/paginas/editar/{id}', [PagesController::class, 'editar']);
     Route::post('admin/paginas/editar/{id}', [PagesController::class, 'actualizar']);
 
+    //Ruta configuración del sistema
     Route::get('admin/configuracion-sistema', [PagesController::class, 'configuracion_sistema']);
     Route::post('admin/configuracion-sistema', [PagesController::class, 'actualizar_configuracion_sistema']);
 
+    // Ruta contactenos
     Route::get('admin/contactenos', [PagesController::class, 'contactenos']);
     Route::get('admin/contactenos/eliminar/{id}', [PagesController::class, 'eliminar_contactenos']);
 
+    // Ruta sliders
     Route::get('admin/sliders/lista', [SlidersController::class, 'lista']);
     Route::get('admin/sliders/agregar', [SlidersController::class, 'agregar']);
     Route::post('admin/sliders/agregar', [SlidersController::class, 'insertar']);
@@ -160,6 +171,7 @@ Route::group(['middleware' => 'admin'], function () {
     Route::post('admin/sliders/editar/{id}', [SlidersController::class, 'actualizar']);
     Route::get('admin/sliders/eliminar/{id}', [SlidersController::class, 'eliminar']);
 
+    // Ruta socios
     Route::get('admin/socios/lista', [SociosController::class, 'lista']);
     Route::get('admin/socios/agregar', [SociosController::class, 'agregar']);
     Route::post('admin/socios/agregar', [SociosController::class, 'insertar']);
