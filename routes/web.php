@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\BlogCategoriaController;
+use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Admin\CategoriaController;
 use App\Http\Controllers\Admin\CodigoDescuentoController;
 use App\Http\Controllers\Admin\ColorController;
@@ -97,6 +98,15 @@ Route::group(['middleware' => 'admin'], function () {
     Route::get('admin/blogcategoria/editar/{id}', [BlogCategoriaController::class, 'editar']);
     Route::post('admin/blogcategoria/editar/{id}', [BlogCategoriaController::class, 'actualizar']);
     Route::get('admin/blogcategoria/eliminar/{id}', [BlogCategoriaController::class, 'eliminar']);
+
+    // Ruta para los blogs
+    Route::get('admin/blog/listar', [BlogController::class, 'listar']);
+    Route::get('admin/blog/agregar', [BlogController::class, 'agregar']);
+    Route::post('admin/blog/agregar', [BlogController::class, 'insertar']);
+    Route::get('admin/blog/editar/{id}', [BlogController::class, 'editar']);
+    Route::post('admin/blog/editar/{id}', [BlogController::class, 'actualizar']);
+    Route::get('admin/blog/eliminar/{id}', [BlogController::class, 'eliminar']);
+
     //Ruta de las subcategorías
     Route::get('admin/subcategorias/listar', [SubCategoriaController::class, 'listar']);
     Route::get('admin/subcategorias/agregar', [SubCategoriaController::class, 'agregar']);

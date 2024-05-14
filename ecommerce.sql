@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 13-05-2024 a las 17:22:26
+-- Tiempo de generación: 14-05-2024 a las 19:14:24
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -20,6 +20,35 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `ecommerce`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `blog`
+--
+
+CREATE TABLE `blog` (
+  `id` int(11) NOT NULL,
+  `titulo` varchar(255) DEFAULT NULL,
+  `slug` varchar(255) DEFAULT NULL,
+  `blogcategoria_id` int(11) DEFAULT NULL,
+  `nombre_imagen` varchar(255) DEFAULT NULL,
+  `descripcion` longtext DEFAULT NULL,
+  `meta_titulo` varchar(255) DEFAULT NULL,
+  `meta_descripcion` text DEFAULT NULL,
+  `meta_p_clave` varchar(1000) DEFAULT NULL,
+  `estado` tinyint(4) NOT NULL DEFAULT 0,
+  `esta_eliminado` tinyint(4) NOT NULL DEFAULT 0,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `blog`
+--
+
+INSERT INTO `blog` (`id`, `titulo`, `slug`, `blogcategoria_id`, `nombre_imagen`, `descripcion`, `meta_titulo`, `meta_descripcion`, `meta_p_clave`, `estado`, `esta_eliminado`, `created_at`, `updated_at`) VALUES
+(1, 'E-commerce Laravel 10', 'e-commerce-laravel-10', 5, 'bvfslnftk55zzoa82hxg.jpg', '<p><span style=\"font-family: &quot;Courier New&quot;;\">E-commerce Laravel 10,E-commerce Laravel 10,&nbsp;E-commerce Laravel 10,&nbsp;</span><span style=\"font-family: &quot;Courier New&quot;; font-size: 1rem;\">E-commerce Laravel 10</span><br></p>', 'E-commerce Laravel 10', '', '', 0, 0, '2024-05-14 16:40:37', '2024-05-14 17:10:33');
 
 -- --------------------------------------------------------
 
@@ -45,7 +74,11 @@ CREATE TABLE `blog_categoria` (
 --
 
 INSERT INTO `blog_categoria` (`id`, `nombre`, `slug`, `meta_titulo`, `meta_descripcion`, `meta_p_clave`, `estado`, `esta_eliminado`, `created_at`, `updated_at`) VALUES
-(1, 'PHP', 'php', 'PHP', '', '', 0, 0, '2024-05-13 15:16:10', '2024-05-13 15:22:08');
+(1, 'PHP', 'php', 'PHP', '', '', 0, 0, '2024-05-13 15:16:10', '2024-05-13 15:22:08'),
+(2, 'JavaScript', 'javascript', 'JavaScript', '', '', 0, 0, '2024-05-14 16:00:01', '2024-05-14 16:00:01'),
+(3, 'Java', 'java', 'Java', '', '', 0, 0, '2024-05-14 16:00:24', '2024-05-14 16:00:24'),
+(4, 'Python', 'python', 'Python', '', '', 0, 0, '2024-05-14 16:00:39', '2024-05-14 16:00:39'),
+(5, 'Laravel', 'laravel', 'Laravel', '', '', 0, 0, '2024-05-14 16:17:46', '2024-05-14 16:17:46');
 
 -- --------------------------------------------------------
 
@@ -854,6 +887,12 @@ INSERT INTO `users` (`id`, `name`, `apellidos`, `email`, `email_verified_at`, `p
 --
 
 --
+-- Indices de la tabla `blog`
+--
+ALTER TABLE `blog`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indices de la tabla `blog_categoria`
 --
 ALTER TABLE `blog_categoria`
@@ -1012,10 +1051,16 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT de la tabla `blog`
+--
+ALTER TABLE `blog`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT de la tabla `blog_categoria`
 --
 ALTER TABLE `blog_categoria`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `calificacion_productos`

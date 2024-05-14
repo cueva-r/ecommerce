@@ -264,7 +264,16 @@
                     <a href="{{ url('admin/blogcategoria/listar') }}" class="nav-link @if (Request::segment(2) == 'blogcategoria') active @endif">
                         <i class="nav-icon fa-solid fa-blog"></i>
                         <p>
-                            Blog categoría
+                            Blog de categoría
+                        </p>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="{{ url('admin/blog/listar') }}" class="nav-link @if (Request::segment(2) == 'blog') active @endif">
+                        <i class="nav-icon fa-brands fa-blogger-b"></i>
+                        <p>
+                            Blog
                         </p>
                     </a>
                 </li>
