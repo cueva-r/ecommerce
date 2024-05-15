@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 14-05-2024 a las 19:14:24
+-- Tiempo de generación: 15-05-2024 a las 19:00:31
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -48,7 +48,10 @@ CREATE TABLE `blog` (
 --
 
 INSERT INTO `blog` (`id`, `titulo`, `slug`, `blogcategoria_id`, `nombre_imagen`, `descripcion`, `meta_titulo`, `meta_descripcion`, `meta_p_clave`, `estado`, `esta_eliminado`, `created_at`, `updated_at`) VALUES
-(1, 'E-commerce Laravel 10', 'e-commerce-laravel-10', 5, 'bvfslnftk55zzoa82hxg.jpg', '<p><span style=\"font-family: &quot;Courier New&quot;;\">E-commerce Laravel 10,E-commerce Laravel 10,&nbsp;E-commerce Laravel 10,&nbsp;</span><span style=\"font-family: &quot;Courier New&quot;; font-size: 1rem;\">E-commerce Laravel 10</span><br></p>', 'E-commerce Laravel 10', '', '', 0, 0, '2024-05-14 16:40:37', '2024-05-14 17:10:33');
+(1, 'E-commerce Laravel 10', 'e-commerce-laravel-10', 5, 'bvfslnftk55zzoa82hxg.jpg', '<p><span style=\"font-family: &quot;Courier New&quot;;\">E-commerce Laravel 10,E-commerce Laravel 10,&nbsp;E-commerce Laravel 10,&nbsp;</span><span style=\"font-family: &quot;Courier New&quot;; font-size: 1rem;\">E-commerce Laravel 10</span><br></p>', 'E-commerce Laravel 10', '', '', 0, 0, '2024-05-14 16:40:37', '2024-05-14 17:10:33'),
+(2, 'E-commerce con java EE', 'e-commerce-con-java-ee', 3, 'yyq8hczbeoq0ifd6d4wi.jpg', '<p><span style=\"font-family: &quot;Mercury SSm A&quot;, &quot;Mercury SSm B&quot;, Georgia, Times, &quot;Times New Roman&quot;, &quot;Microsoft YaHei New&quot;, &quot;Microsoft Yahei&quot;, 微软雅黑, 宋体, SimSun, STXihei, 华文细黑, serif; font-size: 26px;\"><font color=\"#000000\" style=\"\">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</font></span><br></p>', 'E-commerce con java EE', '', '', 0, 0, '2024-05-15 15:30:13', '2024-05-15 15:30:13'),
+(3, 'E-commerce django', 'e-commerce-django', 6, 'aynjthjaaimajd18vcgr.jpg', '<p>E-commerce django<br></p>', 'E-commerce django', '', '', 0, 0, '2024-05-15 15:30:55', '2024-05-15 15:30:55'),
+(4, 'E-commerce PHP', 'e-commerce-php', 1, 'vjgx61h87nmzhf9fk0fj.webp', '<p>E-commerce PHP<br></p>', 'E-commerce PHP', '', '', 0, 0, '2024-05-15 15:31:24', '2024-05-15 15:31:24');
 
 -- --------------------------------------------------------
 
@@ -78,7 +81,8 @@ INSERT INTO `blog_categoria` (`id`, `nombre`, `slug`, `meta_titulo`, `meta_descr
 (2, 'JavaScript', 'javascript', 'JavaScript', '', '', 0, 0, '2024-05-14 16:00:01', '2024-05-14 16:00:01'),
 (3, 'Java', 'java', 'Java', '', '', 0, 0, '2024-05-14 16:00:24', '2024-05-14 16:00:24'),
 (4, 'Python', 'python', 'Python', '', '', 0, 0, '2024-05-14 16:00:39', '2024-05-14 16:00:39'),
-(5, 'Laravel', 'laravel', 'Laravel', '', '', 0, 0, '2024-05-14 16:17:46', '2024-05-14 16:17:46');
+(5, 'Laravel', 'laravel', 'Laravel', '', '', 0, 0, '2024-05-14 16:17:46', '2024-05-14 16:17:46'),
+(6, 'DJango', 'django', 'DJango', '', '', 0, 0, '2024-05-15 15:26:32', '2024-05-15 15:26:32');
 
 -- --------------------------------------------------------
 
@@ -448,7 +452,8 @@ INSERT INTO `pages` (`id`, `nombre`, `slug`, `titulo`, `descripcion`, `nombre_im
 (7, 'Envíos', 'envios', 'Envíos', '<p><font color=\"#000000\"><span style=\"font-weight: bolder;\"><span style=\"font-family: &quot;Source Sans Pro&quot;, sans-serif; font-size: 16.2px; letter-spacing: -0.0486px; text-align: justify;\">Lorem ipsum dolo</span><span style=\"font-family: &quot;Source Sans Pro&quot;, sans-serif; font-size: 16.2px; letter-spacing: -0.0486px; text-align: justify;\">r&nbsp;</span></span></font><span style=\"color: rgba(0, 0, 0, 0.8); font-family: &quot;Source Sans Pro&quot;, sans-serif; font-size: 16.2px; letter-spacing: -0.0486px; text-align: justify;\">sit amet consectetur adipiscing elit iaculis donec, lectus gravida metus fames vestibulum vel parturient porta, hendrerit ultrices feugiat himenaeos nisl enim maecenas pulvinar. Euismod netus ornare vehicula venenatis ultricies accumsan lacinia mus eleifend sagittis, convallis ante proin porta scelerisque molestie volutpat morbi class, habitant lobortis facilisi nullam fermentum himenaeos nostra sociosqu vestibulum. Felis blandit libero gravida enim id dictum curae magnis volutpat habitasse, suscipit cras sodales pellentesque hendrerit turpis molestie ante fusce, viverra nibh feugiat mus urna condimentum tempor pulvinar netus.</span><br></p>', '7cru7ox2kfr6xp6xt4kxs.jpg', 'Envíos', '', '', '2024-04-25 22:32:17', '2024-04-27 20:06:39'),
 (8, 'Términos y condiciones', 'terminos-condiciones', 'Términos y condiciones', '', '8kz1ybothizlgukzlkcfe.webp', 'Términos y condiciones', '', '', '2024-04-25 22:32:58', '2024-04-27 20:07:39'),
 (9, 'Política y privacidad', 'politica-privacidad', 'Política y privacidad', '<p><font color=\"#000000\" style=\"\"><span style=\"font-weight: bolder;\"><span style=\"font-family: &quot;Source Sans Pro&quot;, sans-serif; font-size: 16.2px; letter-spacing: -0.0486px; text-align: justify;\"><u>Lorem ipsum dolo</u></span><span style=\"font-family: &quot;Source Sans Pro&quot;, sans-serif; font-size: 16.2px; letter-spacing: -0.0486px; text-align: justify;\"><u>r</u>&nbsp;</span></span></font><span style=\"text-align: justify;\"><font color=\"#000000\">sit amet consectetur adipiscing elit iaculis donec, lectus gravida metus fames vestibulum vel parturient porta, hendrerit ultrices feugiat himenaeos nisl enim maecenas pulvinar. Euismod netus ornare vehicula venenatis ultricies accumsan lacinia mus eleifend sagittis, convallis ante proin porta scelerisque molestie volutpat morbi class, habitant lobortis facilisi nullam fermentum himenaeos nostra sociosqu vestibulum. Felis blandit libero gravida enim id dictum curae magnis volutpat habitasse, suscipit cras sodales pellentesque hendrerit turpis molestie ante fusce, viverra nibh feugiat mus urna condimentum tempor pulvinar netus.</font></span><br></p>', '9w5ggvknzicbvu9xdys5z.webp', 'Política y privacidad', '', '', '2024-04-25 22:32:58', '2024-05-03 02:05:07'),
-(10, 'Inicio', 'inicio', 'Inicio', '<p><font color=\"#000000\"><span style=\"font-weight: bolder;\"><span style=\"font-family: &quot;Source Sans Pro&quot;, sans-serif; font-size: 16.2px; letter-spacing: -0.0486px; text-align: justify;\">Lorem ipsum dolo</span><span style=\"font-family: &quot;Source Sans Pro&quot;, sans-serif; font-size: 16.2px; letter-spacing: -0.0486px; text-align: justify;\">r&nbsp;</span></span></font><span style=\"color: rgba(0, 0, 0, 0.8); font-family: &quot;Source Sans Pro&quot;, sans-serif; font-size: 16.2px; letter-spacing: -0.0486px; text-align: justify;\">sit amet consectetur adipiscing elit iaculis donec, lectus gravida metus fames vestibulum vel parturient porta, hendrerit ultrices feugiat himenaeos nisl enim maecenas pulvinar. Euismod netus ornare vehicula venenatis ultricies accumsan lacinia mus eleifend sagittis, convallis ante proin porta scelerisque molestie volutpat morbi class, habitant lobortis facilisi nullam fermentum himenaeos nostra sociosqu vestibulum. Felis blandit libero gravida enim id dictum curae magnis volutpat habitasse, suscipit cras sodales pellentesque hendrerit turpis molestie ante fusce, viverra nibh feugiat mus urna condimentum tempor pulvinar netus.</span><br></p>', '9w5ggvknzicbvu9xdys5z.webp', 'Inicio', '', '', '2024-04-25 22:32:58', '2024-04-27 20:57:47');
+(10, 'Inicio', 'inicio', 'Inicio', '<p><font color=\"#000000\"><span style=\"font-weight: bolder;\"><span style=\"font-family: &quot;Source Sans Pro&quot;, sans-serif; font-size: 16.2px; letter-spacing: -0.0486px; text-align: justify;\">Lorem ipsum dolo</span><span style=\"font-family: &quot;Source Sans Pro&quot;, sans-serif; font-size: 16.2px; letter-spacing: -0.0486px; text-align: justify;\">r&nbsp;</span></span></font><span style=\"color: rgba(0, 0, 0, 0.8); font-family: &quot;Source Sans Pro&quot;, sans-serif; font-size: 16.2px; letter-spacing: -0.0486px; text-align: justify;\">sit amet consectetur adipiscing elit iaculis donec, lectus gravida metus fames vestibulum vel parturient porta, hendrerit ultrices feugiat himenaeos nisl enim maecenas pulvinar. Euismod netus ornare vehicula venenatis ultricies accumsan lacinia mus eleifend sagittis, convallis ante proin porta scelerisque molestie volutpat morbi class, habitant lobortis facilisi nullam fermentum himenaeos nostra sociosqu vestibulum. Felis blandit libero gravida enim id dictum curae magnis volutpat habitasse, suscipit cras sodales pellentesque hendrerit turpis molestie ante fusce, viverra nibh feugiat mus urna condimentum tempor pulvinar netus.</span><br></p>', '9w5ggvknzicbvu9xdys5z.webp', 'Inicio', '', '', '2024-04-25 22:32:58', '2024-04-27 20:57:47'),
+(11, 'Blog', 'blog', 'Blog', NULL, '', 'Blog', '', '', '2024-05-15 16:02:03', '2024-05-15 16:02:03');
 
 -- --------------------------------------------------------
 
@@ -863,7 +868,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `apellidos`, `email`, `email_verified_at`, `password`, `remember_token`, `nombre_compania`, `pais`, `primera_direccion`, `segunda_direccion`, `ciudad`, `distrito`, `codigo_postal`, `telefono`, `es_admin`, `estado`, `esta_eliminado`, `created_at`, `updated_at`) VALUES
-(1, 'Abraham Elias', 'Cueva Rico', 'ricoabraham879@gmail.com', '2024-03-17 20:13:42', '$2y$12$teqAlxN7bszkF5PLf8IMn.EgGlIID8nI0pRiFKNIAfDT0bXwzsMNi', 'nnLQ7Z2fLE5FgCU5H9wjFXKYiRszvxS9roTcHROucTb802oHMhJYBCLitPly', 'rico\'s', 'Perú', 'Hefestos', '404', 'Lima', 'Ate', '15022', '924575577', 1, 0, 0, '2024-01-28 15:23:20', '2024-04-19 01:11:45'),
+(1, 'Abraham Elias', 'Cueva Rico', 'ricoabraham879@gmail.com', '2024-03-17 20:13:42', '$2y$12$teqAlxN7bszkF5PLf8IMn.EgGlIID8nI0pRiFKNIAfDT0bXwzsMNi', 'GxmETE59CD7Hfr3mhgjN5vqdH3wJtLyty8NtPStKRpsfhoQbfcuxjQTpmeQM', 'rico\'s', 'Perú', 'Hefestos', '404', 'Lima', 'Ate', '15022', '924575577', 1, 0, 0, '2024-01-28 15:23:20', '2024-04-19 01:11:45'),
 (2, 'test', NULL, 'test@gmail.com', NULL, '$2y$12$ohGsPlzjAJYcQ0l14K0FoO0A/QnDNK8aNUJe4kwhJDzmQZCWsVeD.', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, 0, '2024-01-29 03:46:12', '2024-04-02 00:39:09'),
 (3, 'prueba', NULL, 'prueba@gmail.com', NULL, '$2y$12$K84E6xDH5pPrV/BYwaNzVOZaEAEmHK7l1Nb4rpK1LUAb5/kXcR0ru', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, 0, '2024-01-29 03:56:58', '2024-04-02 00:39:34'),
 (4, 'xdd', NULL, 'xdd@gmail.com', NULL, '$2y$12$O0waTN9YyZSDX7SQplwU6OPWVY51OA1jcJSYPIy2ERDSb6my7MTIO', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, 0, '2024-01-29 04:00:36', '2024-01-29 06:38:30'),
@@ -1054,13 +1059,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT de la tabla `blog`
 --
 ALTER TABLE `blog`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `blog_categoria`
 --
 ALTER TABLE `blog_categoria`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `calificacion_productos`
@@ -1138,7 +1143,7 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT de la tabla `pages`
 --
 ALTER TABLE `pages`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT de la tabla `pedidos`

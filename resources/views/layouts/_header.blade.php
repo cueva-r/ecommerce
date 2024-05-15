@@ -73,7 +73,7 @@
 
                 <nav class="main-nav">
                     <ul class="menu sf-arrows">
-                        <li class="megamenu-container active">
+                        <li class="megamenu-containeractive active">
                             <a href="{{ url('/') }}">Inicio</a>
                         </li>
                         <li>

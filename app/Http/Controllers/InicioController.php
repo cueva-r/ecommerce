@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Mail\ContactenosMail;
+use App\Models\BlogCategoriaModel;
+use App\Models\BlogModel;
 use App\Models\CategoriaModel;
 use App\Models\ConfiguracionSistemaModel;
 use App\Models\ContactenosModel;
@@ -196,5 +198,20 @@ class InicioController extends Controller
         $data['meta_p_clave'] = $getPage->meta_p_clave;
 
         return view('pages.politica_privacidad', $data);
+    }
+
+    public function blog()
+    {
+        $getPage = PagesModel::getSlug('blog');
+        $data['getPage'] = $getPage;
+
+        $data['getBlog'] = BlogModel::getBlog();
+        $data['getBlogCategoria'] = BlogCategoriaModel::getRecordActive();
+
+        $data['meta_titulo'] = $getPage->meta_titulo;
+        $data['meta_descripcion'] = $getPage->meta_descripcion;
+        $data['meta_p_clave'] = $getPage->meta_p_clave;
+
+        return view('blog.lista', $data); 
     }
 }

@@ -54,6 +54,7 @@
                         <ul class="widget-list">
                             <li><a href="{{ url('') }}">Inicio</a></li>
                             <li><a href="{{ url('sobre-nosotros') }}">Sobre nosotros</a></li>
+                            <li><a href="{{ url('blog') }}">Blog</a></li>
                             <li><a href="{{ url('faq') }}">Preguntas frecuentes</a></li>
                             <li><a href="{{ url('contactenos') }}">Contáctenos</a></li>
 
@@ -87,11 +88,11 @@
                         @if (!empty(Auth::check()))
                             <ul class="widget-list">
                                 <li><a href="{{ url('cliente/dashboard') }}">Mi cuenta</a></li>
+                            <ul>
+                            @else
+                                <ul class="widget-list">
+                                    <li><a href="#signin-modal" data-toggle="modal">Mi cuenta</a></li>
                                 <ul>
-                                @else
-                                    <ul class="widget-list">
-                                        <li><a href="#signin-modal" data-toggle="modal">Mi cuenta</a></li>
-                                        <ul>
                         @endif
 
                         <ul class="widget-list">

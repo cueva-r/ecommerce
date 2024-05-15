@@ -50,4 +50,12 @@ class BlogCategoriaModel extends Model
         ->orderBy('blog_categoria.id', 'asc')
         ->get();
     }
+
+    public function getBlogCount()
+    {
+        return $this->hasMany(BlogModel::class, 'blogcategoria_id')
+        ->where('blog.esta_eliminado', '=', 0)
+        ->where('blog.estado', '=', 0)
+        ->count();
+    }
 }

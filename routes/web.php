@@ -60,7 +60,6 @@ Route::group(['middleware' => 'cliente'], function () {
  
 // admin .-.
 Route::group(['middleware' => 'admin'], function () {
-
     Route::get('admin/dashboard', [DashboardController::class, 'dashboard']);
 
     // Rutas de los asdmins
@@ -197,6 +196,9 @@ Route::post('recien_agregados_categoria_producto', [InicioController::class, 're
 Route::get('contactenos', [InicioController::class, 'contactenos']);
 Route::post('contactenos', [InicioController::class, 'enviar_contactenos']);
 Route::get('sobre-nosotros', [InicioController::class, 'sobre_nosotros']);
+
+Route::get('blog', [InicioController::class, 'blog']);
+
 Route::get('faq', [InicioController::class, 'faq']);
 Route::get('metodo-pago', [InicioController::class, 'metodo_pago']);
 Route::get('garantias', [InicioController::class, 'garantias']);
