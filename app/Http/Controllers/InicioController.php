@@ -207,11 +207,34 @@ class InicioController extends Controller
 
         $data['getBlog'] = BlogModel::getBlog();
         $data['getBlogCategoria'] = BlogCategoriaModel::getRecordActive();
+        $data['getPopular'] = BlogModel::getPopular();
 
         $data['meta_titulo'] = $getPage->meta_titulo;
         $data['meta_descripcion'] = $getPage->meta_descripcion;
         $data['meta_p_clave'] = $getPage->meta_p_clave;
 
-        return view('blog.lista', $data); 
+        return view('blog.lista', $data);
+    }
+
+    public function detalle_blog($slug)
+    {
+        $getBlog = BlogModel::getSingleSlug($slug);
+        if (!empty($getBlog)) {
+            $total_vistas = $getBlog->total_vistas;
+            $getBlog->total_vistas = $total_vistas + 1;
+            $getBlog->save();
+
+            $data['getBlog'] = $getBlog;
+            $data['meta_titulo'] = $getBlog->meta_titulo;
+            $data['meta_descripcion'] = $getBlog->meta_descripcion;
+            $data['meta_p_clave'] = $getBlog->meta_p_clave;
+
+            $data['getBlogCategoria'] = BlogCategoriaModel::getRecordActive();
+            $data['getPopular'] = BlogModel::getPopular();
+
+            return view('blog.detalles', $data);
+        } else {
+            abort(404);
+        }
     }
 }

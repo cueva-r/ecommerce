@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Request;
@@ -57,6 +58,19 @@ class BlogModel extends Model
 
         return $return;
     }
+    
+    static function getPopular()
+    {
+       $return = self::select('blog.*');
+
+       $return = $return->where('blog.esta_eliminado', '=', 0)
+        ->where('blog.estado', '=', 0)
+        ->orderBy('blog.total_vistas', 'desc')
+        ->limit(6)
+        ->get();
+
+        return $return;
+    }
 
     public function getImagen()
     {
@@ -66,4 +80,11 @@ class BlogModel extends Model
             return "";
         }
     }
+
+    public function getCategoria()
+    {
+        return $this->belongsTo(BlogCategoriaModel::class, 'blogcategoria_id');
+    }
+
+
 }

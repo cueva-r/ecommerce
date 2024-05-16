@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 15-05-2024 a las 19:00:31
+-- Tiempo de generación: 16-05-2024 a las 17:16:15
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -37,6 +37,7 @@ CREATE TABLE `blog` (
   `meta_titulo` varchar(255) DEFAULT NULL,
   `meta_descripcion` text DEFAULT NULL,
   `meta_p_clave` varchar(1000) DEFAULT NULL,
+  `total_vistas` tinyint(4) NOT NULL DEFAULT 0,
   `estado` tinyint(4) NOT NULL DEFAULT 0,
   `esta_eliminado` tinyint(4) NOT NULL DEFAULT 0,
   `created_at` datetime DEFAULT NULL,
@@ -47,11 +48,17 @@ CREATE TABLE `blog` (
 -- Volcado de datos para la tabla `blog`
 --
 
-INSERT INTO `blog` (`id`, `titulo`, `slug`, `blogcategoria_id`, `nombre_imagen`, `descripcion`, `meta_titulo`, `meta_descripcion`, `meta_p_clave`, `estado`, `esta_eliminado`, `created_at`, `updated_at`) VALUES
-(1, 'E-commerce Laravel 10', 'e-commerce-laravel-10', 5, 'bvfslnftk55zzoa82hxg.jpg', '<p><span style=\"font-family: &quot;Courier New&quot;;\">E-commerce Laravel 10,E-commerce Laravel 10,&nbsp;E-commerce Laravel 10,&nbsp;</span><span style=\"font-family: &quot;Courier New&quot;; font-size: 1rem;\">E-commerce Laravel 10</span><br></p>', 'E-commerce Laravel 10', '', '', 0, 0, '2024-05-14 16:40:37', '2024-05-14 17:10:33'),
-(2, 'E-commerce con java EE', 'e-commerce-con-java-ee', 3, 'yyq8hczbeoq0ifd6d4wi.jpg', '<p><span style=\"font-family: &quot;Mercury SSm A&quot;, &quot;Mercury SSm B&quot;, Georgia, Times, &quot;Times New Roman&quot;, &quot;Microsoft YaHei New&quot;, &quot;Microsoft Yahei&quot;, 微软雅黑, 宋体, SimSun, STXihei, 华文细黑, serif; font-size: 26px;\"><font color=\"#000000\" style=\"\">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</font></span><br></p>', 'E-commerce con java EE', '', '', 0, 0, '2024-05-15 15:30:13', '2024-05-15 15:30:13'),
-(3, 'E-commerce django', 'e-commerce-django', 6, 'aynjthjaaimajd18vcgr.jpg', '<p>E-commerce django<br></p>', 'E-commerce django', '', '', 0, 0, '2024-05-15 15:30:55', '2024-05-15 15:30:55'),
-(4, 'E-commerce PHP', 'e-commerce-php', 1, 'vjgx61h87nmzhf9fk0fj.webp', '<p>E-commerce PHP<br></p>', 'E-commerce PHP', '', '', 0, 0, '2024-05-15 15:31:24', '2024-05-15 15:31:24');
+INSERT INTO `blog` (`id`, `titulo`, `slug`, `blogcategoria_id`, `nombre_imagen`, `descripcion`, `meta_titulo`, `meta_descripcion`, `meta_p_clave`, `total_vistas`, `estado`, `esta_eliminado`, `created_at`, `updated_at`) VALUES
+(1, 'E-commerce Laravel 10', 'e-commerce-laravel-10', 5, 'bvfslnftk55zzoa82hxg.jpg', '<p><span style=\"font-family: &quot;Courier New&quot;;\">E-commerce Laravel 10,E-commerce Laravel 10,&nbsp;E-commerce Laravel 10,&nbsp;</span><span style=\"font-family: &quot;Courier New&quot;; font-size: 1rem;\">E-commerce Laravel 10</span><br></p>', 'E-commerce Laravel 10', '', '', 12, 0, 0, '2024-05-14 16:40:37', '2024-05-16 15:15:35'),
+(2, 'E-commerce con java EE', 'e-commerce-con-java-ee', 3, 'yyq8hczbeoq0ifd6d4wi.jpg', '<p><span style=\"font-family: &quot;Mercury SSm A&quot;, &quot;Mercury SSm B&quot;, Georgia, Times, &quot;Times New Roman&quot;, &quot;Microsoft YaHei New&quot;, &quot;Microsoft Yahei&quot;, 微软雅黑, 宋体, SimSun, STXihei, 华文细黑, serif; font-size: 26px;\"><font color=\"#000000\" style=\"\">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</font></span><br></p>', 'E-commerce con java EE', '', '', 1, 0, 0, '2024-05-15 15:30:13', '2024-05-16 15:11:16'),
+(3, 'E-commerce django', 'e-commerce-django', 6, 'aynjthjaaimajd18vcgr.jpg', '<p>E-commerce django<br></p>', 'E-commerce django', '', '', 1, 0, 0, '2024-05-15 15:30:55', '2024-05-16 15:13:50'),
+(4, 'E-commerce PHP', 'e-commerce-php', 1, 'vjgx61h87nmzhf9fk0fj.webp', '<p>E-commerce PHP<br></p>', 'E-commerce PHP', '', '', 1, 0, 0, '2024-05-15 15:31:24', '2024-05-16 15:11:27'),
+(5, 'Calculadora en JavaScript', 'calculadora-en-javascript', 2, 's2wyrcclcd6busopyaba.png', '<p><strong style=\"margin: 0px; padding: 0px; color: rgb(0, 0, 0); font-family: &quot;Open Sans&quot;, Arial, sans-serif; font-size: 14px; text-align: justify;\">Lorem Ipsum</strong><span style=\"color: rgb(0, 0, 0); font-family: &quot;Open Sans&quot;, Arial, sans-serif; font-size: 14px; text-align: justify;\">&nbsp;is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</span><br></p>', 'Calculadora en JavaScript', '', '', 1, 0, 0, '2024-05-15 17:26:47', '2024-05-16 15:11:32'),
+(6, 'Calculadora en Python', 'calculadora-en-python', 4, 'whkrjtqwx5uax0zdxe9g.webp', '<p><strong style=\"margin: 0px; padding: 0px; color: rgb(0, 0, 0); font-family: &quot;Open Sans&quot;, Arial, sans-serif; font-size: 14px; text-align: justify;\">Lorem Ipsum</strong><span style=\"color: rgb(0, 0, 0); font-family: &quot;Open Sans&quot;, Arial, sans-serif; font-size: 14px; text-align: justify;\">&nbsp;is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</span><br></p>', 'Calculadora en Python', '', '', 0, 0, 0, '2024-05-15 17:28:20', '2024-05-16 14:15:24'),
+(7, 'Calculadora en PHP', 'calculadora-en-php', 1, '0oru9zaz9cukhtssqpta.jpg', '<p><strong style=\"margin: 0px; padding: 0px; color: rgb(0, 0, 0); font-family: &quot;Open Sans&quot;, Arial, sans-serif; font-size: 14px; text-align: justify;\">Lorem Ipsum</strong><span style=\"color: rgb(0, 0, 0); font-family: &quot;Open Sans&quot;, Arial, sans-serif; font-size: 14px; text-align: justify;\">&nbsp;is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</span><br></p>', 'Calculadora en PHP', '', '', 0, 0, 0, '2024-05-15 17:30:31', '2024-05-16 14:15:08'),
+(8, 'Calculadora en Java', 'calculadora-en-java', 3, 'j7o5voovltn5hjdmgvlu.webp', '<p><strong style=\"margin: 0px; padding: 0px; color: rgb(0, 0, 0); font-family: &quot;Open Sans&quot;, Arial, sans-serif; font-size: 14px; text-align: justify;\">Lorem Ipsum</strong><span style=\"color: rgb(0, 0, 0); font-family: &quot;Open Sans&quot;, Arial, sans-serif; font-size: 14px; text-align: justify;\">&nbsp;is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</span><br></p>', 'Calculadora en Java', '', '', 0, 0, 0, '2024-05-15 17:31:49', '2024-05-16 14:14:53'),
+(9, 'Calculadora en Kotlin', 'calculadora-en-kotlin', 7, 'plnc6heqx3frfx1gtrju.png', '<p><strong style=\"margin: 0px; padding: 0px; color: rgb(0, 0, 0); font-family: &quot;Open Sans&quot;, Arial, sans-serif; font-size: 14px; text-align: justify;\">Lorem Ipsum</strong><span style=\"color: rgb(0, 0, 0); font-family: &quot;Open Sans&quot;, Arial, sans-serif; font-size: 14px; text-align: justify;\">&nbsp;is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book</span><br></p>', 'Calculadora en Kotlin', '', '', 11, 0, 0, '2024-05-15 17:33:31', '2024-05-16 15:11:38'),
+(10, 'Calculadora en C++', 'calculadora-en-c', 8, 'p1zf388b9rep93hbci3v.webp', '<p>Calculadora en c++, desarrollada en Youtube, me robe la imagen :D</p>', 'Calculadora en C++', '', '', 0, 0, 0, '2024-05-16 14:18:32', '2024-05-16 14:18:32');
 
 -- --------------------------------------------------------
 
@@ -82,7 +89,9 @@ INSERT INTO `blog_categoria` (`id`, `nombre`, `slug`, `meta_titulo`, `meta_descr
 (3, 'Java', 'java', 'Java', '', '', 0, 0, '2024-05-14 16:00:24', '2024-05-14 16:00:24'),
 (4, 'Python', 'python', 'Python', '', '', 0, 0, '2024-05-14 16:00:39', '2024-05-14 16:00:39'),
 (5, 'Laravel', 'laravel', 'Laravel', '', '', 0, 0, '2024-05-14 16:17:46', '2024-05-14 16:17:46'),
-(6, 'DJango', 'django', 'DJango', '', '', 0, 0, '2024-05-15 15:26:32', '2024-05-15 15:26:32');
+(6, 'DJango', 'django', 'DJango', '', '', 0, 0, '2024-05-15 15:26:32', '2024-05-15 15:26:32'),
+(7, 'Kotlin', 'kotlin', 'Kotlin', '', '', 0, 0, '2024-05-15 17:32:18', '2024-05-15 17:32:18'),
+(8, 'C++', 'c', 'C++', '', '', 0, 0, '2024-05-16 14:16:42', '2024-05-16 14:16:42');
 
 -- --------------------------------------------------------
 
@@ -1059,13 +1068,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT de la tabla `blog`
 --
 ALTER TABLE `blog`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de la tabla `blog_categoria`
 --
 ALTER TABLE `blog_categoria`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT de la tabla `calificacion_productos`
