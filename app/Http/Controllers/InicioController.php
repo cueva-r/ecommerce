@@ -232,6 +232,8 @@ class InicioController extends Controller
             $data['getBlogCategoria'] = BlogCategoriaModel::getRecordActive();
             $data['getPopular'] = BlogModel::getPopular();
 
+            $data['getPostRelacionado'] = BlogModel::getPostRelacionado($getBlog->blogcategoria_id, $getBlog->id);
+
             return view('blog.detalles', $data);
         } else {
             abort(404);

@@ -71,6 +71,21 @@ class BlogModel extends Model
 
         return $return;
     }
+    
+    static function getPostRelacionado($blogcategoria_id, $blog_id)
+    {
+       $return = self::select('blog.*');
+
+       $return = $return->where('blog.esta_eliminado', '=', 0)
+        ->where('blog.estado', '=', 0)
+        ->where('blog.blogcategoria_id', '=', $blogcategoria_id)
+        ->where('blog.id', '!=', $blog_id)
+        ->orderBy('blog.total_vistas', 'desc')
+        ->limit(6)
+        ->get();
+
+        return $return;
+    }
 
     public function getImagen()
     {

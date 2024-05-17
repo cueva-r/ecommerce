@@ -107,6 +107,10 @@
                                 </div>
                             </div>
                         </li>
+
+                        <li class="megamenu-containeractive">
+                            <a href="{{ url('blog') }}">Blog</a>
+                        </li>
                     </ul>
                 </nav>
             </div>

@@ -62,6 +62,11 @@
                                     </div>
 
                                     <div class="form-group">
+                                        <label>Descripción corta <span style="color: red">*</span></label>
+                                        <textarea class="form-control" name="descripcion_corta">{{ $getRecord->descripcion_corta }}</textarea>
+                                    </div>
+
+                                    <div class="form-group">
                                         <label>Descripción <span style="color: red">*</span></label>
                                         <textarea class="form-control editor" name="descripcion">{{ $getRecord->descripcion }}</textarea>
                                     </div>

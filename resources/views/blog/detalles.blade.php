@@ -34,7 +34,8 @@
                                     <a href="#">0 Commentarios</a>
                                     @if (!empty($getBlog->getCategoria))
                                         <span class="meta-separator">|</span>
-                                        <a href="{{ url('blog/categoria/' . $getBlog->getCategoria->slug) }}">{{ $getBlog->getCategoria->nombre }}</a>
+                                        <a
+                                            href="{{ url('blog/categoria/' . $getBlog->getCategoria->slug) }}">{{ $getBlog->getCategoria->nombre }}</a>
                                     @endif
                                 </div>
                                 <br>
@@ -49,11 +50,12 @@
                             </div>
                         </article>
 
-                        <div class="related-posts">
-                            <h3 class="title">Related Posts</h3>
+                        @if (!empty($getPostRelacionado->count()))
+                            <div class="related-posts">
+                                <h3 class="title">Posts relacionados</h3>
 
-                            <div class="owl-carousel owl-simple" data-toggle="owl"
-                                data-owl-options='{
+                                <div class="owl-carousel owl-simple" data-toggle="owl"
+                                    data-owl-options='{
                                 "nav": false, 
                                 "dots": true,
                                 "margin": 20,
@@ -70,105 +72,43 @@
                                     }
                                 }
                             }'>
-                                <article class="entry entry-grid">
-                                    <figure class="entry-media">
-                                        <a href="single.html">
-                                            <img src="assets/images/blog/grid/3cols/post-1.jpg" alt="image desc">
-                                        </a>
-                                    </figure>
+                                    @foreach ($getPostRelacionado as $relacionados)
+                                        <article class="entry entry-grid">
+                                            <figure class="entry-media">
+                                                <a href="{{ url('blog/' . $relacionados->slug) }}">
+                                                    <img src="{{ $relacionados->getImagen() }}"
+                                                        style="height: 140px; width: 100%; object-fit: cover;"
+                                                        alt="{{ $relacionados->titulo }}">
+                                                </a>
+                                            </figure>
 
-                                    <div class="entry-body">
-                                        <div class="entry-meta">
-                                            <a href="#">Nov 22, 2018</a>
-                                            <span class="meta-separator">|</span>
-                                            <a href="#">2 Comments</a>
-                                        </div><!-- End .entry-meta -->
+                                            <div class="entry-body">
+                                                <div class="entry-meta">
+                                                    <a
+                                                        href="#">{{ date('M d, Y', strtotime($relacionados->created_at)) }}</a>
+                                                    <span class="meta-separator">|</span>
+                                                    <a href="#">0 Commentarios</a>
+                                                </div>
 
-                                        <h2 class="entry-title">
-                                            <a href="single.html">Cras ornare tristique elit.</a>
-                                        </h2><!-- End .entry-title -->
+                                                <h2 class="entry-title">
+                                                    <a
+                                                        href="{{ url('blog/' . $relacionados->slug) }}">{{ $relacionados->titulo }}</a>
+                                                </h2>
 
-                                        <div class="entry-cats">
-                                            in <a href="#">Lifestyle</a>,
-                                            <a href="#">Shopping</a>
-                                        </div><!-- End .entry-cats -->
-                                    </div><!-- End .entry-body -->
-                                </article><!-- End .entry -->
-
-                                <article class="entry entry-grid">
-                                    <figure class="entry-media">
-                                        <a href="single.html">
-                                            <img src="assets/images/blog/grid/3cols/post-2.jpg" alt="image desc">
-                                        </a>
-                                    </figure><!-- End .entry-media -->
-
-                                    <div class="entry-body">
-                                        <div class="entry-meta">
-                                            <a href="#">Nov 21, 2018</a>
-                                            <span class="meta-separator">|</span>
-                                            <a href="#">0 Comments</a>
-                                        </div><!-- End .entry-meta -->
-
-                                        <h2 class="entry-title">
-                                            <a href="single.html">Vivamus ntulla necante.</a>
-                                        </h2><!-- End .entry-title -->
-
-                                        <div class="entry-cats">
-                                            in <a href="#">Lifestyle</a>
-                                        </div><!-- End .entry-cats -->
-                                    </div><!-- End .entry-body -->
-                                </article><!-- End .entry -->
-
-                                <article class="entry entry-grid">
-                                    <figure class="entry-media">
-                                        <a href="single.html">
-                                            <img src="assets/images/blog/grid/3cols/post-3.jpg" alt="image desc">
-                                        </a>
-                                    </figure><!-- End .entry-media -->
-
-                                    <div class="entry-body">
-                                        <div class="entry-meta">
-                                            <a href="#">Nov 18, 2018</a>
-                                            <span class="meta-separator">|</span>
-                                            <a href="#">3 Comments</a>
-                                        </div><!-- End .entry-meta -->
-
-                                        <h2 class="entry-title">
-                                            <a href="single.html">Utaliquam sollicitudin leo.</a>
-                                        </h2><!-- End .entry-title -->
-
-                                        <div class="entry-cats">
-                                            in <a href="#">Fashion</a>,
-                                            <a href="#">Lifestyle</a>
-                                        </div><!-- End .entry-cats -->
-                                    </div><!-- End .entry-body -->
-                                </article><!-- End .entry -->
-
-                                <article class="entry entry-grid">
-                                    <figure class="entry-media">
-                                        <a href="single.html">
-                                            <img src="assets/images/blog/grid/3cols/post-4.jpg" alt="image desc">
-                                        </a>
-                                    </figure><!-- End .entry-media -->
-
-                                    <div class="entry-body">
-                                        <div class="entry-meta">
-                                            <a href="#">Nov 15, 2018</a>
-                                            <span class="meta-separator">|</span>
-                                            <a href="#">4 Comments</a>
-                                        </div><!-- End .entry-meta -->
-
-                                        <h2 class="entry-title">
-                                            <a href="single.html">Fusce pellentesque suscipit.</a>
-                                        </h2><!-- End .entry-title -->
-
-                                        <div class="entry-cats">
-                                            in <a href="#">Travel</a>
-                                        </div><!-- End .entry-cats -->
-                                    </div><!-- End .entry-body -->
-                                </article><!-- End .entry -->
-                            </div><!-- End .owl-carousel -->
-                        </div><!-- End .related-posts -->
+                                                @if (!empty($relacionados->getCategoria))
+                                                    <div class="entry-cats">
+                                                        <a
+                                                            href="{{ url('blog/categoria/' . $relacionados->getCategoria->slug) }}">
+                                                            {{ $relacionados->getCategoria->nombre }}
+                                                        </a>
+                                                    </div>
+                                                @endif
+                                            </div>
+                                        </article>
+                                    @endforeach
+                                </div>
+                            </div>
+                        @endif
 
                         <div class="comments">
                             <h3 class="title">3 Comments</h3><!-- End .title -->
@@ -246,7 +186,7 @@
                                     </div><!-- End .comment -->
                                 </li>
                             </ul>
-                        </div><!-- End .comments -->
+                        </div>
                         <div class="reply">
                             <div class="heading">
                                 <h3 class="title">Leave A Reply</h3><!-- End .title -->
