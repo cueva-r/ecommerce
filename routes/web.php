@@ -199,6 +199,7 @@ Route::get('sobre-nosotros', [InicioController::class, 'sobre_nosotros']);
 
 Route::get('blog', [InicioController::class, 'blog']);
 Route::get('blog/{slug}', [InicioController::class, 'detalle_blog']);
+Route::post('blog/enviar-comentario', [InicioController::class, 'enviar_comentario']);
 
 Route::get('faq', [InicioController::class, 'faq']);
 Route::get('metodo-pago', [InicioController::class, 'metodo_pago']);

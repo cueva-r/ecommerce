@@ -21,68 +21,68 @@ class BlogModel extends Model
     static function getSingleSlug($slug)
     {
         return self::where('slug', '=', $slug)
-        ->where('blog.esta_eliminado', '=', 0)
-        ->where('blog.estado', '=', 0)
-        ->first();
+            ->where('blog.esta_eliminado', '=', 0)
+            ->where('blog.estado', '=', 0)
+            ->first();
     }
 
     static function getRecord()
     {
         return self::select('blog.*')
-        ->where('blog.esta_eliminado', '=', 0)
-        ->orderBy('blog.id', 'desc')
-        ->get();
+            ->where('blog.esta_eliminado', '=', 0)
+            ->orderBy('blog.id', 'desc')
+            ->get();
     }
 
     static function getRecordActive()
     {
         return self::select('blog.*')
-        ->where('blog.esta_eliminado', '=', 0)
-        ->where('blog.estado', '=', 0)
-        ->orderBy('blog.nombre', 'asc')
-        ->get();
+            ->where('blog.esta_eliminado', '=', 0)
+            ->where('blog.estado', '=', 0)
+            ->orderBy('blog.nombre', 'asc')
+            ->get();
     }
 
     static function getBlog()
     {
-       $return = self::select('blog.*');
+        $return = self::select('blog.*');
 
-       if(!empty(Request::get('buscar'))){
-        $return = $return->where('blog.titulo', 'like', '%' . Request::get('buscar') . '%');
-       }
+        if (!empty(Request::get('buscar'))) {
+            $return = $return->where('blog.titulo', 'like', '%' . Request::get('buscar') . '%');
+        }
 
-       $return = $return->where('blog.esta_eliminado', '=', 0)
-        ->where('blog.estado', '=', 0)
-        ->orderBy('blog.id', 'desc')
-        ->paginate(8);
+        $return = $return->where('blog.esta_eliminado', '=', 0)
+            ->where('blog.estado', '=', 0)
+            ->orderBy('blog.id', 'desc')
+            ->paginate(8);
 
         return $return;
     }
-    
+
     static function getPopular()
     {
-       $return = self::select('blog.*');
+        $return = self::select('blog.*');
 
-       $return = $return->where('blog.esta_eliminado', '=', 0)
-        ->where('blog.estado', '=', 0)
-        ->orderBy('blog.total_vistas', 'desc')
-        ->limit(6)
-        ->get();
+        $return = $return->where('blog.esta_eliminado', '=', 0)
+            ->where('blog.estado', '=', 0)
+            ->orderBy('blog.total_vistas', 'desc')
+            ->limit(6)
+            ->get();
 
         return $return;
     }
-    
+
     static function getPostRelacionado($blogcategoria_id, $blog_id)
     {
-       $return = self::select('blog.*');
+        $return = self::select('blog.*');
 
-       $return = $return->where('blog.esta_eliminado', '=', 0)
-        ->where('blog.estado', '=', 0)
-        ->where('blog.blogcategoria_id', '=', $blogcategoria_id)
-        ->where('blog.id', '!=', $blog_id)
-        ->orderBy('blog.total_vistas', 'desc')
-        ->limit(6)
-        ->get();
+        $return = $return->where('blog.esta_eliminado', '=', 0)
+            ->where('blog.estado', '=', 0)
+            ->where('blog.blogcategoria_id', '=', $blogcategoria_id)
+            ->where('blog.id', '!=', $blog_id)
+            ->orderBy('blog.total_vistas', 'desc')
+            ->limit(6)
+            ->get();
 
         return $return;
     }
@@ -101,5 +101,19 @@ class BlogModel extends Model
         return $this->belongsTo(BlogCategoriaModel::class, 'blogcategoria_id');
     }
 
+    public function getComentario()
+    {
+        return $this->hasMany(BlogComentarioModel::class, 'blog_id')
+            ->select('blog_comentarios.*')
+            ->join('users', 'users.id', '=', 'blog_comentarios.user_id')
+            ->orderBy('blog_comentarios.id', 'desc');
+    }
 
+    public function getComentarioCount()
+    {
+        return $this->hasMany(BlogComentarioModel::class, 'blog_id')
+            ->select('blog_comentarios.id')
+            ->join('users', 'users.id', '=', 'blog_comentarios.user_id')
+            ->count();
+    }
 }

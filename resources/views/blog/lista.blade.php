@@ -38,7 +38,7 @@
                                                 <a
                                                     href="javascript:;">{{ date('M d, Y', strtotime($valor->created_at)) }}</a>
                                                 <span class="meta-separator">|</span>
-                                                <a href="#">0 Commentarios</a>
+                                                <a href="#">{{ $valor->getComentarioCount() }} Commentarios</a>
                                             </div>
 
                                             <h2 class="entry-title">

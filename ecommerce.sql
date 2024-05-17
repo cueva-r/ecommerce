@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 17-05-2024 a las 17:02:38
+-- Tiempo de generación: 17-05-2024 a las 22:28:15
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -50,17 +50,17 @@ CREATE TABLE `blog` (
 --
 
 INSERT INTO `blog` (`id`, `titulo`, `slug`, `blogcategoria_id`, `nombre_imagen`, `descripcion`, `meta_titulo`, `descripcion_corta`, `meta_descripcion`, `meta_p_clave`, `total_vistas`, `estado`, `esta_eliminado`, `created_at`, `updated_at`) VALUES
-(1, 'E-commerce Laravel 10', 'e-commerce-laravel-10', 5, 'bvfslnftk55zzoa82hxg.jpg', '<p><span style=\"font-family: &quot;Courier New&quot;;\">E-commerce Laravel 10, E-commerce Laravel 10,&nbsp;E-commerce Laravel 10,&nbsp;</span><span style=\"font-family: &quot;Courier New&quot;; font-size: 1rem;\">E-commerce Laravel 10</span><br></p>', 'E-commerce Laravel 10', 'E-commerce Laravel 10, E-commerce Laravel 10, xd', '', '', 13, 0, 0, '2024-05-14 16:40:37', '2024-05-17 14:45:38'),
+(1, 'E-commerce Laravel 10', 'e-commerce-laravel-10', 5, 'bvfslnftk55zzoa82hxg.jpg', '<p><span style=\"font-family: &quot;Courier New&quot;;\">E-commerce Laravel 10, E-commerce Laravel 10,&nbsp;E-commerce Laravel 10,&nbsp;</span><span style=\"font-family: &quot;Courier New&quot;; font-size: 1rem;\">E-commerce Laravel 10</span><br></p>', 'E-commerce Laravel 10', 'E-commerce Laravel 10, E-commerce Laravel 10, xd', '', '', 29, 0, 0, '2024-05-14 16:40:37', '2024-05-17 20:27:50'),
 (2, 'E-commerce con java EE', 'e-commerce-con-java-ee', 3, 'yyq8hczbeoq0ifd6d4wi.jpg', '<p><span style=\"font-family: &quot;Mercury SSm A&quot;, &quot;Mercury SSm B&quot;, Georgia, Times, &quot;Times New Roman&quot;, &quot;Microsoft YaHei New&quot;, &quot;Microsoft Yahei&quot;, 微软雅黑, 宋体, SimSun, STXihei, 华文细黑, serif; font-size: 26px;\"><font color=\"#000000\" style=\"\">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</font></span><br></p>', 'E-commerce con java EE', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua', '', '', 2, 0, 0, '2024-05-15 15:30:13', '2024-05-17 14:44:35'),
 (3, 'E-commerce django', 'e-commerce-django', 6, 'aynjthjaaimajd18vcgr.jpg', '<p>E-commerce django<br></p>', 'E-commerce django', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.', '', '', 2, 0, 0, '2024-05-15 15:30:55', '2024-05-17 14:59:27'),
-(4, 'E-commerce PHP', 'e-commerce-php', 1, 'vjgx61h87nmzhf9fk0fj.webp', '<p>E-commerce PHP<br></p>', 'E-commerce PHP', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.', '', '', 4, 0, 0, '2024-05-15 15:31:24', '2024-05-17 14:59:34'),
+(4, 'E-commerce PHP', 'e-commerce-php', 1, 'vjgx61h87nmzhf9fk0fj.webp', '<p>E-commerce PHP<br></p>', 'E-commerce PHP', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.', '', '', 12, 0, 0, '2024-05-15 15:31:24', '2024-05-17 19:35:34'),
 (5, 'Calculadora en JavaScript', 'calculadora-en-javascript', 2, 's2wyrcclcd6busopyaba.png', '<p><strong style=\"margin: 0px; padding: 0px; color: rgb(0, 0, 0); font-family: &quot;Open Sans&quot;, Arial, sans-serif; font-size: 14px; text-align: justify;\">Lorem Ipsum</strong><span style=\"color: rgb(0, 0, 0); font-family: &quot;Open Sans&quot;, Arial, sans-serif; font-size: 14px; text-align: justify;\">&nbsp;is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</span><br></p>', 'Calculadora en JavaScript', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.', '', '', 1, 0, 0, '2024-05-15 17:26:47', '2024-05-17 14:45:08'),
 (6, 'Calculadora en Python', 'calculadora-en-python', 4, 'whkrjtqwx5uax0zdxe9g.webp', '<p><strong style=\"margin: 0px; padding: 0px; color: rgb(0, 0, 0); font-family: &quot;Open Sans&quot;, Arial, sans-serif; font-size: 14px; text-align: justify;\">Lorem Ipsum</strong><span style=\"color: rgb(0, 0, 0); font-family: &quot;Open Sans&quot;, Arial, sans-serif; font-size: 14px; text-align: justify;\">&nbsp;is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</span><br></p>', 'Calculadora en Python', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.', '', '', 0, 0, 0, '2024-05-15 17:28:20', '2024-05-17 14:45:50'),
 (7, 'Calculadora en PHP', 'calculadora-en-php', 1, '0oru9zaz9cukhtssqpta.jpg', '<p><strong style=\"margin: 0px; padding: 0px; color: rgb(0, 0, 0); font-family: &quot;Open Sans&quot;, Arial, sans-serif; font-size: 14px; text-align: justify;\">Lorem Ipsum</strong><span style=\"color: rgb(0, 0, 0); font-family: &quot;Open Sans&quot;, Arial, sans-serif; font-size: 14px; text-align: justify;\">&nbsp;is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</span><br></p>', 'Calculadora en PHP', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.', '', '', 11, 0, 0, '2024-05-15 17:30:31', '2024-05-17 14:57:35'),
 (8, 'Calculadora en Java', 'calculadora-en-java', 3, 'j7o5voovltn5hjdmgvlu.webp', '<p><strong style=\"margin: 0px; padding: 0px; color: rgb(0, 0, 0); font-family: &quot;Open Sans&quot;, Arial, sans-serif; font-size: 14px; text-align: justify;\">Lorem Ipsum</strong><span style=\"color: rgb(0, 0, 0); font-family: &quot;Open Sans&quot;, Arial, sans-serif; font-size: 14px; text-align: justify;\">&nbsp;is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</span><br></p>', 'Calculadora en Java', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.', '', '', 2, 0, 0, '2024-05-15 17:31:49', '2024-05-17 14:58:43'),
 (9, 'Calculadora en Kotlin', 'calculadora-en-kotlin', 7, 'plnc6heqx3frfx1gtrju.png', '<p><strong style=\"margin: 0px; padding: 0px; color: rgb(0, 0, 0); font-family: &quot;Open Sans&quot;, Arial, sans-serif; font-size: 14px; text-align: justify;\">Lorem Ipsum</strong><span style=\"color: rgb(0, 0, 0); font-family: &quot;Open Sans&quot;, Arial, sans-serif; font-size: 14px; text-align: justify;\">&nbsp;is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book</span><br></p>', 'Calculadora en Kotlin', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.', '', '', 18, 0, 0, '2024-05-15 17:33:31', '2024-05-17 14:46:04'),
 (10, 'Calculadora en C++', 'calculadora-en-c', 8, 'p1zf388b9rep93hbci3v.webp', '<p>Calculadora en c++, desarrollada en Youtube, me robe la imagen :D</p>', 'Calculadora en C++', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.', '', '', 1, 0, 0, '2024-05-16 14:18:32', '2024-05-17 14:55:50'),
-(11, 'Paquete php', 'paquete-php', 1, '9w0ccit9ttv4i0m4xcqg.png', '<p><span style=\"font-weight: bolder; margin: 0px; padding: 0px; color: rgb(0, 0, 0); font-family: &quot;Open Sans&quot;, Arial, sans-serif; font-size: 14px; text-align: justify;\">Lorem Ipsum</span><span style=\"color: rgb(0, 0, 0); font-family: &quot;Open Sans&quot;, Arial, sans-serif; font-size: 14px; text-align: justify;\">&nbsp;is simply dummy text of the printing and typesetting industry.&nbsp;</span><span style=\"font-weight: bolder; margin: 0px; padding: 0px; color: rgb(0, 0, 0); font-family: &quot;Open Sans&quot;, Arial, sans-serif; font-size: 14px; text-align: justify;\">Lorem Ipsum</span><span style=\"color: rgb(0, 0, 0); font-family: &quot;Open Sans&quot;, Arial, sans-serif; font-size: 14px; text-align: justify;\">&nbsp;is simply dummy text of the printing and typesetting industry.&nbsp;</span><span style=\"font-weight: bolder; margin: 0px; padding: 0px; color: rgb(0, 0, 0); font-family: &quot;Open Sans&quot;, Arial, sans-serif; font-size: 14px; text-align: justify;\">Lorem Ipsum</span><span style=\"color: rgb(0, 0, 0); font-family: &quot;Open Sans&quot;, Arial, sans-serif; font-size: 14px; text-align: justify;\">&nbsp;is simply dummy text of the printing and typesetting industry.&nbsp;</span><span style=\"font-weight: bolder; margin: 0px; padding: 0px; color: rgb(0, 0, 0); font-family: &quot;Open Sans&quot;, Arial, sans-serif; font-size: 14px; text-align: justify;\">Lorem Ipsum</span><span style=\"color: rgb(0, 0, 0); font-family: &quot;Open Sans&quot;, Arial, sans-serif; font-size: 14px; text-align: justify;\">&nbsp;is simply dummy text of the printing and typesetting industry.&nbsp;</span><span style=\"font-weight: bolder; margin: 0px; padding: 0px; color: rgb(0, 0, 0); font-family: &quot;Open Sans&quot;, Arial, sans-serif; font-size: 14px; text-align: justify;\">Lorem Ipsum</span><span style=\"color: rgb(0, 0, 0); font-family: &quot;Open Sans&quot;, Arial, sans-serif; font-size: 14px; text-align: justify;\">&nbsp;is simply dummy text of the printing and typesetting industry.&nbsp;</span><span style=\"font-weight: bolder; margin: 0px; padding: 0px; color: rgb(0, 0, 0); font-family: &quot;Open Sans&quot;, Arial, sans-serif; font-size: 14px; text-align: justify;\">Lorem Ipsum</span><span style=\"color: rgb(0, 0, 0); font-family: &quot;Open Sans&quot;, Arial, sans-serif; font-size: 14px; text-align: justify;\">&nbsp;is simply dummy text of the printing and typesetting industry.</span><br></p>', 'Paquete php', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.', '', '', 3, 0, 0, '2024-05-17 14:49:03', '2024-05-17 15:02:24');
+(11, 'Paquete php', 'paquete-php', 1, '9w0ccit9ttv4i0m4xcqg.png', '<p><span style=\"font-weight: bolder; margin: 0px; padding: 0px; color: rgb(0, 0, 0); font-family: &quot;Open Sans&quot;, Arial, sans-serif; font-size: 14px; text-align: justify;\">Lorem Ipsum</span><span style=\"color: rgb(0, 0, 0); font-family: &quot;Open Sans&quot;, Arial, sans-serif; font-size: 14px; text-align: justify;\">&nbsp;is simply dummy text of the printing and typesetting industry.&nbsp;</span><span style=\"font-weight: bolder; margin: 0px; padding: 0px; color: rgb(0, 0, 0); font-family: &quot;Open Sans&quot;, Arial, sans-serif; font-size: 14px; text-align: justify;\">Lorem Ipsum</span><span style=\"color: rgb(0, 0, 0); font-family: &quot;Open Sans&quot;, Arial, sans-serif; font-size: 14px; text-align: justify;\">&nbsp;is simply dummy text of the printing and typesetting industry.&nbsp;</span><span style=\"font-weight: bolder; margin: 0px; padding: 0px; color: rgb(0, 0, 0); font-family: &quot;Open Sans&quot;, Arial, sans-serif; font-size: 14px; text-align: justify;\">Lorem Ipsum</span><span style=\"color: rgb(0, 0, 0); font-family: &quot;Open Sans&quot;, Arial, sans-serif; font-size: 14px; text-align: justify;\">&nbsp;is simply dummy text of the printing and typesetting industry.&nbsp;</span><span style=\"font-weight: bolder; margin: 0px; padding: 0px; color: rgb(0, 0, 0); font-family: &quot;Open Sans&quot;, Arial, sans-serif; font-size: 14px; text-align: justify;\">Lorem Ipsum</span><span style=\"color: rgb(0, 0, 0); font-family: &quot;Open Sans&quot;, Arial, sans-serif; font-size: 14px; text-align: justify;\">&nbsp;is simply dummy text of the printing and typesetting industry.&nbsp;</span><span style=\"font-weight: bolder; margin: 0px; padding: 0px; color: rgb(0, 0, 0); font-family: &quot;Open Sans&quot;, Arial, sans-serif; font-size: 14px; text-align: justify;\">Lorem Ipsum</span><span style=\"color: rgb(0, 0, 0); font-family: &quot;Open Sans&quot;, Arial, sans-serif; font-size: 14px; text-align: justify;\">&nbsp;is simply dummy text of the printing and typesetting industry.&nbsp;</span><span style=\"font-weight: bolder; margin: 0px; padding: 0px; color: rgb(0, 0, 0); font-family: &quot;Open Sans&quot;, Arial, sans-serif; font-size: 14px; text-align: justify;\">Lorem Ipsum</span><span style=\"color: rgb(0, 0, 0); font-family: &quot;Open Sans&quot;, Arial, sans-serif; font-size: 14px; text-align: justify;\">&nbsp;is simply dummy text of the printing and typesetting industry.</span><br></p>', 'Paquete php', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.', '', '', 7, 0, 0, '2024-05-17 14:49:03', '2024-05-17 20:21:04');
 
 -- --------------------------------------------------------
 
@@ -94,6 +94,30 @@ INSERT INTO `blog_categoria` (`id`, `nombre`, `slug`, `meta_titulo`, `meta_descr
 (6, 'DJango', 'django', 'DJango', '', '', 0, 0, '2024-05-15 15:26:32', '2024-05-15 15:26:32'),
 (7, 'Kotlin', 'kotlin', 'Kotlin', '', '', 0, 0, '2024-05-15 17:32:18', '2024-05-15 17:32:18'),
 (8, 'C++', 'c', 'C++', '', '', 0, 0, '2024-05-16 14:16:42', '2024-05-16 14:16:42');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `blog_comentarios`
+--
+
+CREATE TABLE `blog_comentarios` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) DEFAULT NULL,
+  `blog_id` int(11) DEFAULT NULL,
+  `comentario` text DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `blog_comentarios`
+--
+
+INSERT INTO `blog_comentarios` (`id`, `user_id`, `blog_id`, `comentario`, `created_at`, `updated_at`) VALUES
+(1, 1, 4, 'ok', '2024-05-17 19:35:33', '2024-05-17 19:35:33'),
+(2, 1, 11, 'Ok', '2024-05-17 19:39:23', '2024-05-17 19:39:23'),
+(3, 1, 1, 'Es un buen ecommerce hasta ahora', '2024-05-17 20:27:06', '2024-05-17 20:27:06');
 
 -- --------------------------------------------------------
 
@@ -879,7 +903,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `apellidos`, `email`, `email_verified_at`, `password`, `remember_token`, `nombre_compania`, `pais`, `primera_direccion`, `segunda_direccion`, `ciudad`, `distrito`, `codigo_postal`, `telefono`, `es_admin`, `estado`, `esta_eliminado`, `created_at`, `updated_at`) VALUES
-(1, 'Abraham Elias', 'Cueva Rico', 'ricoabraham879@gmail.com', '2024-03-17 20:13:42', '$2y$12$teqAlxN7bszkF5PLf8IMn.EgGlIID8nI0pRiFKNIAfDT0bXwzsMNi', 'GxmETE59CD7Hfr3mhgjN5vqdH3wJtLyty8NtPStKRpsfhoQbfcuxjQTpmeQM', 'rico\'s', 'Perú', 'Hefestos', '404', 'Lima', 'Ate', '15022', '924575577', 1, 0, 0, '2024-01-28 15:23:20', '2024-04-19 01:11:45'),
+(1, 'Abraham Elias', 'Cueva Rico', 'ricoabraham879@gmail.com', '2024-03-17 20:13:42', '$2y$12$teqAlxN7bszkF5PLf8IMn.EgGlIID8nI0pRiFKNIAfDT0bXwzsMNi', 'SSATl9QETz4hvuZ5PEVAdXNMBzmd6tJiw1yg9dHZmxyekgvKcUoN9QD5swmV', 'rico\'s', 'Perú', 'Hefestos', '404', 'Lima', 'Ate', '15022', '924575577', 1, 0, 0, '2024-01-28 15:23:20', '2024-04-19 01:11:45'),
 (2, 'test', NULL, 'test@gmail.com', NULL, '$2y$12$ohGsPlzjAJYcQ0l14K0FoO0A/QnDNK8aNUJe4kwhJDzmQZCWsVeD.', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, 0, '2024-01-29 03:46:12', '2024-04-02 00:39:09'),
 (3, 'prueba', NULL, 'prueba@gmail.com', NULL, '$2y$12$K84E6xDH5pPrV/BYwaNzVOZaEAEmHK7l1Nb4rpK1LUAb5/kXcR0ru', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, 0, '2024-01-29 03:56:58', '2024-04-02 00:39:34'),
 (4, 'xdd', NULL, 'xdd@gmail.com', NULL, '$2y$12$O0waTN9YyZSDX7SQplwU6OPWVY51OA1jcJSYPIy2ERDSb6my7MTIO', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, 0, '2024-01-29 04:00:36', '2024-01-29 06:38:30'),
@@ -912,6 +936,12 @@ ALTER TABLE `blog`
 -- Indices de la tabla `blog_categoria`
 --
 ALTER TABLE `blog_categoria`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `blog_comentarios`
+--
+ALTER TABLE `blog_comentarios`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -1077,6 +1107,12 @@ ALTER TABLE `blog`
 --
 ALTER TABLE `blog_categoria`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT de la tabla `blog_comentarios`
+--
+ALTER TABLE `blog_comentarios`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `calificacion_productos`

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Mail\ContactenosMail;
 use App\Models\BlogCategoriaModel;
+use App\Models\BlogComentarioModel;
 use App\Models\BlogModel;
 use App\Models\CategoriaModel;
 use App\Models\ConfiguracionSistemaModel;
@@ -238,5 +239,16 @@ class InicioController extends Controller
         } else {
             abort(404);
         }
+    }
+
+    public function enviar_comentario(Request $request)
+    {
+        $comentario = new BlogComentarioModel();
+        $comentario->user_id = Auth::user()->id;
+        $comentario->blog_id = $request->blog_id;
+        $comentario->comentario = trim($request->comentario);
+        $comentario->save();
+
+        return redirect()->back()->with('success', 'Tu cometario se ha publicado exitosamente');
     }
 }

@@ -9,6 +9,7 @@
         </div>
         <nav aria-label="breadcrumb" class="breadcrumb-nav mb-3">
             <div class="container">
+                @include('layouts._message')
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="{{ url('') }}">Inicio</a></li>
                     <li class="breadcrumb-item"><a href="{{ url('blog') }}">Blog</a></li>
@@ -31,7 +32,7 @@
                                     <span class="meta-separator">|</span>
                                     <a href="javascript:;">{{ date('M d, Y', strtotime($getBlog->created_at)) }}</a>
                                     <span class="meta-separator">|</span>
-                                    <a href="#">0 Commentarios</a>
+                                    <a href="#">{{ $getBlog->getComentarioCount() }} Commentarios</a>
                                     @if (!empty($getBlog->getCategoria))
                                         <span class="meta-separator">|</span>
                                         <a
@@ -87,7 +88,7 @@
                                                     <a
                                                         href="#">{{ date('M d, Y', strtotime($relacionados->created_at)) }}</a>
                                                     <span class="meta-separator">|</span>
-                                                    <a href="#">0 Commentarios</a>
+                                                    <a href="#">{{ $relacionados->getComentarioCount() }} Commentarios</a>
                                                 </div>
 
                                                 <h2 class="entry-title">
@@ -111,112 +112,50 @@
                         @endif
 
                         <div class="comments">
-                            <h3 class="title">3 Comments</h3><!-- End .title -->
+                            <h3 class="title">{{ $getBlog->getComentarioCount() }} Commentarios</h3>
 
                             <ul>
+                                @foreach ($getBlog->getComentario as $comentario)
                                 <li>
                                     <div class="comment">
-                                        <figure class="comment-media">
-                                            <a href="#">
-                                                <img src="assets/images/blog/comments/1.jpg" alt="User name">
-                                            </a>
-                                        </figure>
-
                                         <div class="comment-body">
-                                            <a href="#" class="comment-reply">Reply</a>
                                             <div class="comment-user">
-                                                <h4><a href="#">Jimmy Pearson</a></h4>
-                                                <span class="comment-date">November 9, 2018 at 2:19 pm</span>
-                                            </div><!-- End .comment-user -->
+                                                <h4><a href="#">{{ $comentario->getUser->name }}</a></h4>
+                                                <span class="comment-date">{{ date('M d, Y', strtotime($comentario->created_at)) }} a las {{ date('h:i A', strtotime($comentario->created_at)) }}</span>
+                                            </div>
 
                                             <div class="comment-content">
-                                                <p>Sed pretium, ligula sollicitudin laoreet viverra, tortor libero sodales
-                                                    leo, eget blandit nunc tortor eu nibh. Nullam mollis. Ut justo.
-                                                    Suspendisse potenti. </p>
-                                            </div><!-- End .comment-content -->
-                                        </div><!-- End .comment-body -->
-                                    </div><!-- End .comment -->
-
-                                    <ul>
-                                        <li>
-                                            <div class="comment">
-                                                <figure class="comment-media">
-                                                    <a href="#">
-                                                        <img src="assets/images/blog/comments/2.jpg" alt="User name">
-                                                    </a>
-                                                </figure>
-
-                                                <div class="comment-body">
-                                                    <a href="#" class="comment-reply">Reply</a>
-                                                    <div class="comment-user">
-                                                        <h4><a href="#">Lena Knight</a></h4>
-                                                        <span class="comment-date">November 9, 2018 at 2:19 pm</span>
-                                                    </div><!-- End .comment-user -->
-
-                                                    <div class="comment-content">
-                                                        <p>Morbi interdum mollis sapien. Sed ac risus.</p>
-                                                    </div><!-- End .comment-content -->
-                                                </div><!-- End .comment-body -->
-                                            </div><!-- End .comment -->
-                                        </li>
-                                    </ul>
+                                                <p>{{ $comentario->comentario }}</p>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </li>
-
-                                <li>
-                                    <div class="comment">
-                                        <figure class="comment-media">
-                                            <a href="#">
-                                                <img src="assets/images/blog/comments/3.jpg" alt="User name">
-                                            </a>
-                                        </figure>
-
-                                        <div class="comment-body">
-                                            <a href="#" class="comment-reply">Reply</a>
-                                            <div class="comment-user">
-                                                <h4><a href="#">Johnathan Castillo</a></h4>
-                                                <span class="comment-date">November 9, 2018 at 2:19 pm</span>
-                                            </div><!-- End .comment-user -->
-
-                                            <div class="comment-content">
-                                                <p>Vestibulum volutpat, lacus a ultrices sagittis, mi neque euismod dui, eu
-                                                    pulvinar nunc sapien ornare nisl. Phasellus pede arcu, dapibus eu,
-                                                    fermentum et, dapibus sed, urna.</p>
-                                            </div><!-- End .comment-content -->
-                                        </div><!-- End .comment-body -->
-                                    </div><!-- End .comment -->
-                                </li>
+                                @endforeach
                             </ul>
                         </div>
                         <div class="reply">
                             <div class="heading">
-                                <h3 class="title">Leave A Reply</h3><!-- End .title -->
-                                <p class="title-desc">Your email address will not be published. Required fields are marked
-                                    *</p>
-                            </div><!-- End .heading -->
+                                <h3 class="title">Deja un comentario</h3>
+                            </div>
 
-                            <form action="#">
-                                <label for="reply-message" class="sr-only">Comment</label>
-                                <textarea name="reply-message" id="reply-message" cols="30" rows="4" class="form-control" required
-                                    placeholder="Comment *"></textarea>
+                            <form action="{{ url('blog/enviar-comentario') }}" method="POST">
+                                {{ csrf_field() }}
+                                <input type="hidden" name="blog_id" value="{{ $getBlog->id }}">
+                                <label for="reply-message" class="sr-only">Commentario</label>
+                                <textarea name="comentario" id="reply-message" cols="30" rows="4" class="form-control" required
+                                    placeholder="Comentario *"></textarea>
 
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <label for="reply-name" class="sr-only">Name</label>
-                                        <input type="text" class="form-control" id="reply-name" name="reply-name"
-                                            required placeholder="Name *">
-                                    </div><!-- End .col-md-6 -->
-
-                                    <div class="col-md-6">
-                                        <label for="reply-email" class="sr-only">Email</label>
-                                        <input type="email" class="form-control" id="reply-email" name="reply-email"
-                                            required placeholder="Email *">
-                                    </div><!-- End .col-md-6 -->
-                                </div><!-- End .row -->
-
-                                <button type="submit" class="btn btn-outline-primary-2">
-                                    <span>POST COMMENT</span>
-                                    <i class="icon-long-arrow-right"></i>
-                                </button>
+                                @if (!empty(Auth::check()))
+                                    <button type="submit" class="btn btn-outline-primary-2">
+                                        <span>Publicar comentario</span>
+                                        <i class="icon-long-arrow-right"></i>
+                                    </button>
+                                @else
+                                    <a href="#signin-modal" data-toggle="modal" class="btn btn-outline-primary-2">
+                                        <span>Publicar comentario</span>
+                                        <i class="icon-long-arrow-right"></i>
+                                    </a>
+                                @endif
                             </form>
                         </div>
                     </div>
