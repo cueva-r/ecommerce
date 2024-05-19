@@ -42,13 +42,26 @@ class BlogModel extends Model
             ->orderBy('blog.nombre', 'asc')
             ->get();
     }
+    
+    static function getRecordActiveInicio()
+    {
+        return self::select('blog.*')
+            ->where('blog.esta_eliminado', '=', 0)
+            ->where('blog.estado', '=', 0)
+            ->limit(5)
+            ->orderBy('blog.id', 'desc')
+            ->get();
+    }
 
-    static function getBlog()
+    static function getBlog($blogcategoria_id = '')
     {
         $return = self::select('blog.*');
 
         if (!empty(Request::get('buscar'))) {
             $return = $return->where('blog.titulo', 'like', '%' . Request::get('buscar') . '%');
+        }
+        if (!empty($blogcategoria_id)) {
+            $return = $return->where('blog.blogcategoria_id', '=', $blogcategoria_id);
         }
 
         $return = $return->where('blog.esta_eliminado', '=', 0)

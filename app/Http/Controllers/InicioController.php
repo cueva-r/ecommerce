@@ -25,6 +25,7 @@ class InicioController extends Controller
         $getPage = PagesModel::getSlug('inicio');
         $data['getPage'] = $getPage;
 
+        $data['getBlog'] = BlogModel::getRecordActiveInicio();
         $data['getSliders'] = SlidersModel::getRecordActive();
         $data['getSocios'] = SociosModel::getRecordActive();
         $data['getCategorias'] = CategoriaModel::getRecordActiveInicio();
@@ -250,5 +251,26 @@ class InicioController extends Controller
         $comentario->save();
 
         return redirect()->back()->with('success', 'Tu cometario se ha publicado exitosamente');
+    }
+
+    public function categoria_blog($slug)
+    {
+        $getCategoria = BlogCategoriaModel::getSingleSlug($slug);
+        if (!empty($getCategoria)) {
+
+            $data['getCategoria'] = $getCategoria;
+            $data['meta_titulo'] = $getCategoria->meta_titulo;
+            $data['meta_descripcion'] = $getCategoria->meta_descripcion;
+            $data['meta_p_clave'] = $getCategoria->meta_p_clave;
+
+            $data['getBlogCategoria'] = BlogCategoriaModel::getRecordActive();
+            $data['getPopular'] = BlogModel::getPopular();
+
+            $data['getBlog'] = BlogModel::getBlog($getCategoria->id);
+
+            return view('blog.categoria', $data);
+        } else {
+            abort(404);
+        }
     }
 }

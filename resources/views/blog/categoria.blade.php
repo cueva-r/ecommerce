@@ -2,16 +2,17 @@
 
 @section('content')
     <main class="main">
-        <div class="page-header text-center" style="background-image: url('{{ $getPage->getImagen() }}')">
+        <div class="page-header text-center" style="background-image: url('{{ url('assets/images/page-header-bg.jpg') }}')">
             <div class="container">
-                <h1 class="page-title">{{ $getPage->titulo }}</h1>
+                <h1 class="page-title">{{ $getCategoria->nombre }}</h1>
             </div>
         </div>
         <nav aria-label="breadcrumb" class="breadcrumb-nav mb-3">
             <div class="container">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="{{ url('/') }}">Inicio</a></li>
-                    <li class="breadcrumb-item active"><a href="{{ url('blog') }}">{{ $getPage->titulo }}</a></li>
+                    <li class="breadcrumb-item"><a href="{{ url('blog') }}">Blog</a></li>
+                    <li class="breadcrumb-item"><a href="javascript:;">{{ $getCategoria->nombre }}</a></li>
                 </ol>
             </div>
         </nav>
@@ -38,7 +39,7 @@
                                                 <a
                                                     href="javascript:;">{{ date('M d, Y', strtotime($valor->created_at)) }}</a>
                                                 <span class="meta-separator">|</span>
-                                                <a href="javascript:;">{{ $valor->getComentarioCount() }} Commentarios</a>
+                                                <a href="#">{{ $valor->getComentarioCount() }} Commentarios</a>
                                             </div>
 
                                             <h2 class="entry-title">

@@ -58,6 +58,8 @@
                     </div>
                 </div>
 
+                <hr>
+
                 @if (!empty($getSocios->count()))
                     <div class="mb-6 d-flex justify-content-center">
                         <div class="owl-carousel owl-simple" data-toggle="owl"
@@ -203,7 +205,9 @@
                             <div class="col-sm-12 col-lg-4 banners-sm">
                                 <div class="banner banner-display banner-link-anim col-lg-12 col-6">
                                     <a href="{{ url($categorias->slug) }}">
-                                        <img src="{{ $categorias->getImagen() }}" style="height: 200px; width: 100%; object-fit: cover;"  alt="{{ $categorias->nombre }}">
+                                        <img src="{{ $categorias->getImagen() }}"
+                                            style="height: 200px; width: 100%; object-fit: cover;"
+                                            alt="{{ $categorias->nombre }}">
                                     </a>
                                     <div class="banner-content banner-content-center">
                                         <h3 class="banner-title text-white">
@@ -284,11 +288,11 @@
                             <i class="icon-rocket"></i>
                         </span>
                         <div class="icon-box-content">
-                            <h3 class="icon-box-title">Payment & Delivery</h3><!-- End .icon-box-title -->
-                            <p>Free shipping for orders over $50</p>
-                        </div><!-- End .icon-box-content -->
-                    </div><!-- End .icon-box -->
-                </div><!-- End .col-lg-4 col-sm-6 -->
+                            <h3 class="icon-box-title">Pago y entrega</h3>
+                            <p>Envío gratis para pedidos superiores a s/. 200.00</p>
+                        </div>
+                    </div>
+                </div>
 
                 <div class="col-lg-4 col-sm-6">
                     <div class="icon-box icon-box-card text-center">
@@ -296,11 +300,11 @@
                             <i class="icon-rotate-left"></i>
                         </span>
                         <div class="icon-box-content">
-                            <h3 class="icon-box-title">Return & Refund</h3><!-- End .icon-box-title -->
-                            <p>Free 100% money back guarantee</p>
-                        </div><!-- End .icon-box-content -->
-                    </div><!-- End .icon-box -->
-                </div><!-- End .col-lg-4 col-sm-6 -->
+                            <h3 class="icon-box-title">Reembolso de vuelta</h3>
+                            <p>Garantía de devolución de dinero 100% gratis</p>
+                        </div>
+                    </div>
+                </div>
 
                 <div class="col-lg-4 col-sm-6">
                     <div class="icon-box icon-box-card text-center">
@@ -308,21 +312,23 @@
                             <i class="icon-life-ring"></i>
                         </span>
                         <div class="icon-box-content">
-                            <h3 class="icon-box-title">Quality Support</h3><!-- End .icon-box-title -->
-                            <p>Alway online feedback 24/7</p>
-                        </div><!-- End .icon-box-content -->
-                    </div><!-- End .icon-box -->
-                </div><!-- End .col-lg-4 col-sm-6 -->
-            </div><!-- End .row -->
+                            <h3 class="icon-box-title">Soporte de calidad</h3>
+                            <p>Siempre retroalimentación en línea 24/7</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-            <div class="mb-2"></div><!-- End .mb-2 -->
+            <div class="mb-2"></div>
         </div>
-        <div class="blog-posts pt-7 pb-7" style="background-color: #fafafa;">
-            <div class="container">
-                <h2 class="title-lg text-center mb-3 mb-md-4">From Our Blog</h2><!-- End .title-lg text-center -->
 
-                <div class="owl-carousel owl-simple carousel-with-shadow" data-toggle="owl"
-                    data-owl-options='{
+        @if (!empty($getBlog->count()))
+            <div class="blog-posts pt-7 pb-7" style="background-color: #fafafa;">
+                <div class="container">
+                    <h2 class="title-lg text-center mb-3 mb-md-4">De nuestro blog</h2>
+
+                    <div class="owl-carousel owl-simple carousel-with-shadow" data-toggle="owl"
+                        data-owl-options='{
                             "nav": false, 
                             "dots": true,
                             "items": 3,
@@ -340,85 +346,45 @@
                                 }
                             }
                         }'>
-                    <article class="entry entry-display">
-                        <figure class="entry-media">
-                            <a href="single.html">
-                                <img src="assets/images/blog/home/post-1.jpg" alt="image desc">
-                            </a>
-                        </figure><!-- End .entry-media -->
+                        @foreach ($getBlog as $blog)
+                            <article class="entry entry-display">
+                                <figure class="entry-media">
+                                    <a href="{{ url('blog/' . $blog->slug) }}">
+                                        <img src="{{ $blog->getImagen() }}"
+                                            style="height: 400px; width: 100%; object-fit: cover;"
+                                            alt="{{ $blog->titulo }}">
+                                    </a>
+                                </figure>
 
-                        <div class="entry-body pb-4 text-center">
-                            <div class="entry-meta">
-                                <a href="#">Nov 22, 2018</a>, 0 Comments
-                            </div><!-- End .entry-meta -->
+                                <div class="entry-body pb-4 text-center">
+                                    <div class="entry-meta">
+                                        <a href="javascript:;">{{ date('M d, Y', strtotime($blog->created_at)) }}</a>,
+                                        {{ $blog->getComentarioCount() }} Commentarios
+                                    </div>
 
-                            <h3 class="entry-title">
-                                <a href="single.html">Sed adipiscing ornare.</a>
-                            </h3><!-- End .entry-title -->
+                                    <h3 class="entry-title">
+                                        <a href="{{ url('blog/' . $blog->slug) }}">{{ $blog->titulo }}</a>
+                                    </h3>
 
-                            <div class="entry-content">
-                                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Phasellus
-                                    hendrerit.<br>Pelletesque aliquet nibh necurna. </p>
-                                <a href="single.html" class="read-more">Read More</a>
-                            </div><!-- End .entry-content -->
-                        </div><!-- End .entry-body -->
-                    </article><!-- End .entry -->
+                                    <div class="entry-content">
+                                        <p>{{ $blog->descripcion_corta }}</p>
+                                        <a href="{{ url('blog/' . $blog->slug) }}" class="read-more">Seguir leyendo</a>
+                                    </div>
+                                </div>
+                            </article>
+                        @endforeach
+                    </div>
+                </div>
 
-                    <article class="entry entry-display">
-                        <figure class="entry-media">
-                            <a href="single.html">
-                                <img src="assets/images/blog/home/post-2.jpg" alt="image desc">
-                            </a>
-                        </figure><!-- End .entry-media -->
+                <div class="more-container text-center mb-0 mt-3">
+                    <a href="{{ url('blog') }}" class="btn btn-outline-darker btn-more">
+                        <span>Ver más...</span>
+                        <i class="icon-long-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        @endif
 
-                        <div class="entry-body pb-4 text-center">
-                            <div class="entry-meta">
-                                <a href="#">Dec 12, 2018</a>, 0 Comments
-                            </div><!-- End .entry-meta -->
-
-                            <h3 class="entry-title">
-                                <a href="single.html">Fusce lacinia arcuet nulla.</a>
-                            </h3><!-- End .entry-title -->
-
-                            <div class="entry-content">
-                                <p>Sed pretium, ligula sollicitudin laoreet<br>viverra, tortor libero sodales leo, eget
-                                    blandit nunc tortor eu nibh. Nullam mollis justo. </p>
-                                <a href="single.html" class="read-more">Read More</a>
-                            </div><!-- End .entry-content -->
-                        </div><!-- End .entry-body -->
-                    </article><!-- End .entry -->
-
-                    <article class="entry entry-display">
-                        <figure class="entry-media">
-                            <a href="single.html">
-                                <img src="assets/images/blog/home/post-3.jpg" alt="image desc">
-                            </a>
-                        </figure><!-- End .entry-media -->
-
-                        <div class="entry-body pb-4 text-center">
-                            <div class="entry-meta">
-                                <a href="#">Dec 19, 2018</a>, 2 Comments
-                            </div><!-- End .entry-meta -->
-
-                            <h3 class="entry-title">
-                                <a href="single.html">Quisque volutpat mattis eros.</a>
-                            </h3><!-- End .entry-title -->
-
-                            <div class="entry-content">
-                                <p>Suspendisse potenti. Sed egestas, ante et vulputate volutpat, eros pede semper est, vitae
-                                    luctus metus libero eu augue. </p>
-                                <a href="single.html" class="read-more">Read More</a>
-                            </div><!-- End .entry-content -->
-                        </div><!-- End .entry-body -->
-                    </article><!-- End .entry -->
-                </div><!-- End .owl-carousel -->
-            </div><!-- container -->
-
-            <div class="more-container text-center mb-0 mt-3">
-                <a href="blog.html" class="btn btn-outline-darker btn-more"><span>View more articles</span><i
-                        class="icon-long-arrow-right"></i></a>
-            </div><!-- End .more-container -->
-        </div>
         <div class="cta cta-display bg-image pt-4 pb-4"
             style="background-image: url(assets/images/backgrounds/cta/bg-6.jpg);">
             <div class="container">
