@@ -105,7 +105,9 @@
         @if (!empty($getProductoTendencia->count()))
             <div class="container">
                 <div class="heading heading-center mb-3">
-                    <h2 class="title-lg">Productos en tedencia</h2>
+                    <h2 class="title-lg">
+                        {{ !empty($getConfiguracionInicio->productos_tendencia_titulo) ? $getConfiguracionInicio->productos_tendencia_titulo : 'Productos en tendencia' }}
+                    </h2>
                 </div>
 
                 <div class="tab-content tab-content-carousel">
@@ -197,7 +199,9 @@
 
         @if (!empty($getCategorias->count()))
             <div class="container categories pt-6">
-                <h2 class="title-lg text-center mb-4">Comprar por categorías</h2>
+                <h2 class="title-lg text-center mb-4">
+                    {{ !empty($getConfiguracionInicio->comprar_por_categorias_titulo) ? $getConfiguracionInicio->comprar_por_categorias_titulo : 'Comprar por categorías' }}
+                </h2>
 
                 <div class="row">
                     @foreach ($getCategorias as $categorias)
@@ -233,7 +237,9 @@
 
         <div class="container">
             <div class="heading heading-center mb-6">
-                <h2 class="title">Recién agregados</h2>
+                <h2 class="title">
+                    {{ !empty($getConfiguracionInicio->recien_agregados_tiutlo) ? $getConfiguracionInicio->recien_agregados_tiutlo : 'Recién agregados' }}
+                </h2>
 
                 <ul class="nav nav-pills nav-border-anim justify-content-center" role="tablist">
                     <li class="nav-item">
@@ -282,41 +288,59 @@
         <div class="container">
             <hr>
             <div class="row justify-content-center">
-                <div class="col-lg-4 col-sm-6">
-                    <div class="icon-box icon-box-card text-center">
-                        <span class="icon-box-icon">
-                            <i class="icon-rocket"></i>
-                        </span>
-                        <div class="icon-box-content">
-                            <h3 class="icon-box-title">Pago y entrega</h3>
-                            <p>Envío gratis para pedidos superiores a s/. 200.00</p>
+                @if (!empty($getConfiguracionInicio->pago_entrega_titulo))
+                    <div class="col-lg-4 col-sm-6">
+                        <div class="icon-box icon-box-card text-center">
+                            @if (!empty($getConfiguracionInicio->getPagoImagen()))
+                                <span class="icon-box-icon">
+                                    <img src="{{ $getConfiguracionInicio->getPagoImagen() }}"
+                                        style="height: 33.8px; width: 100%; object-fit: cover;"
+                                        alt="{{ $getConfiguracionInicio->pago_entrega_titulo }}">
+                                </span>
+                            @endif
+                            <div class="icon-box-content">
+                                <h3 class="icon-box-title">{{ $getConfiguracionInicio->pago_entrega_titulo }}</h3>
+                                <p>{{ $getConfiguracionInicio->pago_entrega_descripcion }}</p>
+                            </div>
                         </div>
                     </div>
-                </div>
+                @endif
 
-                <div class="col-lg-4 col-sm-6">
-                    <div class="icon-box icon-box-card text-center">
-                        <span class="icon-box-icon">
-                            <i class="icon-rotate-left"></i>
-                        </span>
-                        <div class="icon-box-content">
-                            <h3 class="icon-box-title">Reembolso de vuelta</h3>
-                            <p>Garantía de devolución de dinero 100% gratis</p>
+                @if (!empty($getConfiguracionInicio->reembolso_titulo))
+                    <div class="col-lg-4 col-sm-6">
+                        <div class="icon-box icon-box-card text-center">
+                            @if (!empty($getConfiguracionInicio->getReembolsoImagen()))
+                                <span class="icon-box-icon">
+                                    <img src="{{ $getConfiguracionInicio->getReembolsoImagen() }}"
+                                        style="height: 33.8px; width: 100%; object-fit: cover;"
+                                        alt="{{ $getConfiguracionInicio->pago_entrega_titulo }}">
+                                </span>
+                            @endif
+                            <div class="icon-box-content">
+                                <h3 class="icon-box-title">{{ $getConfiguracionInicio->reembolso_titulo }}</h3>
+                                <p>{{ $getConfiguracionInicio->reembolso_descripcion }}</p>
+                            </div>
                         </div>
                     </div>
-                </div>
+                @endif
 
-                <div class="col-lg-4 col-sm-6">
-                    <div class="icon-box icon-box-card text-center">
-                        <span class="icon-box-icon">
-                            <i class="icon-life-ring"></i>
-                        </span>
-                        <div class="icon-box-content">
-                            <h3 class="icon-box-title">Soporte de calidad</h3>
-                            <p>Siempre retroalimentación en línea 24/7</p>
+                @if (!empty($getConfiguracionInicio->soporte_titulo))
+                    <div class="col-lg-4 col-sm-6">
+                        <div class="icon-box icon-box-card text-center">
+                            @if (!empty($getConfiguracionInicio->getSoporteImagen()))
+                                <span class="icon-box-icon">
+                                    <img src="{{ $getConfiguracionInicio->getSoporteImagen() }}"
+                                        style="height: 33.8px; width: 100%; object-fit: cover;"
+                                        alt="{{ $getConfiguracionInicio->pago_entrega_titulo }}">
+                                </span>
+                            @endif
+                            <div class="icon-box-content">
+                                <h3 class="icon-box-title">{{ $getConfiguracionInicio->soporte_titulo }}</h3>
+                                <p>{{ $getConfiguracionInicio->soporte_descripcion }}</p>
+                            </div>
                         </div>
                     </div>
-                </div>
+                @endif
             </div>
 
             <div class="mb-2"></div>
@@ -325,7 +349,9 @@
         @if (!empty($getBlog->count()))
             <div class="blog-posts pt-7 pb-7" style="background-color: #fafafa;">
                 <div class="container">
-                    <h2 class="title-lg text-center mb-3 mb-md-4">De nuestro blog</h2>
+                    <h2 class="title-lg text-center mb-3 mb-md-4">
+                        {{ !empty($getConfiguracionInicio->nuestro_blog_titulo) ? $getConfiguracionInicio->nuestro_blog_titulo : 'De nuestro blog' }}
+                    </h2>
 
                     <div class="owl-carousel owl-simple carousel-with-shadow" data-toggle="owl"
                         data-owl-options='{
@@ -385,27 +411,32 @@
             </div>
         @endif
 
-        <div class="cta cta-display bg-image pt-4 pb-4"
-            style="background-image: url(assets/images/backgrounds/cta/bg-6.jpg);">
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-md-10 col-lg-9 col-xl-8">
-                        <div class="row no-gutters flex-column flex-sm-row align-items-sm-center">
-                            <div class="col">
-                                <h3 class="cta-title text-white">Sign Up & Get 10% Off</h3><!-- End .cta-title -->
-                                <p class="cta-desc text-white">Molla presents the best in interior design</p>
-                                <!-- End .cta-desc -->
-                            </div><!-- End .col -->
+        @if (!empty($getConfiguracionInicio->signup_titulo))
+            <div class="cta cta-display bg-image pt-4 pb-4"
+                style="background-image: url('{{ url($getConfiguracionInicio->getSignupImagen()) }}');">
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-md-10 col-lg-9 col-xl-8">
+                            <div class="row no-gutters flex-column flex-sm-row align-items-sm-center">
+                                <div class="col">
+                                    <h3 class="cta-title text-white">{{ $getConfiguracionInicio->signup_titulo }}</h3>
+                                    <p class="cta-desc text-white">{{ $getConfiguracionInicio->signup_descripcion }}</p>
+                                </div>
 
-                            <div class="col-auto">
-                                <a href="login.html" class="btn btn-outline-white"><span>SIGN UP</span><i
-                                        class="icon-long-arrow-right"></i></a>
-                            </div><!-- End .col-auto -->
-                        </div><!-- End .row no-gutters -->
-                    </div><!-- End .col-md-10 col-lg-9 -->
-                </div><!-- End .row -->
-            </div><!-- End .container -->
-        </div>
+                                <div class="col-auto">
+                                    @if (empty(Auth::check()))
+                                        <a href="#signin-modal" data-toggle="modal" class="btn btn-outline-white">
+                                            <span>Registrarse</span>
+                                            <i class="icon-long-arrow-right"></i>
+                                        </a>
+                                    @endif
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        @endif
     </main>
 @endsection
 

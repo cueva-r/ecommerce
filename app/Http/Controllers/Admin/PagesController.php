@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\ConfiguracionInicioModel;
 use App\Models\ConfiguracionSistemaModel;
 use App\Models\ContactenosModel;
 use App\Models\PagesModel;
@@ -105,6 +106,73 @@ class PagesController extends Controller
         $guardar->save();
 
         return redirect()->back()->with('success', 'Configuración del sistema actualizado exitosamente');
+    }
+
+    public function configuracion_inicio()
+    {
+        $data['getRecord'] = ConfiguracionInicioModel::getSingle();
+        $data['header_title'] = 'Configuración del inicio';
+        return view('admin.configuracion.configuracion_inicio', $data);
+    }
+
+    public function actualizar_configuracion_inicio(Request $request)
+    {
+        $guardar = ConfiguracionInicioModel::getSingle();
+        $guardar->productos_tendencia_titulo = trim($request->productos_tendencia_titulo);
+        $guardar->comprar_por_categorias_titulo = trim($request->comprar_por_categorias_titulo);
+        $guardar->recien_agregados_tiutlo = trim($request->recien_agregados_tiutlo);
+        $guardar->nuestro_blog_titulo = trim($request->nuestro_blog_titulo);
+        $guardar->pago_entrega_titulo = trim($request->pago_entrega_titulo);
+        $guardar->pago_entrega_descripcion = trim($request->pago_entrega_descripcion);
+
+        $guardar->reembolso_titulo = trim($request->reembolso_titulo);
+        $guardar->reembolso_descripcion = trim($request->reembolso_descripcion);
+
+        $guardar->soporte_titulo = trim($request->soporte_titulo);
+        $guardar->soporte_descripcion = trim($request->soporte_descripcion);
+
+        $guardar->signup_titulo = trim($request->signup_titulo);
+        $guardar->signup_descripcion = trim($request->signup_descripcion);
+
+        if ($request->file('pago_entrega_imagen')) {
+            $file = $request->file('pago_entrega_imagen');
+            $ext = $file->getClientOriginalExtension();
+            $randomStr = Str::random(10);
+            $filename = strtolower($randomStr) . '.' . $ext;
+            $file->move('upload/configuracion/', $filename);
+            $guardar->pago_entrega_imagen = trim($filename);
+        }
+
+        if ($request->file('reembolso_imagen')) {
+            $file = $request->file('reembolso_imagen');
+            $ext = $file->getClientOriginalExtension();
+            $randomStr = Str::random(10);
+            $filename = strtolower($randomStr) . '.' . $ext;
+            $file->move('upload/configuracion/', $filename);
+            $guardar->reembolso_imagen = trim($filename);
+        }
+
+        if ($request->file('soporte_imagen')) {
+            $file = $request->file('soporte_imagen');
+            $ext = $file->getClientOriginalExtension();
+            $randomStr = Str::random(10);
+            $filename = strtolower($randomStr) . '.' . $ext;
+            $file->move('upload/configuracion/', $filename);
+            $guardar->soporte_imagen = trim($filename);
+        }
+
+        if ($request->file('signup_imagen')) {
+            $file = $request->file('signup_imagen');
+            $ext = $file->getClientOriginalExtension();
+            $randomStr = Str::random(10);
+            $filename = strtolower($randomStr) . '.' . $ext;
+            $file->move('upload/configuracion/', $filename);
+            $guardar->signup_imagen = trim($filename);
+        }
+
+        $guardar->save();
+
+        return redirect()->back()->with('success', 'Configuración del inicio actualizado exitosamente');
     }
 
     public function contactenos()

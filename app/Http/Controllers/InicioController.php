@@ -7,6 +7,7 @@ use App\Models\BlogCategoriaModel;
 use App\Models\BlogComentarioModel;
 use App\Models\BlogModel;
 use App\Models\CategoriaModel;
+use App\Models\ConfiguracionInicioModel;
 use App\Models\ConfiguracionSistemaModel;
 use App\Models\ContactenosModel;
 use App\Models\PagesModel;
@@ -24,6 +25,8 @@ class InicioController extends Controller
     {
         $getPage = PagesModel::getSlug('inicio');
         $data['getPage'] = $getPage;
+
+        $data['getConfiguracionInicio'] = ConfiguracionInicioModel::getSingle();
 
         $data['getBlog'] = BlogModel::getRecordActiveInicio();
         $data['getSliders'] = SlidersModel::getRecordActive();

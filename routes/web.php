@@ -164,9 +164,13 @@ Route::group(['middleware' => 'admin'], function () {
     Route::get('admin/paginas/editar/{id}', [PagesController::class, 'editar']);
     Route::post('admin/paginas/editar/{id}', [PagesController::class, 'actualizar']);
 
-    //Ruta configuración del sistema
+    // Ruta configuración del sistema
     Route::get('admin/configuracion-sistema', [PagesController::class, 'configuracion_sistema']);
     Route::post('admin/configuracion-sistema', [PagesController::class, 'actualizar_configuracion_sistema']);
+
+    // Ruta configuración del inicio
+    Route::get('admin/configuracion-inicio', [PagesController::class, 'configuracion_inicio']);
+    Route::post('admin/configuracion-inicio', [PagesController::class, 'actualizar_configuracion_inicio']);
 
     // Ruta contactenos
     Route::get('admin/contactenos', [PagesController::class, 'contactenos']);
