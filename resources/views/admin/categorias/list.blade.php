@@ -47,6 +47,7 @@
                                             <th>Creado por</th>
                                             <th>Estado</th>
                                             <th>Esta inicio</th>
+                                            <th>Esta menú</th>
                                             <th>Fecha creación</th>
                                             <th>Acción</th>
                                         </tr>
@@ -68,6 +69,7 @@
                                                 <td>{{ $valor->created_by_name }}</td>
                                                 <td>{{ $valor->estado == 0 ? 'Activo' : 'Inactivo' }}</td>
                                                 <td>{{ $valor->esta_inicio == 1 ? 'Sí' : 'No' }}</td>
+                                                <td>{{ $valor->esta_menu == 1 ? 'Sí' : 'No' }}</td>
                                                 {{-- <td>{{ date('d-m-Y', strtotime($valor->created_at)) }}</td> --}}
                                                 <td>{{ $valor->created_at->diffForHumans() }}</td>
                                                 <td>

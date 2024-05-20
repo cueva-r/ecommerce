@@ -41,6 +41,8 @@ class CategoriaController extends Controller
         $categoria->nombre_button = trim($request->nombre_button);
         $categoria->esta_inicio = !empty($request->esta_inicio) ? 1 : 0;
 
+        $categoria->esta_menu = !empty($request->esta_menu) ? 1 : 0;
+
         if (!empty($request->file('nombre_imagen'))) {
             $file = $request->file('nombre_imagen');
             $ext = $file->getClientOriginalExtension();
@@ -78,6 +80,7 @@ class CategoriaController extends Controller
 
         $categoria->nombre_button = trim($request->nombre_button);
         $categoria->esta_inicio = !empty($request->esta_inicio) ? 1 : 0;
+        $categoria->esta_menu = !empty($request->esta_menu) ? 1 : 0;
 
         if (!empty($request->file('nombre_imagen'))) {
             $file = $request->file('nombre_imagen');

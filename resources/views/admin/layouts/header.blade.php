@@ -1,64 +1,5 @@
 <nav class="main-header navbar navbar-expand navbar-white navbar-light">
-    <ul class="navbar-nav">
-        <li class="nav-item">
-            <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
-        </li>
-    </ul>
     <ul class="navbar-nav ml-auto">
-        <li class="nav-item dropdown">
-            <a class="nav-link" data-toggle="dropdown" href="#">
-                <i class="far fa-comments"></i>
-                <span class="badge badge-danger navbar-badge">3</span>
-            </a>
-            <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                <a href="#" class="dropdown-item">
-                    <div class="media">
-                        <img src="{{ url('public/assets/dist/img/user1-128x128.jpg') }}" alt="User Avatar"
-                            class="img-size-50 mr-3 img-circle">
-                        <div class="media-body">
-                            <h3 class="dropdown-item-title">
-                                Brad Diesel
-                                <span class="float-right text-sm text-danger"><i class="fas fa-star"></i></span>
-                            </h3>
-                            <p class="text-sm">Call me whenever you can...</p>
-                            <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-                        </div>
-                    </div>
-                </a>
-                <div class="dropdown-divider"></div>
-                <a href="#" class="dropdown-item">
-                    <div class="media">
-                        <img src="{{ url('public/assets/dist/img/user8-128x128.jpg') }}" alt="User Avatar"
-                            class="img-size-50 img-circle mr-3">
-                        <div class="media-body">
-                            <h3 class="dropdown-item-title">
-                                John Pierce
-                                <span class="float-right text-sm text-muted"><i class="fas fa-star"></i></span>
-                            </h3>
-                            <p class="text-sm">I got your message bro</p>
-                            <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-                        </div>
-                    </div>
-                </a>
-                <div class="dropdown-divider"></div>
-                <a href="#" class="dropdown-item">
-                    <div class="media">
-                        <img src="{{ url('public/assets/dist/img/user3-128x128.jpg') }}" alt="User Avatar"
-                            class="img-size-50 img-circle mr-3">
-                        <div class="media-body">
-                            <h3 class="dropdown-item-title">
-                                Nora Silvester
-                                <span class="float-right text-sm text-warning"><i class="fas fa-star"></i></span>
-                            </h3>
-                            <p class="text-sm">The subject goes here</p>
-                            <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-                        </div>
-                    </div>
-                </a>
-                <div class="dropdown-divider"></div>
-                <a href="#" class="dropdown-item dropdown-footer">See All Messages</a>
-            </div>
-        </li>
         <li class="nav-item dropdown">
             <a class="nav-link" data-toggle="dropdown" href="#">
                 <i class="far fa-bell"></i>
@@ -90,30 +31,26 @@
                 <i class="fas fa-expand-arrows-alt"></i>
             </a>
         </li>
+        <li class="nav-item">
+            <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
+                <i class="fas fa-th-large"></i>
+            </a>
+        </li>
     </ul>
 </nav>
+
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
-    <div class="brand-link">
-        <img src="{{ url('public/assets/dist/img/logo.png') }}" alt="AdminLTE Logo"
-            class="brand-image img-circle elevation-3" style="opacity: .8">
-        <span class="brand-text font-weight-light">Ecommerce</span>
+    <div class="brand-link" style="text-align: center;">
+        <span class="brand-text font-weight-light">{{ Auth::user()->name }}</span>
     </div>
     <div class="sidebar">
-        <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-            <div class="image">
-                <img src="{{ url('public/assets/dist/img/hannah_owo.jpg') }}" class="img-circle elevation-2"
-                    alt="User Image">
-            </div>
-            <div class="info">
-                <a href="#" class="d-block">{{ Auth::user()->name }}</a>
-            </div>
-        </div>
         <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                 data-accordion="false">
 
                 <li class="nav-item">
-                    <a href="{{ url('admin/dashboard') }}" class="nav-link @if (Request::segment(2) == 'dashboard') active @endif">
+                    <a href="{{ url('admin/dashboard') }}"
+                        class="nav-link @if (Request::segment(2) == 'dashboard') active @endif">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>
                             Dashboard
@@ -122,7 +59,8 @@
                 </li>
 
                 <li class="nav-item">
-                    <a href="{{ url('admin/admin/listar') }}" class="nav-link @if (Request::segment(2) == 'admin') active @endif">
+                    <a href="{{ url('admin/admin/listar') }}"
+                        class="nav-link @if (Request::segment(2) == 'admin') active @endif">
                         <i class="nav-icon fas fa-user"></i>
                         <p>
                             Admin
@@ -131,7 +69,8 @@
                 </li>
 
                 <li class="nav-item">
-                    <a href="{{ url('admin/clientes/listar') }}" class="nav-link @if (Request::segment(2) == 'clientes') active @endif">
+                    <a href="{{ url('admin/clientes/listar') }}"
+                        class="nav-link @if (Request::segment(2) == 'clientes') active @endif">
                         <i class="nav-icon fa-solid fa-users"></i>
                         <p>
                             Clientes
@@ -140,7 +79,8 @@
                 </li>
 
                 <li class="nav-item">
-                    <a href="{{ url('admin/pedidos/listar') }}" class="nav-link @if (Request::segment(2) == 'pedidos') active @endif">
+                    <a href="{{ url('admin/pedidos/listar') }}"
+                        class="nav-link @if (Request::segment(2) == 'pedidos') active @endif">
                         <i class="nav-icon fa-solid fa-check"></i>
                         <p>
                             Pedidos
@@ -149,7 +89,8 @@
                 </li>
 
                 <li class="nav-item">
-                    <a href="{{ url('admin/categorias/listar') }}" class="nav-link @if (Request::segment(2) == 'categorias') active @endif"">
+                    <a href="{{ url('admin/categorias/listar') }}"
+                        class="nav-link @if (Request::segment(2) == 'categorias') active @endif"">
                         <i class="nav-icon fas fa-tags"></i>
                         <p>
                             Categorías
@@ -158,7 +99,8 @@
                 </li>
 
                 <li class="nav-item">
-                    <a href="{{ url('admin/subcategorias/listar') }}" class="nav-link @if (Request::segment(2) == 'subcategorias') active @endif">
+                    <a href="{{ url('admin/subcategorias/listar') }}"
+                        class="nav-link @if (Request::segment(2) == 'subcategorias') active @endif">
                         <i class="nav-icon fas fa-folder"></i>
                         <p>
                             Subategorías
@@ -167,7 +109,8 @@
                 </li>
 
                 <li class="nav-item">
-                    <a href="{{ url('admin/productos/listar') }}" class="nav-link @if (Request::segment(2) == 'productos') active @endif">
+                    <a href="{{ url('admin/productos/listar') }}"
+                        class="nav-link @if (Request::segment(2) == 'productos') active @endif">
                         <i class="nav-icon fas fa-box"></i>
                         <p>
                             Productos
@@ -176,7 +119,8 @@
                 </li>
 
                 <li class="nav-item">
-                    <a href="{{ url('admin/marcas/listar') }}" class="nav-link @if (Request::segment(2) == 'marcas') active @endif">
+                    <a href="{{ url('admin/marcas/listar') }}"
+                        class="nav-link @if (Request::segment(2) == 'marcas') active @endif">
                         <i class="nav-icon fas fa-trademark"></i>
                         <p>
                             Marcas
@@ -185,7 +129,8 @@
                 </li>
 
                 <li class="nav-item">
-                    <a href="{{ url('admin/colores/listar') }}" class="nav-link @if (Request::segment(2) == 'colores') active @endif">
+                    <a href="{{ url('admin/colores/listar') }}"
+                        class="nav-link @if (Request::segment(2) == 'colores') active @endif">
                         <i class="nav-icon fas fa-palette"></i>
                         <p>
                             Colores
@@ -194,7 +139,8 @@
                 </li>
 
                 <li class="nav-item">
-                    <a href="{{ url('admin/codigo_descuento/listar') }}" class="nav-link @if (Request::segment(2) == 'codigo_descuento') active @endif">
+                    <a href="{{ url('admin/codigo_descuento/listar') }}"
+                        class="nav-link @if (Request::segment(2) == 'codigo_descuento') active @endif">
                         <i class="nav-icon fas fa-ticket-alt"></i>
                         <p>
                             Código de descuento
@@ -203,7 +149,8 @@
                 </li>
 
                 <li class="nav-item">
-                    <a href="{{ url('admin/costo_envio/listar') }}" class="nav-link @if (Request::segment(2) == 'costo_envio') active @endif">
+                    <a href="{{ url('admin/costo_envio/listar') }}"
+                        class="nav-link @if (Request::segment(2) == 'costo_envio') active @endif">
                         <i class="nav-icon fas fa-shipping-fast"></i>
                         <p>
                             Costo de envíos
@@ -212,7 +159,8 @@
                 </li>
 
                 <li class="nav-item">
-                    <a href="{{ url('admin/sliders/lista') }}" class="nav-link @if (Request::segment(2) == 'sliders') active @endif">
+                    <a href="{{ url('admin/sliders/lista') }}"
+                        class="nav-link @if (Request::segment(2) == 'sliders') active @endif">
                         <i class="nav-icon  fa-solid fa-layer-group"></i>
                         <p>
                             Sliders
@@ -221,7 +169,8 @@
                 </li>
 
                 <li class="nav-item">
-                    <a href="{{ url('admin/socios/lista') }}" class="nav-link @if (Request::segment(2) == 'socios') active @endif">
+                    <a href="{{ url('admin/socios/lista') }}"
+                        class="nav-link @if (Request::segment(2) == 'socios') active @endif">
                         <i class="nav-icon fa-solid fa-handshake"></i>
                         <p>
                             Socios
@@ -230,7 +179,8 @@
                 </li>
 
                 <li class="nav-item">
-                    <a href="{{ url('admin/paginas/listar') }}" class="nav-link @if (Request::segment(2) == 'paginas') active @endif">
+                    <a href="{{ url('admin/paginas/listar') }}"
+                        class="nav-link @if (Request::segment(2) == 'paginas') active @endif">
                         <i class="nav-icon fa-solid fa-book"></i>
                         <p>
                             Páginas
@@ -239,7 +189,8 @@
                 </li>
 
                 <li class="nav-item">
-                    <a href="{{ url('admin/blogcategoria/listar') }}" class="nav-link @if (Request::segment(2) == 'blogcategoria') active @endif">
+                    <a href="{{ url('admin/blogcategoria/listar') }}"
+                        class="nav-link @if (Request::segment(2) == 'blogcategoria') active @endif">
                         <i class="nav-icon fa-solid fa-blog"></i>
                         <p>
                             Blog de categoría
@@ -248,7 +199,8 @@
                 </li>
 
                 <li class="nav-item">
-                    <a href="{{ url('admin/blog/listar') }}" class="nav-link @if (Request::segment(2) == 'blog') active @endif">
+                    <a href="{{ url('admin/blog/listar') }}"
+                        class="nav-link @if (Request::segment(2) == 'blog') active @endif">
                         <i class="nav-icon fa-brands fa-blogger-b"></i>
                         <p>
                             Blog
@@ -257,7 +209,8 @@
                 </li>
 
                 <li class="nav-item">
-                    <a href="{{ url('admin/contactenos') }}" class="nav-link @if (Request::segment(2) == 'contactenos') active @endif">
+                    <a href="{{ url('admin/contactenos') }}"
+                        class="nav-link @if (Request::segment(2) == 'contactenos') active @endif">
                         <i class="nav-icon fa-solid fa-address-card"></i>
                         <p>
                             Contáctenos
@@ -266,7 +219,8 @@
                 </li>
 
                 <li class="nav-item">
-                    <a href="{{ url('admin/configuracion-sistema') }}" class="nav-link @if (Request::segment(2) == 'configuracion-sistema') active @endif">
+                    <a href="{{ url('admin/configuracion-sistema') }}"
+                        class="nav-link @if (Request::segment(2) == 'configuracion-sistema') active @endif">
                         <i class="nav-icon fa-solid fa-gears"></i>
                         <p>
                             Configuraciones
@@ -275,7 +229,8 @@
                 </li>
 
                 <li class="nav-item">
-                    <a href="{{ url('admin/configuracion-inicio') }}" class="nav-link @if (Request::segment(2) == 'configuracion-inicio') active @endif">
+                    <a href="{{ url('admin/configuracion-inicio') }}"
+                        class="nav-link @if (Request::segment(2) == 'configuracion-inicio') active @endif">
                         <i class="nav-icon fa-solid fa-gear"></i>
                         <p>
                             Configuración de inicio

@@ -98,8 +98,6 @@
                         <ul class="widget-list">
                             <li><a href="{{ url('carrito') }}">Ver carrito</a></li>
                             <li><a href="{{ url('mi-lista-de-deseos') }}">Mi lista de deseos</a></li>
-                            <li><a href="{{ url('carrito') }}">Ver carrito</a></li>
-                            <li><a href="{{ url('pagar') }}">Pagar</a></li>
                         </ul>
                     </div>
                 </div>

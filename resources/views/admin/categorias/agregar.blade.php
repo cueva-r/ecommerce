@@ -60,6 +60,12 @@
                                         <input type="checkbox" name="esta_inicio">
                                     </div>
 
+                                    <div class="form-group">
+                                        <label style="display: block;">Esta en el menú <span
+                                                style="color: red;">*</span></label>
+                                        <input type="checkbox" name="esta_menu">
+                                    </div>
+
                                     <hr>
 
                                     <div class="form-group">

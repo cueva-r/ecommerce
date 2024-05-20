@@ -17,7 +17,8 @@
                     <li>
                         <a href="#">Links</a>
                         <ul>
-                            <li><a href="tel:{{ $configuracionSistemaApp->telefono }}"><i class="icon-phone"></i>Llamar: {{ $configuracionSistemaApp->telefono }}</a></li>
+                            <li><a href="tel:{{ $configuracionSistemaApp->telefono }}"><i class="icon-phone"></i>Llamar:
+                                    {{ $configuracionSistemaApp->telefono }}</a></li>
                             <li>
                                 <a href="{{ url('sobre-nosotros') }}">
                                     Sobre nosotros
@@ -68,12 +69,13 @@
                 </button>
 
                 <a href="{{ url('/') }}" class="logo">
-                    <img src="{{ $configuracionSistemaApp->getLogo() }}" alt="rico's Logo" width="150" height="25">
+                    <img src="{{ $configuracionSistemaApp->getLogo() }}" alt="rico's Logo" width="150"
+                        height="25">
                 </a>
 
                 <nav class="main-nav">
                     <ul class="menu sf-arrows">
-                        <li class="megamenu-containeractive active">
+                        <li class="{{ (Request::segment(1) == '') ? 'active' : '' }}">
                             <a href="{{ url('/') }}">Inicio</a>
                         </li>
                         <li>
@@ -107,10 +109,14 @@
                                 </div>
                             </div>
                         </li>
-
-                        <li class="megamenu-containeractive">
-                            <a href="{{ url('blog') }}">Blog</a>
-                        </li>
+                        @php
+                            $getCategoriasHeaderMenu = App\Models\CategoriaModel::getRecordMenuHeader();
+                        @endphp
+                        @foreach ($getCategoriasHeaderMenu as $menu)
+                            <li class="{{ (Request::segment(1) == $menu->slug) ? 'active' : '' }}">
+                                <a href="{{ url($menu->slug) }}">{{ $menu->nombre }}</a>
+                            </li>
+                        @endforeach
                     </ul>
                 </nav>
             </div>

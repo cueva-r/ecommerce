@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 20-05-2024 a las 19:41:20
+-- Tiempo de generación: 20-05-2024 a las 22:11:19
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -162,6 +162,7 @@ CREATE TABLE `categorias` (
   `nombre_imagen` varchar(255) DEFAULT NULL,
   `nombre_button` varchar(255) NOT NULL,
   `esta_inicio` tinyint(4) NOT NULL DEFAULT 0,
+  `esta_menu` tinyint(4) NOT NULL DEFAULT 0,
   `meta_titulo` varchar(255) DEFAULT NULL,
   `meta_descripcion` text DEFAULT NULL,
   `meta_p_clave` varchar(255) DEFAULT NULL,
@@ -176,18 +177,18 @@ CREATE TABLE `categorias` (
 -- Volcado de datos para la tabla `categorias`
 --
 
-INSERT INTO `categorias` (`id`, `nombre`, `slug`, `nombre_imagen`, `nombre_button`, `esta_inicio`, `meta_titulo`, `meta_descripcion`, `meta_p_clave`, `created_by`, `estado`, `esta_eliminado`, `created_at`, `updated_at`) VALUES
-(1, 'Tecnología', 'tecnologia', 'fx7tt9jbkxczaffoprun.jpg', 'Comprar', 1, 'Tecnología', 'Tecnología', 'Tecnología', 1, 0, 0, '2024-01-29 20:58:12', '2024-05-08 14:22:45'),
-(2, 'Moda', 'moda', '2ekjdg8ov5w694qef9t9.png', 'Comprar', 1, 'Moda', 'Moda', 'Moda', 1, 0, 0, '2024-01-30 14:34:06', '2024-05-08 14:23:50'),
-(3, 'Muebles del hogar', 'muebles-del-hogar', NULL, '', 0, 'Muebles del hogar', 'Muebles del hogar', 'Muebles del hogar', 1, 0, 0, '2024-01-31 04:42:24', '2024-02-05 04:26:43'),
-(4, 'Belleza y cuidado', 'belleza-cuidado', NULL, '', 0, 'Belleza y cuidado', 'Belleza y cuidado', 'Belleza y cuidado', 1, 0, 0, '2024-02-05 04:27:45', '2024-02-05 04:30:10'),
-(5, 'Libros, películas y música', 'libros-peliculas-musica', NULL, '', 0, 'Libros, películas y música', 'Libros, películas y música', 'Libros, películas y música', 1, 0, 0, '2024-02-05 04:28:53', '2024-02-06 13:48:55'),
-(6, 'Juguetes y juegos', 'juguetes-juegos', 'kie1vibezcnao7krhcxf.webp', 'Comprar', 0, 'Juguetes y juegos', 'Juguetes y juegos', 'Juguetes y juegos', 1, 0, 0, '2024-02-05 04:30:00', '2024-05-12 18:06:41'),
-(7, 'Deportes', 'deportes', NULL, '', 0, 'Deportes', 'Deportes', 'Deportes', 1, 0, 0, '2024-02-05 04:30:56', '2024-02-05 04:30:56'),
-(8, 'Joyas y relojes', 'joyas-relojes', NULL, '', 0, 'Joyas y relojes', 'Joyas y relojes', 'Joyas y relojes', 1, 0, 0, '2024-02-05 04:31:50', '2024-04-01 19:52:45'),
-(9, 'Abarrotes', 'abarrotes', 'zox3niahxoi4bieqna7j.webp', 'Comprar', 0, 'Abarrotes', 'Abarrotes', 'Abarrotes', 1, 0, 0, '2024-03-18 17:31:02', '2024-05-12 14:04:26'),
-(10, 'Limpieza', 'limpieza', 'la1auz2ctntwpypm4sqh.webp', 'Comprar', 0, 'Limpieza', 'Limpieza', 'Limpieza', 1, 0, 0, '2024-05-08 14:35:44', '2024-05-12 14:04:34'),
-(11, 'Embutidos', 'embutidos', 'gsujqglsg9nzwf4qfwc6.jpg', 'Comprar', 1, 'Embutidos', 'Embutidos', 'Embutidos', 1, 0, 0, '2024-05-08 14:38:28', '2024-05-12 18:06:51');
+INSERT INTO `categorias` (`id`, `nombre`, `slug`, `nombre_imagen`, `nombre_button`, `esta_inicio`, `esta_menu`, `meta_titulo`, `meta_descripcion`, `meta_p_clave`, `created_by`, `estado`, `esta_eliminado`, `created_at`, `updated_at`) VALUES
+(1, 'Tecnología', 'tecnologia', 'fx7tt9jbkxczaffoprun.jpg', 'Comprar', 1, 1, 'Tecnología', 'Tecnología', 'Tecnología', 1, 0, 0, '2024-01-29 20:58:12', '2024-05-20 19:28:22'),
+(2, 'Moda', 'moda', '2ekjdg8ov5w694qef9t9.png', 'Comprar', 1, 1, 'Moda', 'Moda', 'Moda', 1, 0, 0, '2024-01-30 14:34:06', '2024-05-20 19:29:33'),
+(3, 'Muebles del hogar', 'muebles-del-hogar', NULL, '', 0, 0, 'Muebles del hogar', 'Muebles del hogar', 'Muebles del hogar', 1, 0, 0, '2024-01-31 04:42:24', '2024-02-05 04:26:43'),
+(4, 'Belleza y cuidado', 'belleza-cuidado', NULL, '', 0, 0, 'Belleza y cuidado', 'Belleza y cuidado', 'Belleza y cuidado', 1, 0, 0, '2024-02-05 04:27:45', '2024-02-05 04:30:10'),
+(5, 'Libros, películas y música', 'libros-peliculas-musica', NULL, '', 0, 0, 'Libros, películas y música', 'Libros, películas y música', 'Libros, películas y música', 1, 0, 0, '2024-02-05 04:28:53', '2024-02-06 13:48:55'),
+(6, 'Juguetes y juegos', 'juguetes-juegos', 'kie1vibezcnao7krhcxf.webp', 'Comprar', 0, 1, 'Juguetes y juegos', 'Juguetes y juegos', 'Juguetes y juegos', 1, 0, 0, '2024-02-05 04:30:00', '2024-05-20 19:29:58'),
+(7, 'Deportes', 'deportes', NULL, '', 0, 0, 'Deportes', 'Deportes', 'Deportes', 1, 0, 0, '2024-02-05 04:30:56', '2024-02-05 04:30:56'),
+(8, 'Joyas y relojes', 'joyas-relojes', NULL, '', 0, 0, 'Joyas y relojes', 'Joyas y relojes', 'Joyas y relojes', 1, 0, 0, '2024-02-05 04:31:50', '2024-04-01 19:52:45'),
+(9, 'Abarrotes', 'abarrotes', 'zox3niahxoi4bieqna7j.webp', 'Comprar', 0, 1, 'Abarrotes', 'Abarrotes', 'Abarrotes', 1, 0, 0, '2024-03-18 17:31:02', '2024-05-20 19:30:08'),
+(10, 'Limpieza', 'limpieza', 'la1auz2ctntwpypm4sqh.webp', 'Comprar', 0, 0, 'Limpieza', 'Limpieza', 'Limpieza', 1, 0, 0, '2024-05-08 14:35:44', '2024-05-12 14:04:34'),
+(11, 'Embutidos', 'embutidos', 'gsujqglsg9nzwf4qfwc6.jpg', 'Comprar', 1, 0, 'Embutidos', 'Embutidos', 'Embutidos', 1, 0, 0, '2024-05-08 14:38:28', '2024-05-12 18:06:51');
 
 -- --------------------------------------------------------
 
