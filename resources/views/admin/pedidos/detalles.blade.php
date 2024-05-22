@@ -45,6 +45,11 @@
                                 </div>
 
                                 <div class="form-group">
+                                    <label>Número de pedido : <span
+                                            style="font-weight: normal;">{{ $getRecord->numero_pedido }}</span></label>
+                                </div>
+
+                                <div class="form-group">
                                     <label>Nombres y apellidos : <span
                                             style="font-weight: normal;">{{ $getRecord->nombres }},
                                             {{ $getRecord->apellidos }}</span></label>

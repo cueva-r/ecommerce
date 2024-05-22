@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Mail\RegisterMail;
 use App\Mail\CambiarContraseñaMail;
+use App\Models\NotificacionModel;
 use App\Models\User;
 use Auth;
 use Illuminate\Http\Request;
@@ -75,6 +76,11 @@ class AuthController extends Controller
             $save->save();
 
             Mail::to($save->email)->send(new RegisterMail($save));
+
+            $user_id = $save->id;
+            $url = url('admin/clientes/listar');
+            $mensaje = "Nuevo cliente registrado # " . $request->name;
+            NotificacionModel::insertRecord($user_id, $url, $mensaje);
 
             $json['status'] = true;
             $json['message'] = "Cuenta creada con éxito!, Porfavor veirifique su correo electrónico en mailtrap!";

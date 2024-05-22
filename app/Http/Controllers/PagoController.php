@@ -7,6 +7,7 @@ use App\Mail\RegisterMail;
 use App\Models\CodigoDescuentoModel;
 use App\Models\ColorModel;
 use App\Models\CostoEnvioModel;
+use App\Models\NotificacionModel;
 use App\Models\PedidoItemModel;
 use App\Models\PedidosModel;
 use App\Models\ProductoModel;
@@ -247,6 +248,13 @@ class PagoController extends Controller
                     $getPedido->esta_pagado = 1;
                     $getPedido->save();
 
+                    Mail::to($getPedido->email)->send(new FacturaPedidoMail($getPedido));
+
+                    $user_id = $getPedido->user_id;
+                    $url = url('admin/pedidos/detalles/' . $getPedido->id);
+                    $mensaje = "Nuevo pedido realizado #" . $getPedido->numero_pedido;
+                    NotificacionModel::insertRecord($user_id, $url, $mensaje);
+
                     Cart::clear();
 
                     return redirect('carrito')->with('success', 'Pedido reralizado exitosamente!');
@@ -331,6 +339,11 @@ class PagoController extends Controller
 
                 Mail::to($getPedido->email)->send(new FacturaPedidoMail($getPedido));
 
+                $user_id = $getPedido->user_id;
+                $url = url('admin/pedidos/detalles/' . $getPedido->id);
+                $mensaje = "Nuevo pedido realizado #" . $getPedido->numero_pedido;
+                NotificacionModel::insertRecord($user_id, $url, $mensaje);
+
                 Cart::clear();
 
                 return redirect('carrito')->with('success', 'Pedido reralizado exitosamente!');
@@ -357,6 +370,11 @@ class PagoController extends Controller
             $getPedido->save();
 
             Mail::to($getPedido->email)->send(new FacturaPedidoMail($getPedido));
+
+            $user_id = $getPedido->user_id;
+            $url = url('admin/pedidos/detalles/' . $getPedido->id);
+            $mensaje = "Nuevo pedido realizado #" . $getPedido->numero_pedido;
+            NotificacionModel::insertRecord($user_id, $url, $mensaje);
 
             Cart::clear();
 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Mail\EstadoPedidoMail;
+use App\Models\NotificacionModel;
 use App\Models\PedidosModel;
 use Illuminate\Http\Request;
 use Mail;
@@ -31,6 +32,11 @@ class PedidosController extends Controller
         $getPedido->save();
 
         Mail::to($getPedido->email)->send(new EstadoPedidoMail($getPedido));
+
+        $user_id = $getPedido->id;
+        $url = url('cliente/pedidos/' . $getPedido->id);
+        $mensaje = "Tu pedido ha sido actualizado #" . $getPedido->numero_pedido;
+        NotificacionModel::insertRecord($user_id, $url, $mensaje);
 
         $json['message'] = "Estado actualizado exitosamente";
         echo json_encode($json, JSON_UNESCAPED_UNICODE);
