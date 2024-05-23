@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\ConfiguracionInicioModel;
 use App\Models\ConfiguracionSistemaModel;
 use App\Models\ContactenosModel;
+use App\Models\NotificacionModel;
 use App\Models\PagesModel;
 use Illuminate\Http\Request;
 use Str;
@@ -180,6 +181,13 @@ class PagesController extends Controller
         $data['getRecord'] = ContactenosModel::getRecord();
         $data['header_title'] = 'Contáctenos';
         return view('admin.contactenos.lista', $data);
+    }
+
+    public function notificaciones()
+    {
+        $data['getRecord'] = NotificacionModel::getRecord();
+        $data['header_title'] = 'Notificaciones';
+        return view('admin.notificaciones.lista', $data);
     }
 
     public function eliminar_contactenos($id)

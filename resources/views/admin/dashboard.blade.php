@@ -109,7 +109,8 @@
                                 <h3 class="card-title">Ventas</h3>
                                 <select class="form-control cambiarAño" style="width: 100px;">
                                     @for ($i = 2020; $i <= date('Y'); $i++)
-                                        <option {{ ($año == $i) ? 'selected' : '' }} value="{{ $i }}">{{ $i }}</option>
+                                        <option {{ $año == $i ? 'selected' : '' }} value="{{ $i }}">
+                                            {{ $i }}</option>
                                     @endfor
                                 </select>
                             </div>
@@ -150,7 +151,7 @@
                         <div class="card-body table-responsive p-0">
                             <div class="card">
                                 <div class="card-body">
-                                    <table class="table table-striped" id="ultimosPedidos">
+                                    <table class="table table-responsive table-striped" id="ultimosPedidos">
                                         <thead>
                                             <tr>
                                                 <th>#</th>
@@ -204,6 +205,7 @@
                                             @endforeach
                                         </tbody>
                                     </table>
+                                    {!! $mostrarUltimosPedidos->appends(Illuminate\Support\Facades\Request::except('page'))->links() !!}
                                 </div>
                             </div>
                         </div>
@@ -216,9 +218,9 @@
 @endsection
 
 @section('script')
-    <script src="{{ url('public/assets/dist/js/pages/dashboard3.js') }}"></script>
+    {{-- <script src="{{ url('public/assets/dist/js/pages/dashboard3.js') }}"></script> --}}
 
-    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    {{-- <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="https://cdn.datatables.net/2.0.2/js/dataTables.js"></script>
@@ -240,12 +242,12 @@
                 "search": "Buscar:"
             }
         });
-    </script>
+    </script> --}}
 
     <script>
-        $('.cambiarAño').change(function(){
+        $('.cambiarAño').change(function() {
             var año = $(this).val()
-            window.location.href = "{{ url('admin/dashboard?año=') }}"+año
+            window.location.href = "{{ url('admin/dashboard?año=') }}" + año
         })
 
         var ticksStyle = {

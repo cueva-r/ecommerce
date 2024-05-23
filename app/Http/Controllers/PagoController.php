@@ -339,7 +339,7 @@ class PagoController extends Controller
 
                 Mail::to($getPedido->email)->send(new FacturaPedidoMail($getPedido));
 
-                $user_id = $getPedido->user_id;
+                $user_id = 1;
                 $url = url('admin/pedidos/detalles/' . $getPedido->id);
                 $mensaje = "Nuevo pedido realizado #" . $getPedido->numero_pedido;
                 NotificacionModel::insertRecord($user_id, $url, $mensaje);
@@ -371,7 +371,7 @@ class PagoController extends Controller
 
             Mail::to($getPedido->email)->send(new FacturaPedidoMail($getPedido));
 
-            $user_id = $getPedido->user_id;
+            $user_id = 1;
             $url = url('admin/pedidos/detalles/' . $getPedido->id);
             $mensaje = "Nuevo pedido realizado #" . $getPedido->numero_pedido;
             NotificacionModel::insertRecord($user_id, $url, $mensaje);

@@ -77,7 +77,7 @@ class AuthController extends Controller
 
             Mail::to($save->email)->send(new RegisterMail($save));
 
-            $user_id = $save->id;
+            $user_id = 1;
             $url = url('admin/clientes/listar');
             $mensaje = "Nuevo cliente registrado # " . $request->name;
             NotificacionModel::insertRecord($user_id, $url, $mensaje);

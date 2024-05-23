@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\NotificacionModel;
 use Illuminate\Http\Request;
 use Hash;
 use App\Models\User;
@@ -103,8 +104,12 @@ class AdminController extends Controller
         return redirect()->back()->with('success', 'Cliente reingresado exitosamente');
     }
 
-    public function lista_clientes()
+    public function lista_clientes(Request $request)
     {
+        if(!empty($request->noti_id))
+        {
+            NotificacionModel::updatedReadNoti($request->noti_id);
+        }
         $data['getRecord'] = User::getClientes();
         $data['header_title'] = 'Clientes';
         return view('admin.clientes.lista', $data);

@@ -168,6 +168,6 @@ class PedidosModel extends Model
         return PedidosModel::select('pedidos.*')
             ->where('esta_pagado', '=', 1)
             ->where('esta_eliminado', '=', 0)
-            ->get();
+            ->paginate(10);
     }
 }

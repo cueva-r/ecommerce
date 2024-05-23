@@ -18,8 +18,12 @@ class PedidosController extends Controller
         return view('admin.pedidos.lista', $data);
     }
 
-    public function detalles_pedido($id)
+    public function detalles_pedido($id, Request $request)
     {
+        if(!empty($request->noti_id))
+        {
+            NotificacionModel::updatedReadNoti($request->noti_id);
+        }
         $data['getRecord'] = PedidosModel::getSingle($id);
         $data['header_title'] = 'Destalles del pedido';
         return view('admin.pedidos.detalles', $data);
@@ -35,7 +39,7 @@ class PedidosController extends Controller
 
         $user_id = $getPedido->id;
         $url = url('cliente/pedidos/' . $getPedido->id);
-        $mensaje = "Tu pedido ha sido actualizado #" . $getPedido->numero_pedido;
+        $mensaje = "Tu pedido se actualizó - #" .  $getPedido->numero_pedido;
         NotificacionModel::insertRecord($user_id, $url, $mensaje);
 
         $json['message'] = "Estado actualizado exitosamente";

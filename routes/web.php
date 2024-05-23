@@ -191,6 +191,8 @@ Route::group(['middleware' => 'admin'], function () {
     Route::get('admin/socios/editar/{id}', [SociosController::class, 'editar']);
     Route::post('admin/socios/editar/{id}', [SociosController::class, 'actualizar']);
     Route::get('admin/socios/eliminar/{id}', [SociosController::class, 'eliminar']);
+
+    Route::get('admin/notificaciones', [PagesController::class, 'notificaciones']);
 });
 
 Route::get('/', [InicioController::class, 'inicio']);
