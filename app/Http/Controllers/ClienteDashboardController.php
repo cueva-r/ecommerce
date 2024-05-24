@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\CalificacionProductoModel;
 use App\Models\ListaDeDeseosModel;
+use App\Models\NotificacionModel;
 use App\Models\PedidosModel;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -32,12 +33,16 @@ class ClienteDashboardController extends Controller
         return view('cliente.dashboard', $data);
     }
 
-    public function pedidos()
+    public function pedidos(Request $request)
     {
+        if(!empty($request->noti_id))
+        {
+            NotificacionModel::updatedReadNoti($request->noti_id);
+        }
+
         $data['meta_titulo'] = 'Pedidos';
         $data['meta_descripcion'] = '';
         $data['meta_p_clave'] = '';
-
         $data['getRecord'] = PedidosModel::getRecordCliente(Auth::user()->id);
 
         return view('cliente.pedidos', $data);
@@ -89,7 +94,7 @@ class ClienteDashboardController extends Controller
 
     public function cambiar_contrasena()
     {
-        $data['meta_titulo'] = 'Dashboard';
+        $data['meta_titulo'] = 'Cambiar contraseña';
         $data['meta_descripcion'] = '';
         $data['meta_p_clave'] = '';
 
@@ -145,5 +150,20 @@ class ClienteDashboardController extends Controller
         $guardar->save();
 
         return redirect()->back()->with('success', "Gracias por tu calificación");
+    }
+
+    static function notificaciones(Request $request)
+    {
+        if(!empty($request->noti_id))
+        {
+            NotificacionModel::updatedReadNoti($request->noti_id);
+        }
+        
+        $data['meta_titulo'] = 'Notificaciones';
+        $data['meta_descripcion'] = '';
+        $data['meta_p_clave'] = '';
+        $data['getRecord'] = NotificacionModel::getRecordUser(Auth::user()->id);
+
+        return view('cliente.notificaciones', $data);
     }
 }

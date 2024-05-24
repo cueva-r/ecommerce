@@ -38,7 +38,7 @@ class PedidosController extends Controller
         Mail::to($getPedido->email)->send(new EstadoPedidoMail($getPedido));
 
         $user_id = $getPedido->id;
-        $url = url('cliente/pedidos/' . $getPedido->id);
+        $url = url('cliente/pedidos');
         $mensaje = "Tu pedido se actualizó - #" .  $getPedido->numero_pedido;
         NotificacionModel::insertRecord($user_id, $url, $mensaje);
 

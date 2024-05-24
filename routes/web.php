@@ -52,6 +52,8 @@ Route::group(['middleware' => 'cliente'], function () {
 
     Route::get('cliente/pedidos/detalles/{id}', [ClienteDashboardController::class, 'detalle_pedido']);
 
+    Route::get('cliente/notificaciones', [ClienteDashboardController::class, 'notificaciones']);
+
     Route::post('agregar_a_la_lista_de_deseos', [ClienteDashboardController::class, 'agregar_a_la_lista_de_deseos']);
     Route::post('cliente/enviar-calificacion', [ClienteDashboardController::class, 'enviar_calificacion']);
 

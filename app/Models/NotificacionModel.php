@@ -34,11 +34,26 @@ class NotificacionModel extends Model
             ->get();
     }
 
+    static public function getUnreadNotificationsCount($user_id)
+    {
+        return NotificacionModel::where('esta_leido', '=', 0)
+            ->where('user_id', '=', $user_id)
+            ->orderBy('id', 'desc')
+            ->count();
+    }
+
     static public function getRecord()
     {
         return NotificacionModel::where('user_id', '=', 1)
             ->orderBy('id', 'desc')
             ->get();
+    }
+
+    static public function getRecordUser($user_id)
+    {
+        return NotificacionModel::where('user_id', '=', $user_id)
+            ->orderBy('id', 'desc')
+            ->paginate(10);
     }
 
     static public function updatedReadNoti($id)

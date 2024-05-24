@@ -39,22 +39,21 @@
                                     <thead>
                                         <tr>
                                             <th>Mensaje</th>
-                                            <th>Acción</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         @foreach ($getRecord as $valor)
                                             <tr>
                                                 <td>
-                                                    <a style="color: #000; {{ empty($valor->esta_leido) ? 'font-weight: bold;' : '' }}" href="{{ $valor->url }}?noti_id={{ $valor->id }}">
+                                                    <a style="color: #000; {{ empty($valor->esta_leido) ? 'font-weight: bold;' : '' }}"
+                                                        href="{{ $valor->url }}?noti_id={{ $valor->id }}">
                                                         {{ $valor->mensaje }}
                                                     </a>
-                                                </td>
-                                                <td>
-                                                    <a href="{{ url('admin/contactenos/eliminar/' . $valor->id) }}"
-                                                        class="btn btn-outline-danger btn-sm">
-                                                        <i class="fa-solid fa-trash"></i>
-                                                    </a>
+                                                    <div>
+                                                        <small>
+                                                            {{ date('m-d Y h:i A', strtotime($valor->created_at)) }}
+                                                        </small>
+                                                    </div>
                                                 </td>
                                             </tr>
                                         @endforeach
