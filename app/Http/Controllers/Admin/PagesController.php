@@ -8,6 +8,7 @@ use App\Models\ConfiguracionSistemaModel;
 use App\Models\ContactenosModel;
 use App\Models\NotificacionModel;
 use App\Models\PagesModel;
+use App\Models\SMTPModel;
 use Illuminate\Http\Request;
 use Str;
 
@@ -107,6 +108,29 @@ class PagesController extends Controller
         $guardar->save();
 
         return redirect()->back()->with('success', 'Configuración del sistema actualizado exitosamente');
+    }
+
+    public function smtp_configuracion()
+    {
+        $data['getRecord'] = SMTPModel::getSingle();
+        $data['header_title'] = 'Configuración de SMTP';
+        return view('admin.configuracion.smtp_configuracion', $data);
+    }
+
+    public function actualizar_smtp_configuracion(Request $request)
+    {
+        $guardar = SMTPModel::getSingle();
+        $guardar->name = trim($request->name);
+        $guardar->mail_mailer = trim($request->mail_mailer);
+        $guardar->mail_host = trim($request->mail_host);
+        $guardar->mail_port = trim($request->mail_port);
+        $guardar->mail_username = trim($request->mail_username);
+        $guardar->mail_password = trim($request->mail_password);
+        $guardar->mail_encryption = trim($request->mail_encryption);
+        $guardar->mail_from_address = trim($request->mail_from_address);
+        $guardar->save();
+
+        return redirect()->back()->with('success', 'Configuración del SMTP actualizado exitosamente');
     }
 
     public function configuracion_inicio()

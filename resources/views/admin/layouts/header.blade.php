@@ -195,6 +195,14 @@
                 </li>
 
                 <li class="nav-item">
+                    <a href="{{ url('admin/smtp-configuracion') }}"
+                        class="nav-link @if (Request::segment(2) == 'smtp-configuracion') active @endif">
+                        <i class="nav-icon fa-solid fa-gear"></i>
+                        <p>SMTP configuración</p>
+                    </a>
+                </li>
+
+                <li class="nav-item">
                     <a href="{{ url('admin/cerrar-sesion') }}" class="nav-link">
                         <i class="nav-icon fa-solid fa-right-from-bracket"></i>
                         <p>Cerrar sesión</p>

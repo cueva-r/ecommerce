@@ -169,6 +169,9 @@ Route::group(['middleware' => 'admin'], function () {
     // Ruta configuración del sistema
     Route::get('admin/configuracion-sistema', [PagesController::class, 'configuracion_sistema']);
     Route::post('admin/configuracion-sistema', [PagesController::class, 'actualizar_configuracion_sistema']);
+    
+    Route::get('admin/smtp-configuracion', [PagesController::class, 'smtp_configuracion']);
+    Route::post('admin/smtp-configuracion', [PagesController::class, 'actualizar_smtp_configuracion']);
 
     // Ruta configuración del inicio
     Route::get('admin/configuracion-inicio', [PagesController::class, 'configuracion_inicio']);

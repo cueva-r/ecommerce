@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 22-05-2024 a las 18:09:44
+-- Tiempo de generación: 25-05-2024 a las 15:05:28
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -148,7 +148,8 @@ INSERT INTO `calificacion_productos` (`id`, `producto_id`, `pedido_id`, `user_id
 (4, 3, 8, 17, 1, 'No me gustó', '2024-04-23 19:05:22', '2024-04-23 19:05:22'),
 (5, 23, 18, 1, 5, 'Muy bueno la verdad', '2024-05-10 14:52:43', '2024-05-10 14:52:43'),
 (6, 24, 2, 1, 1, 'No me gustó', '2024-05-12 19:01:27', '2024-05-12 19:01:27'),
-(7, 16, 3, 17, 5, 'Me encantó este simualdor', '2024-05-22 15:59:59', '2024-05-22 15:59:59');
+(7, 16, 3, 17, 5, 'Me encantó este simualdor', '2024-05-22 15:59:59', '2024-05-22 15:59:59'),
+(8, 20, 6, 19, 4, 'Tiene un buen audio pero estan caros ::v', '2024-05-24 16:02:37', '2024-05-24 16:02:37');
 
 -- --------------------------------------------------------
 
@@ -418,7 +419,8 @@ INSERT INTO `item_pedido` (`id`, `pedido_id`, `producto_id`, `cantidad`, `precio
 (2, 2, 24, 1, '5.4', 'Rosado', '1.8', '2', '5.4', '2024-05-12 19:00:07', '2024-05-12 19:00:07'),
 (3, 3, 16, 1, '152', 'Azul', '1.8', '2', '152', '2024-05-22 15:31:04', '2024-05-22 15:31:04'),
 (4, 4, 23, 1, '12', 'Verde', '1.8', '2', '12', '2024-05-22 16:05:10', '2024-05-22 16:05:10'),
-(5, 5, 23, 1, '12', 'Verde', '1.8', '2', '12', '2024-05-22 16:05:13', '2024-05-22 16:05:13');
+(5, 5, 23, 1, '12', 'Verde', '1.8', '2', '12', '2024-05-22 16:05:13', '2024-05-22 16:05:13'),
+(6, 6, 20, 1, '751', 'Blanco', '1.8', '2', '751', '2024-05-24 15:58:54', '2024-05-24 15:58:54');
 
 -- --------------------------------------------------------
 
@@ -515,13 +517,8 @@ CREATE TABLE `notificacion` (
 --
 
 INSERT INTO `notificacion` (`id`, `user_id`, `url`, `mensaje`, `esta_leido`, `created_at`, `updated_at`) VALUES
-(1, 17, 'http://localhost/ecommerce/admin/pedidos/detalles/3', 'Nuevo pedido realizado #978570303', 0, '2024-05-22 15:31:32', '2024-05-22 15:31:32'),
-(2, 3, 'http://localhost/ecommerce/cliente/pedidos/3', 'Tu pedido ha sido actualizado #978570303', 0, '2024-05-22 15:58:34', '2024-05-22 15:58:34'),
-(3, 19, 'http://localhost/ecommerce/admin/clientes/listar', 'Nuevo cliente registrado # Alexia', 0, '2024-05-22 16:00:38', '2024-05-22 16:00:38'),
-(4, 19, 'http://localhost/ecommerce/admin/pedidos/detalles/5', 'Nuevo pedido realizado #977677608', 0, '2024-05-22 16:05:42', '2024-05-22 16:05:42'),
-(5, 19, 'http://localhost/ecommerce/admin/pedidos/detalles/4', 'Nuevo pedido realizado #436940518', 0, '2024-05-22 16:05:42', '2024-05-22 16:05:42'),
-(6, 4, 'http://localhost/ecommerce/cliente/pedidos/4', 'Tu pedido ha sido actualizado #436940518', 0, '2024-05-22 16:08:36', '2024-05-22 16:08:36'),
-(7, 5, 'http://localhost/ecommerce/cliente/pedidos/5', 'Tu pedido ha sido actualizado #977677608', 0, '2024-05-22 16:08:36', '2024-05-22 16:08:36');
+(1, 1, 'http://localhost/ecommerce/admin/pedidos/detalles/6', 'Nuevo pedido realizado #125831944', 1, '2024-05-24 16:00:15', '2024-05-24 16:17:57'),
+(2, 1, 'http://localhost/ecommerce/cliente/pedidos', 'Tu pedido se actualizó - #125831944', 1, '2024-05-24 16:02:04', '2024-05-24 16:18:13');
 
 -- --------------------------------------------------------
 
@@ -619,7 +616,8 @@ INSERT INTO `pedidos` (`id`, `transaccion_id`, `stripe_session_id`, `numero_pedi
 (2, NULL, NULL, '684893833', 1, 'Abraham Elias', 'Cueva Rico', 'rico\'s', 'Perú', 'Hefestos', '404', 'Lima', 'Ate', '15022', '924575577', 'ricoabraham879@gmail.com', 'zzz', '', '0', 1, '0', '5.4', 'cash', 3, 0, 1, NULL, '2024-05-12 19:00:07', '2024-05-12 19:00:45'),
 (3, NULL, NULL, '978570303', 17, 'Sofía', 'Mendoza', 'xd', 'Colombia', 'cali', 'cali', 'Cali', 'Cali', '12345', '1234567', 'sofia@gmail.com', 'xd', '', '0', 2, '15', '137', 'cash', 3, 0, 1, NULL, '2024-05-22 15:31:03', '2024-05-22 15:58:21'),
 (4, NULL, NULL, '436940518', 19, 'Alexia', 'Nose', 'ZZZ', 'Chile', 'La calera', 'La calera', 'La calera', 'La calera', '324453', '3432412', 'alexia@gmail.com', 'que llegue mañana', '', '0', 3, '20', '-8', 'cash', 3, 0, 1, NULL, '2024-05-22 16:05:09', '2024-05-22 16:07:54'),
-(5, NULL, NULL, '977677608', 19, 'Alexia', 'Nose', 'ZZZ', 'Chile', 'La calera', 'La calera', 'La calera', 'La calera', '324453', '3432412', 'alexia@gmail.com', 'que llegue mañana', '', '0', 3, '20', '-8', 'cash', 3, 0, 1, NULL, '2024-05-22 16:05:12', '2024-05-22 16:07:58');
+(5, NULL, NULL, '977677608', 19, 'Alexia', 'Nose', 'ZZZ', 'Chile', 'La calera', 'La calera', 'La calera', 'La calera', '324453', '3432412', 'alexia@gmail.com', 'que llegue mañana', '', '0', 3, '20', '-8', 'cash', 3, 0, 1, NULL, '2024-05-22 16:05:12', '2024-05-22 16:07:58'),
+(6, 'cs_test_a143KcZ4545GRJBl6LKhRUVWuxQG4jmcYPrMKIPeSqRMcMog4CdFJNDg2b', 'cs_test_a143KcZ4545GRJBl6LKhRUVWuxQG4jmcYPrMKIPeSqRMcMog4CdFJNDg2b', '125831944', 19, 'Alexia', 'Sanchez', 'rico\'s', 'Perú', 'Lima', 'Lima', 'Lima', 'Ate', '15022', '924575577', 'alexia@gmail.com', 'zzzz', '', '0', 2, '15', '736', 'stripe', 3, 0, 1, '{\"id\":\"cs_test_a143KcZ4545GRJBl6LKhRUVWuxQG4jmcYPrMKIPeSqRMcMog4CdFJNDg2b\",\"object\":\"checkout.session\",\"after_expiration\":null,\"allow_promotion_codes\":null,\"amount_subtotal\":19784,\"amount_total\":19784,\"automatic_tax\":{\"enabled\":false,\"liability\":null,\"status\":null},\"billing_address_collection\":null,\"cancel_url\":\"http:\\/\\/localhost\\/ecommerce\\/pagar\",\"client_reference_id\":null,\"client_secret\":null,\"consent\":null,\"consent_collection\":null,\"created\":1716566338,\"currency\":\"usd\",\"currency_conversion\":null,\"custom_fields\":[],\"custom_text\":{\"after_submit\":null,\"shipping_address\":null,\"submit\":null,\"terms_of_service_acceptance\":null},\"customer\":null,\"customer_creation\":\"if_required\",\"customer_details\":{\"address\":{\"city\":null,\"country\":\"PE\",\"line1\":null,\"line2\":null,\"postal_code\":null,\"state\":null},\"email\":\"alexia@gmail.com\",\"name\":\"Alexia\",\"phone\":null,\"tax_exempt\":\"none\",\"tax_ids\":[]},\"customer_email\":\"alexia@gmail.com\",\"expires_at\":1716652738,\"invoice\":null,\"invoice_creation\":{\"enabled\":false,\"invoice_data\":{\"account_tax_ids\":null,\"custom_fields\":null,\"description\":null,\"footer\":null,\"issuer\":null,\"metadata\":[],\"rendering_options\":null}},\"livemode\":false,\"locale\":null,\"metadata\":[],\"mode\":\"payment\",\"payment_intent\":\"pi_3PK0X2071tYYB9Py1RQYU2XU\",\"payment_link\":null,\"payment_method_collection\":\"if_required\",\"payment_method_configuration_details\":null,\"payment_method_options\":{\"card\":{\"request_three_d_secure\":\"automatic\"}},\"payment_method_types\":[\"card\"],\"payment_status\":\"paid\",\"phone_number_collection\":{\"enabled\":false},\"recovered_from\":null,\"saved_payment_method_options\":null,\"setup_intent\":null,\"shipping_address_collection\":null,\"shipping_cost\":null,\"shipping_details\":null,\"shipping_options\":[],\"status\":\"complete\",\"submit_type\":null,\"subscription\":null,\"success_url\":\"http:\\/\\/localhost\\/ecommerce\\/stripe\\/payment-success\",\"total_details\":{\"amount_discount\":0,\"amount_shipping\":0,\"amount_tax\":0},\"ui_mode\":\"hosted\",\"url\":null}', '2024-05-24 15:58:54', '2024-05-24 16:02:00');
 
 -- --------------------------------------------------------
 
@@ -869,6 +867,33 @@ INSERT INTO `sliders` (`id`, `titulo`, `nombre_imagen`, `nombre_button`, `link_b
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `smtp`
+--
+
+CREATE TABLE `smtp` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `mail_mailer` varchar(255) DEFAULT NULL,
+  `mail_host` varchar(255) DEFAULT NULL,
+  `mail_port` varchar(255) DEFAULT NULL,
+  `mail_username` varchar(255) DEFAULT NULL,
+  `mail_password` varchar(255) DEFAULT NULL,
+  `mail_encryption` varchar(255) DEFAULT NULL,
+  `mail_from_address` varchar(255) DEFAULT NULL,
+  `create_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `smtp`
+--
+
+INSERT INTO `smtp` (`id`, `name`, `mail_mailer`, `mail_host`, `mail_port`, `mail_username`, `mail_password`, `mail_encryption`, `mail_from_address`, `create_at`, `updated_at`) VALUES
+(1, 'E-commerce', 'smtp', 'sandbox.smtp.mailtrap.io', '2525', '106b6ec62c4cbe', 'a561209335f6b8', 'tls', 'ricoabraham879@gmail.com', NULL, '2024-05-24 20:23:39');
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `socios`
 --
 
@@ -976,7 +1001,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `apellidos`, `email`, `email_verified_at`, `password`, `remember_token`, `nombre_compania`, `pais`, `primera_direccion`, `segunda_direccion`, `ciudad`, `distrito`, `codigo_postal`, `telefono`, `es_admin`, `estado`, `esta_eliminado`, `created_at`, `updated_at`) VALUES
-(1, 'Abraham Elias', 'Cueva Rico', 'ricoabraham879@gmail.com', '2024-03-17 20:13:42', '$2y$12$teqAlxN7bszkF5PLf8IMn.EgGlIID8nI0pRiFKNIAfDT0bXwzsMNi', 'nBhgTDUD7zjEvozg5khWED4sHUj4Umi4iUaXs0lVfy62yWmmitdwhCVbaKbT', 'rico\'s', 'Perú', 'Hefestos', '404', 'Lima', 'Ate', '15022', '924575577', 1, 0, 0, '2024-01-28 15:23:20', '2024-04-19 01:11:45'),
+(1, 'Abraham Elias', 'Cueva Rico', 'ricoabraham879@gmail.com', '2024-03-17 20:13:42', '$2y$12$teqAlxN7bszkF5PLf8IMn.EgGlIID8nI0pRiFKNIAfDT0bXwzsMNi', 'So6zahyQEys1LBPr2QHoUsMlLviXRJnzfzdR7CV6NrTL0hEx3KfN5cleM224', 'rico\'s', 'Perú', 'Hefestos', '404', 'Lima', 'Ate', '15022', '924575577', 1, 0, 0, '2024-01-28 15:23:20', '2024-04-19 01:11:45'),
 (2, 'test', NULL, 'test@gmail.com', NULL, '$2y$12$ohGsPlzjAJYcQ0l14K0FoO0A/QnDNK8aNUJe4kwhJDzmQZCWsVeD.', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, 0, '2024-01-29 03:46:12', '2024-04-02 00:39:09'),
 (3, 'prueba', NULL, 'prueba@gmail.com', NULL, '$2y$12$K84E6xDH5pPrV/BYwaNzVOZaEAEmHK7l1Nb4rpK1LUAb5/kXcR0ru', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, 0, '2024-01-29 03:56:58', '2024-04-02 00:39:34'),
 (4, 'xdd', NULL, 'xdd@gmail.com', NULL, '$2y$12$O0waTN9YyZSDX7SQplwU6OPWVY51OA1jcJSYPIy2ERDSb6my7MTIO', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, 0, '2024-01-29 04:00:36', '2024-01-29 06:38:30'),
@@ -994,7 +1019,7 @@ INSERT INTO `users` (`id`, `name`, `apellidos`, `email`, `email_verified_at`, `p
 (16, 'x', NULL, 'xd2@gmail.com', '2024-03-27 01:25:40', '$2y$12$9J6OagsBuJegI9VYnpv89uILrQ7bJJ40vHXltPst6wuBZ8nhRzV3C', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, 0, '2024-03-27 01:21:17', '2024-03-27 01:25:40'),
 (17, 'Sofía', NULL, 'sofia@gmail.com', '2024-04-13 23:08:49', '$2y$12$fKg2ROLeo/QoccYEcjhv6.oSVLoOO7Q9nHV3fPMl/2pvZMfYBvav6', 'fNXAhk1MJuFyHsdBlta6gkKciLFdqFDdpPQRo0NdTFnX46M6Gtx6qjZMNk8R', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, 0, '2024-04-13 22:34:17', '2024-04-13 23:11:52'),
 (18, 'Gustavo', NULL, 'gustavo@gmail.com', '2024-04-23 21:25:43', '$2y$12$hwucRpS31IZfjfUFOTkSIuPPf7Kgm6M/B8OWwKSse5y.4fHBPruqS', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, 0, '2024-04-23 21:25:18', '2024-04-23 21:25:43'),
-(19, 'Alexia', NULL, 'alexia@gmail.com', '2024-05-22 21:02:22', '$2y$12$vsFg6pRHHSmZ1iwW6OW4euH46n.jMXbA3RkEKm12BTD.oE41MSHPu', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, 0, '2024-05-22 21:00:31', '2024-05-22 21:02:22');
+(19, 'Alexia', NULL, 'alexia@gmail.com', '2024-05-22 21:02:22', '$2y$12$vsFg6pRHHSmZ1iwW6OW4euH46n.jMXbA3RkEKm12BTD.oE41MSHPu', '76Rb88dXpmigkIYOzVFKn8f9dewxdlcNMqEYYp3CEKDpNcBQ7ZQBW1GyPP6M', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, 0, '2024-05-22 21:00:31', '2024-05-22 21:02:22');
 
 --
 -- Índices para tablas volcadas
@@ -1160,6 +1185,12 @@ ALTER TABLE `sliders`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indices de la tabla `smtp`
+--
+ALTER TABLE `smtp`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indices de la tabla `socios`
 --
 ALTER TABLE `socios`
@@ -1204,7 +1235,7 @@ ALTER TABLE `blog_comentarios`
 -- AUTO_INCREMENT de la tabla `calificacion_productos`
 --
 ALTER TABLE `calificacion_productos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT de la tabla `categorias`
@@ -1258,7 +1289,7 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT de la tabla `item_pedido`
 --
 ALTER TABLE `item_pedido`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `lista_de_deseos`
@@ -1282,7 +1313,7 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT de la tabla `notificacion`
 --
 ALTER TABLE `notificacion`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `pages`
@@ -1294,7 +1325,7 @@ ALTER TABLE `pages`
 -- AUTO_INCREMENT de la tabla `pedidos`
 --
 ALTER TABLE `pedidos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `personal_access_tokens`
@@ -1331,6 +1362,12 @@ ALTER TABLE `producto_tamano`
 --
 ALTER TABLE `sliders`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT de la tabla `smtp`
+--
+ALTER TABLE `smtp`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `socios`
